@@ -119,8 +119,9 @@ $ref_docs_tracking = array();
         <h1><?php the_title(); ?></h1>
       </div>
       <div class="eight columns align-right">
-        <?php echo_metadata_button($dataset) ?>
-        <?php echo_download_buttons($dataset); ?>
+        <?php //echo_metadata_button($dataset); ?>
+        <?php //echo_download_buttons($dataset); ?>
+        <?php echo_view_metadata_and_download_button($dataset); ?>
       </div>
     </header>
   </section>

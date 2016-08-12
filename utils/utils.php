@@ -276,3 +276,8 @@ function echo_metadata_button($dataset){
 }
 
 ?>
+
+<?php function echo_view_metadata_and_download_button($dataset) { ?>
+  <a target="_blank" class="button download format" href="?metadata=<?php echo $dataset['id'];?>"><i class="fa fa-info"></i> <?php _e('View metadata and download', 'odm')?></a>
+<?php
+} ?>
