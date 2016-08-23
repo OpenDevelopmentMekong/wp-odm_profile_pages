@@ -8,13 +8,38 @@ if (!class_exists('OpenDev_Profile_Pages_Post_Type')) {
           add_action('init', array($this, 'register_post_type'));
           add_action('add_meta_boxes', array($this, 'add_meta_box'));
           add_action('save_post', array($this, 'save_post_data'));
-          add_filter('single_template', array($this, 'get_profile_pages_template'));
+          add_filter('theme_page_templates', array($this, 'filter_inject_page_templates'));
+          //add_filter('template_include', array($this, 'get_profile_pages_template'));
+
+          add_filter('single_template', array($this, 'get_default_profile_pages_template'));
+        }
+        public function filter_inject_page_templates( $templates ) {
+             $path = 'templates/page-profile-with-widget.php';
+             $path = plugin_dir_path(__FILE__).'templates/page-profile-with-widget.php';
+             $templates[ $path ] = 'Profile page with widget';
+             return $templates;
         }
 
         public function get_profile_pages_template($single_template)
         {
-            global $post;
+          global $post;
 
+          // Get the template slug
+          $template_slug = rtrim( $single_template, '.php' );
+          $template = $template_slug . '.php';
+          $template_slug = basename($single_template, ".php");
+
+
+          if(($template_slug !="single-profiles") && ($template_slug !="single")){
+            $profile_template = plugin_dir_path(__FILE__).'templates/page-profile-with-widget.php';
+            return $profile_template;
+          }else {
+             $this->get_default_profile_pages_template($single_template);
+          }
+        }
+
+        public function get_default_profile_pages_template($single_template)
+        {
             if ($post->post_type == 'profiles') {
                 $single_template = plugin_dir_path(__FILE__).'templates/single-profiles.php';
             }
@@ -98,7 +123,7 @@ if (!class_exists('OpenDev_Profile_Pages_Post_Type')) {
   			<label for="csv_en"><?php _e('ENGLISH', 'jeo');
           ?></label> &nbsp;
   			<input type="radio" id="csv_localization" class="localization" name="language_site" value="localization" />
-  			<label for="csv_localization"><?php _e(get_the_localization_language_by_website(), 'opendev');
+  			<label for="csv_localization"><?php _e(get_the_language_by_website_name(), 'opendev');
           ?></label>
   		</div>
   		<div id="resource_settings_box">
@@ -140,13 +165,13 @@ if (!class_exists('OpenDev_Profile_Pages_Post_Type')) {
   				<?php $this->attributes_settings_box('English', $post);
           ?>
   			</div>
-  <?php if (get_the_localization_language_by_website()) {
+  <?php if (get_the_language_by_website_name()) {
     ?>
   		 <div class="resource_settings resource-localization">
   			 	<table class="form-table form-table-localization resource_settings_box">
   		 			<tbody>
   						<tr>
-  						 <th><label for="_map_visualization_url_localization"><?php _e('CartoDB JSON URL ('.get_the_localization_language_by_website().')', 'opendev');
+  						 <th><label for="_map_visualization_url_localization"><?php _e('CartoDB JSON URL ('.get_the_language_by_website_name().')', 'opendev');
     ?></label></th>
   						 <td>
   							<input id="_map_visualization_url_localization" type="text" placeholder="https://" size="40" name="_map_visualization_url_localization" value="<?php echo $map_visualization_url_localization;
@@ -156,7 +181,7 @@ if (!class_exists('OpenDev_Profile_Pages_Post_Type')) {
   						 </td>
   						</tr>
   		 			 <tr>
-  		 				<th><label for="_csv_resource_url_localization"><?php _e('CSV Resource URL ('.get_the_localization_language_by_website().')', 'opendev');
+  		 				<th><label for="_csv_resource_url_localization"><?php _e('CSV Resource URL ('.get_the_language_by_website_name().')', 'opendev');
     ?></label></th>
   		 				<td>
   		 				 <input id="_csv_resource_url_localization" type="text" placeholder="https://" size="40" name="_csv_resource_url_localization" value="<?php echo $csv_resource_url_localization;
@@ -166,7 +191,7 @@ if (!class_exists('OpenDev_Profile_Pages_Post_Type')) {
   		 				</td>
   		 			 </tr>
   					 <tr>
-  		 				<th><label for="_tracking_csv_resource_url_localization"><?php _e('CSV Tracking URL ('.get_the_localization_language_by_website().')', 'opendev');
+  		 				<th><label for="_tracking_csv_resource_url_localization"><?php _e('CSV Tracking URL ('.get_the_language_by_website_name().')', 'opendev');
     ?></label></th>
   		 				<td>
   		 				 <input id="_tracking_csv_resource_url_localization" type="text" placeholder="https://" size="40" name="_tracking_csv_resource_url_localization" value="<?php echo $tracking_csv_resource_url_localization;
@@ -177,7 +202,7 @@ if (!class_exists('OpenDev_Profile_Pages_Post_Type')) {
   		 			 </tr>
   					</tbody>
   		 		</table>
-  				<?php $this->attributes_settings_box(get_the_localization_language_by_website(), $post);
+  				<?php $this->attributes_settings_box(get_the_language_by_website_name(), $post);
     ?>
   		 </div>
    <?php
@@ -260,7 +285,7 @@ if (!class_exists('OpenDev_Profile_Pages_Post_Type')) {
   	    <label for="en"><?php _e('ENGLISH', 'jeo');
             ?></label> &nbsp;
   	    <input type="radio" id="localization" class="localization" name="p_language_site" value="localization" />
-  	    <label for="localization"><?php _e(get_the_localization_language_by_website(), 'opendev');
+  	    <label for="localization"><?php _e(get_the_language_by_website_name(), 'opendev');
             ?></label>
   	  </div>
   	  <div id="profiles_page_settings_box">
@@ -311,13 +336,13 @@ if (!class_exists('OpenDev_Profile_Pages_Post_Type')) {
   	        </tbody>
   	      </table>
   	    </div>
-  	<?php if (get_the_localization_language_by_website()) {
+  	<?php if (get_the_language_by_website_name()) {
     ?>
   	   <div class="resource_settings resource-localization">
   	      <table class="form-table form-table-localization profiles_page_settings_box">
   	        <tbody>
   	         <tr>
-  	          <th><label for="_total_number_by_attribute_name_localization"><?php _e('Show Total Numbers of Columns, separated by line breaks ('.get_the_localization_language_by_website().')', 'opendev');
+  	          <th><label for="_total_number_by_attribute_name_localization"><?php _e('Show Total Numbers of Columns, separated by line breaks ('.get_the_language_by_website_name().')', 'opendev');
     ?></label></th>
   	          <td>
   						<textarea name="_total_number_by_attribute_name_localization" style="width:100%;height: 80px;"placeholder="column_1"><?php echo $total_number_by_attribute_name_localization;
@@ -327,7 +352,7 @@ if (!class_exists('OpenDev_Profile_Pages_Post_Type')) {
   	          </td>
   	         </tr>
   	         <tr>
-  	          <th><label for="_filtered_by_column_index_localization"><?php _e('Create Select Filter by Column Index ('.get_the_localization_language_by_website().')', 'opendev');
+  	          <th><label for="_filtered_by_column_index_localization"><?php _e('Create Select Filter by Column Index ('.get_the_language_by_website_name().')', 'opendev');
     ?></label></th>
   	          <td>
   	           <input id="_filtered_by_column_index_localization" type="text" placeholder="2, 5" size="40" name="_filtered_by_column_index_localization" value="<?php echo $filtered_by_column_index_localization;
@@ -337,7 +362,7 @@ if (!class_exists('OpenDev_Profile_Pages_Post_Type')) {
   	          </td>
   	         </tr>
   	         <tr>
-  	          <th><label for="_group_data_by_column_index_localization"><?php _e('Group Data in Column ('.get_the_localization_language_by_website().')', 'opendev');
+  	          <th><label for="_group_data_by_column_index_localization"><?php _e('Group Data in Column ('.get_the_language_by_website_name().')', 'opendev');
     ?></label></th>
   	          <td>
   	            <input id="_group_data_by_column_index_localization" type="text" placeholder="5" size="40" name="_group_data_by_column_index_localization" value="<?php echo $group_data_by_column_index_localization;
@@ -347,7 +372,7 @@ if (!class_exists('OpenDev_Profile_Pages_Post_Type')) {
   	          </td>
   	         </tr>
   					 <tr>
-  					  <th><label for="_related_profile_pages_localization"><?php _e('Related Profile Pages ('.get_the_localization_language_by_website().')', 'opendev');
+  					  <th><label for="_related_profile_pages_localization"><?php _e('Related Profile Pages ('.get_the_language_by_website_name().')', 'opendev');
     ?></label></th>
   					  <td>
   							<textarea name="_related_profile_pages_localization" style="width:100%;height: 50px;"placeholder="Lable of Link|URL"><?php echo $related_profile_pages_localization;
