@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp-odm_profile_pages\n"
 "POT-Creation-Date: 2016-10-17 11:16+0700\n"
-"PO-Revision-Date: 2016-10-17 13:52+0700\n"
+"PO-Revision-Date: 2016-10-17 14:41+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -292,7 +292,7 @@ msgstr "ទាំងអស់"
 
 #: post-types/templates/page-profiles-metadata-page.php:12
 msgid "Metadata: "
-msgstr "មេតានៃទិន្នន័យ:"
+msgstr "ព័ត៌មានអំពីទិន្នន័យ៖"
 
 #: post-types/templates/page-profiles-single-page.php:63
 msgid "Amendments"
@@ -307,6 +307,8 @@ msgid ""
 "ODC is not aware of any adjustments to the concession since it was first "
 "granted."
 msgstr ""
+"អូឌីស៊ីពុំទាន់មានព័ត៌មានអំពីការប្រែប្រួលពាក់ព័ន្ធនឹងសម្បទានដីសេដ្ឋកិច្ចនេះទេ "
+"ចាប់តាំងពីរាជរដ្ឋាភិបាលបានផ្តល់អាជ្ញាប័ណ្ណជាលើកដំបូង។"
 
 #: utils/utils.php:35
 msgid ""
@@ -316,12 +318,16 @@ msgid ""
 "cannot present land area cut in shapes. As a result, ELC projects that are "
 "visualized on the interactive map represent the original contract size."
 msgstr ""
+"ទំហំដីសម្បទាននេះ ត្រូវបានកាត់បន្ថយ ហើយពុំមានការដកហូតអាជ្ញាប័ណ្ណពីមុនមកទេ។ "
+"ឯកសារស្តីពីការកាត់បន្ថយផ្ទៃដីចេញពីសម្បទានដីសេដ្ឋកិច្ចដែលមានជាសាធារណៈ "
+"ពុំមានភ្ជាប់ផែនទីមកជាមួយឡើយ។ ដូច្នេះអូឌីស៊ី មិនអាចបង្ហាញផ្ទៃដីដែលត្រូវបានកាត់ចេញនៅលើផែនទី។ "
+"សម្បទានដីសេដ្ឋកិច្ចនៅលើផែនទីអន្តរកម្ម បង្ហាញនូវទំហំផ្ទៃដីដើម។"
 
 #: utils/utils.php:40
 msgid ""
 "The concession has been cancelled with or without a history of reductions in "
 "size."
-msgstr ""
+msgstr "សម្បទានដីសេដ្ឋកិច្ចនេះ ត្រូវបានលុបចោលដោយមាន ឬគ្មានការកាត់បន្ថយទំហំដីពីមុន។"
 
 #: utils/utils.php:45
 msgid ""
@@ -331,6 +337,10 @@ msgid ""
 "cannot present land area cut in shapes. As a result, ELC projects that are "
 "visualized on the interactive map represent the original contract size."
 msgstr ""
+"ទំហំដីសម្បទាន ត្រូវបានកាត់បន្ថយ បន្ទាប់ពីមានការដកហូតអាជ្ញាប័ណ្ណពីមុន។ "
+"ឯកសារស្តីពីការកាត់បន្ថយផ្ទៃដីចេញពីសម្បទានដីសេដ្ឋកិច្ចដែលមានជាសាធារណៈ "
+"ពំុមានភ្ជាប់ផែនទីមកជាមួយឡើយ។ ដូច្នេះអូឌីស៊ី មិនអាចបង្ហាញផ្ទៃដីដែលត្រូវបានកាត់ចេញនៅលើផែនទី។ "
+"សម្បទានដីសេដ្ឋកិច្ចនៅលើផែនទីអន្តរកម្ម បង្ហាញនូវទំហំផ្ទៃដីដើម។"
 
 #: utils/utils.php:50
 msgid ""
@@ -339,6 +349,12 @@ msgid ""
 "<br>b. Location; <br>c. GPS coordinates and/or analog map; and <br>  d. "
 "Purpose (crop, ore, etc.)"
 msgstr ""
+"ព័ត៌មានដែលទទួលបានពីប្រភពរដ្ឋាភិបាល​ដោយមាន​ឯកសារ​ផ្លូវច្បាប់​ជាផ្លូវការ ដែលស្ថិត​​នៅក្នុង​លក្ខណៈ​"
+"អត្តសញ្ញាណ​ចំនួន៤គឺ៖ <br />\n"
+"ក. ឈ្មោះក្រុមហ៊ុន <br />\n"
+"ខ. ទីតាំង  <br />\n"
+"គ. ចំនុចកូអរដោនេនៃប្រព័ន្ធកំណត់ទីតាំង​សកល (GPS) និង/ឬ ផែនទីអាណាឡូក  <br />\n"
+"ឃ. គោលបំណង (ដំណាំ, រ៉ែ ជាដើម)"
 
 #: utils/utils.php:54
 msgid ""
@@ -347,28 +363,36 @@ msgid ""
 "fields: <br>a. Company name; <br>b. Location; <br>c. GPS coordinates and/or "
 "analog map; and <br>d. Purpose (crop, ore, etc.)"
 msgstr ""
+"ព័ត៌មានដែលទទួលបានពីប្រភពរដ្ឋាភិបាល​ដោយមាន​​ឯកសារ​ផ្លូវច្បាប់ ប៉ុន្តែ​បាត់ផ្នែកមួយ ឬច្រើន​នៃលក្ខណៈ​​"
+"អត្តសញ្ញាណ​ដូច​ខាង​ក្រោម៖ <br />\n"
+"ក. ឈ្មោះក្រុមហ៊ុន  <br />\n"
+"ខ. ទីតាំង  <br />\n"
+"គ. ចំនុចកូអរដោនេនៃប្រព័ន្ធកំណត់ទី​តាំងសកល (GPS) និង/ឬ ផែនទីអាណាឡូក  <br />\n"
+"ឃ. គោលបំណង (ដំណាំ,រ៉ែ ជាដើម)"
 
 #: utils/utils.php:58
 msgid ""
 "Information obtained from any other source in public domain (including "
 "documentation from photographs, etc.)"
 msgstr ""
+"ព័ត៌មានដែលទទួលបានពី​ប្រភពណាមួយ​ផ្សេងទៀត ដែលស្ថិតនៅក្នុងដែន​សាធារណៈ (រួមទាំងឯកសារពីរូបថតជាដើម)"
 
 #: utils/utils.php:62
 msgid ""
 "Information obtained from the concessionaire (company/entity) or from "
 "government source(s) without legal documentation."
 msgstr ""
+"ព័ត៌មានដែលទទួលបានពី​សម្បទានិក (ក្រុមហ៊ុន/អង្គភាព) ឬពីប្រភពរដ្ឋាភិបាល ដោយមិនមានឯកសារផ្លូវច្បាប់"
 
 #: utils/utils.php:66
 msgid ""
 "These concessions have been cancelled by the Royal Government of Cambodia."
-msgstr ""
+msgstr "សម្បទានទាំងនេះត្រូវបាន​លុបចោលដោយ​រាជរដ្ឋាភិបាលកម្ពុជា។"
 
 #: utils/utils.php:268
 msgid "Metadata"
-msgstr ""
+msgstr "ព័ត៌មានអំពីទិន្នន័យ"
 
 #: utils/utils.php:274
 msgid "Donwload and  Metadata"
-msgstr "ទាញយក និងមើលមេតានៃទិន្នន័យ"
+msgstr "ទាញយក និងព័ត៌មានអំពីទិន្នន័យ"
