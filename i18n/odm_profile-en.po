@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpckan\n"
-"POT-Creation-Date: 2016-06-06 17:18+0200\n"
-"PO-Revision-Date: 2016-06-06 17:18+0200\n"
+"POT-Creation-Date: 2016-10-17 11:16+0700\n"
+"PO-Revision-Date: 2016-10-17 11:16+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -20,151 +20,161 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: components\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: profile-pages.php:23
-msgctxt "post type general name"
-msgid "Profiles Page"
+#: post-types/profile-pages.php:41 post-types/profile-pages.php:43
+#: post-types/profile-pages.php:44
+msgid "Profiles"
 msgstr ""
 
-#: profile-pages.php:24
-msgctxt "post type singular name"
-msgid "Profile Page"
+#: post-types/profile-pages.php:42
+msgid "Profile"
 msgstr ""
 
-#: profile-pages.php:25
-msgctxt "admin menu"
-msgid "Profile Pages"
-msgstr ""
-
-#: profile-pages.php:26
-msgctxt "add new on admin bar"
-msgid "Profile Pages"
-msgstr ""
-
-#: profile-pages.php:27
-msgctxt "profile page"
+#: post-types/profile-pages.php:45
 msgid "Add new"
 msgstr ""
 
-#: profile-pages.php:28
-msgid "Add new profile page"
+#: post-types/profile-pages.php:46
+msgid "Add new profile"
 msgstr ""
 
-#: profile-pages.php:29
-msgid "New profile pages"
+#: post-types/profile-pages.php:47
+msgid "New profile"
 msgstr ""
 
-#: profile-pages.php:30
-msgid "Edit profile pages"
+#: post-types/profile-pages.php:48
+msgid "Edit profile"
 msgstr ""
 
-#: profile-pages.php:31
-msgid "View profile pages"
+#: post-types/profile-pages.php:49
+msgid "View profile"
 msgstr ""
 
-#: profile-pages.php:32
-msgid "All profile pages"
+#: post-types/profile-pages.php:50
+msgid "All profile"
 msgstr ""
 
-#: profile-pages.php:33
-msgid "Search profile pages"
+#: post-types/profile-pages.php:51
+msgid "Search profiles"
 msgstr ""
 
-#: profile-pages.php:34
-msgid "Parent profile pages:"
+#: post-types/profile-pages.php:52
+msgid "Parent profiles:"
 msgstr ""
 
-#: profile-pages.php:35
-msgid "No profile page found."
+#: post-types/profile-pages.php:53
+msgid "No profile found."
 msgstr ""
 
-#: profile-pages.php:36
-msgid "No profile page found in trash."
+#: post-types/profile-pages.php:54
+msgid "No profile found in trash."
 msgstr ""
 
-#: profile-pages.php:63
+#: post-types/profile-pages.php:82
+msgid "Template layout"
+msgstr ""
+
+#: post-types/profile-pages.php:90
 msgid "CKAN​ Dataset Resource"
 msgstr ""
 
-#: profile-pages.php:71
+#: post-types/profile-pages.php:98
 msgid "Setting of Profiles Page"
 msgstr ""
 
-#: profile-pages.php:93 profile-pages.php:256
+#: post-types/profile-pages.php:112
+msgid "Choose template layout"
+msgstr ""
+
+#: post-types/profile-pages.php:138 post-types/profile-pages.php:318
 msgid "ENGLISH"
 msgstr ""
 
-#: profile-pages.php:104
+#: post-types/profile-pages.php:149
+msgid "Full width content (English)"
+msgstr ""
+
+#: post-types/profile-pages.php:153 post-types/profile-pages.php:202
+msgid ""
+"Any content can add to under the Editor content and sidebar and  full width "
+"of website even the iframe."
+msgstr ""
+
+#: post-types/profile-pages.php:158
 msgid "CartoDB JSON URL (English)"
 msgstr ""
 
-#: profile-pages.php:109 profile-pages.php:149
+#: post-types/profile-pages.php:163 post-types/profile-pages.php:212
 msgid ""
 "CartoDB visualization URL. E.g.: http://user.cartodb.com/api/v2/"
 "viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
 msgstr ""
 
-#: profile-pages.php:114
+#: post-types/profile-pages.php:168
 msgid "CSV Resource URL (English)"
 msgstr ""
 
-#: profile-pages.php:119 profile-pages.php:159
+#: post-types/profile-pages.php:173 post-types/profile-pages.php:222
 msgid ""
 "CSV Resource of dataset on CKAN. Eg. https://data.opendevelopmentmekong.net/"
 "dataset/economic-land-concessions/resource/3b817bce-9823-493b-8429-"
 "e5233ba3bd87?type=dataset"
 msgstr ""
 
-#: profile-pages.php:124
+#: post-types/profile-pages.php:178
 msgid "CSV Tracking URL (English)"
 msgstr ""
 
-#: profile-pages.php:129 profile-pages.php:169
+#: post-types/profile-pages.php:183 post-types/profile-pages.php:232
 msgid ""
 "CSV Resource of tracking dataset on CKAN. Eg. https://data."
 "opendevelopmentmekong.net/dataset/economic-land-concessions/"
 "resource/8cc0c651-8131-404e-bbce-7fe6af728f89?type=dataset"
 msgstr ""
 
-#: profile-pages.php:144
+#: post-types/profile-pages.php:198
+msgid "Full width content (("
+msgstr ""
+
+#: post-types/profile-pages.php:207
 msgid "CartoDB JSON URL ("
 msgstr ""
 
-#: profile-pages.php:154
+#: post-types/profile-pages.php:217
 msgid "CSV Resource URL ("
 msgstr ""
 
-#: profile-pages.php:164
+#: post-types/profile-pages.php:227
 msgid "CSV Tracking URL ("
 msgstr ""
 
-#: profile-pages.php:214 profile-pages.php:227
+#: post-types/profile-pages.php:276 post-types/profile-pages.php:289
 msgid ""
 "The attributes of Resource Dataset that would like to display, separated by "
 "line breaks ("
 msgstr ""
 
-#: profile-pages.php:219 profile-pages.php:232
+#: post-types/profile-pages.php:281 post-types/profile-pages.php:294
 msgid ""
 "The attributes of Tracking Resource that would like to display, separated by "
 "line breaks ("
 msgstr ""
 
-#: profile-pages.php:267
+#: post-types/profile-pages.php:329
 msgid "Show Total Numbers of Columns, separated by line breaks (English)"
 msgstr ""
 
-#: profile-pages.php:272
+#: post-types/profile-pages.php:334
 msgid ""
 "List the attribute names to show their total number on page (separated by "
 "line breaks). Eg. For ELC: <br/>map_id<br/>developer<br/"
 ">data_class[\"Government data complete\", \"Government data partial\"]"
 msgstr ""
 
-#: profile-pages.php:277
+#: post-types/profile-pages.php:339
 msgid "Create Select Filter by Column Index (English)"
 msgstr ""
 
-#: profile-pages.php:282 profile-pages.php:331
+#: post-types/profile-pages.php:344 post-types/profile-pages.php:393
 msgid ""
 "Filter selectors will create automatically by adding the column index and "
 "separated by comma. Maximum Filter selectors can create is three. Eg. Create "
@@ -172,136 +182,133 @@ msgid ""
 "which have index 2 and 5"
 msgstr ""
 
-#: profile-pages.php:287
+#: post-types/profile-pages.php:349
 msgid "Group Data in Column (English)"
 msgstr ""
 
-#: profile-pages.php:292 profile-pages.php:341
+#: post-types/profile-pages.php:354 post-types/profile-pages.php:403
 msgid ""
 "Eg. To group data classification of ELC, based on the attributes sample "
 "provided, the index of data classification is: 5"
 msgstr ""
 
-#: profile-pages.php:297
+#: post-types/profile-pages.php:359
 msgid "Related Profile Pages (English)"
 msgstr ""
 
-#: profile-pages.php:302 profile-pages.php:351
+#: post-types/profile-pages.php:364 post-types/profile-pages.php:413
 msgid ""
 "Please add the links of profile pages that related (separated by new "
 "breaking line). Format: Title of Link|URL. <br/>eg.\n"
-"Economic Land Concessions|https://cambodia.opendevelopmentmekong.net/"
+"  Economic Land Concessions|https://cambodia.opendevelopmentmekong.net/"
 "profiles/economic-land-concessions/"
 msgstr ""
 
-#: profile-pages.php:316
+#: post-types/profile-pages.php:378
 msgid "Show Total Numbers of Columns, separated by line breaks ("
 msgstr ""
 
-#: profile-pages.php:321
+#: post-types/profile-pages.php:383
 msgid ""
 "List the attribut4 names to show their total number on page (separated by "
 "line breaks). Eg. For ELC: map_id<br/>developer<br/>data_class[\"Government "
 "data complete\", \"Government data partial\"]"
 msgstr ""
 
-#: profile-pages.php:326
+#: post-types/profile-pages.php:388
 msgid "Create Select Filter by Column Index ("
 msgstr ""
 
-#: profile-pages.php:336
+#: post-types/profile-pages.php:398
 msgid "Group Data in Column ("
 msgstr ""
 
-#: profile-pages.php:346
+#: post-types/profile-pages.php:408
 msgid "Related Profile Pages ("
 msgstr ""
 
-#: templates/page-profiles-metadata-page.php:4
-msgid "Metadata:"
-msgstr ""
-
-#: templates/page-profiles-single-page.php:42
-#: templates/single-profiles.php:340 templates/single-profiles.php:351
-#: templates/single-profiles.php:374 utils/utils.php:161
-msgid "Not found"
-msgstr ""
-
-#: templates/page-profiles-single-page.php:60
-msgid "Amendments"
-msgstr ""
-
-#: templates/page-profiles-single-page.php:114
-msgid "Reference documents"
-msgstr ""
-
-#: templates/single-profiles.php:124 templates/single-profiles.php:126
-#: templates/single-profiles.php:164 templates/single-profiles.php:166
+#: post-types/templates/page-profiles-list-page.php:20
+#: post-types/templates/page-profiles-list-page.php:23
+#: post-types/templates/page-profiles-list-page.php:56
+#: post-types/templates/page-profiles-list-page.php:59
 msgid "Total"
 msgstr ""
 
-#: templates/single-profiles.php:124 templates/single-profiles.php:126
-#: templates/single-profiles.php:164 templates/single-profiles.php:166
+#: post-types/templates/page-profiles-list-page.php:20
+#: post-types/templates/page-profiles-list-page.php:56
 msgid "Listed"
 msgstr ""
 
-#: templates/single-profiles.php:124 templates/single-profiles.php:126
-#: templates/single-profiles.php:154 templates/single-profiles.php:164
-#: templates/single-profiles.php:166
+#: post-types/templates/page-profiles-list-page.php:20
+#: post-types/templates/page-profiles-list-page.php:56
 msgid ":"
 msgstr ""
 
-#: templates/single-profiles.php:187
-msgid "Search"
+#: post-types/templates/page-profiles-list-page.php:23
+#: post-types/templates/page-profiles-list-page.php:59
+msgid " listed"
 msgstr ""
 
-#: templates/single-profiles.php:190
+#: post-types/templates/page-profiles-list-page.php:23
+#: post-types/templates/page-profiles-list-page.php:49
+#: post-types/templates/page-profiles-list-page.php:59
+msgid ": "
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:84
+msgid "Textual search"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:85
 msgid "Search data in profile page"
 msgstr ""
 
-#: templates/single-profiles.php:197
-msgid "Download"
-msgstr ""
-
-#: templates/single-profiles.php:261
-msgid "View metadata of dataset"
-msgstr ""
-
-#: templates/single-profiles.php:273
-msgid "Related profile pages"
-msgstr ""
-
-#: templates/single-profiles.php:295
+#: post-types/templates/page-profiles-list-page.php:90
 msgid "Filter by"
 msgstr ""
 
-#: templates/single-profiles.php:300
+#: post-types/templates/page-profiles-list-page.php:97
+msgid "Related profiles"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:120
 msgid "Map ID"
 msgstr ""
 
-#: templates/single-profiles.php:592
+#: post-types/templates/page-profiles-list-page.php:175
+#: post-types/templates/page-profiles-list-page.php:187
+#: post-types/templates/page-profiles-list-page.php:210
+#: post-types/templates/page-profiles-single-page.php:45 utils/utils.php:25
+msgid "Not found"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:395
 msgid "all"
 msgstr ""
 
-#: templates/single-profiles.php:597
+#: post-types/templates/page-profiles-list-page.php:401
 msgid "All "
 msgstr ""
 
-#: utils/utils.php:94 utils/utils.php:111
-msgid "Download data"
+#: post-types/templates/page-profiles-metadata-page.php:12
+msgid "Metadata: "
 msgstr ""
 
-#: utils/utils.php:100 utils/utils.php:117
-msgid "View dataset table"
+#: post-types/templates/page-profiles-single-page.php:63
+msgid "Amendments"
 msgstr ""
 
-#: utils/utils.php:166
+#: post-types/templates/page-profiles-single-page.php:121
+msgid "Reference documents"
+msgstr ""
+
+#: utils/utils.php:30
 msgid ""
 "ODC is not aware of any adjustments to the concession since it was first "
 "granted."
 msgstr ""
 
-#: utils/utils.php:171
+#: utils/utils.php:35
 msgid ""
 "The concession has been subjected to additional reductions in size and has "
 "not been cancelled previously. Publicly available information on land area "
@@ -310,13 +317,13 @@ msgid ""
 "visualized on the interactive map represent the original contract size."
 msgstr ""
 
-#: utils/utils.php:176
+#: utils/utils.php:40
 msgid ""
 "The concession has been cancelled with or without a history of reductions in "
 "size."
 msgstr ""
 
-#: utils/utils.php:181
+#: utils/utils.php:45
 msgid ""
 "The concession has been subjected to reduction(s) in size although it had "
 "been cancelled previously. Publicly available information on land area cut "
@@ -325,7 +332,7 @@ msgid ""
 "visualized on the interactive map represent the original contract size."
 msgstr ""
 
-#: utils/utils.php:186
+#: utils/utils.php:50
 msgid ""
 "Information obtained from official Government sources, with official legal "
 "documentation, in the four identification fields: <br>a. Company name; "
@@ -333,7 +340,7 @@ msgid ""
 "Purpose (crop, ore, etc.)"
 msgstr ""
 
-#: utils/utils.php:190
+#: utils/utils.php:54
 msgid ""
 "Information obtained from official Government sources, with legal "
 "documentation, but missing one or more of the following identification "
@@ -341,19 +348,27 @@ msgid ""
 "analog map; and <br>d. Purpose (crop, ore, etc.)"
 msgstr ""
 
-#: utils/utils.php:194
+#: utils/utils.php:58
 msgid ""
 "Information obtained from any other source in public domain (including "
 "documentation from photographs, etc.)"
 msgstr ""
 
-#: utils/utils.php:198
+#: utils/utils.php:62
 msgid ""
 "Information obtained from the concessionaire (company/entity) or from "
 "government source(s) without legal documentation."
 msgstr ""
 
-#: utils/utils.php:202
+#: utils/utils.php:66
 msgid ""
 "These concessions have been cancelled by the Royal Government of Cambodia."
+msgstr ""
+
+#: utils/utils.php:268
+msgid "Metadata"
+msgstr ""
+
+#: utils/utils.php:274
+msgid "Donwload and  Metadata"
 msgstr ""

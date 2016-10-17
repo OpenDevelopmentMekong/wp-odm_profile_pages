@@ -41,6 +41,7 @@ if (!class_exists('Odm_Profile_Pages_Plugin')) {
         public function __construct()
         {
             add_action('init', array($this, 'register_styles'));
+						add_action('init', array($this, 'load_text_domain'));
             add_action('admin_notices', array($this, 'check_requirements'));
         }
 
@@ -49,6 +50,11 @@ if (!class_exists('Odm_Profile_Pages_Plugin')) {
             wp_enqueue_style('style-profiles',  plugin_dir_url(__FILE__).'css/profile-pages.css');
 		        wp_enqueue_style('responsive-profiles',  plugin_dir_url(__FILE__).'css/responsive.css');
         }
+
+				public function load_text_domain()
+				{
+					load_plugin_textdomain( 'odm_profile', false,  dirname( plugin_basename( __FILE__ ) ) . '/i18n' );
+				}
 
         function check_requirements(){
           if (!check_requirements_profile_pages()):

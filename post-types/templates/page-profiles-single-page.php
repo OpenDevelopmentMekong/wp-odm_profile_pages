@@ -25,7 +25,7 @@
               foreach ($DATASET_ATTRIBUTE as $key => $value):
                 if($key !="reference"){ ?>
               <tr>
-              <td class="row-key"><?php _e( $DATASET_ATTRIBUTE[$key], 'odm' ); ?></td>
+              <td class="row-key"><?php _e( $DATASET_ATTRIBUTE[$key], 'odm_profile' ); ?></td>
                 <td><?php
                     $profile_val = str_replace("T00:00:00", "", $profile[$key]);
                     if(odm_language_manager()->get_current_language() =="km"){
@@ -42,7 +42,7 @@
                       }
                     }
 
-                    echo $profile_value == ""? __("Not found", 'odm'): str_replace(";", "<br/>", $profile_value);
+                    echo $profile_value == ""? __("Not found", 'odm_profile'): str_replace(";", "<br/>", $profile_value);
 
                     if(in_array($key, array("data_class", "adjustment_classification", "adjustment")))
                       odm_data_classification_definition( $profile[$key]);
@@ -60,13 +60,13 @@
       <div class="sixteen columns">
         <?php if (count($ammendements) > 0): ?>
           <div class="profile-metadata">
-            <h2><?php _e("Amendments", 'odm'); ?></h2>
+            <h2><?php _e("Amendments", 'odm_profile'); ?></h2>
             <table id="tracking" class="data-table">
               <tbody>
                 <!--<thead>
                   <tr>
                     <?php /* foreach ($DATASET_ATTRIBUTE_TRACKING as $key => $value): ?>
-                      <td class="row-key"><?php _e( $DATASET_ATTRIBUTE_TRACKING[$key], 'odm'); ?></td>
+                      <td class="row-key"><?php _e( $DATASET_ATTRIBUTE_TRACKING[$key], 'odm_profile'); ?></td>
                     <?php endforeach; */ ?>
                   </tr>
                 </thead>-->
@@ -85,7 +85,7 @@
                               if ($ammendement[$key] == $concession_or_developer):
                                   echo "<td></td>";
                               else:
-                                  echo "<td><strong>".__($ammendement[$key], 'odm')."</strong></td>";
+                                  echo "<td><strong>".__($ammendement[$key], 'odm_profile')."</strong></td>";
                                   $concession_or_developer = $ammendement[$key];
                               endif;
                             else: ?>
@@ -110,7 +110,7 @@
             </table>
           </div>
         <?php else: ?>
-          <p><php _e('No records found','odm') ?></p>
+          <p><php _e('No records found','odm_profile') ?></p>
         <?php endif; ?>
 
         <?php
@@ -118,11 +118,11 @@
           $ref_docs = array_merge($ref_docs_profile,$ref_docs_tracking);
           if (count($ref_docs)> 0): ?>
           <div class="profile-metadata">
-            <h2><?php _e("Reference documents", 'odm'); ?></h2>
+            <h2><?php _e("Reference documents", 'odm_profile'); ?></h2>
                 <?php odm_list_reference_documents($ref_docs)?>
           </div>
           <?php else: ?>
-            <p><php _e('No records found','odm') ?></p>
+            <p><php _e('No records found','odm_profile') ?></p>
           <?php endif; ?>
         </div>
     </div>
