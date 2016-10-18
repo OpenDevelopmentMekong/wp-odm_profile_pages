@@ -273,6 +273,7 @@ jQuery(document).ready(function($) {
     				$('.dataTables_scrollHead').css('z-index',9999);
     				$('.dataTables_scrollHead').width($('.dataTables_scrollBody').width());
      				$('.filter-container').css('position','fixed');
+     				$('.filter-container').css('width',$('.dataTables_scrollBody').width()); 
             $('.filter-container').addClass("fixed-filter-container");
     				$('.dataTables_scrollBody').css('margin-top', 10+'em');
             $('.fixed_datatable_tool_bar').css('display','inline-block');
