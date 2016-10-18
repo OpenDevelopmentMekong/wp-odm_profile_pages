@@ -17,10 +17,10 @@
 				<?php if (count($count_project) > 1) {
                 $show_total_value .= "<li><strong>";
                 if(odm_language_manager()->get_current_language() == "km"):
-                  $show_total_value .= __("Total", "odm_profile").get_the_title(). __("Listed", "odm_profile"). __(":", "odm_profile");
+                  $show_total_value .= __("Total", "wp-odm_profile_pages").get_the_title(). __("Listed", "wp-odm_profile_pages"). __(":", "wp-odm_profile_pages");
                   $show_total_value .= $count_project==""? convert_to_kh_number("0"):convert_to_kh_number(count($count_project));
                 else:
-                  $show_total_value .=  __("Total", "odm_profile")." ".get_the_title(). __(" listed", "odm_profile"). __(": ", "odm_profile");
+                  $show_total_value .=  __("Total", "wp-odm_profile_pages")." ".get_the_title(). __(" listed", "wp-odm_profile_pages"). __(": ", "wp-odm_profile_pages");
                   $show_total_value .= $count_project==""? "0":count($count_project);
                 endif;
                 $show_total_value .= "</strong></li>";
@@ -46,17 +46,17 @@
                   if(isset($specifit_value) && count($specifit_value) > 0){
                     foreach ($specifit_value as $field_value) {
                       $field_value = trim(str_replace('"', "",$field_value));
-                      $show_total_value .= '<li>'.__($field_value, "odm_profile"). __(": ", "odm_profile");
+                      $show_total_value .= '<li>'.__($field_value, "wp-odm_profile_pages"). __(": ", "wp-odm_profile_pages");
                       $show_total_value .= '<strong>'. $count_number_by_attr[$field_value]==""? convert_to_kh_number("0"):convert_to_kh_number($count_number_by_attr[$field_value]).'</strong></li>';
                     }//end foreach
                   }else { //count number by field name/attribute name: eg. map_id/developer
                     if ($total_attributename !="map_id") {
                       $show_total_value .= "<li>";
                       if(odm_language_manager()->get_current_language() == "km"):
-                        $show_total_value .= __("Total", "odm_profile").$DATASET_ATTRIBUTE[$total_attributename].__("Listed", "odm_profile").__(":", "odm_profile");
+                        $show_total_value .= __("Total", "wp-odm_profile_pages").$DATASET_ATTRIBUTE[$total_attributename].__("Listed", "wp-odm_profile_pages").__(":", "wp-odm_profile_pages");
                         $show_total_value .= '<strong>'.$total_attributename==""? convert_to_kh_number("0"):convert_to_kh_number(count($count_number_by_attr)).'</strong>';
                       else:
-                        $show_total_value .=  __("Total", "odm_profile")." ".$DATASET_ATTRIBUTE[$total_attributename]." ". __(" listed", "odm_profile").__(": ", "odm_profile");
+                        $show_total_value .=  __("Total", "wp-odm_profile_pages")." ".$DATASET_ATTRIBUTE[$total_attributename]." ". __(" listed", "wp-odm_profile_pages").__(": ", "wp-odm_profile_pages");
                         $show_total_value .= '<strong>'.$total_attributename==""? "0": count($count_number_by_attr).'</strong>';
                       endif;
                       $show_total_value .= "</li>";
@@ -81,20 +81,20 @@
     <div class ="sixteen columns filter-container">
       <div class="panel">
         <div class="four columns">
-          <p><?php _e('Textual search', 'odm_profile');?></p>
-          <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'odm_profile'); ?>">
+          <p><?php _e('Textual search', 'wp-odm_profile_pages');?></p>
+          <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
         </div>
         <div class="eight columns">
           <?php if (isset($filtered_by_column_index) && $filtered_by_column_index != ''): ?>
             <div id="filter_by_classification">
-              <p><?php _e('Filter by', 'odm_profile');?></p>
+              <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
             </div>
           <?php endif; ?>
         </div>
         <?php if (isset($related_profile_pages) && $related_profile_pages != '') {
         $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
         <div class="four columns">
-          <p><?php _e('Related profiles', 'odm_profile');?></p>
+          <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
           <ul>
           <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
               $split_title_and_url = explode('|', $profile_pages_url);?>
@@ -117,12 +117,12 @@
     <table id="profiles" class="data-table">
       <thead>
         <tr>
-          <th><div class='th-value'><?php _e('Map ID', 'odm_profile'); ?></div></th>
+          <th><div class='th-value'><?php _e('Map ID', 'wp-odm_profile_pages'); ?></div></th>
           <?php if ($DATASET_ATTRIBUTE) :
             foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
               <th>
                 <div class='th-value'>
-                  <?php _e($DATASET_ATTRIBUTE[$key], 'odm_profile');?>
+                  <?php _e($DATASET_ATTRIBUTE[$key], 'wp-odm_profile_pages');?>
                 </div>
               </th>
             <?php endforeach;
@@ -172,7 +172,7 @@
                 elseif ($key == 'issuedate'): ?>
                     <td><div class="td-value"><?php
                         $issuedate = str_replace('T00:00:00', '', $profile[$key]);
-                    echo $profile[$key] == '' ? __('Not found', 'odm_profile') : str_replace(';', '<br/>', trim($issuedate));
+                    echo $profile[$key] == '' ? __('Not found', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($issuedate));
                     ?></div>
                     </td>
                   <?php
@@ -184,7 +184,7 @@
                     endif; ?>
                     <td>
                       <div class="td-value"><?php
-                        echo $profile_value == '' ? __('Not found', 'odm_profile') : str_replace(';', '<br/>', trim($profile_value));?>
+                        echo $profile_value == '' ? __('Not found', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
                       </div>
                     </td>
                 <?php
@@ -207,7 +207,7 @@
                   $profile_value = str_replace(';', '<br/>', trim($profile_value));?>
                     <td>
                       <div class="td-value"><?php
-                        echo $profile[$key] == '' ? __('Not found', 'odm_profile') : str_replace(';', '<br/>', trim($profile_value));?>
+                        echo $profile[$key] == '' ? __('Not found', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
                       </div>
                     </td>
                   <?php
@@ -392,13 +392,13 @@ jQuery(document).ready(function($) {
         if (odm_language_manager()->get_current_language() == 'km') { ?>
            var div_filter = $('<div class="filter_by filter_by_column_index_'+columnIndex+'"></div>');
            div_filter.appendTo( $('#filter_by_classification'));
-           var select = $('<select><option value="">'+column_header+'<?php _e('all', 'odm_profile');
+           var select = $('<select><option value="">'+column_header+'<?php _e('all', 'wp-odm_profile_pages');
            ?></option></select>');
         <?php
         } else { ?>
            var div_filter = $('<div class="filter_by filter_by_column_index_'+columnIndex+'"></div>');
            div_filter.appendTo( $('#filter_by_classification'));
-           var select = $('<select><option value=""><?php _e('All ', 'odm_profile'); ?>'+column_header+'</option></select>');
+           var select = $('<select><option value=""><?php _e('All ', 'wp-odm_profile_pages'); ?>'+column_header+'</option></select>');
         <?php
         } ?>
            select.appendTo( $('.filter_by_column_index_'+columnIndex) )

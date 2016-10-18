@@ -9,7 +9,7 @@ if (isset($_GET['metadata'])) {
 <section class="container section-title main-title">
   <header class="row">
     <div class="sixteen columns">
-      <h3 class="align-left profile-name"><?php _e('Metadata: ', 'odm_profile'); the_title() ?></h3>
+      <h3 class="align-left profile-name"><?php _e('Metadata: ', 'wp-odm_profile_pages'); the_title() ?></h3>
     </div>
   </header>
 </section>
