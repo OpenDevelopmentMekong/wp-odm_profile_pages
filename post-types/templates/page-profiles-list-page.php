@@ -465,5 +465,5 @@
     <?php } ?>
     }); //jQuery
 </script>
-<?php } ?> //end if profile
+<?php } ?> /*end if profile*/
 <?php require_once PLUGIN_DIR.'/utils/profile-mapping-script.php'; ?>
