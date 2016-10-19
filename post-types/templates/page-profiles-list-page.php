@@ -19,10 +19,10 @@
   				<?php if (count($count_project) > 1) {
                   $show_total_value .= "<li><strong>";
                   if(odm_language_manager()->get_current_language() == "km"):
-                    $show_total_value .= __("Total", "odm_profile").get_the_title(). __("Listed", "odm_profile"). __(":", "odm_profile");
+                    $show_total_value .= __("Total", "wp-odm_profile_pages").get_the_title(). __("Listed", "wp-odm_profile_pages"). __(":", "wp-odm_profile_pages");
                     $show_total_value .= $count_project==""? convert_to_kh_number("0"):convert_to_kh_number(count($count_project));
                   else:
-                    $show_total_value .=  __("Total", "odm_profile")." ".get_the_title(). __(" listed", "odm_profile"). __(": ", "odm_profile");
+                    $show_total_value .=  __("Total", "wp-odm_profile_pages")." ".get_the_title(). __(" listed", "wp-odm_profile_pages"). __(": ", "wp-odm_profile_pages");
                     $show_total_value .= $count_project==""? "0":count($count_project);
                   endif;
                   $show_total_value .= "</strong></li>";
@@ -48,17 +48,17 @@
                     if(isset($specifit_value) && count($specifit_value) > 0){
                       foreach ($specifit_value as $field_value) {
                         $field_value = trim(str_replace('"', "",$field_value));
-                        $show_total_value .= '<li>'.__($field_value, "odm_profile"). __(": ", "odm_profile");
+                        $show_total_value .= '<li>'.__($field_value, "wp-odm_profile_pages"). __(": ", "wp-odm_profile_pages");
                         $show_total_value .= '<strong>'. $count_number_by_attr[$field_value]==""? convert_to_kh_number("0"):convert_to_kh_number($count_number_by_attr[$field_value]).'</strong></li>';
                       }//end foreach
                     }else { //count number by field name/attribute name: eg. map_id/developer
                       if ($total_attributename !="map_id") {
                         $show_total_value .= "<li>";
                         if(odm_language_manager()->get_current_language() == "km"):
-                          $show_total_value .= __("Total", "odm_profile").$DATASET_ATTRIBUTE[$total_attributename].__("Listed", "odm_profile").__(":", "odm_profile");
+                          $show_total_value .= __("Total", "wp-odm_profile_pages").$DATASET_ATTRIBUTE[$total_attributename].__("Listed", "wp-odm_profile_pages").__(":", "wp-odm_profile_pages");
                           $show_total_value .= '<strong>'.$total_attributename==""? convert_to_kh_number("0"):convert_to_kh_number(count($count_number_by_attr)).'</strong>';
                         else:
-                          $show_total_value .=  __("Total", "odm_profile")." ".$DATASET_ATTRIBUTE[$total_attributename]." ". __(" listed", "odm_profile").__(": ", "odm_profile");
+                          $show_total_value .=  __("Total", "wp-odm_profile_pages")." ".$DATASET_ATTRIBUTE[$total_attributename]." ". __(" listed", "wp-odm_profile_pages").__(": ", "wp-odm_profile_pages");
                           $show_total_value .= '<strong>'.$total_attributename==""? "0": count($count_number_by_attr).'</strong>';
                         endif;
                         $show_total_value .= "</li>";
@@ -119,12 +119,12 @@
     <table id="profiles" class="data-table">
       <thead>
         <tr>
-          <th><div class='th-value'><?php _e('Map ID', 'odm_profile'); ?></div></th>
+          <th><div class='th-value'><?php _e('Map ID', 'wp-odm_profile_pages'); ?></div></th>
           <?php if ($DATASET_ATTRIBUTE) :
             foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
               <th>
                 <div class='th-value'>
-                  <?php _e($DATASET_ATTRIBUTE[$key], 'odm_profile');?>
+                  <?php _e($DATASET_ATTRIBUTE[$key], 'wp-odm_profile_pages');?>
                 </div>
               </th>
             <?php endforeach;
@@ -174,7 +174,7 @@
                 elseif ($key == 'issuedate'): ?>
                     <td><div class="td-value"><?php
                         $issuedate = str_replace('T00:00:00', '', $profile[$key]);
-                    echo $profile[$key] == '' ? __('Not found', 'odm_profile') : str_replace(';', '<br/>', trim($issuedate));
+                    echo $profile[$key] == '' ? __('Not found', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($issuedate));
                     ?></div>
                     </td>
                   <?php
@@ -186,7 +186,7 @@
                     endif; ?>
                     <td>
                       <div class="td-value"><?php
-                        echo $profile_value == '' ? __('Not found', 'odm_profile') : str_replace(';', '<br/>', trim($profile_value));?>
+                        echo $profile_value == '' ? __('Not found', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
                       </div>
                     </td>
                 <?php
@@ -209,7 +209,7 @@
                   $profile_value = str_replace(';', '<br/>', trim($profile_value));?>
                     <td>
                       <div class="td-value"><?php
-                        echo $profile[$key] == '' ? __('Not found', 'odm_profile') : str_replace(';', '<br/>', trim($profile_value));?>
+                        echo $profile[$key] == '' ? __('Not found', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
                       </div>
                     </td>
                   <?php

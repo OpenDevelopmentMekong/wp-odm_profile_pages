@@ -53,7 +53,7 @@ if (!class_exists('Odm_Profile_Pages_Plugin')) {
 
 				public function load_text_domain()
 				{
-					load_plugin_textdomain( 'odm_profile', false,  dirname( plugin_basename( __FILE__ ) ) . '/i18n' );
+					load_plugin_textdomain( 'wp-odm_profile_pages', false,  dirname( plugin_basename( __FILE__ ) ) . '/i18n' );
 				}
 
         function check_requirements(){
