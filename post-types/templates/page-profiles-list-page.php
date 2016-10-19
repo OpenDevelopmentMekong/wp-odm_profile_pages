@@ -83,21 +83,21 @@
       <div class ="sixteen columns filter-container">
         <div class="panel">
           <div class="four columns">
-            <p><?php _e('Textual search', 'odm');?></p>
-            <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'odm'); ?>">
+            <p><?php _e('Textual search', 'wp-odm_profile_pages');?></p>
+            <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
           </div>
           <div class="eight columns">
             <?php
                 if (isset($filtered_by_column_index) && $filtered_by_column_index != ''): ?>
               <div id="filter_by_classification">
-                <p><?php _e('Filter by', 'odm');?></p>
+                <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
               </div>
             <?php endif; ?>
           </div>
           <?php if (isset($related_profile_pages) && $related_profile_pages != '') {
           $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
           <div class="four columns">
-            <p><?php _e('Related profiles', 'odm');?></p>
+            <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
             <ul>
             <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
                 $split_title_and_url = explode('|', $profile_pages_url);?>
@@ -395,13 +395,13 @@
           if (odm_language_manager()->get_current_language() == 'km') { ?>
              var div_filter = $('<div class="filter_by filter_by_column_index_'+columnIndex+'"></div>');
              div_filter.appendTo( $('#filter_by_classification'));
-             var select = $('<select><option value="">'+column_header+'<?php _e('all', 'odm');
+             var select = $('<select><option value="">'+column_header+'<?php _e('all', 'wp-odm_profile_pages');
              ?></option></select>');
           <?php
           } else { ?>
              var div_filter = $('<div class="filter_by filter_by_column_index_'+columnIndex+'"></div>');
              div_filter.appendTo( $('#filter_by_classification'));
-             var select = $('<select><option value=""><?php _e('All ', 'odm'); ?>'+column_header+'</option></select>');
+             var select = $('<select><option value=""><?php _e('All ', 'wp-odm_profile_pages'); ?>'+column_header+'</option></select>');
           <?php
           } ?>
           select.appendTo( $('.filter_by_column_index_'+columnIndex) )
