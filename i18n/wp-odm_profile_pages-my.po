@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ODM WP Profile pages\n"
-"POT-Creation-Date: 2016-10-19 23:37-0400\n"
-"PO-Revision-Date: 2016-10-19 23:37-0400\n"
+"POT-Creation-Date: 2016-10-19 23:41-0400\n"
+"PO-Revision-Date: 2016-10-19 23:41-0400\n"
 "Last-Translator: \n"
 "Language-Team: Burmese (http://www.transifex.com/open-development-mekong/wp-"
 "odm_profile_pages/language/my/)\n"
@@ -380,5 +380,5 @@ msgid "Metadata"
 msgstr ""
 
 #: utils/utils.php:274
-msgid "Download and  Metadata"
+msgid "Download and Metadata"
 msgstr ""
