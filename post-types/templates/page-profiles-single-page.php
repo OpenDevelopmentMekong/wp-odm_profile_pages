@@ -63,49 +63,46 @@
             <h2><?php _e("Amendments", 'wp-odm_profile_pages'); ?></h2>
             <table id="tracking" class="data-table">
               <tbody>
-                <!--<thead>
-                  <tr>
-                    <?php /* foreach ($DATASET_ATTRIBUTE_TRACKING as $key => $value): ?>
-                      <td class="row-key"><?php _e( $DATASET_ATTRIBUTE_TRACKING[$key], 'wp-odm_profile_pages'); ?></td>
-                    <?php endforeach; */ ?>
-                  </tr>
-                </thead>-->
                 <?php
+                //Sort by amendment_date
+          			foreach ($ammendements as $key => $sort_by) {
+          				$tmp_arr[$key] = $sort_by['amendment_date'];
+          			}
+          			array_multisort($tmp_arr, SORT_ASC, $ammendements);
+
                 $concession_or_developer = '';
                 foreach ($ammendements as $key => $ammendement):
-                  if (!empty($ammendement["reference"])){
+                  if (!empty($ammendement["reference"])) {
                     $ammendement_references = $ref_docs_tracking = explode(";", $ammendement["reference"]);
                     $ref_docs_tracking = array_merge($ref_docs_tracking,$ammendement_references);
                   }
-                  ?>
-                  <tr>
-                    <?php foreach ($DATASET_ATTRIBUTE_TRACKING as $key => $value): ?>
-                      <?php if (isset($ammendement[$key]) && $key == 'concession_or_developer'):
+                  $first_attr_key = array_shift(array_keys($DATASET_ATTRIBUTE_TRACKING));
+                  $ammendement_title[] = $ammendement[$first_attr_key];
+                  $concession_or_developer = $ammendement[$first_attr_key];
+                  $ammendement_information = "";
 
-                              if ($ammendement[$key] == $concession_or_developer):
-                                  echo "<td></td>";
-                              else:
-                                  echo "<td><strong>".__($ammendement[$key], 'wp-odm_profile_pages')."</strong></td>";
-                                  $concession_or_developer = $ammendement[$key];
-                              endif;
-                            else: ?>
-                              <td>
-                                <?php
-                                if (isset($ammendement[$key]) && $key == 'amendment_date'){
-                                    if(odm_language_manager()->get_current_language() == "km")
-                                      echo convert_date_to_kh_date(date("d/m/Y", strtotime($ammendement[$key])), "/");
-                                    else echo $ammendement[$key];
-                                }else {
-                                  if (isset($ammendement[$key])){
-                                      echo $ammendement[$key];
-                                    }
-                                }
-                                ?>
-                              </td>
-                          <?php endif; ?>
-                    <?php endforeach; ?>
-                  </tr>
-                <?php endforeach; ?>
+                  foreach ($DATASET_ATTRIBUTE_TRACKING as $key => $value) {
+                    if (isset($ammendement[$key])) {
+                      if ($key != $first_attr_key):
+                        if ($key == 'amendment_date' && odm_language_manager()->get_current_language() == 'km') {
+                          $ammendement[$key] = convert_date_to_kh_date(date('d/m/Y', strtotime($ammendement[$key])), '/');
+                        }
+                        $ammendement_information .= "<td>".__($ammendement[$key], 'wp-odm_profile_pages')."</td>";
+                      endif;
+                    }
+                  }
+                  $ammendement_info[$concession_or_developer][] = '<tr>'.$ammendement_information.'</tr>';
+                endforeach;
+
+                if (!empty($ammendement_title)):
+                  foreach (array_unique($ammendement_title) as $group_value) {
+                    echo "<tr><td colspan='".count($DATASET_ATTRIBUTE_TRACKING)."'><strong>".__($group_value, 'wp-odm_profile_pages')."</strong></td></tr>";
+                    foreach ($ammendement_info[$group_value] as $info_value) {
+                      echo $info_value;
+                    }
+                  }
+                endif;
+                ?>
               </tbody>
             </table>
           </div>
