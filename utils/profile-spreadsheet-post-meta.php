@@ -84,6 +84,12 @@ if (isset($ckan_attribute_tracking) && $ckan_attribute_tracking != '') {
     $DATASET_ATTRIBUTE_TRACKING = $array_attribute_tracking;
 }
 
+if ( (odm_language_manager()->get_current_language() != 'en') ) {
+		$link_to_detail_column = get_post_meta($post->ID, '_link_to_detail_column_localization', true);
+} else {
+		$link_to_detail_column = get_post_meta($post->ID, '_link_to_detail_column', true);
+}
+
 $ref_docs_profile = array();
 $ref_docs_tracking = array();
 ?>

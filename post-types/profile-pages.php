@@ -312,6 +312,9 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 
             $related_profile_pages = get_post_meta($post->ID, '_related_profile_pages', true);
             $related_profile_pages_localization = get_post_meta($post->ID, '_related_profile_pages_localization', true);
+
+            $link_to_detail_column = get_post_meta($post->ID, '_link_to_detail_column', true);
+            $link_to_detail_column_localization = get_post_meta($post->ID, '_link_to_detail_column_localization', true);
             ?>
   	  <div id="multiple-site">
   	    <input type="radio" id="en" class="en" name="p_language_site" value="en" checked />
@@ -366,6 +369,17 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
             ?></p>
   					  </td>
   					 </tr>
+             <tr>
+  					  <th><label for="_link_to_detail_column"><?php _e('Column ids linking to detail page (English)', 'wp-odm_profile_pages');
+            ?></label></th>
+  					  <td>
+  								<input id="_link_to_detail_column" type="text" name="_link_to_detail_column" size="40" placeholder="name,company,developer,block" value="<?php echo $link_to_detail_column;
+            ?>" />
+  					      <p class="description"><?php _e('Please add the ids of the columns that will feature a link to the entry\'s detail page. Format: Comma-separated values. <br/>eg.
+  name,company,developer,block', 'wp-odm_profile_pages');
+            ?></p>
+  					  </td>
+  					 </tr>
   	        </tbody>
   	      </table>
   	    </div>
@@ -404,7 +418,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
     ?></p>
   	          </td>
   	         </tr>
-  					 <tr>
+             <tr>
   					  <th><label for="_related_profile_pages_localization"><?php _e('Related Profile Pages ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages');
     ?></label></th>
   					  <td>
@@ -413,6 +427,17 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
   							<p class="description"><?php _e('Please add the links of profile pages that related (separated by new breaking line). Format: Title of Link|URL. <br/>eg.
   Economic Land Concessions|https://cambodia.opendevelopmentmekong.net/profiles/economic-land-concessions/', 'wp-odm_profile_pages');
     ?></p>
+  					  </td>
+  					 </tr>
+  					 <tr>
+  					  <th><label for="_link_to_detail_column_localization"><?php _e('Column ids linking to detail page ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages');
+    ?></label></th>
+  					  <td>
+  							<input id="_link_to_detail_column_localization" type="text" name="_link_to_detail_column_localization" size="40" placeholder="name,company,developer,block" value="<?php echo $link_to_detail_column_localization;
+    ?>" />
+              <p class="description"><?php _e('Please add the ids of the columns that will feature a link to the entry\'s detail page. Format: Comma-separated values. <br/>eg.
+          name,company,developer,block', 'wp-odm_profile_pages');
+          ?></p>
   					  </td>
   					 </tr>
   	        </tbody>
@@ -529,6 +554,14 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 
                 if (isset($_POST['_related_profile_pages_localization'])) {
                     update_post_meta($post_id, '_related_profile_pages_localization', $_POST['_related_profile_pages_localization']);
+                }
+
+                if (isset($_POST['_link_to_detail_column'])) {
+                    update_post_meta($post_id, '_link_to_detail_column', $_POST['_link_to_detail_column']);
+                }
+
+                if (isset($_POST['_link_to_detail_column_localization'])) {
+                    update_post_meta($post_id, '_link_to_detail_column_localization', $_POST['_link_to_detail_column_localization']);
                 }
             }
         }
