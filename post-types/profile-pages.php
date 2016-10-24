@@ -544,6 +544,14 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                 if (isset($_POST['_related_profile_pages_localization'])) {
                     update_post_meta($post_id, '_related_profile_pages_localization', $_POST['_related_profile_pages_localization']);
                 }
+
+                if (isset($_POST['_link_to_detail_column'])) {
+                    update_post_meta($post_id, '_link_to_detail_column', $_POST['_link_to_detail_column']);
+                }
+
+                if (isset($_POST['_link_to_detail_column_localization'])) {
+                    update_post_meta($post_id, '_link_to_detail_column_localization', $_POST['_link_to_detail_column_localization']);
+                }
             }
         }
     }
