@@ -373,8 +373,8 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
   					  <th><label for="_link_to_detail_column"><?php _e('Column ids linking to detail page (English)', 'wp-odm_profile_pages');
             ?></label></th>
   					  <td>
-  								<input id="_link_to_detail_column" type="text" name="_link_to_detail_column" size="40" placeholder="name,company,developer,block"><?php echo $link_to_detail_column;
-            ?></input>
+  								<input id="_link_to_detail_column" type="text" name="_link_to_detail_column" size="40" placeholder="name,company,developer,block" value="<?php echo $link_to_detail_column;
+            ?>" />
   					      <p class="description"><?php _e('Please add the ids of the columns that will feature a link to the entry\'s detail page. Format: Comma-separated values. <br/>eg.
   name,company,developer,block', 'wp-odm_profile_pages');
             ?></p>
@@ -422,8 +422,8 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
   					  <th><label for="_link_to_detail_column_localization"><?php _e('Column ids linking to detail page ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages');
     ?></label></th>
   					  <td>
-  							<input id="_link_to_detail_column_localization" type="text" name="_link_to_detail_column_localization" size="40" placeholder="name,company,developer,block"><?php echo $link_to_detail_column_localization;
-    ?></input>
+  							<input id="_link_to_detail_column_localization" type="text" name="_link_to_detail_column_localization" size="40" placeholder="name,company,developer,block" value="<?php echo $link_to_detail_column_localization;
+    ?>" />
               <p class="description"><?php _e('Please add the ids of the columns that will feature a link to the entry\'s detail page. Format: Comma-separated values. <br/>eg.
           name,company,developer,block', 'wp-odm_profile_pages');
           ?></p>
