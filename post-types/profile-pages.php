@@ -418,6 +418,17 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
     ?></p>
   	          </td>
   	         </tr>
+             <tr>
+  					  <th><label for="_related_profile_pages_localization"><?php _e('Related Profile Pages ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages');
+    ?></label></th>
+  					  <td>
+  							<textarea name="_related_profile_pages_localization" style="width:100%;height: 50px;"placeholder="Lable of Link|URL"><?php echo $related_profile_pages_localization;
+    ?></textarea>
+  							<p class="description"><?php _e('Please add the links of profile pages that related (separated by new breaking line). Format: Title of Link|URL. <br/>eg.
+  Economic Land Concessions|https://cambodia.opendevelopmentmekong.net/profiles/economic-land-concessions/', 'wp-odm_profile_pages');
+    ?></p>
+  					  </td>
+  					 </tr>
   					 <tr>
   					  <th><label for="_link_to_detail_column_localization"><?php _e('Column ids linking to detail page ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages');
     ?></label></th>
