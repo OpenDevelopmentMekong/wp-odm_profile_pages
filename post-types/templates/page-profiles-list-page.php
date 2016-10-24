@@ -142,8 +142,8 @@
             <?php
               foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
                 <?php
-                $$link_to_detail_column_array = explode(';', $link_to_detail_column);
-                if (in_array($key, array('developer', 'name', 'block'))) :
+                $link_to_detail_column_array = explode(';', $link_to_detail_column);
+                if (in_array($key, $link_to_detail_column_array)) :
                     ?>
                       <td class="entry_title">
                         <div class="td-value">
