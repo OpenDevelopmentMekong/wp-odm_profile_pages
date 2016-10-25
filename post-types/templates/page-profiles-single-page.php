@@ -12,7 +12,12 @@
       </header>
     </div>
     <div class="sixteen columns">
-      <div id="profiles_map" class="profiles_map"></div>
+      <?php
+      if(function_exists(display_embedded_map)){
+        display_embedded_map(get_the_ID());
+      }
+      ?>
+      <!--<div id="profiles_map" class="profiles_map"></div>-->
     </div>
     <div class="row">
       <div class="sixteen columns">
@@ -127,5 +132,17 @@
         </div>
     </div>
   </div>
+  
+  <script type="text/javascript">
+  	var filterEntriesMap = function(mapIds){
+  		var mapIdsString = "('" + mapIds.join('\',\'') + "')";
+  		 $( "#searchFeature_by_mapID").val(mapIdsString);
+  		 $( "#searchFeature_by_mapID").trigger("keyup");
+   }
 
-<?php require_once PLUGIN_DIR.'/utils/profile-mapping-script.php'; ?>
+  	singleProfile = $('#profiles').length <= 0;
+  	if (singleProfile){//view detail
+  		singleProfileMapId  = $("#profile-map-id").text();
+  		filterEntriesMap([singleProfileMapId]);
+  	}
+  </script>

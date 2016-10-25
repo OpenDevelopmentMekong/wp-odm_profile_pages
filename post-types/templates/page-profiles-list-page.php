@@ -2,7 +2,11 @@
 <div class="container">
   <div class="row">
     <div class="sixteen columns">
-      <div id="profiles_map" class="profiles_map"></div>
+      <?php
+      display_embedded_map(get_the_ID());
+      ?>
+
+      <!--<div id="profiles_map" class="profiles_map"></div>-->
     </div>
   </div>
     <!--  Statistics-->
@@ -411,7 +415,7 @@ jQuery(document).ready(function($) {
                    .draw();
 
                   var filtered = oTable._('tr', {"filter":"applied"});
-                  <?php if (isset($map_visualization_url) &&  $map_visualization_url != '') { ?>
+                  <?php if (isset($map_layers) && !empty($map_layers)) {?>
                           filterEntriesMap(_.pluck(filtered,mapIdColNumber));
                   <?php } ?>
            } );
@@ -455,16 +459,22 @@ jQuery(document).ready(function($) {
      $("#search_all").keyup(function () {
        oTable.fnFilterAll(this.value);
        var filtered = oTable._('tr', {"filter":"applied"});
-       <?php if (isset($map_visualization_url) && $map_visualization_url != '') {
-      ?>
-       filterEntriesMap(_.pluck(filtered,mapIdColNumber));
        <?php
-  }
-      ?>
+       if (isset($map_layers) && !empty($map_layers)) {
+       ?>
+          filterEntriesMap(_.pluck(filtered,mapIdColNumber));
+       <?php
+       }
+       ?>
      });
+
+     var filterEntriesMap = function(mapIds){
+       var mapIdsString = "('" + mapIds.join('\',\'') + "')";
+        $( "#searchFeature_by_mapID").val(mapIdsString);
+        $( "#searchFeature_by_mapID").trigger("keyup");
+     }
   <?php
   }
   ?>
   }); //jQuery
-</script>
-<?php require_once PLUGIN_DIR.'/utils/profile-mapping-script.php'; ?>
+</script> 
