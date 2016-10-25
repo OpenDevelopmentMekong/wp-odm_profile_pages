@@ -3,10 +3,10 @@
   <div class="row">
     <div class="sixteen columns">
       <?php
-      display_embedded_map(get_the_ID());
-      ?>
-
-      <!--<div id="profiles_map" class="profiles_map"></div>-->
+      if(function_exists(display_embedded_map)){
+        display_embedded_map(get_the_ID());
+      }
+      ?> 
     </div>
   </div>
     <!--  Statistics-->
@@ -477,4 +477,4 @@ jQuery(document).ready(function($) {
   }
   ?>
   }); //jQuery
-</script> 
+</script>

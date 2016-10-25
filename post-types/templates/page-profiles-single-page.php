@@ -16,8 +16,7 @@
       if(function_exists(display_embedded_map)){
         display_embedded_map(get_the_ID());
       }
-      ?>
-      <!--<div id="profiles_map" class="profiles_map"></div>-->
+      ?> 
     </div>
     <div class="row">
       <div class="sixteen columns">
@@ -132,7 +131,7 @@
         </div>
     </div>
   </div>
-  
+
   <script type="text/javascript">
   	var filterEntriesMap = function(mapIds){
   		var mapIdsString = "('" + mapIds.join('\',\'') + "')";
