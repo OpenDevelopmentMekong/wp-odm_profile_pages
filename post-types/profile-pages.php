@@ -154,16 +154,6 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
               ?></p>
               </td>
               </tr>
-  						<tr>
-   					  <th><label for="_map_visualization_url"><?php _e('CartoDB JSON URL (English)', 'odm');
-          ?></label></th>
-   					  <td>
-   					 	<input id="_map_visualization_url" type="text" placeholder="https://" size="40" name="_map_visualization_url" value="<?php echo $map_visualization_url;
-          ?>" />
-   					 	<p class="description"><?php _e('CartoDB visualization URL. E.g.: http://user.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json', 'odm');
-          ?></p>
-   					  </td>
-   					 </tr>
   					 <tr>
   		 				<th><label for="_csv_resource_url"><?php _e('CSV Resource URL (English)', 'odm');
           ?></label></th>
@@ -195,24 +185,14 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
   			 	<table class="form-table form-table-localization resource_settings_box">
   		 			<tbody>
               <tr>
-              <th><label for="_full_width_middle_content_localization"><?php _e('Full width content (('.odm_language_manager()->get_the_language_by_site().')', 'odm');
+              <th><label for="_full_width_middle_content_localization"><?php _e('Full width content ('.odm_language_manager()->get_the_language_by_site().')', 'odm');
               ?></label></th>
               <td>
               <textarea name="_full_width_middle_content_localization" style="width:100%;height: 50px;" placeholder=""><?php echo $full_width_middle_content_localization; ?></textarea>
               <p class="description"><?php _e('Any content can add to under the Editor content and sidebar and  full width of website even the iframe.', 'odm');
               ?></p>
               </td>
-              </tr>
-  						<tr>
-  						 <th><label for="_map_visualization_url_localization"><?php _e('CartoDB JSON URL ('.odm_language_manager()->get_the_language_by_site().')', 'odm');
-    ?></label></th>
-  						 <td>
-  							<input id="_map_visualization_url_localization" type="text" placeholder="https://" size="40" name="_map_visualization_url_localization" value="<?php echo $map_visualization_url_localization;
-    ?>" />
-  							<p class="description"><?php _e('CartoDB visualization URL. E.g.: http://user.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json', 'odm');
-    ?></p>
-  						 </td>
-  						</tr>
+              </tr>  				
   		 			 <tr>
   		 				<th><label for="_csv_resource_url_localization"><?php _e('CSV Resource URL ('.odm_language_manager()->get_the_language_by_site().')', 'odm');
     ?></label></th>
