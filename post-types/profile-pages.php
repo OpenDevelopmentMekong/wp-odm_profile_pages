@@ -123,8 +123,6 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
       {
           $full_width_middle_content = get_post_meta($post->ID, '_full_width_middle_content', true);
           $full_width_middle_content_localization = get_post_meta($post->ID, '_full_width_middle_content_localization', true);
-          $map_visualization_url = get_post_meta($post->ID, '_map_visualization_url', true);
-          $map_visualization_url_localization = get_post_meta($post->ID, '_map_visualization_url_localization', true);
           $csv_resource_url = get_post_meta($post->ID, '_csv_resource_url', true);
           $csv_resource_url_localization = get_post_meta($post->ID, '_csv_resource_url_localization', true);
           $tracking_csv_resource_url = get_post_meta($post->ID, '_tracking_csv_resource_url', true);
@@ -437,14 +435,6 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 
                 if (isset($_POST['_full_width_middle_content_localization'])) {
                     update_post_meta($post_id, '_full_width_middle_content_localization', $_POST['_full_width_middle_content_localization']);
-                }
-
-                if (isset($_POST['_map_visualization_url'])) {
-                    update_post_meta($post_id, '_map_visualization_url', $_POST['_map_visualization_url']);
-                }
-
-                if (isset($_POST['_map_visualization_url_localization'])) {
-                    update_post_meta($post_id, '_map_visualization_url_localization', $_POST['_map_visualization_url_localization']);
                 }
 
                 if (isset($_POST['_csv_resource_url'])) {
