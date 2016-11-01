@@ -1,29 +1,16 @@
 <?php
-$map_visualization_url = get_post_meta($post->ID, '_map_visualization_url', true);
-if ( (odm_language_manager()->get_current_language() != 'en') ) {
-		$map_visualization_url = str_replace('?type=dataset', '', get_post_meta($post->ID, '_map_visualization_url_localization', true));
-		$ckan_dataset = str_replace('?type=dataset', '', get_post_meta($post->ID, '_csv_resource_url_localization', true));
-} else {
-		$map_visualization_url = get_post_meta($post->ID, '_map_visualization_url', true);
-		$ckan_dataset = str_replace('?type=dataset', '', get_post_meta($post->ID, '_csv_resource_url', true));
-}
+$map_layers = get_post_meta(get_the_ID(), '_jeo_map_layers', true);
 
-if (isset($map_visualization_url) && $map_visualization_url !== '') {
-      $cartodb_url = $map_visualization_url;
-      $cartodb_json = file_get_contents($cartodb_url);
-      $cartodb_json_data = json_decode($cartodb_json, true);
-      $cartodb_layer_option = $cartodb_json_data['layers'][1]['options'];
-      $cartodb_layer_name = $cartodb_layer_option['layer_definition']['layers'][0]['options']['layer_name'];
-}
-
-if (isset($ckan_dataset) && $ckan_dataset !== '') {
+if (isset($map_layers) && !empty($map_layers)) {
     if ( (odm_language_manager()->get_current_language() != 'en') ) {
+        $ckan_dataset = str_replace('?type=dataset', '', get_post_meta($post->ID, '_csv_resource_url_localization', true));
         $ckan_dataset_tracking = str_replace('?type=dataset', '', get_post_meta($post->ID, '_tracking_csv_resource_url_localization', true));
-        $filtered_by_column_index = get_post_meta($post->ID, '_filtered_by_column_index_localization', true);  // index start from zero, so "-1" is needed, however, due to adding "map_id" to first column of table, so -1 don't need it
-        $group_data_by_column_index =  get_post_meta($post->ID, '_group_data_by_column_index_localization', true);
-        $total_number_by_attribute_name = get_post_meta($post->ID, '_total_number_by_attribute_name_localization', true);
-        $related_profile_pages = get_post_meta($post->ID, '_related_profile_pages_localization', true);
+        $filtered_by_column_index = str_replace('?type=dataset', '', get_post_meta($post->ID, '_filtered_by_column_index_localization', true));  // index start from zero, so "-1" is needed, however, due to adding "map_id" to first column of table, so -1 don't need it
+        $group_data_by_column_index = str_replace('?type=dataset', '', get_post_meta($post->ID, '_group_data_by_column_index_localization', true));
+        $total_number_by_attribute_name = str_replace('?type=dataset', '', get_post_meta($post->ID, '_total_number_by_attribute_name_localization', true));
+        $related_profile_pages = str_replace('?type=dataset', '', get_post_meta($post->ID, '_related_profile_pages_localization', true));
     } else {
+        $ckan_dataset = str_replace('?type=dataset', '', get_post_meta($post->ID, '_csv_resource_url', true));
         $ckan_dataset_tracking = str_replace('?type=dataset', '', get_post_meta($post->ID, '_tracking_csv_resource_url', true));
         $filtered_by_column_index = get_post_meta($post->ID, '_filtered_by_column_index', true);  // index start from zero, so "-1" is needed, however, due to adding "map_id" to first column of table, so -1 don't need it
         $group_data_by_column_index = get_post_meta($post->ID, '_group_data_by_column_index', true);

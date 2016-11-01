@@ -123,8 +123,6 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
       {
           $full_width_middle_content = get_post_meta($post->ID, '_full_width_middle_content', true);
           $full_width_middle_content_localization = get_post_meta($post->ID, '_full_width_middle_content_localization', true);
-          $map_visualization_url = get_post_meta($post->ID, '_map_visualization_url', true);
-          $map_visualization_url_localization = get_post_meta($post->ID, '_map_visualization_url_localization', true);
           $csv_resource_url = get_post_meta($post->ID, '_csv_resource_url', true);
           $csv_resource_url_localization = get_post_meta($post->ID, '_csv_resource_url_localization', true);
           $tracking_csv_resource_url = get_post_meta($post->ID, '_tracking_csv_resource_url', true);
@@ -153,17 +151,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
               <p class="description"><?php _e('Any content can add to under the Editor content and sidebar and  full width of website even the iframe.', 'wp-odm_profile_pages');
               ?></p>
               </td>
-              </tr>
-  						<tr>
-   					  <th><label for="_map_visualization_url"><?php _e('CartoDB JSON URL (English)', 'wp-odm_profile_pages');
-          ?></label></th>
-   					  <td>
-   					 	<input id="_map_visualization_url" type="text" placeholder="https://" size="40" name="_map_visualization_url" value="<?php echo $map_visualization_url;
-          ?>" />
-   					 	<p class="description"><?php _e('CartoDB visualization URL. E.g.: http://user.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json', 'wp-odm_profile_pages');
-          ?></p>
-   					  </td>
-   					 </tr>
+             </tr>
   					 <tr>
   		 				<th><label for="_csv_resource_url"><?php _e('CSV Resource URL (English)', 'wp-odm_profile_pages');
           ?></label></th>
@@ -202,17 +190,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
               <p class="description"><?php _e('Any content can add to under the Editor content and sidebar and  full width of website even the iframe.', 'wp-odm_profile_pages');
               ?></p>
               </td>
-              </tr>
-  						<tr>
-  						 <th><label for="_map_visualization_url_localization"><?php _e('CartoDB JSON URL ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages');
-    ?></label></th>
-  						 <td>
-  							<input id="_map_visualization_url_localization" type="text" placeholder="https://" size="40" name="_map_visualization_url_localization" value="<?php echo $map_visualization_url_localization;
-    ?>" />
-  							<p class="description"><?php _e('CartoDB visualization URL. E.g.: http://user.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json', 'wp-odm_profile_pages');
-    ?></p>
-  						 </td>
-  						</tr>
+             </tr>
   		 			 <tr>
   		 				<th><label for="_csv_resource_url_localization"><?php _e('CSV Resource URL ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages');
     ?></label></th>
@@ -482,14 +460,6 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 
                 if (isset($_POST['_full_width_middle_content_localization'])) {
                     update_post_meta($post_id, '_full_width_middle_content_localization', $_POST['_full_width_middle_content_localization']);
-                }
-
-                if (isset($_POST['_map_visualization_url'])) {
-                    update_post_meta($post_id, '_map_visualization_url', $_POST['_map_visualization_url']);
-                }
-
-                if (isset($_POST['_map_visualization_url_localization'])) {
-                    update_post_meta($post_id, '_map_visualization_url_localization', $_POST['_map_visualization_url_localization']);
                 }
 
                 if (isset($_POST['_csv_resource_url'])) {

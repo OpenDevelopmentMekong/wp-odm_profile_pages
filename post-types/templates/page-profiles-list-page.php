@@ -1,12 +1,14 @@
 <?php require_once PLUGIN_DIR.'/utils/profile-spreadsheet-post-meta.php'; ?>
 <div class="container">
-  <?php if (isset($map_visualization_url) &&  $map_visualization_url != '') { ?>
   <div class="row">
     <div class="sixteen columns">
-      <div id="profiles_map" class="profiles_map"></div>
+      <?php
+      if(function_exists(display_embedded_map)){
+        display_embedded_map(get_the_ID());
+      }
+      ?>
     </div>
   </div>
-  <?php } ?>
 
 <?php if($profiles){ ?>
     <div class="row">
@@ -114,7 +116,7 @@
     </div>
 
     <!-- Table -->
-    <div class="row no-margin-buttom">
+  <div class="row no-margin-buttom">
   <div class="sixteen columns table-column-container">
     <table id="profiles" class="data-table">
       <thead>
@@ -239,17 +241,6 @@
   var mapIdColNumber = 0;
 
   jQuery(document).ready(function($) {
-    //click file format show the list item for downloading
-    $('.format_button').click(function(e){
-        e.stopPropagation();
-        $('.show_list_format').hide();
-        $(this).children('.show_list_format').show();
-    });
-    //hide show download item if click anywhere
-    $(document).click(function(){
-      $('.show_list_format').hide(); //hide the button
-    });
-
     // Update the breadcrumbs list for meta page
     if ($('.profile-metadata h2').hasClass('h2_name')) {
         var addto_breadcrumbs = $('.profile-metadata h2.h2_name').text();
@@ -349,7 +340,8 @@
                }
         });
 
-         <?php if (isset($filtered_by_column_index) &&  $filtered_by_column_index != '') {
+         <?php
+         if (isset($filtered_by_column_index) &&  $filtered_by_column_index != '') {
                   $num_filtered_column_index = explode(',', $filtered_by_column_index);
                   $number_selector = 1;
                   foreach ($num_filtered_column_index as $column_index) {
@@ -360,10 +352,10 @@
                       }
                         ++$number_selector;
                     }
-                  }
+         }
          ?>
          //Set width of table header and body equally
-         function align_width_td_and_th(){
+        function align_width_td_and_th(){
              var widths = [];
              var $tableBodyCell = $('.dataTables_scrollBody #profiles tbody tr:nth-child(2) td');
              var $headerCell = $('.dataTables_scrollHead thead tr th');
@@ -387,7 +379,7 @@
                  });
          }
 
-         function create_filter_by_column_index(col_index){
+        function create_filter_by_column_index(col_index){
           var columnIndex = col_index;
           var column_filter_oTable = oTable.api().columns( columnIndex );
           var column_headercolumnIndex = columnIndex -1;
@@ -455,17 +447,26 @@
                $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
         });
 
-       $("#search_all").keyup(function () {
-         oTable.fnFilterAll(this.value);
-         var filtered = oTable._('tr', {"filter":"applied"});
-         <?php if (isset($map_visualization_url) && $map_visualization_url != '') { ?>
-           filterEntriesMap(_.pluck(filtered,mapIdColNumber));
-         <?php } ?>
-       });
-    <?php } ?>
-    }); //jQuery
-</script>
-<?php
-      } //end if profile
-?>
-<?php require_once PLUGIN_DIR.'/utils/profile-mapping-script.php'; ?>
+     $("#search_all").keyup(function () {
+       oTable.fnFilterAll(this.value);
+       var filtered = oTable._('tr', {"filter":"applied"});
+       <?php
+       if (isset($map_layers) && !empty($map_layers)) {
+       ?>
+          filterEntriesMap(_.pluck(filtered,mapIdColNumber));
+       <?php
+       }
+       ?>
+     });
+
+     var filterEntriesMap = function(mapIds){
+       var mapIdsString = "('" + mapIds.join('\',\'') + "')";
+        $( "#searchFeature_by_mapID").val(mapIdsString);
+        $( "#searchFeature_by_mapID").trigger("keyup");
+     }
+    <?php
+    }
+    ?>
+  }); //jQuery
+  </script>
+<?php }  ?>
