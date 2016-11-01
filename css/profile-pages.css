@@ -196,10 +196,16 @@ table.dataTable thead .sorting_desc_disabled {
   line-height: 22px;
 }
 
-#tracking td:nth-child(2) {
-  width: 25%
+#tracking td:first-child {
+  width: 18%;
 }
 
+#tracking td:nth-child(2) {
+  width: 17%;
+}
+.profile-metadata {
+  padding-top: 15px;
+}
 #profiles td .td-value ul {
   display: inline-block;
   margin-bottom: 0;

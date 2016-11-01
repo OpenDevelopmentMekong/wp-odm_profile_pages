@@ -29,7 +29,7 @@
               foreach ($DATASET_ATTRIBUTE as $key => $value):
                 if($key !="reference"){ ?>
               <tr>
-              <td class="row-key"><?php _e( $DATASET_ATTRIBUTE[$key], 'odm' ); ?></td>
+              <td class="row-key"><?php _e( $DATASET_ATTRIBUTE[$key], 'wp-odm_profile_pages' ); ?></td>
                 <td><?php
                     $profile_val = str_replace("T00:00:00", "", $profile[$key]);
                     if(odm_language_manager()->get_current_language() =="km"){
@@ -46,7 +46,7 @@
                       }
                     }
 
-                    echo $profile_value == ""? __("Not found", 'odm'): str_replace(";", "<br/>", $profile_value);
+                    echo $profile_value == ""? __("Not found", 'wp-odm_profile_pages'): str_replace(";", "<br/>", $profile_value);
 
                     if(in_array($key, array("data_class", "adjustment_classification", "adjustment")))
                       odm_data_classification_definition( $profile[$key]);
@@ -64,57 +64,54 @@
       <div class="sixteen columns">
         <?php if (count($ammendements) > 0): ?>
           <div class="profile-metadata">
-            <h2><?php _e("Amendments", 'odm'); ?></h2>
+            <h2><?php _e('Amendments', 'wp-odm_profile_pages'); ?></h2>
             <table id="tracking" class="data-table">
               <tbody>
-                <!--<thead>
-                  <tr>
-                    <?php /* foreach ($DATASET_ATTRIBUTE_TRACKING as $key => $value): ?>
-                      <td class="row-key"><?php _e( $DATASET_ATTRIBUTE_TRACKING[$key], 'odm'); ?></td>
-                    <?php endforeach; */ ?>
-                  </tr>
-                </thead>-->
                 <?php
+                //Sort by amendment_date
+          			foreach ($ammendements as $key => $sort_by) {
+          				$tmp_arr[$key] = $sort_by['amendment_date'];
+          			}
+          			array_multisort($tmp_arr, SORT_ASC, $ammendements);
+
                 $concession_or_developer = '';
                 foreach ($ammendements as $key => $ammendement):
-                  if (!empty($ammendement["reference"])){
+                  if (!empty($ammendement["reference"])) {
                     $ammendement_references = $ref_docs_tracking = explode(";", $ammendement["reference"]);
                     $ref_docs_tracking = array_merge($ref_docs_tracking,$ammendement_references);
                   }
-                  ?>
-                  <tr>
-                    <?php foreach ($DATASET_ATTRIBUTE_TRACKING as $key => $value): ?>
-                      <?php if (isset($ammendement[$key]) && $key == 'concession_or_developer'):
+                  $first_attr_key = array_shift(array_keys($DATASET_ATTRIBUTE_TRACKING));
+                  $ammendement_title[] = $ammendement[$first_attr_key];
+                  $concession_or_developer = $ammendement[$first_attr_key];
+                  $ammendement_information = "";
 
-                              if ($ammendement[$key] == $concession_or_developer):
-                                  echo "<td></td>";
-                              else:
-                                  echo "<td><strong>".__($ammendement[$key], 'odm')."</strong></td>";
-                                  $concession_or_developer = $ammendement[$key];
-                              endif;
-                            else: ?>
-                              <td>
-                                <?php
-                                if (isset($ammendement[$key]) && $key == 'amendment_date'){
-                                    if(odm_language_manager()->get_current_language() == "km")
-                                      echo convert_date_to_kh_date(date("d/m/Y", strtotime($ammendement[$key])), "/");
-                                    else echo $ammendement[$key];
-                                }else {
-                                  if (isset($ammendement[$key])){
-                                      echo $ammendement[$key];
-                                    }
-                                }
-                                ?>
-                              </td>
-                          <?php endif; ?>
-                    <?php endforeach; ?>
-                  </tr>
-                <?php endforeach; ?>
+                  foreach ($DATASET_ATTRIBUTE_TRACKING as $key => $value) {
+                    if (isset($ammendement[$key])) {
+                      if ($key != $first_attr_key):
+                        if ($key == 'amendment_date' && odm_language_manager()->get_current_language() == 'km') {
+                          $ammendement[$key] = convert_date_to_kh_date(date('d/m/Y', strtotime($ammendement[$key])), '/');
+                        }
+                        $ammendement_information .= "<td>".__($ammendement[$key], 'wp-odm_profile_pages')."</td>";
+                      endif;
+                    }
+                  }
+                  $ammendement_info[$concession_or_developer][] = '<tr>'.$ammendement_information.'</tr>';
+                endforeach;
+
+                if (!empty($ammendement_title)):
+                  foreach (array_unique($ammendement_title) as $group_value) {
+                    echo "<tr><td colspan='".count($DATASET_ATTRIBUTE_TRACKING)."'><strong>".__($group_value, 'wp-odm_profile_pages')."</strong></td></tr>";
+                    foreach ($ammendement_info[$group_value] as $info_value) {
+                      echo $info_value;
+                    }
+                  }
+                endif;
+                ?>
               </tbody>
             </table>
           </div>
         <?php else: ?>
-          <p><php _e('No records found','odm') ?></p>
+          <p><php _e('No records found','wp-odm_profile_pages') ?></p>
         <?php endif; ?>
 
         <?php
@@ -122,11 +119,11 @@
           $ref_docs = array_merge($ref_docs_profile,$ref_docs_tracking);
           if (count($ref_docs)> 0): ?>
           <div class="profile-metadata">
-            <h2><?php _e("Reference documents", 'odm'); ?></h2>
+            <h2><?php _e("Reference documents", 'wp-odm_profile_pages'); ?></h2>
                 <?php odm_list_reference_documents($ref_docs)?>
           </div>
           <?php else: ?>
-            <p><php _e('No records found','odm') ?></p>
+            <p><php _e('No records found','wp-odm_profile_pages') ?></p>
           <?php endif; ?>
         </div>
     </div>
