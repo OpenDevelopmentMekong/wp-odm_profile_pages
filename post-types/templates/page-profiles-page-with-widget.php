@@ -3,7 +3,7 @@
       <div class="twelve columns post-title">
 				<section class="content section-content">
 					<?php
-		      if(function_exists(display_embedded_map)){
+		      if(function_exists('display_embedded_map')){
 		        display_embedded_map(get_the_ID());
 		      }
 		      ?>
@@ -27,7 +27,7 @@
       $middle_content = get_post_meta(get_the_ID(), '_full_width_middle_content_localization', true);
     }else {
       $middle_content = get_post_meta(get_the_ID(), '_full_width_middle_content', true);
-    } 
+    }
     if($middle_content):
       ?>
     	<section class="container">

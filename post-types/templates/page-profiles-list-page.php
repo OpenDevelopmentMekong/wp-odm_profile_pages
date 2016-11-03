@@ -3,7 +3,7 @@
   <div class="row">
     <div class="sixteen columns">
       <?php
-      if(function_exists(display_embedded_map)){
+      if(function_exists('display_embedded_map')){
         display_embedded_map(get_the_ID());
       }
       ?>
