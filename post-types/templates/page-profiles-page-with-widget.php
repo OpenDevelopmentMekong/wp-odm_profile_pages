@@ -2,14 +2,11 @@
   <section class="container">
       <div class="twelve columns post-title">
 				<section class="content section-content">
-          <?php /*
-            if (jeo_has_marker_location()): ?>
-            <section id="featured-media" class="row">
-              <div style="height:350px;">
-                <?php jeo_map(); ?>
-              </div>
-            </section>
-          <?php endif;  */?>
+					<?php
+		      if(function_exists('display_embedded_map')){
+		        display_embedded_map(get_the_ID());
+		      }
+		      ?>
 
   				<section id="post-content">
 						<?php the_content(); ?>
@@ -27,22 +24,21 @@
   </section>
   <?php
     if (odm_language_manager()->get_current_language() == 'km') {
-      $data_visualitation = get_post_meta($post->ID, '_full_width_middle_content_localization', true);
+      $middle_content = get_post_meta(get_the_ID(), '_full_width_middle_content_localization', true);
     }else {
-      $data_visualitation = get_post_meta($post->ID, '_full_width_middle_content', true);
+      $middle_content = get_post_meta(get_the_ID(), '_full_width_middle_content', true);
     }
-
-    if($data_visualitation):
+    if($middle_content):
       ?>
     	<section class="container">
     		<div class="row">
     			<div class="sixteen columns">
-            <?php echo "<div class='iframe-visualitation'>".$data_visualitation."</div>"; ?>
+            <?php echo "<div class='iframe-visualitation'>".$middle_content."</div>"; ?>
     			</div>
     		</div>
     	</section>
   <?php endif; ?>
-  
+
 	<section id="profile-area-bottom" class="page-section">
     <div class="container">
       <div class="row">
