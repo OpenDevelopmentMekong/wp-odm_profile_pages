@@ -142,7 +142,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
           ?>
     		<div id="multiple-site">
     			<input type="radio" id="csv_en" class="en" name="language_site" value="en" checked />
-    			<label for="csv_en"><?php _e('ENGLISH', 'jeo');
+    			<label for="csv_en"><?php _e('ENGLISH', 'wp-odm_profile_pages');
             ?></label> &nbsp;
     			<input type="radio" id="csv_localization" class="localization" name="language_site" value="localization" />
     			<label for="csv_localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'wp-odm_profile_pages');
@@ -265,7 +265,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
             ?>
           <div id="multiple-site">
             <input type="radio" id="en" class="en" name="p_language_site" value="en" checked />
-            <label for="en"><?php _e('ENGLISH', 'jeo');
+            <label for="en"><?php _e('ENGLISH', 'wp-odm_profile_pages');
                 ?></label> &nbsp;
             <input type="radio" id="localization" class="localization" name="p_language_site" value="localization" />
             <label for="localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'wp-odm_profile_pages');
@@ -366,7 +366,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
         ?>
         <div id="multiple-site">
           <input type="radio" id="middle_content_en" class="en" name="language_site1" value="en" checked />
-          <label for="middle_content_en"><?php _e('ENGLISH', 'jeo'); ?></label> &nbsp;
+          <label for="middle_content_en"><?php _e('ENGLISH', 'wp-odm_profile_pages'); ?></label> &nbsp;
           <input type="radio" id="middle_content_localization" class="localization" name="language_site1" value="localization" />
           <label for="middle_content_localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'wp-odm_profile_pages');  ?></label>
         </div>
