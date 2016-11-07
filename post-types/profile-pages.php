@@ -137,9 +137,10 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
   			<input type="radio" id="csv_en" class="en" name="language_site" value="en" checked />
   			<label for="csv_en"><?php _e('ENGLISH', 'jeo');
           ?></label> &nbsp;
-  			<input type="radio" id="csv_localization" class="localization" name="language_site" value="localization" />
-  			<label for="csv_localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'wp-odm_profile_pages');
-          ?></label>
+        <?php if (odm_language_manager()->get_the_language_by_site() != "English") { ?>
+          <input type="radio" id="csv_localization" class="localization" name="language_site" value="localization" />
+    			<label for="csv_localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'wp-odm_profile_pages');?></label>
+        <?php }?>  			
   		</div>
   		<div id="resource_settings_box">
   		  <div class="resource_settings resource-en">
@@ -189,8 +190,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
   				<?php $this->attributes_settings_box('English', $post);
           ?>
   			</div>
-  <?php if (odm_language_manager()->get_the_language_by_site()) {
-    ?>
+       <?php if (odm_language_manager()->get_the_language_by_site() != "English") { ?>
   		 <div class="resource_settings resource-localization">
   			 	<table class="form-table form-table-localization resource_settings_box">
   		 			<tbody>
@@ -320,9 +320,10 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
   	    <input type="radio" id="en" class="en" name="p_language_site" value="en" checked />
   	    <label for="en"><?php _e('ENGLISH', 'jeo');
             ?></label> &nbsp;
-  	    <input type="radio" id="localization" class="localization" name="p_language_site" value="localization" />
-  	    <label for="localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'wp-odm_profile_pages');
-            ?></label>
+        <?php if (odm_language_manager()->get_the_language_by_site() != "English") { ?>
+          <input type="radio" id="localization" class="localization" name="p_language_site" value="localization" />
+    	    <label for="localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'wp-odm_profile_pages');?></label>
+        <?php }?>    	    
   	  </div>
   	  <div id="profiles_page_settings_box">
   	    <div class="resource_settings resource-en">
@@ -383,8 +384,8 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
   	        </tbody>
   	      </table>
   	    </div>
-  	<?php if (odm_language_manager()->get_the_language_by_site()) {
-    ?>
+  	<?php 
+    if (odm_language_manager()->get_the_language_by_site() != "English") { ?>
   	   <div class="resource_settings resource-localization">
   	      <table class="form-table form-table-localization profiles_page_settings_box">
   	        <tbody>
