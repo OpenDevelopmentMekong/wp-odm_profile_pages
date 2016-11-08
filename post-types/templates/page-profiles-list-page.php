@@ -9,14 +9,18 @@
       ?>
     </div>
   </div>
-
+ 
 <?php if($profiles){ ?>
     <div class="row">
       <div class="sixteen columns">
         <?php
           // Display Total list
           $show_total_value = "";
-          $count_project =  array_count_values(array_map(function($value){return array_key_exists('map_id', $value) ? $value['map_id'] : "";}, $profiles)); ?>
+          $array_map_profile = array_map(function($value){return array_key_exists('map_id', $value) ? $value['map_id'] : "";}, $profiles);
+          if($array_map_profile){
+            $count_project =  array_count_values($array_map_profile);
+          }
+          ?>
           <!-- List total of dataset by map_id as default-->
   				<?php if (count($count_project) > 1) {
                   $show_total_value .= "<li><strong>";
