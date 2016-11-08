@@ -257,6 +257,8 @@ table.dataTable thead .sorting_desc_disabled {
 .filter-container {
   padding-bottom: 5px !important;
   background: #fff;
+  width: 100%;
+  display: inline-block;
 }
 .filter-container .panel{
     width: 100%;
@@ -273,7 +275,6 @@ table.dataTable thead .sorting_desc_disabled {
   position: fixed;
   top: 37px;
   z-index: 9999;
-  margin-left: 0.8% !important;
 }
 .fixed_datatable_tool_bar {
   display: none;

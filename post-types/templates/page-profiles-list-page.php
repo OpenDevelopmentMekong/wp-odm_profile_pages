@@ -9,7 +9,7 @@
       ?>
     </div>
   </div>
- 
+
 <?php if($profiles){ ?>
     <div class="row">
       <div class="sixteen columns">
@@ -86,36 +86,38 @@
     </div>
 
     <div class="row">
-      <div class ="sixteen columns filter-container">
-        <div class="panel">
-          <div class="four columns">
-            <p><?php _e('Textual search', 'wp-odm_profile_pages');?></p>
-            <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
+      <div class ="sixteen columns">
+        <div class="filter-container">
+          <div class="panel">
+            <div class="four columns">
+              <p><?php _e('Textual search', 'wp-odm_profile_pages');?></p>
+              <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
+            </div>
+            <div class="eight columns">
+              <?php
+                  if (isset($filtered_by_column_index) && $filtered_by_column_index != ''): ?>
+                <div id="filter_by_classification">
+                  <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+                </div>
+              <?php endif; ?>
+            </div>
+            <?php if (isset($related_profile_pages) && $related_profile_pages != '') {
+            $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
+            <div class="four columns">
+              <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
+              <ul>
+              <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
+                  $split_title_and_url = explode('|', $profile_pages_url);?>
+                  <li>
+                    <a href="<?php echo $split_title_and_url[1]; ?>"><?php echo $split_title_and_url[0]; ?></a>
+                  </li>
+              <?php endforeach; ?>
+              </ul>
+            </div>
+              <?php } ?>
           </div>
-          <div class="eight columns">
-            <?php
-                if (isset($filtered_by_column_index) && $filtered_by_column_index != ''): ?>
-              <div id="filter_by_classification">
-                <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
-              </div>
-            <?php endif; ?>
-          </div>
-          <?php if (isset($related_profile_pages) && $related_profile_pages != '') {
-          $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
-          <div class="four columns">
-            <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
-            <ul>
-            <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
-                $split_title_and_url = explode('|', $profile_pages_url);?>
-                <li>
-                  <a href="<?php echo $split_title_and_url[1]; ?>"><?php echo $split_title_and_url[0]; ?></a>
-                </li>
-            <?php endforeach; ?>
-            </ul>
-          </div>
-            <?php } ?>
+          <div class="fixed_datatable_tool_bar"></div>
         </div>
-        <div class="fixed_datatable_tool_bar"></div>
       </div>
     </div>
 
