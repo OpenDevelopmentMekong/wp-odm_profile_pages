@@ -9,7 +9,7 @@
       ?>
     </div>
   </div>
- 
+
 <?php if($profiles){ ?>
     <div class="row">
       <div class="sixteen columns">
@@ -143,7 +143,7 @@
             foreach ($profiles as $profile):  ?>
             <tr>
               <td class="td-value">
-                <?php echo $profile['map_id'];?>
+                <?php echo $profile['feature_id'];?>
               </td>
             <?php
               foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
@@ -153,7 +153,7 @@
                     ?>
                       <td class="entry_title">
                         <div class="td-value">
-                          <a href="?map_id=<?php echo $profile['map_id'];?>"><?php echo $profile[$key];?></a>
+                          <a href="?feature_id=<?php echo $profile['feature_id'];?>"><?php echo $profile[$key];?></a>
                         </div>
                       </td>
                     <?php

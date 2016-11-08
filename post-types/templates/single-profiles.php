@@ -12,8 +12,8 @@ $metadata_dataset = null;
 $dataset = null;
 $DATASET_ATTRIBUTE = null;
 
-if (isset($_GET['map_id'])) {
-    $filter_map_id = htmlspecialchars($_GET['map_id']);
+if (isset($_GET['feature_id'])) {
+    $filter_map_id = htmlspecialchars($_GET['feature_id']);
 }
 
 if (isset($_GET['metadata'])) {
