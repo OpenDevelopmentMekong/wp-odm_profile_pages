@@ -62,9 +62,9 @@ $template = get_post_meta($post->ID, '_attributes_template_layout', true);
 
 <section id="content" class="single-post">
   <?php if (!empty($filter_map_id)):
-            include 'page-profiles-single-page.php';
+          include 'page-profiles-single-page.php';
         elseif (!empty($metadata_dataset)):
-            include 'page-profiles-metadata-page.php';
+          include 'page-profiles-metadata-page.php';
         else:
           if ($template == 'with-widget'):
             include 'page-profiles-page-with-widget.php';
