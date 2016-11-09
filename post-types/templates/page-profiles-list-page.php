@@ -155,7 +155,7 @@
                     ?>
                       <td class="entry_title">
                         <div class="td-value">
-                          <a href="?feature_id=<?php echo $profile['map_id'];?>"><?php echo $profile[$key];?></a>
+                          <a href="?feature_id=<?php echo $profile['feature_id'];?>"><?php echo $profile[$key];?></a>
                         </div>
                       </td>
                     <?php
