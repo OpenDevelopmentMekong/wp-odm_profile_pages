@@ -32,7 +32,7 @@ if($ckan_dataset){
     } else {
         $profiles = wpckan_get_datastore_resource(wpckan_get_ckan_domain(), $ckan_dataset_csv_id);
     }
-} 
+}
   //For Tracking
 if (isset($ckan_dataset_tracking) && $ckan_dataset_tracking != '') {
     $ckan_dataset_tracking_exploded_by_dataset = explode('/dataset/', $ckan_dataset_tracking);
@@ -55,22 +55,12 @@ if ( (isset($ckan_dataset) && $ckan_dataset != '') || (isset($ckan_dataset_track
 }
 
 if (isset($ckan_attribute) && $ckan_attribute != '') {
-    $temp_ckan_attribute = explode("\r\n", $ckan_attribute);
-    $array_attribute = array();
-    foreach ($temp_ckan_attribute as $value) {
-        $array_value = explode('=>', trim($value));
-        $array_attribute[trim($array_value[0])] = trim($array_value[1]);
-    }
+    $array_attribute = parse_mapping_pairs($ckan_attribute);
     $DATASET_ATTRIBUTE = $array_attribute;
 }
 
 if (isset($ckan_attribute_tracking) && $ckan_attribute_tracking != '') {
-    $temp_ckan_attribute_tracking = explode("\r\n", $ckan_attribute_tracking);
-    $array_attribute = array();
-    foreach ($temp_ckan_attribute_tracking as $value) {
-        $array_value_tracking = explode('=>', trim($value));
-        $array_attribute_tracking[trim($array_value_tracking[0])] = trim($array_value_tracking[1]);
-    }
+    $array_attribute = parse_mapping_pairs($ckan_attribute_tracking);
     $DATASET_ATTRIBUTE_TRACKING = $array_attribute_tracking;
 }
 
