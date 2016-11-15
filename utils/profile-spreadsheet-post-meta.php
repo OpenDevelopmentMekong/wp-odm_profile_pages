@@ -61,7 +61,7 @@ if (isset($ckan_attribute) && $ckan_attribute != '') {
 
 if (isset($ckan_attribute_tracking) && $ckan_attribute_tracking != '') {
     $array_attribute = parse_mapping_pairs($ckan_attribute_tracking);
-    $DATASET_ATTRIBUTE_TRACKING = $array_attribute_tracking;
+    $DATASET_ATTRIBUTE_TRACKING = $array_attribute;
 }
 
 if ( (odm_language_manager()->get_current_language() != 'en') ) {
