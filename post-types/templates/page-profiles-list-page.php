@@ -145,7 +145,7 @@
             foreach ($profiles as $profile):  ?>
             <tr>
               <td class="td-value">
-                <?php echo $profile['feature_id'];?>
+                <?php echo $profile['map_id'];?>
               </td>
             <?php
               foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
@@ -457,7 +457,8 @@
        oTable.fnFilterAll(this.value);
        var filtered = oTable._('tr', {"filter":"applied"});
        <?php
-       if (isset($map_layers) && !empty($map_layers)) {
+       $map_layers = get_selected_layers_of_map_by_mapID(get_the_ID());
+       if (count($map_layers) > 1) {
        ?>
           filterEntriesMap(_.pluck(filtered,mapIdColNumber));
        <?php
@@ -466,6 +467,7 @@
      });
 
      var filterEntriesMap = function(mapIds){
+       console.log(mapIds);
        var mapIdsString = "('" + mapIds.join('\',\'') + "')";
         $( "#searchFeature_by_mapID").val(mapIdsString);
         $( "#searchFeature_by_mapID").trigger("keyup");
