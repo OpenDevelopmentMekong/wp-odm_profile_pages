@@ -154,6 +154,25 @@ table.dataTable thead .sorting_desc_disabled {
 .single-profiles .post-meta {
   margin-top: 0 !important;
 }
+.single-profiles #post-content img{
+  max-width: 100% !important;
+}
+.single-profiles .twelve #post-content img.size-full {
+    padding: 10px;
+    max-width: 855px !important;
+}
+.single-profiles #post-content .wp-caption img {
+  padding: 0;
+  margin-top: 0;
+  border: 0;
+}
+.single-profiles .twelve #post-content .wp-caption {
+    width: 865px !important;
+}
+.single-profiles .twelve #post-content .wp-caption img.size-full {
+    max-width: 855px !important;
+    padding: 0;
+}
 .metadata_button {
   padding: 3px 10px !important;
   border-radius: 6px;
@@ -458,6 +477,7 @@ table.dataTable thead .sorting_desc_disabled {
 .single-profiles iframe{
   max-width:100%;
   width: 100%;
+  margin-right: 10px;
 }
 .circular {
 	border-radius: 50%;
