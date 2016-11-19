@@ -28,7 +28,12 @@ if($ckan_dataset){
     $dataset = wpckan_api_package_show(wpckan_get_ckan_domain(),$ckan_dataset_id);
 
     if ( !empty($filter_map_id) ) {
+      $profiles = wpckan_get_datastore_resource(wpckan_get_ckan_domain(), $ckan_dataset_csv_id);
+			if (array_key_exists("map_id", $profiles[0])):
         $profile = wpckan_get_datastore_resources_filter(wpckan_get_ckan_domain(), $ckan_dataset_csv_id, 'map_id', $filter_map_id)[0];
+			else:
+        $profile = wpckan_get_datastore_resources_filter(wpckan_get_ckan_domain(), $ckan_dataset_csv_id, '_id', $filter_map_id)[0];
+			endif;
     } else {
         $profiles = wpckan_get_datastore_resource(wpckan_get_ckan_domain(), $ckan_dataset_csv_id);
     }
