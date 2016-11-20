@@ -439,7 +439,7 @@
         });
 
         $('#filter_by_classification').find('select').each(function(index){
-          console.log("index ", index);
+          
           $(this).change(function() {            
             refreshMap();
           });
@@ -468,7 +468,7 @@
      }
 
      var filterEntriesMap = function(mapIds){
-       console.log(mapIds);
+       
        var mapIdsString = "('" + mapIds.join('\',\'') + "')";
         $( "#searchFeature_by_mapID").val(mapIdsString);
         $( "#searchFeature_by_mapID").trigger("keyup");
