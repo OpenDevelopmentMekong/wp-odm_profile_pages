@@ -439,17 +439,16 @@
         });
 
         $('.table-column-container #filter_by_classification select').each(function(index){
-          $(this).change(function() {
-            console.log("index ", index);
+          console.log("index ", index);
+          $(this).change(function() {            
             $('.fixed_datatable_tool_bar #filter_by_classification select').eq(index).val($(this).val());
             refreshMap();
           });
         })
         $('.fixed_datatable_tool_bar #filter_by_classification select').each(function(index){
+          console.log("index ", index);
           $(this).change(function() {
-            console.log("index ", index);
-            $('.table-column-container #filter_by_classification select').eq(index).val($(this).val());
-            refreshMap();
+            $('.table-column-container #filter_by_classification select').eq(index).val($(this).val());          
           });
         })
 
