@@ -441,11 +441,13 @@
         $('.table-column-container #filter_by_classification select').each(function(index){
             $(this).change(function() {
                 $('.fixed_datatable_tool_bar #filter_by_classification select').eq(index).val($(this).val());
+                refreshMap();
             });
         })
         $('.fixed_datatable_tool_bar #filter_by_classification select').each(function(index){
               $(this).change(function() {
                 $('.table-column-container #filter_by_classification select').eq(index).val($(this).val());
+                refreshMap();
               });
         })
 
@@ -455,6 +457,10 @@
 
      $("#search_all").keyup(function () {
        oTable.fnFilterAll(this.value);
+       refreshMap();
+     });
+     
+     var refreshMap = function(){
        var filtered = oTable._('tr', {"filter":"applied"});
        <?php
        $map_layers = get_selected_layers_of_map_by_mapID(get_the_ID());
@@ -464,7 +470,7 @@
        <?php
        }
        ?>
-     });
+     }
 
      var filterEntriesMap = function(mapIds){
        console.log(mapIds);
