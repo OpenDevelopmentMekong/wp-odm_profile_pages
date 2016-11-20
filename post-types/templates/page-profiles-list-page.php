@@ -148,9 +148,9 @@
                 <?php echo $profile['map_id'];?>
               </td>
             <?php
+              $link_to_detail_column_array = explode(',', $link_to_detail_column);
               foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
-                <?php
-                $link_to_detail_column_array = explode(',', $link_to_detail_column);
+                <?php              
                 if (in_array($key, $link_to_detail_column_array)) :
                     ?>
                       <td class="entry_title">
