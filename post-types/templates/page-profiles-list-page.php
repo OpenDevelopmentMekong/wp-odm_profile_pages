@@ -438,19 +438,13 @@
            $('.fixed_datatable_tool_bar .dataTables_length select').val($(this).val());
         });
 
-        $('.table-column-container #filter_by_classification select').each(function(index){
+        $('#filter_by_classification').find('select').each(function(index){
           console.log("index ", index);
           $(this).change(function() {            
-            $('.fixed_datatable_tool_bar #filter_by_classification select').eq(index).val($(this).val());
             refreshMap();
           });
         })
-        $('.fixed_datatable_tool_bar #filter_by_classification select').each(function(index){
-          console.log("index ", index);
-          $(this).change(function() {
-            $('.table-column-container #filter_by_classification select').eq(index).val($(this).val());          
-          });
-        })
+        
 
         $('.dataTables_scrollHead').scroll(function(e){
                $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
