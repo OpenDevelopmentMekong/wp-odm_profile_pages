@@ -438,16 +438,13 @@
            $('.fixed_datatable_tool_bar .dataTables_length select').val($(this).val());
         });
 
-        $('.table-column-container #filter_by_classification select').each(function(index){
-            $(this).change(function() {
-                $('.fixed_datatable_tool_bar #filter_by_classification select').eq(index).val($(this).val());
-            });
+        $('#filter_by_classification').find('select').each(function(index){
+          
+          $(this).change(function() {            
+            refreshMap();
+          });
         })
-        $('.fixed_datatable_tool_bar #filter_by_classification select').each(function(index){
-              $(this).change(function() {
-                $('.table-column-container #filter_by_classification select').eq(index).val($(this).val());
-              });
-        })
+        
 
         $('.dataTables_scrollHead').scroll(function(e){
                $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
@@ -455,6 +452,10 @@
 
      $("#search_all").keyup(function () {
        oTable.fnFilterAll(this.value);
+       refreshMap();
+     });
+     
+     var refreshMap = function(){
        var filtered = oTable._('tr', {"filter":"applied"});
        <?php
        $map_layers = get_selected_layers_of_map_by_mapID(get_the_ID());
@@ -464,10 +465,10 @@
        <?php
        }
        ?>
-     });
+     }
 
      var filterEntriesMap = function(mapIds){
-       console.log(mapIds);
+       
        var mapIdsString = "('" + mapIds.join('\',\'') + "')";
         $( "#searchFeature_by_mapID").val(mapIdsString);
         $( "#searchFeature_by_mapID").trigger("keyup");
