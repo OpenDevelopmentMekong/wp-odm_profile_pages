@@ -13,7 +13,7 @@
 <?php if($profiles){ ?>
     <div class="row">
       <div class="sixteen columns">
-        <?php 
+        <?php
           // Display Total list
           $show_total_value = "";
           if (array_key_exists("map_id", $profiles[0])){
@@ -148,7 +148,7 @@
       <tbody>
         <?php
         if ($profiles):
-            foreach ($profiles as $profile):  ?>
+            foreach ($profiles as $profile):  echo "<pre>"; print_r($profile);  echo "</pre>";?>
             <tr>
               <td class="td-value">
                 <?php if ($profile[$id]):
