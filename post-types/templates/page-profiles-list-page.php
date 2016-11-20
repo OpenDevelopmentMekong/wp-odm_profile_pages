@@ -148,9 +148,8 @@
                 <?php echo $profile['map_id'];?>
               </td>
             <?php
-              $link_to_detail_column_array = explode(',', $link_to_detail_column);
-              foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
-                <?php              
+              $link_to_detail_column_array = explode(',', $link_to_detail_column);  
+              foreach ($DATASET_ATTRIBUTE as $key => $value):                 
                 if (in_array($key, $link_to_detail_column_array)) :
                     ?>
                       <td class="entry_title">
@@ -199,7 +198,7 @@
                       </div>
                     </td>
                 <?php
-              else:
+              else:                
                   $profile_val = str_replace('T00:00:00', '', $profile[$key]);
                   if (odm_language_manager()->get_current_language() == 'km'):
                       if (is_numeric($profile_val)):
@@ -213,11 +212,11 @@
                       else:
                           $profile_value = str_replace('__', ', ', $profile_val);
                       endif;
-                  endif;
-
+                  endif;                  
+                  
                   $profile_value = str_replace(';', '<br/>', trim($profile_value));?>
                     <td>
-                      <div class="td-value"><?php
+                      <div class="td-value"><?php                        
                         echo $profile[$key] == '' ? __('Not found', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
                       </div>
                     </td>
