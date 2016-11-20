@@ -148,7 +148,7 @@
       <tbody>
         <?php
         if ($profiles):
-            foreach ($profiles as $profile):  echo "<pre>"; print_r($profile);  echo "</pre>";?>
+            foreach ($profiles as $profile):?>
             <tr>
               <td class="td-value">
                 <?php if ($profile[$id]):
