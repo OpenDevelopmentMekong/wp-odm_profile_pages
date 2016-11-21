@@ -16,6 +16,9 @@
         <?php
           // Display Total list
           $show_total_value = "";
+          $array_map_profile = array();
+          $id = '';
+
           if (array_key_exists("map_id", $profiles[0])){
             $array_map_profile = array_map(function($value){return array_key_exists('map_id', $value) ? $value['map_id'] : "";}, $profiles);
             $id = "map_id";
