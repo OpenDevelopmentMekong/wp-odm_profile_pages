@@ -16,7 +16,17 @@
         <?php
           // Display Total list
           $show_total_value = "";
-          $array_map_profile = array_map(function($value){return array_key_exists('map_id', $value) ? $value['map_id'] : "";}, $profiles);
+          $array_map_profile = array();
+          $id = '';
+
+          if (array_key_exists("map_id", $profiles[0])){
+            $array_map_profile = array_map(function($value){return array_key_exists('map_id', $value) ? $value['map_id'] : "";}, $profiles);
+            $id = "map_id";
+          }else {
+            $array_map_profile = array_map(function($value){return array_key_exists('_id', $value) ? $value['_id'] : "";}, $profiles);
+            $id = "_id";
+          }
+
           if($array_map_profile){
             $count_project =  array_count_values($array_map_profile);
           }
@@ -36,7 +46,7 @@
                 $explode_total_number_by_attribute_name = explode("\r\n", $total_number_by_attribute_name);
                 if($total_number_by_attribute_name!=""){
                   foreach ($explode_total_number_by_attribute_name as $key => $total_attribute_name) {
-                    if($total_attribute_name != "map_id" ){
+                    if($total_attribute_name != $id ){
                     //check if total number require to list by Specific value
                     $total_attributename = trim($total_attribute_name);
                     if (strpos($total_attribute_name, '[') !== FALSE){ //if march
@@ -58,7 +68,7 @@
                         $show_total_value .= '<strong>'. $count_number_by_attr[$field_value]==""? convert_to_kh_number("0"):convert_to_kh_number($count_number_by_attr[$field_value]).'</strong></li>';
                       }//end foreach
                     }else { //count number by field name/attribute name: eg. map_id/developer
-                      if ($total_attributename !="map_id") {
+                      if($total_attribute_name != $id ){
                         $show_total_value .= "<li>";
                         if(odm_language_manager()->get_current_language() == "km"):
                           $show_total_value .= __("Total", "wp-odm_profile_pages").$DATASET_ATTRIBUTE[$total_attributename].__("Listed", "wp-odm_profile_pages").__(":", "wp-odm_profile_pages");
@@ -109,7 +119,7 @@
               <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
                   $split_title_and_url = explode('|', $profile_pages_url);?>
                   <li>
-                    <a href="<?php echo $split_title_and_url[1]; ?>"><?php echo $split_title_and_url[0]; ?></a>
+                    <a href="<?php echo $split_title_and_url[1]; ?>" target="_blank"><?php echo $split_title_and_url[0]; ?></a>
                   </li>
               <?php endforeach; ?>
               </ul>
@@ -145,7 +155,7 @@
             foreach ($profiles as $profile):  ?>
             <tr>
               <td class="td-value">
-                <?php echo $profile['map_id'];?>
+                <?php echo $profile[$id];?>
               </td>
             <?php
               foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
@@ -155,7 +165,7 @@
                     ?>
                       <td class="entry_title">
                         <div class="td-value">
-                          <a href="?feature_id=<?php echo $profile['map_id'];?>"><?php echo $profile[$key];?></a>
+                          <a href="?feature_id=<?php echo $profile[$id];?>"><?php echo $profile[$key];?></a>
                         </div>
                       </td>
                     <?php
@@ -439,12 +449,12 @@
         });
 
         $('#filter_by_classification').find('select').each(function(index){
-          
-          $(this).change(function() {            
+
+          $(this).change(function() {
             refreshMap();
           });
         })
-        
+
 
         $('.dataTables_scrollHead').scroll(function(e){
                $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
@@ -454,7 +464,7 @@
        oTable.fnFilterAll(this.value);
        refreshMap();
      });
-     
+
      var refreshMap = function(){
        var filtered = oTable._('tr', {"filter":"applied"});
        <?php
@@ -468,7 +478,7 @@
      }
 
      var filterEntriesMap = function(mapIds){
-       
+
        var mapIdsString = "('" + mapIds.join('\',\'') + "')";
         $( "#searchFeature_by_mapID").val(mapIdsString);
         $( "#searchFeature_by_mapID").trigger("keyup");

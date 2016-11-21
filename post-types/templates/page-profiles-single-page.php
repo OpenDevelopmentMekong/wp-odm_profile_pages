@@ -2,12 +2,14 @@
 <div class="container">
     <div class="sixteen columns">
       <header>
-        <?php  if ($profile["developer"]!="")
+        <?php
+				if (isset($profile["developer"])):
             echo '<h3 class="profile-name">'.$profile["developer"].'</h3>';
-         else if ($profile["name"]!="")
+         elseif (isset($profile["name"])):
             echo '<h3 class="profile-name">'.$profile["name"].'</h3>';
-         else if ($profile["block"]!="")
+         elseif (isset($profile["block"])):
             echo '<h3 class="profile-name">'.$profile["block"].'</h3>';
+         endif;
        ?>
       </header>
     </div>
