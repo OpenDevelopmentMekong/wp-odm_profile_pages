@@ -10,7 +10,7 @@
     <div class="four columns">
       <aside id="sidebar">
         <ul class="widgets">
-        	<?php dynamic_sidebar('profile-area-1'); ?>
+        	<?php dynamic_sidebar('profile-right-sidebar'); ?>
         </ul>
       </aside>
     </div>
