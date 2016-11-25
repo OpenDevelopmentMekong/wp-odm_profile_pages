@@ -105,7 +105,7 @@
             </div>
             <div class="eight columns">
               <?php
-                  if (isset($filtered_by_column_index) && $filtered_by_column_index != ''): ?>
+                if ($filtered_by_column_index): ?>
                 <div id="filter_by_classification">
                   <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
                 </div>
@@ -162,8 +162,8 @@
               foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
                 <?php
                 $link_to_detail_column_array = explode(',', $link_to_detail_column);
-                if($profile[$key]):
-                    if (in_array($key, $link_to_detail_column_array)) :
+                if(array_key_exists($key, $profile)):
+                    if(in_array($key, $link_to_detail_column_array)) :
                         ?>
                           <td class="entry_title">
                             <div class="td-value">
@@ -275,7 +275,6 @@
         add_li.appendTo( $('#breadcrumbs'));
         $('.item-current a').text($('.item-current a strong').text());
     }
-
     $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRegex, bSmart) {
       var settings = $.fn.dataTableSettings;
       for (var i = 0; i < settings.length; i++) {
@@ -368,7 +367,7 @@
         });
 
          <?php
-         if (isset($filtered_by_column_index) &&  $filtered_by_column_index != '') {
+         if ($filtered_by_column_index) {
                   $num_filtered_column_index = explode(',', $filtered_by_column_index);
                   $number_selector = 1;
                   foreach ($num_filtered_column_index as $column_index) {
@@ -387,6 +386,7 @@
              var $tableBodyCell = $('.dataTables_scrollBody #profiles tbody tr:nth-child(2) td');
              var $headerCell = $('.dataTables_scrollHead thead tr th');
              var $max_width;
+             var $max_length_text_in_col;
              $tableBodyCell.each(
                function(){
                  widths.push($(this).width());
@@ -394,10 +394,15 @@
              $tableBodyCell.each(
                    function(i, val){
                      var $adjust_width = 0;
-                     var $text_length = $(this).children('.td-value').text().length;
-                     if($text_length > 50){
+                     var $max_text_length = 0; //= $(this).children('.td-value').text().length;
+                     $max_length_text_in_col = $('#profiles tbody td:nth-child('+i+')');
+                     $max_length_text_in_col.each(function (){
+                        var max = 0;
+                        $max_text_length = Math.max($(this).text().length, max);
+                     });
+                     if($max_text_length > 50){
                        $adjust_width = "200";
-                     }else if($text_length > 100){
+                     }else if($max_text_length > 100){
                        $adjust_width = "300";
                      }
 
@@ -421,6 +426,8 @@
          }
 
         function create_filter_by_column_index(col_index){
+          console.log("fffffffffffffffff");
+          console.log(col_index);
           var columnIndex = col_index;
           var column_filter_oTable = oTable.api().columns( columnIndex );
           var column_headercolumnIndex = columnIndex -1;
