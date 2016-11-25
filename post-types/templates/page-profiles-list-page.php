@@ -158,85 +158,96 @@
                 <?php echo $profile[$id];?>
               </td>
             <?php
+            if($DATASET_ATTRIBUTE):
               foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
                 <?php
                 $link_to_detail_column_array = explode(',', $link_to_detail_column);
-                if (in_array($key, $link_to_detail_column_array)) :
-                    ?>
-                      <td class="entry_title">
-                        <div class="td-value">
-                          <a href="?feature_id=<?php echo $profile[$id];?>"><?php echo $profile[$key];?></a>
-                        </div>
-                      </td>
+                if($profile[$key]):
+                    if (in_array($key, $link_to_detail_column_array)) :
+                        ?>
+                          <td class="entry_title">
+                            <div class="td-value">
+                              <a href="?feature_id=<?php echo $profile[$id];?>"><?php echo $profile[$key];?></a>
+                            </div>
+                          </td>
+                        <?php
+                    elseif (in_array($key, array('data_class', 'adjustment_classification', 'adjustment'))): ?>
+                          <td>
+                            <div class="td-value"><?php
+                              if (odm_language_manager()->get_current_language() == 'en'):
+                                  echo ucwords(trim($profile[$key]));
+                              else:
+                                  echo trim($profile[$key]);
+                              endif;?>
+                              <?php odm_data_classification_definition($profile[$key]);?>
+                            </div>
+                          </td>
+                        <?php
+                    elseif ($key == 'reference'): ?>
+                          <td>
+                            <div class="td-value"><?php
+                              $ref_docs_profile = explode(';', $profile['reference']);
+                              $ref_docs = array_unique(array_merge($ref_docs_profile, $ref_docs_tracking));
+                              odm_list_reference_documents($ref_docs, 1);?>
+                            </div>
+                          </td>
+                        <?php
+                    elseif ($key == 'issuedate'): ?>
+                        <td><div class="td-value"><?php
+                            $issuedate = str_replace('T00:00:00', '', $profile[$key]);
+                            echo $profile[$key] == '' ? __('Not found', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($issuedate)); ?></div>
+                        </td>
+                      <?php
+                    elseif (in_array($key, array('cdc_num', 'sub-decree', 'year'))):
+                        if (odm_language_manager()->get_current_language() == 'km'):
+                            $profile_value = convert_to_kh_number($profile[$key]);
+                        else:
+                            $profile_value = $profile[$key];
+                        endif; ?>
+                        <td>
+                          <div class="td-value"><?php
+                            echo $profile_value == '' ? __('Not found', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
+                          </div>
+                        </td>
                     <?php
-                elseif (in_array($key, array('data_class', 'adjustment_classification', 'adjustment'))): ?>
-                      <td>
-                        <div class="td-value"><?php
-                          if (odm_language_manager()->get_current_language() == 'en'):
-                              echo ucwords(trim($profile[$key]));
-                          else:
-                              echo trim($profile[$key]);
-                          endif;?>
-                          <?php odm_data_classification_definition($profile[$key]);?>
-                        </div>
-                      </td>
-                    <?php
-                elseif ($key == 'reference'): ?>
-                      <td>
-                        <div class="td-value"><?php
-                          $ref_docs_profile = explode(';', $profile['reference']);
-                          $ref_docs = array_unique(array_merge($ref_docs_profile, $ref_docs_tracking));
-                          odm_list_reference_documents($ref_docs, 1);?>
-                        </div>
-                      </td>
-                    <?php
-                elseif ($key == 'issuedate'): ?>
-                    <td><div class="td-value"><?php
-                        $issuedate = str_replace('T00:00:00', '', $profile[$key]);
-                    echo $profile[$key] == '' ? __('Not found', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($issuedate));
-                    ?></div>
-                    </td>
-                  <?php
-                elseif (in_array($key, array('cdc_num', 'sub-decree', 'year'))):
-                    if (odm_language_manager()->get_current_language() == 'km'):
-                        $profile_value = convert_to_kh_number($profile[$key]);
                     else:
-                        $profile_value = $profile[$key];
-                    endif; ?>
-                    <td>
-                      <div class="td-value"><?php
-                        echo $profile_value == '' ? __('Not found', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
-                      </div>
-                    </td>
-                <?php
-              else:
-                  $profile_val = str_replace('T00:00:00', '', $profile[$key]);
-                  if (odm_language_manager()->get_current_language() == 'km'):
-                      if (is_numeric($profile_val)):
-                          $profile_value = convert_to_kh_number(str_replace('.00', '', number_format($profile_val, 2, '.', ',')));
+                      $profile_val = str_replace('T00:00:00', '', $profile[$key]);
+                      if (odm_language_manager()->get_current_language() == 'km'):
+                          if (is_numeric($profile_val)):
+                              $profile_value = convert_to_kh_number(str_replace('.00', '', number_format($profile_val, 2, '.', ',')));
+                          else:
+                              $profile_value = str_replace('__', ' ', $profile_val);
+                          endif;
                       else:
-                          $profile_value = str_replace('__', ' ', $profile_val);
+                          if (is_numeric($profile_val)):
+                              $profile_value = str_replace('.00', '', number_format($profile_val, 2, '.', ','));
+                          else:
+                              $profile_value = str_replace('__', ', ', $profile_val);
+                          endif;
                       endif;
-                  else:
-                      if (is_numeric($profile_val)):
-                          $profile_value = str_replace('.00', '', number_format($profile_val, 2, '.', ','));
-                      else:
-                          $profile_value = str_replace('__', ', ', $profile_val);
-                      endif;
-                  endif;
 
-                  $profile_value = str_replace(';', '<br/>', trim($profile_value));?>
+                      $profile_value = str_replace(';', '<br/>', trim($profile_value));?>
+                        <td>
+                          <div class="td-value"><?php
+                            echo $profile[$key] == '' ? __('Not found', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
+                          </div>
+                        </td>
+                      <?php
+                    endif;
+                  else:?>
                     <td>
-                      <div class="td-value"><?php
-                        echo $profile[$key] == '' ? __('Not found', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
+                      <div class="td-value">
+                        <?php _e('Not found', 'wp-odm_profile_pages'); ?>
                       </div>
                     </td>
                   <?php
-              endif; ?>
+                endif;?>
               <?php endforeach; ?>
             </tr>
-        <?php endforeach;
-      endif; ?>
+            <?php
+            endif;
+          endforeach;
+        endif; ?>
       </tbody>
     </table>
   </div>
@@ -382,13 +393,27 @@
              });
              $tableBodyCell.each(
                    function(i, val){
+                     var $adjust_width = 0;
+                     var $text_length = $(this).children('.td-value').text().length;
+                     if($text_length > 50){
+                       $adjust_width = "200";
+                     }else if($text_length > 100){
+                       $adjust_width = "300";
+                     }
+
                      if ( $(this).width() >= $headerCell.eq(i).width() ){
                           $max_width =   widths[i];
-                            $headerCell.eq(i).children('.th-value').css('width', $max_width);
-                            if(!$(this).hasClass('group'))
-                             $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
+                          if($adjust_width){
+                            $max_width = $adjust_width;
+                          }
+                          $headerCell.eq(i).children('.th-value').css('width', $max_width);
+                          if(!$(this).hasClass('group'))
+                            $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
                      }else if ( $(this).width() < $headerCell.eq(i).width() ){
                           $max_width =   $headerCell.eq(i).width();
+                          if($adjust_width){
+                            $max_width = $adjust_width;
+                          }
                           $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
                           $headerCell.eq(i).children('.th-value').css('width', $max_width);
                      }
