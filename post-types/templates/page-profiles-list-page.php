@@ -168,8 +168,10 @@
         if ($profiles):
             foreach ($profiles as $profile):  ?>
             <tr>
-              <td class="td-value">
-                <?php echo $profile[$id];?>
+              <td>
+                <div class="td-value-id">
+                  <?php echo trim($profile[$id]);?>
+                </div>
               </td>
             <?php
             if($DATASET_ATTRIBUTE):
@@ -400,34 +402,53 @@
              var $tableBodyCell = $('.dataTables_scrollBody #profiles tbody tr:nth-child(2) td');
              var $headerCell = $('.dataTables_scrollHead thead tr th');
              var $max_width;
-             var $max_length_text_in_col;
+             var $text_length = [];
              $tableBodyCell.each(
                function(){
                  widths.push($(this).width());
              });
              $tableBodyCell.each(
                    function(i, val){
-                     var $adjust_width = 0;
-                     var $max_text_length = 0; //= $(this).children('.td-value').text().length;
-                     $max_length_text_in_col = $('#profiles tbody td:nth-child('+i+')');
+                     var $adjust_width;
+                     var $max_text_length = 0;
+                     var td_index = i +1;
+                     var $max_length_text_in_col = $('#profiles tbody td:nth-child('+td_index+')');
                      $max_length_text_in_col.each(function (){
-                        var max = 0;
-                        $max_text_length = Math.max($(this).text().length, max);
+                        $text_value = $(this).children(".td-value").clone();
+                        $text_value.find('.tooltip').remove();
+                        $text_length = $text_value.text().trim().length;
+                        $max_text_length = Math.max($max_text_length, $text_length);
                      });
-                     if($max_text_length > 50){
-                       $adjust_width = "200";
-                     }else if($max_text_length > 100){
-                       $adjust_width = "300";
+
+                     if($max_text_length >= 250){
+                       $adjust_width = 400;
+                     }else if($max_text_length >= 150){
+                       $adjust_width = 365;
+                     }else if($max_text_length >= 100){
+                       $adjust_width = 300;
+                     }else if($max_text_length >= 50){
+                       $adjust_width = 265;
+                     }else if($max_text_length >= 20){
+                       $adjust_width = 210;
+                     }else {
+                       if($(this).width() >= 350){
+                         $adjust_width = 365;
+                       }else if( $headerCell.eq(i).width() >= 350){
+                          $adjust_width = 365;
+                       }
+
                      }
 
+                     $tableBodyCell.eq(i).children('.td-value').text();
                      if ( $(this).width() >= $headerCell.eq(i).width() ){
-                          $max_width =   widths[i];
+                          $max_width = $(this).width();
                           if($adjust_width){
                             $max_width = $adjust_width;
                           }
                           $headerCell.eq(i).children('.th-value').css('width', $max_width);
-                          if(!$(this).hasClass('group'))
+                          if(!$(this).hasClass('group')){
                             $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
+                          }
                      }else if ( $(this).width() < $headerCell.eq(i).width() ){
                           $max_width =   $headerCell.eq(i).width();
                           if($adjust_width){
@@ -440,8 +461,6 @@
          }
 
         function create_filter_by_column_index(col_index){
-          console.log("fffffffffffffffff");
-          console.log(col_index);
           var columnIndex = col_index;
           var column_filter_oTable = oTable.api().columns( columnIndex );
           var column_headercolumnIndex = columnIndex -1;
