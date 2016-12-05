@@ -8,7 +8,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
           add_action('init', array($this, 'register_post_type'));
           add_action('add_meta_boxes', array($this, 'add_meta_box'));
           add_action('save_post', array($this, 'save_post_data'));
-          add_filter( 'template_include', array($this, 'get_custom_page_template'));
+          add_filter('template_include', array($this, 'get_custom_page_template'));
         }
         public function get_custom_page_template($template){
               $template_slug = basename($template);
@@ -373,7 +373,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
             <input type="radio" id="middle_content_localization" class="localization" name="language_site1" value="localization" />
             <label for="middle_content_localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'wp-odm_profile_pages');  ?></label>
           <?php endif; ?>
-          
+
         </div>
 
         <div id="middle_content_box">
