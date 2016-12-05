@@ -1,5 +1,5 @@
 <?php
-    if ( (odm_language_manager()->get_current_language() != 'en') ) {
+    if ( (odm_language_manager()->get_current_language() !== 'en') ) {
 			$ckan_csv_resource = get_post_meta($post->ID, '_csv_resource_url_localization', true);
 			if (isset($ckan_csv_resource) && !empty($ckan_csv_resource)) {
         $ckan_dataset = str_replace('?type=dataset', '', $ckan_csv_resource);
@@ -50,7 +50,7 @@ if (isset($ckan_dataset_tracking) && $ckan_dataset_tracking != '') {
 }
   //For Attribute
 if ( (isset($ckan_dataset) && $ckan_dataset != '') || (isset($ckan_dataset_tracking) &&  $ckan_dataset_tracking != '') ) {
-    if ((odm_language_manager()->get_current_language() != 'en')) {
+    if ((odm_language_manager()->get_current_language() !== 'en')) {
         $ckan_attribute = get_post_meta($post->ID, '_attributes_csv_resource_localization', true);
         $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking_localization', true);
     } else {
@@ -69,7 +69,7 @@ if (isset($ckan_attribute_tracking) && $ckan_attribute_tracking != '') {
     $DATASET_ATTRIBUTE_TRACKING = $array_attribute;
 }
 
-if ( (odm_language_manager()->get_current_language() != 'en') ) {
+if ( (odm_language_manager()->get_current_language() !== 'en') ) {
 		$link_to_detail_column = get_post_meta($post->ID, '_link_to_detail_column_localization', true);
 } else {
 		$link_to_detail_column = get_post_meta($post->ID, '_link_to_detail_column', true);

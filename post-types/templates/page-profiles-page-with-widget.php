@@ -23,11 +23,9 @@
       </div>
   </section>
   <?php
-    if (odm_language_manager()->get_current_language() != 'en') {
-      $middle_content = get_post_meta(get_the_ID(), '_full_width_middle_content_localization', true);
-    }else {
-      $middle_content = get_post_meta(get_the_ID(), '_full_width_middle_content', true);
-    }
+
+    $middle_content = odm_language_manager()->get_current_language() !== 'en' ? get_post_meta(get_the_ID(), '_full_width_middle_content_localization', true) : get_post_meta(get_the_ID(), '_full_width_middle_content', true);
+
     if($middle_content):
       ?>
     	<section class="container">
