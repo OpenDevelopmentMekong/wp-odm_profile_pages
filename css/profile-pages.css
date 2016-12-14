@@ -288,6 +288,7 @@ table.dataTable thead .sorting_desc_disabled {
   margin-bottom: 5px;
 }
 .filter-container #search_all{
+  width: 90%;
   margin: 0
 }
 .fixed-filter-container {
@@ -330,6 +331,10 @@ table.dataTable thead .sorting_desc_disabled {
 #filter_by_classification .filter_by{
   display: inline-block;
   margin-right: 1em;
+  margin-bottom: 7px;
+}
+#filter_by_classification .filter_by:last-child{
+  margin-right: 0
 }
 #filter_by_classification .label {
   display: inline;
@@ -338,6 +343,12 @@ table.dataTable thead .sorting_desc_disabled {
   display: inline;
   margin: 0;
   padding: 2px 2px;
+}
+.twelve #filter_by_classification select {
+  width: 200px;
+}
+.seven #filter_by_classification select {
+  width: 220px;
 }
 .fixed_top_bar{
   display: none;
