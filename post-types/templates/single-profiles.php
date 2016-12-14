@@ -20,7 +20,7 @@ if (isset($_GET['metadata'])) {
     $metadata_dataset = htmlspecialchars($_GET['metadata']);
 }
 
-if ( (odm_language_manager()->get_current_language() != 'en') ) {
+if ( (odm_language_manager()->get_current_language() !== 'en') ) {
     $ckan_dataset = str_replace('?type=dataset', '', get_post_meta($post->ID, '_csv_resource_url_localization', true));
 } else {
     $ckan_dataset = str_replace('?type=dataset', '', get_post_meta($post->ID, '_csv_resource_url', true));
