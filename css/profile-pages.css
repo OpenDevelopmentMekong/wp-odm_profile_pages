@@ -232,10 +232,14 @@ table.dataTable thead .sorting_desc_disabled {
   display: inline-block;
   margin-bottom: 0;
   max-height: 100px;
+  height: 80px; 
   overflow: hidden;
   margin: 0;
   padding: 0;
   width: 100%;
+}
+
+#profiles td .td-value ul:hover {
   overflow-y: auto;
 }
 
@@ -243,6 +247,7 @@ table.dataTable thead .sorting_desc_disabled {
   min-width: 200px;
   margin-left: 1.5em;
   margin-right: 1.5em;
+  margin-bottom: 0;
 }
 
 #profiles td ul {
