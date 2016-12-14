@@ -10,7 +10,7 @@
     </div>
   </div>
   <?php
-    if (odm_language_manager()->get_current_language() !== 'en') {
+    if (odm_language_manager()->get_current_language() != 'en') {
       $middle_content = get_post_meta(get_the_ID(), '_full_width_middle_content_localization', true);
     }else {
       $middle_content = get_post_meta(get_the_ID(), '_full_width_middle_content', true);
@@ -427,16 +427,15 @@
                      }else if($max_text_length >= 100){
                        $adjust_width = 300;
                      }else if($max_text_length >= 50){
-                       $adjust_width = 265;
+                       $adjust_width = 275;
                      }else if($max_text_length >= 20){
-                       $adjust_width = 210;
+                       $adjust_width = 230;
                      }else {
                        if($(this).width() >= 350){
                          $adjust_width = 365;
                        }else if( $headerCell.eq(i).width() >= 350){
                           $adjust_width = 365;
                        }
-
                      }
 
                      $tableBodyCell.eq(i).children('.td-value').text();
@@ -447,15 +446,15 @@
                           }
                           $headerCell.eq(i).children('.th-value').css('width', $max_width);
                           if(!$(this).hasClass('group')){
-                            $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
+                            $('#profiles tbody td:nth-child('+td_index+')').children('.td-value').css('width', $max_width);
                           }
                      }else if ( $(this).width() < $headerCell.eq(i).width() ){
-                          $max_width =   $headerCell.eq(i).width();
+                          $max_width = $headerCell.eq(i).width();
                           if($adjust_width){
                             $max_width = $adjust_width;
                           }
-                          $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
                           $headerCell.eq(i).children('.th-value').css('width', $max_width);
+                          $('#profiles tbody td:nth-child('+td_index+')').children('.td-value').css('width', $max_width);
                      }
                  });
          }
