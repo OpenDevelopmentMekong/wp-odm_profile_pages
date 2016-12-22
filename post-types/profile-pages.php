@@ -265,11 +265,11 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
             $link_to_detail_column_localization = get_post_meta($post->ID, '_link_to_detail_column_localization', true);
             ?>
           <div id="multiple-site">
-            <input type="radio" id="en" class="en" name="p_language_site" value="en" checked />
+            <input type="radio" id="en" class="en" name="language_site" value="en" checked />
             <label for="en"><?php _e('ENGLISH', 'wp-odm_profile_pages');
                 ?></label> &nbsp;
             <?php if (odm_language_manager()->get_the_language_by_site() != "English"): ?>
-              <input type="radio" id="localization" class="localization" name="p_language_site" value="localization" />
+              <input type="radio" id="localization" class="localization" name="language_site" value="localization" />
               <label for="localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'wp-odm_profile_pages');?></label>
             <?php endif; ?>
           </div>
@@ -359,6 +359,25 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
             </div>
   	        <?php } ?>
           </div>
+          
+          <script type="text/javascript">
+      		 jQuery(document).ready(function($) {
+      			var $container = $('#multiple-site');
+      			var $languageSelection = $('input[type="radio"]');
+      			var $forms = $('.language_settings');
+      			var showForms = function() {
+      				  $forms.hide();
+      					var selected = $('input[type="radio"][name=language_site]').filter(':checked').val();
+      					$('.language-' + selected).show();
+      			}
+      			$languageSelection.on('change', function() {
+      					$('.' + this.className).prop('checked', this.checked);
+      			 	showForms();
+      			});
+
+      			showForms();
+           });
+          </script>
   	  <?php
       }
       public function full_width_middle_content_box($post = false)
@@ -367,10 +386,10 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
         $full_width_middle_content_localization = get_post_meta($post->ID, '_full_width_middle_content_localization', true);
         ?>
         <div id="multiple-site">
-          <input type="radio" id="middle_content_en" class="en" name="language_site1" value="en" checked />
+          <input type="radio" id="middle_content_en" class="en" name="language_site" value="en" checked />
           <label for="middle_content_en"><?php _e('ENGLISH', 'wp-odm_profile_pages'); ?></label> &nbsp;
           <?php if (odm_language_manager()->get_the_language_by_site() != "English"): ?>
-            <input type="radio" id="middle_content_localization" class="localization" name="language_site1" value="localization" />
+            <input type="radio" id="middle_content_localization" class="localization" name="language_site" value="localization" />
             <label for="middle_content_localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'wp-odm_profile_pages');  ?></label>
           <?php endif; ?>
 
@@ -412,6 +431,24 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
           }
           ?>
         </div>
+        <script type="text/javascript">
+    		 jQuery(document).ready(function($) {
+    			var $container = $('#multiple-site');
+    			var $languageSelection = $('input[type="radio"]');
+    			var $forms = $('.language_settings');
+    			var showForms = function() {
+    				  $forms.hide();
+    					var selected = $('input[type="radio"][name=language_site]').filter(':checked').val();
+    					$('.language-' + selected).show();
+    			}
+    			$languageSelection.on('change', function() {
+    					$('.' + this.className).prop('checked', this.checked);
+    			 	showForms();
+    			});
+
+    			showForms();
+         });
+        </script>
         <?php
       }
 
