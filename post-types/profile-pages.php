@@ -141,11 +141,11 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
           $filtered_by_column_index_localization = get_post_meta($post->ID, '_filtered_by_column_index_localization', true);
           ?>
     		<div id="multiple-site">
-    			<input type="radio" id="csv_en" class="en" name="language_site" value="en" checked />
+    			<input type="radio" id="csv_en" class="en" name="language_site_1" value="en" checked />
     			<label for="csv_en"><?php _e('ENGLISH', 'wp-odm_profile_pages');
             ?></label> &nbsp;
             <?php if (odm_language_manager()->get_the_language_by_site() != "English"): ?>
-              <input type="radio" id="csv_localization" class="localization" name="language_site" value="localization" />
+              <input type="radio" id="csv_localization" class="localization" name="language_site_1" value="localization" />
         			<label for="csv_localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'wp-odm_profile_pages');?></label>
             <?php endif; ?>
     		</div>
@@ -211,7 +211,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
     			var $forms = $('.language_settings');
     			var showForms = function() {
     				  $forms.hide();
-    					var selected = $('input[type="radio"][name=language_site]').filter(':checked').val();
+    					var selected = $('input[type="radio"][name=language_site_1]').filter(':checked').val();
     					$('.language-' + selected).show();
     			}
     			$languageSelection.on('change', function() {
@@ -265,11 +265,11 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
             $link_to_detail_column_localization = get_post_meta($post->ID, '_link_to_detail_column_localization', true);
             ?>
           <div id="multiple-site">
-            <input type="radio" id="en" class="en" name="language_site" value="en" checked />
+            <input type="radio" id="en" class="en" name="language_site_2" value="en" checked />
             <label for="en"><?php _e('ENGLISH', 'wp-odm_profile_pages');
                 ?></label> &nbsp;
             <?php if (odm_language_manager()->get_the_language_by_site() != "English"): ?>
-              <input type="radio" id="localization" class="localization" name="language_site" value="localization" />
+              <input type="radio" id="localization" class="localization" name="language_site_2" value="localization" />
               <label for="localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'wp-odm_profile_pages');?></label>
             <?php endif; ?>
           </div>
@@ -367,7 +367,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
       			var $forms = $('.language_settings');
       			var showForms = function() {
       				  $forms.hide();
-      					var selected = $('input[type="radio"][name=language_site]').filter(':checked').val();
+      					var selected = $('input[type="radio"][name=language_site_2]').filter(':checked').val();
       					$('.language-' + selected).show();
       			}
       			$languageSelection.on('change', function() {
@@ -386,10 +386,10 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
         $full_width_middle_content_localization = get_post_meta($post->ID, '_full_width_middle_content_localization', true);
         ?>
         <div id="multiple-site">
-          <input type="radio" id="middle_content_en" class="en" name="language_site" value="en" checked />
+          <input type="radio" id="middle_content_en" class="en" name="language_site_3" value="en" checked />
           <label for="middle_content_en"><?php _e('ENGLISH', 'wp-odm_profile_pages'); ?></label> &nbsp;
           <?php if (odm_language_manager()->get_the_language_by_site() != "English"): ?>
-            <input type="radio" id="middle_content_localization" class="localization" name="language_site" value="localization" />
+            <input type="radio" id="middle_content_localization" class="localization" name="language_site_3" value="localization" />
             <label for="middle_content_localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'wp-odm_profile_pages');  ?></label>
           <?php endif; ?>
 
@@ -438,7 +438,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
     			var $forms = $('.language_settings');
     			var showForms = function() {
     				  $forms.hide();
-    					var selected = $('input[type="radio"][name=language_site]').filter(':checked').val();
+    					var selected = $('input[type="radio"][name=language_site_3]').filter(':checked').val();
     					$('.language-' + selected).show();
     			}
     			$languageSelection.on('change', function() {
