@@ -232,7 +232,7 @@ table.dataTable thead .sorting_desc_disabled {
   display: inline-block;
   margin-bottom: 0;
   max-height: 100px;
-  height: 80px; 
+  height: 80px;
   overflow: hidden;
   margin: 0;
   padding: 0;
@@ -531,6 +531,7 @@ div.table-wrapper table.spreadsheet{
 table.spreadsheet {
   width: 100%;
   border-bottom: 0;
+  hyphens: none;
 }
 table.spreadsheet tbody tr:nth-child(2n+1){
   background-color: #fff;
@@ -551,6 +552,23 @@ table.spreadsheet td{
   border-bottom: 1px solid #efefef;
   line-height: 24px;
 }
-table.spreadsheet td:last-child{
-  border-left: 0;
+
+table.no-bgcolor {
+  hyphens: none;​
+}
+table.no-bgcolor tr td {
+  hyphens: none;
+  background-color: #fff;
+  padding: 5px 10px;
+}
+
+table.no-bgcolor tr th {
+  border-left: 1px solid #ddd;
+}
+table.no-bgcolor tr td{
+  border-left: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+table.no-bgcolor tr{
+  border-right: 1px solid #ccc;
 }
