@@ -82,7 +82,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
            __('Template layout', 'wp-odm_profile_pages'),
            array($this, 'template_layout_settings_box'),
            'profiles',
-           'advanced',
+           'simple',
            'high'
           );
           add_meta_box(
@@ -122,7 +122,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
            <select id="_attributes_template_layout" name="_attributes_template_layout">
               <option value="default" <?php if ($template == "default"): echo "selected"; endif; ?>>Default</option>
               <option value="with-widget" <?php if ($template == "with-widget"): echo "selected"; endif; ?>>With widgets</option>
-              <option value="sub-profile-page" <?php if ($template == "sub-profile-page"): echo "selected"; endif; ?>>Sub profile page</option>
+              <option value="with-right-sibebar" <?php if ($template == "with-right-sibebar"): echo "selected"; endif; ?>>With right sidebar</option>
             </select>
           </div>
       <?php
