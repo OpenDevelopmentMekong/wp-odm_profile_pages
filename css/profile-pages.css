@@ -341,8 +341,9 @@ table.dataTable thead .sorting_desc_disabled {
 #filter_by_classification .filter_by:last-child{
   margin-right: 0
 }
-.filter_by .select2-container {  
+.select2-container {
     font-size: 14px;
+    z-index: 9999;
 }
 #filter_by_classification .label {
   display: inline;
