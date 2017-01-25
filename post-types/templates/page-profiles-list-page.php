@@ -224,7 +224,7 @@
                     elseif ($key == 'issuedate'): ?>
                         <td><div class="td-value"><?php
                             $issuedate = str_replace('T00:00:00', '', $profile[$key]);
-                            echo $profile[$key] == '' ? __('Not found', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($issuedate)); ?></div>
+                            echo $profile[$key] == '' ? __('Unknown', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($issuedate)); ?></div>
                         </td>
                       <?php
                     elseif (in_array($key, array('cdc_num', 'sub-decree', 'year'))):
@@ -235,7 +235,7 @@
                         endif; ?>
                         <td>
                           <div class="td-value"><?php
-                            echo $profile_value == '' ? __('Not found', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
+                            echo $profile_value == '' ? __('Unknown', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
                           </div>
                         </td>
                     <?php
@@ -258,7 +258,7 @@
                       $profile_value = str_replace(';', '<br/>', trim($profile_value));?>
                         <td>
                           <div class="td-value"><?php
-                            echo $profile[$key] == '' ? __('Not found', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
+                            echo $profile[$key] == '' ? __('Unknown', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
                           </div>
                         </td>
                       <?php
@@ -266,7 +266,7 @@
                   else:?>
                     <td>
                       <div class="td-value">
-                        <?php _e('Not found', 'wp-odm_profile_pages'); ?>
+                        <?php _e('Unknown', 'wp-odm_profile_pages'); ?>
                       </div>
                     </td>
                   <?php
