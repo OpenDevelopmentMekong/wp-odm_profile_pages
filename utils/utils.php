@@ -22,7 +22,7 @@ function odm_data_classification_definition($info) {
 
     $info = strtolower(str_replace(' ', '_', $info));
     echo '&nbsp; <div class="tooltip tooltip_definition ">';
-    if ($info != '' && $info != __('Not found', 'wp-odm_profile_pages')) {
+    if ($info != '' && $info != __('Unknown', 'wp-odm_profile_pages')) {
         echo '<i class="fa fa-question-circle info-data-classification" title=""></i>';
     }
     if ($info == 'no_evidence_of_adjustment') {
