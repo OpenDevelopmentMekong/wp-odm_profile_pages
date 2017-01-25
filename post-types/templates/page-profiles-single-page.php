@@ -48,7 +48,7 @@
                       }
                     }
 
-                    echo $profile_value == ""? __("Not found", 'wp-odm_profile_pages'): str_replace(";", "<br/>", $profile_value);
+                    echo $profile_value == ""? __("Unknown", 'wp-odm_profile_pages'): str_replace(";", "<br/>", $profile_value);
 
                     if(in_array($key, array("data_class", "adjustment_classification", "adjustment")))
                       odm_data_classification_definition( $profile[$key]);
