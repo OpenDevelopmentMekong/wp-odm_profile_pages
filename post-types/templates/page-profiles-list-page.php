@@ -79,7 +79,9 @@
                       foreach ($specifit_value as $field_value) {
                         $field_value = trim(str_replace('"', "",$field_value));
                         $show_total_value .= '<li>'.__($field_value, "wp-odm_profile_pages"). __(": ", "wp-odm_profile_pages");
-                        $show_total_value .= '<strong>'. $count_number_by_attr[$field_value]==""? convert_to_kh_number("0"):convert_to_kh_number($count_number_by_attr[$field_value]).'</strong></li>';
+                        if(isset($count_number_by_attr[$field_value])){
+                          $show_total_value .= '<strong>'. $count_number_by_attr[$field_value]==""? convert_to_kh_number("0"):convert_to_kh_number($count_number_by_attr[$field_value]).'</strong></li>';
+                        }
                       }//end foreach
                     }else { //count number by field name/attribute name: eg. map_id/developer
                       if($total_attribute_name != $id ){
@@ -522,7 +524,7 @@
            $('.table-column-container .dataTables_length select').val($(this).val());
         });
         $('.table-column-container .dataTables_length select').on( 'change', function () {
-           $('.fixed_datatable_tool_bar .dataTables_length select').val($(this).val());
+           $('.fixed_datatable_tool_bar .dataTables_length select').val($(this).val());n
         });
 
         $('#filter_by_classification').find('select').each(function(index){
@@ -537,9 +539,13 @@
                $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
         });
 
-     $("#search_all").keyup(function () {
-       oTable.fnFilterAll(this.value);
-       refreshMap();
+     $("#search_all").keypress(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13'){
+           oTable.fnFilterAll(this.value);
+           refreshMap();
+        }
+        event.stopPropagation();
      });
 
      var refreshMap = function(){
