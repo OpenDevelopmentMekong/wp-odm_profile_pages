@@ -524,7 +524,7 @@
            $('.table-column-container .dataTables_length select').val($(this).val());
         });
         $('.table-column-container .dataTables_length select').on( 'change', function () {
-           $('.fixed_datatable_tool_bar .dataTables_length select').val($(this).val());n
+           $('.fixed_datatable_tool_bar .dataTables_length select').val($(this).val());
         });
 
         $('#filter_by_classification').find('select').each(function(index){
