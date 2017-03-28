@@ -263,6 +263,8 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 
             $link_to_detail_column = get_post_meta($post->ID, '_link_to_detail_column', true);
             $link_to_detail_column_localization = get_post_meta($post->ID, '_link_to_detail_column_localization', true);
+            $link_to_detail_page = get_post_meta($post->ID, '_link_to_detail_page', true);
+            $link_to_detail_page_localization = get_post_meta($post->ID, '_link_to_detail_page_localization', true);
             ?>
           <div id="multiple-site">
             <input type="radio" id="en" class="en" name="language_site_2" value="en" checked />
@@ -312,6 +314,16 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
     					      <p class="description"><?php _e('Please add the ids of the columns that will feature a link to the entry\'s detail page. Format: Comma-separated values. <br/>eg. name,company,developer,block', 'wp-odm_profile_pages'); ?></p>
     					  </td>
     					 </tr>
+               <tr>
+    					  <th><label for="_link_to_detail_page"><?php _e("Select the column id to use for Detail Link (English)", 'wp-odm_profile_pages'); ?></label></th>
+    					  <td>
+                  <select class="link_to_detail_page" name="_link_to_detail_page">
+                    <option value="" <?php echo !isset($link_to_detail_page)? 'selected="selected"' : ''; ?>>default</option>
+                    <option value="view_detail" <?php echo (isset($link_to_detail_page) && ($link_to_detail_page == "view_detail"))? 'selected="selected"' : ''; ?> >view_detail</option>
+                  </select>
+    					    <p class="description"><?php _e('Please select the ids of the columns that will use as link to detail page.', 'wp-odm_profile_pages'); ?></p>
+    					  </td>
+    					 </tr>
     	        </tbody>
     	      </table>
     	      </div>
@@ -354,12 +366,22 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                   <p class="description"><?php _e('Please add the ids of the columns that will feature a link to the entry\'s detail page. Format: Comma-separated values. <br/>eg. name,company,developer,block', 'wp-odm_profile_pages'); ?></p>
           		  </td>
           		 </tr>
+               <tr>
+    					  <th><label for="_link_to_detail_page_localization"><?php _e('Select the column id to use for Detail Link ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
+    					  <td>
+                  <select class="link_to_detail_page_localization" name="_link_to_detail_page_localization">
+                    <option value="" <?php echo !isset($link_to_detail_page)? 'selected="selected"' : ''; ?>>default</option>
+                    <option value="view_detail" <?php echo (isset($link_to_detail_page) && ($link_to_detail_page == "view_detail"))? 'selected="selected"' : ''; ?> >view_detail</option>
+                  </select>
+    					    <p class="description"><?php _e('Please select the ids of the columns that will use as link to detail page.', 'wp-odm_profile_pages'); ?></p>
+    					  </td>
+    					 </tr>
               </tbody>
               </table>
             </div>
   	        <?php } ?>
           </div>
-          
+
           <script type="text/javascript">
       		 jQuery(document).ready(function($) {
       			var $container = $('#multiple-site');
@@ -555,6 +577,15 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                 if (isset($_POST['_link_to_detail_column_localization'])) {
                     update_post_meta($post_id, '_link_to_detail_column_localization', $_POST['_link_to_detail_column_localization']);
                 }
+
+                if (isset($_POST['_link_to_detail_page'])) {
+                    update_post_meta($post_id, '_link_to_detail_page', $_POST['_link_to_detail_page']);
+                }
+
+                if (isset($_POST['_link_to_detail_page_localization'])) {
+                    update_post_meta($post_id, '_link_to_detail_page_localization', $_POST['_link_to_detail_page_localization']);
+                }
+
             }
         }
     }
