@@ -198,7 +198,11 @@
                         ?>
                           <td class="entry_title">
                             <div class="td-value">
-                              <a target="_blank" href="?feature_id=<?php echo $profile[$id];?>"><?php echo $profile[$key];?></a>
+                              <?php if($link_to_detail_page):?>
+                                <a target="_blank" href="<?php echo $profile[$link_to_detail_page];?>"><?php echo $profile[$key];?></a>
+                              <?php else:?>
+                                <a target="_blank" href="?feature_id=<?php echo $profile[$id];?>"><?php echo $profile[$key];?></a>
+                              <?php endif; ?>
                             </div>
                           </td>
                         <?php

@@ -71,8 +71,10 @@ if (isset($ckan_attribute_tracking) && $ckan_attribute_tracking != '') {
 
 if ( (odm_language_manager()->get_current_language() !== 'en') ) {
 		$link_to_detail_column = get_post_meta($post->ID, '_link_to_detail_column_localization', true);
+		$link_to_detail_page = get_post_meta($post->ID, '_link_to_detail_page_localization', true);
 } else {
 		$link_to_detail_column = get_post_meta($post->ID, '_link_to_detail_column', true);
+		$link_to_detail_page = get_post_meta($post->ID, '_link_to_detail_page', true);
 }
 
 $ref_docs_profile = array();
