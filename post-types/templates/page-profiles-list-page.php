@@ -116,8 +116,8 @@
         <div class="filter-container">
           <div class="panel">
             <div class="four columns">
-              <p><?php _e('Textual search', 'wp-odm_profile_pages');?></p>
-              <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
+              <p><?php _e('Textual search', 'odi');?></p>
+              <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'odi'); ?>">
             </div>
             <?php
             if (isset($related_profile_pages) && $related_profile_pages != '') {
@@ -126,12 +126,12 @@
                 <?php
                   if ($filtered_by_column_index): ?>
                   <div id="filter_by_classification">
-                    <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+                    <p><?php _e('Filter by', 'odi');?></p>
                   </div>
                 <?php endif; ?>
               </div>
               <div class="five columns">
-                <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
+                <p><?php _e('Related profiles', 'odi');?></p>
                 <ul>
                 <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
                     $split_title_and_url = explode('|', $profile_pages_url);?>
@@ -147,7 +147,7 @@
               <?php
                 if ($filtered_by_column_index): ?>
                 <div id="filter_by_classification">
-                  <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+                  <p><?php _e('Filter by', 'odi');?></p>
                 </div>
               <?php endif; ?>
             </div>
@@ -166,12 +166,12 @@
     <table id="profiles" class="data-table">
       <thead>
         <tr>
-          <th><div class='th-value'><?php _e('Map ID', 'wp-odm_profile_pages'); ?></div></th>
+          <th><div class='th-value'><?php _e('Map ID', 'odi'); ?></div></th>
           <?php if ($DATASET_ATTRIBUTE) :
             foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
               <th>
                 <div class='th-value'>
-                  <?php _e($DATASET_ATTRIBUTE[$key], 'wp-odm_profile_pages');?>
+                  <?php _e($DATASET_ATTRIBUTE[$key], 'odi');?>
                 </div>
               </th>
             <?php endforeach;
@@ -228,7 +228,7 @@
                     elseif ($key == 'issuedate'): ?>
                         <td><div class="td-value"><?php
                             $issuedate = str_replace('T00:00:00', '', $profile[$key]);
-                            echo $profile[$key] == '' ? __('Unknown', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($issuedate)); ?></div>
+                            echo $profile[$key] == '' ? __('Unknown', 'odi') : str_replace(';', '<br/>', trim($issuedate)); ?></div>
                         </td>
                       <?php
                     elseif (in_array($key, array('cdc_num', 'sub-decree', 'year'))):
@@ -239,7 +239,7 @@
                         endif; ?>
                         <td>
                           <div class="td-value"><?php
-                            echo $profile_value == '' ? __('Unknown', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
+                            echo $profile_value == '' ? __('Unknown', 'odi') : str_replace(';', '<br/>', trim($profile_value));?>
                           </div>
                         </td>
                     <?php
@@ -262,7 +262,7 @@
                       $profile_value = str_replace(';', '<br/>', trim($profile_value));?>
                         <td>
                           <div class="td-value"><?php
-                            echo $profile[$key] == '' ? __('Unknown', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
+                            echo $profile[$key] == '' ? __('Unknown', 'odi') : str_replace(';', '<br/>', trim($profile_value));?>
                           </div>
                         </td>
                       <?php
@@ -270,7 +270,7 @@
                   else:?>
                     <td>
                       <div class="td-value">
-                        <?php _e('Unknown', 'wp-odm_profile_pages'); ?>
+                        <?php _e('Unknown', 'odi'); ?>
                       </div>
                     </td>
                   <?php
@@ -485,13 +485,13 @@
           if (odm_language_manager()->get_current_language() == 'km') { ?>
              var div_filter = $('<div class="filter_by filter_by_column_index_'+columnIndex+'"></div>');
              div_filter.appendTo( $('#filter_by_classification'));
-             var select = $('<select><option value="">'+column_header+'<?php _e('all', 'wp-odm_profile_pages');
+             var select = $('<select><option value="">'+column_header+'<?php _e('all', 'odi');
              ?></option></select>');
           <?php
           } else { ?>
              var div_filter = $('<div class="filter_by filter_by_column_index_'+columnIndex+'"></div>');
              div_filter.appendTo( $('#filter_by_classification'));
-             var select = $('<select><option value=""><?php _e('All ', 'wp-odm_profile_pages'); ?>'+column_header+'</option></select>');
+             var select = $('<select><option value=""><?php _e('All ', 'odi'); ?>'+column_header+'</option></select>');
           <?php
           } ?>
           select.appendTo( $('.filter_by_column_index_'+columnIndex) )

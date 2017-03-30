@@ -31,7 +31,7 @@
               foreach ($DATASET_ATTRIBUTE as $key => $value):
                 if($key !="reference"){ ?>
               <tr>
-              <td class="row-key"><?php _e( $DATASET_ATTRIBUTE[$key], 'wp-odm_profile_pages' ); ?></td>
+              <td class="row-key"><?php _e( $DATASET_ATTRIBUTE[$key], 'odi' ); ?></td>
                 <td><?php
                     $profile_val = str_replace("T00:00:00", "", $profile[$key]);
                     if(odm_language_manager()->get_current_language() =="km"){
@@ -48,7 +48,7 @@
                       }
                     }
 
-                    echo $profile_value == ""? __("Unknown", 'wp-odm_profile_pages'): str_replace(";", "<br/>", $profile_value);
+                    echo $profile_value == ""? __("Unknown", 'odi'): str_replace(";", "<br/>", $profile_value);
 
                     if(in_array($key, array("data_class", "adjustment_classification", "adjustment")))
                       odm_data_classification_definition( $profile[$key]);
@@ -66,7 +66,7 @@
       <div class="sixteen columns">
         <?php if (count($ammendements) > 0): ?>
           <div class="profile-metadata">
-            <h2><?php _e('Amendments', 'wp-odm_profile_pages'); ?></h2>
+            <h2><?php _e('Amendments', 'odi'); ?></h2>
             <table id="tracking" class="data-table">
               <tbody>
                 <?php
@@ -93,7 +93,7 @@
                         if ($key == 'amendment_date' && odm_language_manager()->get_current_language() == 'km') {
                           $ammendement[$key] = convert_date_to_kh_date(date('d/m/Y', strtotime($ammendement[$key])), '/');
                         }
-                        $ammendement_information .= "<td>".__($ammendement[$key], 'wp-odm_profile_pages')."</td>";
+                        $ammendement_information .= "<td>".__($ammendement[$key], 'odi')."</td>";
                       endif;
                     }
                   }
@@ -102,7 +102,7 @@
 
                 if (!empty($ammendement_title)):
                   foreach (array_unique($ammendement_title) as $group_value) {
-                    echo "<tr><td colspan='".count($DATASET_ATTRIBUTE_TRACKING)."'><strong>".__($group_value, 'wp-odm_profile_pages')."</strong></td></tr>";
+                    echo "<tr><td colspan='".count($DATASET_ATTRIBUTE_TRACKING)."'><strong>".__($group_value, 'odi')."</strong></td></tr>";
                     foreach ($ammendement_info[$group_value] as $info_value) {
                       echo $info_value;
                     }
@@ -113,7 +113,7 @@
             </table>
           </div>
         <?php else: ?>
-          <p><php _e('No records found','wp-odm_profile_pages') ?></p>
+          <p><php _e('No records found','odi') ?></p>
         <?php endif; ?>
 
         <?php
@@ -121,11 +121,11 @@
           $ref_docs = array_merge($ref_docs_profile,$ref_docs_tracking);
           if (count($ref_docs)> 0): ?>
           <div class="profile-metadata">
-            <h2><?php _e("Reference documents", 'wp-odm_profile_pages'); ?></h2>
+            <h2><?php _e("Reference documents", 'odi'); ?></h2>
                 <?php odm_list_reference_documents($ref_docs)?>
           </div>
           <?php else: ?>
-            <p><php _e('No records found','wp-odm_profile_pages') ?></p>
+            <p><php _e('No records found','odi') ?></p>
           <?php endif; ?>
         </div>
     </div>
