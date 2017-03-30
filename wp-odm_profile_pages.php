@@ -15,8 +15,6 @@ require_once plugin_dir_path(__FILE__).'utils/utils.php';
 // Require post types
 require_once plugin_dir_path(__FILE__).'post-types/profile-pages.php';
 
-define("PLUGIN_DIR", plugin_dir_path(__FILE__));
-
 if (!class_exists('Odm_Profile_Pages_Plugin')) {
 
     class Odm_Profile_Pages_Plugin

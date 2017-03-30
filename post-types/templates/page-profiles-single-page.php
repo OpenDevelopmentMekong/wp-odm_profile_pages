@@ -1,4 +1,4 @@
-<?php require_once PLUGIN_DIR.'/utils/profile-spreadsheet-post-meta.php'; ?>
+<?php require_once WP_PLUGIN_DIR.'/wp-odm_profile_pages/utils/profile-spreadsheet-post-meta.php'; ?>
 <div class="container">
     <div class="sixteen columns">
       <header>
