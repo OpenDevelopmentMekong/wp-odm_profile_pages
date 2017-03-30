@@ -547,6 +547,21 @@
            oTable.fnFilterAll(this.value);
            refreshMap();
         }
+        else{
+          if($(this).val() == '') {
+            console.log("fffffdfadsfas");
+             oTable.fnFilterAll(this.value);
+             refreshMap();
+          }
+        }
+        event.stopPropagation();
+     });
+
+     $("#search_all").keyup(function (event) {
+        if($(this).val() == '') { 
+           oTable.fnFilterAll(this.value);
+           refreshMap();
+        }
         event.stopPropagation();
      });
 
