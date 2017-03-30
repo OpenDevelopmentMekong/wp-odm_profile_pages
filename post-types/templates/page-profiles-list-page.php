@@ -1,4 +1,4 @@
-<?php require_once PLUGIN_DIR.'/utils/profile-spreadsheet-post-meta.php'; ?>
+<?php require_once (WP_PLUGIN_DIR.'/wp-odm_profile_pages/utils/profile-spreadsheet-post-meta.php'); ?>
 <div class="container">
   <div class="row">
     <div class="sixteen columns">
@@ -377,7 +377,7 @@
           <?php
           } ?>
           <?php
-            if (isset($group_data_by_column_index) && $group_data_by_column_index != '') { ?>
+            if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) { ?>
              , "aaSortingFixed": [[<?php echo $group_data_by_column_index; ?>, 'asc' ]] //sort data in Data Classifications first before grouping
           <?php
           } ?>
@@ -386,11 +386,11 @@
                      var rows = api.rows( {page:'current'} ).nodes();
                      var last=null;
                     <?php
-                    if (isset($group_data_by_column_index) && $group_data_by_column_index != '') { ?>
+                    if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) { ?>
                        api.column(<?php echo $group_data_by_column_index; ?>, {page:'current'} ).data().each( function ( group, i ) {
                            if ( last !== group ) {
                                $(rows).eq( i ).before(
-                                   '<tr class="group" id="cambodia-bgcolor"><td colspan="<?php echo  count($DATASET_ATTRIBUTE)?>">'+group+'</td></tr>'
+                                   '<tr class="group" id="<?php echo odm_country_manager()->get_current_country()?>-bgcolor"><td colspan="<?php echo  count($DATASET_ATTRIBUTE)?>">'+group+'</td></tr>'
                                );
                                last = group;
                            }
