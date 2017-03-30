@@ -1,4 +1,4 @@
-<?php require_once PLUGIN_DIR.'/utils/profile-spreadsheet-post-meta.php'; ?>
+<?php require_once (WP_PLUGIN_DIR.'/wp-odm_profile_pages/utils/profile-spreadsheet-post-meta.php'); ?>
 <div class="container">
   <div class="row">
     <div class="sixteen columns">
@@ -183,10 +183,8 @@
         if ($profiles):
             foreach ($profiles as $profile):  ?>
             <tr>
-              <td>
-                <div class="td-value-id">
+              <td class="td-value-id">
                   <?php echo trim($profile[$id]);?>
-                </div>
               </td>
             <?php
             if($DATASET_ATTRIBUTE):
@@ -377,7 +375,7 @@
           <?php
           } ?>
           <?php
-            if (isset($group_data_by_column_index) && $group_data_by_column_index != '') { ?>
+            if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) { ?>
              , "aaSortingFixed": [[<?php echo $group_data_by_column_index; ?>, 'asc' ]] //sort data in Data Classifications first before grouping
           <?php
           } ?>
@@ -386,11 +384,11 @@
                      var rows = api.rows( {page:'current'} ).nodes();
                      var last=null;
                     <?php
-                    if (isset($group_data_by_column_index) && $group_data_by_column_index != '') { ?>
+                    if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) { ?>
                        api.column(<?php echo $group_data_by_column_index; ?>, {page:'current'} ).data().each( function ( group, i ) {
                            if ( last !== group ) {
                                $(rows).eq( i ).before(
-                                   '<tr class="group" id="cambodia-bgcolor"><td colspan="<?php echo  count($DATASET_ATTRIBUTE)?>">'+group+'</td></tr>'
+                                   '<tr class="group" id="<?php echo odm_country_manager()->get_current_country()?>-bgcolor"><td colspan="<?php echo  count($DATASET_ATTRIBUTE)?>">'+group+'</td></tr>'
                                );
                                last = group;
                            }
@@ -558,14 +556,13 @@
        $map_layers = get_selected_layers_of_map_by_mapID(get_the_ID());
        if (count($map_layers) > 1) {
        ?>
-          filterEntriesMap(_.pluck(filtered,mapIdColNumber));
+          filterEntriesMap(_.pluck(filtered, mapIdColNumber));
        <?php
        }
        ?>
      }
 
      var filterEntriesMap = function(mapIds){
-
        var mapIdsString = "('" + mapIds.join('\',\'') + "')";
         $( "#searchFeature_by_mapID").val(mapIdsString);
         $( "#searchFeature_by_mapID").trigger("keyup");

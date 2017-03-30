@@ -3,7 +3,7 @@
  * Plugin Name: ODM Profile Pages
  * Plugin URI: http://github.com/OpenDevelopmentMekong/odm_profile_pages
  * Description: Internal wordpress plugin for exposing custom content type for profile pages
- * Version: 2.1.7
+ * Version: 2.1.8
  * Author: Alex Corbi (mail@lifeformapps.com)
  * Author URI: http://www.lifeformapps.com
  * License: GPLv3.
@@ -14,8 +14,6 @@ require_once plugin_dir_path(__FILE__).'utils/utils.php';
 
 // Require post types
 require_once plugin_dir_path(__FILE__).'post-types/profile-pages.php';
-
-define("PLUGIN_DIR", plugin_dir_path(__FILE__));
 
 if (!class_exists('Odm_Profile_Pages_Plugin')) {
 
