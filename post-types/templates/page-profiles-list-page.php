@@ -183,10 +183,8 @@
         if ($profiles):
             foreach ($profiles as $profile):  ?>
             <tr>
-              <td>
-                <div class="td-value-id">
+              <td class="td-value-id">
                   <?php echo trim($profile[$id]);?>
-                </div>
               </td>
             <?php
             if($DATASET_ATTRIBUTE):
@@ -558,14 +556,13 @@
        $map_layers = get_selected_layers_of_map_by_mapID(get_the_ID());
        if (count($map_layers) > 1) {
        ?>
-          filterEntriesMap(_.pluck(filtered,mapIdColNumber));
+          filterEntriesMap(_.pluck(filtered, mapIdColNumber));
        <?php
        }
        ?>
      }
 
      var filterEntriesMap = function(mapIds){
-
        var mapIdsString = "('" + mapIds.join('\',\'') + "')";
         $( "#searchFeature_by_mapID").val(mapIdsString);
         $( "#searchFeature_by_mapID").trigger("keyup");
