@@ -61,7 +61,12 @@ table.dataTable thead th .th-value {
 .dataTables_length {
   margin-top: 8px;
 }
-
+.dataTables_length .select2-container{
+  width: auto !important;
+}
+.dataTables_length .select2-container .select2-search{
+  display: none;
+}
 .dataTables_info {
   margin-top: 2px;
 }
@@ -352,6 +357,10 @@ table.dataTable thead .sorting_desc_disabled {
   display: inline;
   margin: 0;
   padding: 2px 2px;
+}
+.loading_icon{
+  background: #fff url('/wp-content/themes/wp-odm_theme/img/loading.gif')  no-repeat right 5px center !important;
+  background-size: 16px 16px !important;
 }
 .twelve #filter_by_classification select {
   width: 200px;
