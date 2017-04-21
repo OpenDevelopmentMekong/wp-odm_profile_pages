@@ -64,9 +64,6 @@ table.dataTable thead th .th-value {
 .dataTables_length .select2-container{
   width: auto !important;
 }
-.dataTables_length .select2-container .select2-search{
-  display: none;
-}
 .dataTables_info {
   margin-top: 2px;
 }
