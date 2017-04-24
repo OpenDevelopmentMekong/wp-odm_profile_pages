@@ -301,7 +301,7 @@ table.dataTable thead .sorting_desc_disabled {
 .fixed-filter-container {
   position: fixed;
   top: 37px;
-  z-index: 9999;
+  z-index: 99;
 }
 .fixed_datatable_tool_bar {
   display: none;
@@ -345,7 +345,7 @@ table.dataTable thead .sorting_desc_disabled {
 }
 .select2-container {
     font-size: 14px;
-    z-index: 9999;
+    z-index: 99;
 }
 #filter_by_classification .label {
   display: inline;
@@ -371,7 +371,7 @@ table.dataTable thead .sorting_desc_disabled {
   position: fixed;
   top: 0;
   background: #fff;
-  z-index: 9999;
+  z-index: 99;
   margin-left: 20px;
 }
 .fixed_top_bar div{
