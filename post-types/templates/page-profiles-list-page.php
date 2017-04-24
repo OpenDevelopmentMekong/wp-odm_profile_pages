@@ -189,7 +189,7 @@
             <?php
             if($DATASET_ATTRIBUTE):
               foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
-                <?php 
+                <?php
                 $link_to_detail_column_array = explode(',', $link_to_detail_column);
                 if(array_key_exists($key, $profile)):
                     if(in_array($key, $link_to_detail_column_array)) :
@@ -324,7 +324,7 @@
         $(window).scroll(function() {
       			if ($(document).scrollTop() >= get_position_profile_table) {
       				$('.dataTables_scrollHead').css('position','fixed').css('top', table_fixed_position+'px');
-      				$('.dataTables_scrollHead').css('z-index',9999);
+      				$('.dataTables_scrollHead').css('z-index',99);
       				$('.dataTables_scrollHead').width($('.dataTables_scrollBody').width());
        				$('.filter-container').css('position','fixed');
        				$('.filter-container').css('width',$('.dataTables_scrollBody').width());
