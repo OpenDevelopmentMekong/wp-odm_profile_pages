@@ -290,7 +290,7 @@
 <div class="row">
   <div class="sixteen columns">
     <div class="disclaimer">
-      <?php the_content(); ?>
+      <?php echo get_the_content(); ?>
     </div>
   </div>
 </div>
@@ -324,7 +324,7 @@
         $(window).scroll(function() {
       			if ($(document).scrollTop() >= get_position_profile_table) {
       				$('.dataTables_scrollHead').css('position','fixed').css('top', table_fixed_position+'px');
-      				$('.dataTables_scrollHead').css('z-index',9999);
+      				$('.dataTables_scrollHead').css('z-index',99);
       				$('.dataTables_scrollHead').width($('.dataTables_scrollBody').width());
        				$('.filter-container').css('position','fixed');
        				$('.filter-container').css('width',$('.dataTables_scrollBody').width());
@@ -541,32 +541,37 @@
                $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
         });
 
-     $("#search_all").keypress(function (event) {
-        var keycode = (event.keyCode ? event.keyCode : event.which);
-        if(keycode == '13'){
-           oTable.fnFilterAll(this.value);
-           refreshMap();
-        }
-        event.stopPropagation();
-     });
+        var typingTimer;
+        $("#search_all").keyup(function () {
+          clearTimeout(typingTimer);
+          var keyword = this.value;
+          if (keyword) {
+            $("#search_all").addClass("loading_icon");
+            typingTimer = setTimeout(function(){
+                oTable.fnFilterAll(keyword);
+                refreshMap();
+            }, 2000);
+          }
+        });
 
-     var refreshMap = function(){
-       var filtered = oTable._('tr', {"filter":"applied"});
-       <?php
-       $map_layers = get_selected_layers_of_map_by_mapID(get_the_ID());
-       if (count($map_layers) > 1) {
-       ?>
-          filterEntriesMap(_.pluck(filtered, mapIdColNumber));
-       <?php
+       var refreshMap = function(){
+         var filtered = oTable._('tr', {"filter":"applied"});
+         <?php
+         $map_layers = get_selected_layers_of_map_by_mapID(get_the_ID());
+         if (count($map_layers) > 1) {
+         ?>
+            filterEntriesMap(_.pluck(filtered, mapIdColNumber));
+         <?php
+         }
+         ?>
        }
-       ?>
-     }
 
-     var filterEntriesMap = function(mapIds){
-       var mapIdsString = "('" + mapIds.join('\',\'') + "')";
-        $( "#searchFeature_by_mapID").val(mapIdsString);
-        $( "#searchFeature_by_mapID").trigger("keyup");
-     }
+       var filterEntriesMap = function(mapIds){
+         var mapIdsString = "('" + mapIds.join('\',\'') + "')";
+          $( "#searchFeature_by_mapID").val(mapIdsString);
+          $( "#searchFeature_by_mapID").trigger("keyup");
+          $("#search_all").removeClass("loading_icon");
+       }
     <?php
     }
     ?>
