@@ -111,6 +111,15 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
            'high'
           );
 
+          add_meta_box(
+           'page_with_sub_navigation',
+           __('Sub-navigation', 'wp-odm_profile_pages'),
+           array($this, 'page_with_sub_navigation_box'),
+           'profiles',
+           'advanced',
+           'high'
+          );
+
         }//metabox
 
 
@@ -123,6 +132,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
               <option value="default" <?php if ($template == "default"): echo "selected"; endif; ?>>Default</option>
               <option value="with-widget" <?php if ($template == "with-widget"): echo "selected"; endif; ?>>With widgets</option>
               <option value="with-right-sibebar" <?php if ($template == "with-right-sibebar"): echo "selected"; endif; ?>>With right sidebar</option>
+              <option value="with-sub-navigation" <?php if ($template == "with-sub-navigation"): echo "selected"; endif; ?>>With sub-navigation</option>
             </select>
           </div>
       <?php
@@ -190,9 +200,9 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
     		 				</td>
     		 			 </tr>
     					 <tr>
-    		 				<th><label for="_tracking_csv_resource_url_localization"><?php _e('CSV Tracking URL ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
+    		 				<th><label for="tracking_csv_resource_url_localization"><?php _e('CSV Tracking URL ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
     		 				<td>
-    		 				 <input id="_tracking_csv_resource_url_localization" type="text" placeholder="https://" size="40" name="_tracking_csv_resource_url_localization" value="<?php echo $tracking_csv_resource_url_localization;   ?>" />
+    		 				 <input id="tracking_csv_resource_url_localization" type="text" placeholder="https://" size="40" name="_tracking_csv_resource_url_localization" value="<?php echo $tracking_csv_resource_url_localization;   ?>" />
     		 				  <p class="description"><?php _e('CSV Resource of tracking dataset on CKAN. Eg. https://data.opendevelopmentmekong.net/dataset/economic-land-concessions/resource/8cc0c651-8131-404e-bbce-7fe6af728f89?type=dataset', 'wp-odm_profile_pages'); ?></p>
     		 				</td>
     		 			 </tr>
@@ -474,6 +484,15 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
         <?php
       }
 
+      public function page_with_sub_navigation_box($post = false)
+      {
+        $page_with_sub_navigation = get_post_meta($post->ID, '_page_with_sub_navigation', true);
+        ?>
+        <label for="page_with_sub_navigation"><?php _e("Add sub navigation", 'wp-odm_profile_pages');  ?></label>
+        <input type="text" id="page_with_sub_navigation" name="_page_with_sub_navigation" placeholder="Menu ID" value="<?php echo $page_with_sub_navigation;   ?>" size="60" />
+        <?php
+      }
+
       public function save_post_data($post_id)
       {
             global $post;
@@ -584,6 +603,10 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 
                 if (isset($_POST['_link_to_detail_page_localization'])) {
                     update_post_meta($post_id, '_link_to_detail_page_localization', $_POST['_link_to_detail_page_localization']);
+                }
+
+                if (isset($_POST['_page_with_sub_navigation'])) {
+                    update_post_meta($post_id, '_page_with_sub_navigation', $_POST['_page_with_sub_navigation']);
                 }
 
             }
