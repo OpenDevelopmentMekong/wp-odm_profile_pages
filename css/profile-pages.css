@@ -582,3 +582,72 @@ table.no-bgcolor tr td{
 table.no-bgcolor tr{
   border-right: 1px solid #ccc;
 }
+
+/* Sub navigation*/
+#od-menu.od-submenu {
+  position: relative;
+}
+.od-submenu-bg {
+  position: relative;
+  opacity: 0.6;
+  float: left;
+  height: 40px;
+  width: 100%;
+}
+.od-submenu .container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+#od-menu.od-submenu ul {
+  text-align: right;
+  margin: 0;
+  padding: 0;
+}
+
+#od-menu.od-submenu li {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 0 0 0;
+  padding: 8px 0;
+}
+
+#od-menu.od-submenu li a {
+  color: #000;
+  margin: 0;
+  padding: 0 8px;
+}
+#od-menu.od-submenu li:hover {
+  background: #f1f1f1;
+}
+
+#od-menu.od-submenu li.menu-item-has-children > a::after {
+  content: '\f140';
+  display: inline-block;
+  font: inherit;
+  font-family: dashicons;
+  margin: 0 0 0 6px;
+  vertical-align: top;
+}
+#od-menu.od-submenu li ul.sub-menu{
+  display: none;
+  background: #f1f1f1;
+  position: absolute;
+  text-align: left;
+  margin-top: 8px;
+  z-index: 999;
+}
+
+#od-menu.od-submenu li ul.sub-menu li{
+  min-width: 150px;
+}
+#od-menu.od-submenu li:hover ul{
+  display: block;
+}
+#od-menu.od-submenu li > ul > li:hover{
+  background: #ddd;
+}
+.od-submenu h1{
+  margin: 3px 0 0;
+}
