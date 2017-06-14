@@ -324,7 +324,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                <tr>
     					  <th><label for="link_to_detail_page"><?php _e("Select the column id to use for Detail Link (English)", 'wp-odm_profile_pages'); ?></label></th>
     					  <td>
-                  <select class="link_to_detail_page" name="_link_to_detail_page">
+                  <select id="link_to_detail_page" class="link_to_detail_page" name="_link_to_detail_page">
                     <option value="" <?php echo !isset($link_to_detail_page)? 'selected="selected"' : ''; ?>>default</option>
                     <option value="view_detail" <?php echo (isset($link_to_detail_page) && ($link_to_detail_page == "view_detail"))? 'selected="selected"' : ''; ?> >view_detail</option>
                   </select>
@@ -376,7 +376,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                <tr>
     					  <th><label for="link_to_detail_page_localization"><?php _e('Select the column id to use for Detail Link ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
     					  <td>
-                  <select class="link_to_detail_page_localization" name="_link_to_detail_page_localization">
+                  <select id="link_to_detail_page_localization" class="link_to_detail_page_localization" name="_link_to_detail_page_localization">
                     <option value="" <?php echo !isset($link_to_detail_page)? 'selected="selected"' : ''; ?>>default</option>
                     <option value="view_detail" <?php echo (isset($link_to_detail_page) && ($link_to_detail_page == "view_detail"))? 'selected="selected"' : ''; ?> >view_detail</option>
                   </select>
@@ -432,11 +432,11 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                 <tr>
                 <td>
                 <div style="float:left; margin-bottom:1em">
-                    <label for="full_width_middle_content"><?php _e('Full width content (English)', 'wp-odm_profile_pages');?></label>
+                  <label for="full_width_middle_content"><?php _e('Full width content (English)', 'wp-odm_profile_pages');?></label>
                 </div>
                 <div style="float:right; margin-bottom:1em">
-                    <input type="checkbox" name="_full_width_content_position" id="full_width_content_position" value="1" <?php checked(1, $show_above_map);?>>
-                    <label for="full_width_content_position"><?php _e('Show above the map', 'odm'); ?></label>
+                  <input type="checkbox" name="_full_width_content_position" id="full_width_content_position" value="1" <?php checked(1, $show_above_map);?>>
+                  <label for="full_width_content_position"><?php _e('Show above the map', 'odm'); ?></label>
                 </div>
                   <textarea id="full_width_content_position" name="_full_width_middle_content" style="width:100%;height: 50px;" placeholder=""><?php echo $full_width_middle_content; ?></textarea>
                   <p class="description"><?php _e('Any content can add to under the Editor content and sidebar and  full width of website even the iframe.', 'wp-odm_profile_pages');
