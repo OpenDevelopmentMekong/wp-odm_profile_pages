@@ -146,11 +146,6 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
           $csv_resource_url_localization = get_post_meta($post->ID, '_csv_resource_url_localization', true);
           $tracking_csv_resource_url = get_post_meta($post->ID, '_tracking_csv_resource_url', true);
           $tracking_csv_resource_url_localization = get_post_meta($post->ID, '_tracking_csv_resource_url_localization', true);
-
-          $filtered_by_column_index = get_post_meta($post->ID, '_filtered_by_column_index', true);
-          $filtered_by_column_index_localization = get_post_meta($post->ID, '_filtered_by_column_index_localization', true);
-
-          $show_above = get_post_meta($post->ID, '_full_width_content_position', true);
           ?>
     		<div id="multiple-site">
     			<input type="radio" id="csv_en" class="en" name="language_site_1" value="en" checked />
@@ -344,7 +339,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
               <table class="form-table form-table-localization profiles_page_settings_box">
                 <tbody>
                  <tr>
-                  <th><label for="_total_number_by_attribute_name_localization"><?php _e('Show Total Numbers of Columns, separated by line breaks ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
+                  <th><label for="total_number_by_attribute_name_localization"><?php _e('Show Total Numbers of Columns, separated by line breaks ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
                   <td>
             			<textarea name="_total_number_by_attribute_name_localization" style="width:100%;height: 80px;"placeholder="column_1"><?php echo $total_number_by_attribute_name_localization; ?></textarea>
                   <p class="description"><?php _e('List the attribut4 names to show their total number on page (separated by line breaks). Eg. For ELC: map_id<br/>developer<br/>data_class["Government data complete", "Government data partial"]', 'wp-odm_profile_pages'); ?></p>
@@ -358,9 +353,9 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                   </td>
                  </tr>
                  <tr>
-                  <th><label for="_group_data_by_column_index_localization"><?php _e('Group Data in Column ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
+                  <th><label for="group_data_by_column_index_localization"><?php _e('Group Data in Column ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
                   <td>
-                    <input id="_group_data_by_column_index_localization" type="text" placeholder="5" size="40" name="_group_data_by_column_index_localization" value="<?php echo $group_data_by_column_index_localization; ?>" />
+                    <input id="group_data_by_column_index_localization" type="text" placeholder="5" size="40" name="_group_data_by_column_index_localization" value="<?php echo $group_data_by_column_index_localization; ?>" />
                     <p class="description"><?php _e('Eg. To group data classification of ELC, based on the attributes sample provided, the index of data classification is: 5', 'wp-odm_profile_pages'); ?></p>
                   </td>
                  </tr>
@@ -372,14 +367,14 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
             		  </td>
             		 </tr>
             		 <tr>
-            		  <th><label for="_link_to_detail_column_localization"><?php _e('Column ids linking to detail page ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
+            		  <th><label for="link_to_detail_column_localization"><?php _e('Column ids linking to detail page ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
             		  <td>
-            				<input id="_link_to_detail_column_localization" type="text" name="_link_to_detail_column_localization" size="40" placeholder="name,company,developer,block" value="<?php echo $link_to_detail_column_localization? $link_to_detail_column_localization : "name"; ?>" />
+            				<input id="link_to_detail_column_localization" type="text" name="_link_to_detail_column_localization" size="40" placeholder="name,company,developer,block" value="<?php echo $link_to_detail_column_localization? $link_to_detail_column_localization : "name"; ?>" />
                   <p class="description"><?php _e('Please add the ids of the columns that will feature a link to the entry\'s detail page. Format: Comma-separated values. <br/>eg. name,company,developer,block', 'wp-odm_profile_pages'); ?></p>
           		  </td>
           		 </tr>
                <tr>
-    					  <th><label for="_link_to_detail_page_localization"><?php _e('Select the column id to use for Detail Link ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
+    					  <th><label for="link_to_detail_page_localization"><?php _e('Select the column id to use for Detail Link ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
     					  <td>
                   <select class="link_to_detail_page_localization" name="_link_to_detail_page_localization">
                     <option value="" <?php echo !isset($link_to_detail_page)? 'selected="selected"' : ''; ?>>default</option>
@@ -418,6 +413,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
       {
         $full_width_middle_content = get_post_meta($post->ID, '_full_width_middle_content', true);
         $full_width_middle_content_localization = get_post_meta($post->ID, '_full_width_middle_content_localization', true);
+        $show_above_map = get_post_meta($post->ID, '_full_width_content_position', true);
         ?>
         <div id="multiple-site">
           <input type="radio" id="middle_content_en" class="en" name="language_site_3" value="en" checked />
@@ -434,18 +430,17 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
             <table class="form-table middle_content_box">
               <tbody>
                 <tr>
-                <td><label for="_full_width_middle_content"><?php _e('Full width content (English)', 'wp-odm_profile_pages');
-                ?></label>
-                </br>
-
-                <p class="flaot-right">
-                  <input type="checkbox" name="_full_width_content_position" id="full_width_content_position" disabled value="1" <?php checked(1, $show_above);?>>
-                  <label for="full_width_content_position"><?php _e('Show above the map', 'odm'); ?></label>
-                </p>
-
-                <textarea name="_full_width_middle_content" style="width:100%;height: 50px;" placeholder=""><?php echo $full_width_middle_content; ?></textarea>
-                <p class="description"><?php _e('Any content can add to under the Editor content and sidebar and  full width of website even the iframe.', 'wp-odm_profile_pages');
-                ?></p>
+                <td>
+                <div style="float:left; margin-bottom:1em">
+                    <label for="_full_width_middle_content"><?php _e('Full width content (English)', 'wp-odm_profile_pages');?></label>
+                </div>
+                <div style="float:right; margin-bottom:1em">
+                    <input type="checkbox" name="_full_width_content_position" id="full_width_content_position" value="1" <?php checked(1, $show_above_map);?>>
+                    <label for="full_width_content_position"><?php _e('Show above the map', 'odm'); ?></label>
+                </div>
+                  <textarea name="_full_width_middle_content" style="width:100%;height: 50px;" placeholder=""><?php echo $full_width_middle_content; ?></textarea>
+                  <p class="description"><?php _e('Any content can add to under the Editor content and sidebar and  full width of website even the iframe.', 'wp-odm_profile_pages');
+                  ?></p>
                 </td>
                </tr>
               </tbody>
@@ -456,7 +451,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
             <table class="form-table form-table-localization middle_content_box">
               <tbody>
                 <tr>
-                <td><label for="_full_width_middle_content_localization"><?php _e('Full width content (('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages');
+                <td><label for="_full_width_middle_content_localization"><?php _e('Full width content ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages');
                 ?></label>
                 </br>
                 <textarea name="_full_width_middle_content_localization" style="width:100%;height: 50px;" placeholder=""><?php echo $full_width_middle_content_localization; ?></textarea>
@@ -533,8 +528,10 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                     update_post_meta($post_id, '_full_width_middle_content_localization', $_POST['_full_width_middle_content_localization']);
                 }
 
-                if (isset($_POST['_full_width_content_position'])) {
-                    update_post_meta($post_id, '_full_width_content_position', $_POST['_full_width_content_position']);
+                if(isset($_POST['_full_width_content_position'])) {
+                   update_post_meta($post_id, '_full_width_content_position', TRUE);
+                }else{
+                  update_post_meta($post_id, '_full_width_content_position', FALSE);
                 }
 
                 if (isset($_POST['_csv_resource_url'])) {

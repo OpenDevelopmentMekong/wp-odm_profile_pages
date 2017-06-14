@@ -1,5 +1,16 @@
 <?php require_once (WP_PLUGIN_DIR.'/wp-odm_profile_pages/utils/profile-spreadsheet-post-meta.php'); ?>
 <div class="container">
+  <?php
+  $full_width_content = odm_language_manager()->get_current_language() !== 'en' ? get_post_meta(get_the_ID(), '_full_width_middle_content_localization', true) : get_post_meta(get_the_ID(), '_full_width_middle_content', true);
+  $full_width_position = get_post_meta(get_the_ID(), '_full_width_content_position', true);
+
+  if($full_width_content && $full_width_position): ?>
+  <div class="row">
+    <div class="sixteen columns">
+      <?php echo "<div class='full-width-content above-map'>".$full_width_content."</div>"; ?>
+    </div>
+  </div>
+  <?php endif; ?>
   <div class="row">
     <div class="sixteen columns">
       <?php
@@ -10,18 +21,15 @@
     </div>
   </div>
   <?php
-    if (odm_language_manager()->get_current_language() !== 'en') {
-      $middle_content = get_post_meta(get_the_ID(), '_full_width_middle_content_localization', true);
-    }else {
-      $middle_content = get_post_meta(get_the_ID(), '_full_width_middle_content', true);
-    }
-    if($middle_content):
+    if($full_width_content && !$full_width_position):
       ?>
-      <div class="row">
-        <div class="sixteen columns">
-          <?php echo "<div class='iframe-visualitation'>".$middle_content."</div>"; ?>
-        </div>
-      </div>
+    	<section class="container">
+    		<div class="row">
+    			<div class="sixteen columns">
+            <?php echo "<div class='full-width-content below-map'>".$full_width_content."</div>"; ?>
+    			</div>
+    		</div>
+    	</section>
   <?php endif; ?>
 
 <?php if($profiles){ ?>
