@@ -149,6 +149,8 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 
           $filtered_by_column_index = get_post_meta($post->ID, '_filtered_by_column_index', true);
           $filtered_by_column_index_localization = get_post_meta($post->ID, '_filtered_by_column_index_localization', true);
+
+          $show_above = get_post_meta($post->ID, '_full_width_content_position', true);
           ?>
     		<div id="multiple-site">
     			<input type="radio" id="csv_en" class="en" name="language_site_1" value="en" checked />
@@ -435,6 +437,12 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                 <td><label for="_full_width_middle_content"><?php _e('Full width content (English)', 'wp-odm_profile_pages');
                 ?></label>
                 </br>
+
+                <p class="flaot-right">
+                  <input type="checkbox" name="_full_width_content_position" id="full_width_content_position" disabled value="1" <?php checked(1, $show_above);?>>
+                  <label for="full_width_content_position"><?php _e('Show above the map', 'odm'); ?></label>
+                </p>
+
                 <textarea name="_full_width_middle_content" style="width:100%;height: 50px;" placeholder=""><?php echo $full_width_middle_content; ?></textarea>
                 <p class="description"><?php _e('Any content can add to under the Editor content and sidebar and  full width of website even the iframe.', 'wp-odm_profile_pages');
                 ?></p>
@@ -523,6 +531,10 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 
                 if (isset($_POST['_full_width_middle_content_localization'])) {
                     update_post_meta($post_id, '_full_width_middle_content_localization', $_POST['_full_width_middle_content_localization']);
+                }
+
+                if (isset($_POST['_full_width_content_position'])) {
+                    update_post_meta($post_id, '_full_width_content_position', $_POST['_full_width_content_position']);
                 }
 
                 if (isset($_POST['_csv_resource_url'])) {
