@@ -10,4 +10,11 @@ only screen and (max-width: 800px),
   #profiles_wrapper, .dataTables_scrollHead, .dataTables_scrollBody {
     width: 97vw !important;
   }
+  .fixed-filter-container {
+    max-height: 120px;    
+    overflow-y: auto;
+  }
+  .dataTables_scrollHead{
+    top:150px;
+  }
 }
