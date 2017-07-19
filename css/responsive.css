@@ -11,3 +11,29 @@ only screen and (max-width: 800px),
     width: 97vw !important;
   }
 }
+
+@media
+only screen and (max-width: 640px){
+	.verticle-list-in-rd li a .fa-stack{
+		font-size: 22px !important;
+	}
+}
+
+@media
+only screen and (max-width: 480px),
+(min-device-width: 320px) and (max-device-width: 480px)  {
+
+	.full-width-content .verticle-list-in-rd li{
+		display: inline-block !important;
+	}
+	.full-width-content .verticle-list-in-rd li a{
+		display: inline-flex;
+	}
+	.verticle-list-in-rd li a .fa-stack{
+		font-size: 16px !important;
+	}
+	.verticle-list-in-rd .sec_title{
+		padding-top: 4px;
+		padding-left: 4px;
+	}
+}
