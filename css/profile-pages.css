@@ -651,3 +651,9 @@ table.no-bgcolor tr{
 .od-submenu h1{
   margin: 3px 0 0;
 }
+.full-width-content ul{
+    padding: 5px 0;
+}
+.full-width-content.above-map{
+  margin-bottom: 1em;
+}
