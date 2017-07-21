@@ -14,7 +14,7 @@ only screen and (max-width: 800px),
 
 @media
 only screen and (max-width: 640px){
-	.verticle-list-in-rd li a .fa-stack{
+	.vertical-list-mobile li a .fa-stack{
 		font-size: 22px !important;
 	}
 }
@@ -23,16 +23,16 @@ only screen and (max-width: 640px){
 only screen and (max-width: 480px),
 (min-device-width: 320px) and (max-device-width: 480px)  {
 
-	.full-width-content .verticle-list-in-rd li{
+	.full-width-content .vertical-list-mobile li{
 		display: inline-block !important;
 	}
-	.full-width-content .verticle-list-in-rd li a{
+	.full-width-content .vertical-list-mobile li a{
 		display: inline-flex;
 	}
-	.verticle-list-in-rd li a .fa-stack{
+	.vertical-list-mobile li a .fa-stack{
 		font-size: 16px !important;
 	}
-	.verticle-list-in-rd .sec_title{
+	.vertical-list-mobile .sec_title{
 		padding-top: 4px;
 		padding-left: 4px;
 	}
