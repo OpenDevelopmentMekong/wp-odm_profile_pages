@@ -121,14 +121,14 @@ if($profiles): ?>
 
 		<?php
 
-			if (!odm_screen_manager()->is_desktop()): ?>
+			if (odm_screen_manager()->is_desktop()): ?>
 
-				<div class="row mobile-filter-container filter-container hideOnDesktop">
-						<div class="sixteen columns">
+				<div class="row filter-container">
+						<div class="sixteen columns mobile-filter-container">              
+              <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
               <a href="#" class="button filter open-mobile-dialog float-right">
 								<i class="fa fa-filter fa-lg"></i>
 							</a>
-              <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
 						</div>						
 				</div>
 

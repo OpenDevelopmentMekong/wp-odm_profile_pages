@@ -312,11 +312,12 @@ table.dataTable thead .sorting_desc_disabled {
 
 .mobile-filter-container{
   background-color: #fff;
+  display: inline-flex !important;
 }
 
 .filter-container #search_all, .mobile-filter-container #search_all{
   width: 100%;
-  margin: 0
+  margin: 0 10px 0 0;
 }
 
 .fixed-filter-container {
