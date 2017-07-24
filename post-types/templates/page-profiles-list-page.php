@@ -242,7 +242,7 @@ if($profiles): ?>
     <!-- Table -->
   <div class="row no-margin-buttom">
   <div class="sixteen columns table-column-container">
-    <table id="profiles" class="data-table responsive">
+    <table id="profiles" class="data-table">
       <thead>
         <tr>
           <th><div class='th-value'><?php _e('Map ID', 'wp-odm_profile_pages'); ?></div></th>
@@ -425,7 +425,12 @@ endif; ?>
       		   }
            });
          oTable = $("#profiles").dataTable({
-           scrollX: true,					 
+           scrollX: true,
+					 <?php
+					  	if (!odm_screen_manager()->is_desktop()): ?>
+           responsive: true,
+					 <?php
+				 			endif; ?>
            sDom: 'T<"H"lf>t<"F"ip>',
            processing: true,
            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
