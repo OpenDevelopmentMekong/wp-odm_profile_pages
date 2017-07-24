@@ -129,7 +129,8 @@ if($profiles): ?>
               <a href="#" class="button filter open-mobile-dialog float-right">
 								<i class="fa fa-filter fa-lg"></i>
 							</a>
-						</div>						
+						</div>
+            <div class="fixed_datatable_tool_bar"></div>						
 				</div>
 
 				<div class="row mobile-dialog hideOnDesktop">
