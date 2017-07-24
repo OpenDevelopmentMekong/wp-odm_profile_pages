@@ -413,7 +413,7 @@
            });
          oTable = $("#profiles").dataTable({
            scrollX: true,
-           responsive: false,
+           responsive: true,
            "sDom": 'T<"H"lf>t<"F"ip>',
            processing: true,
            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
