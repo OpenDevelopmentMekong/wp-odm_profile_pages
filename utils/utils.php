@@ -273,7 +273,7 @@ function echo_download_button_link_to_datapage($dataset_id){
   ?>
   <a target="_blank" class="button download format" href="<?php echo get_bloginfo("url"); ?>/dataset/?id=<?php echo $dataset_id;?>">
     <i class="fa fa-download"></i>
-    <div class="hideOnDesktop">
+    <div class="hideOnMobileAndTablet">
       <?php _e('Download and Metadata', 'wp-odm_profile_pages'); ?>
     </div>
   </a>
