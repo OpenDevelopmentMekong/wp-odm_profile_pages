@@ -412,7 +412,6 @@ table.dataTable thead .sorting_desc_disabled {
   box-sizing: border-box;
   display: inline-block;
   min-width: 1.5em;
-  //padding: 0.5em 1em;
   margin-left: 2px;
   text-align: center;
   text-decoration: none !important;
@@ -575,7 +574,7 @@ table.spreadsheet td{
 }
 
 table.no-bgcolor {
-  hyphens: none;​
+  hyphens: none;
 }
 
 table.no-bgcolor tr td {

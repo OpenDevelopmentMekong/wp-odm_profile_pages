@@ -398,7 +398,10 @@ endif; ?>
     <?php
 			if ($filter_map_id == '' && $metadata_dataset == '') { ?>
     	var get_od_selector_height = $('#od-selector').height();
-      var get_filter_container_height = $('.filter-container').height();
+      var get_filter_container_height = 0;
+      $('.filter-container').each(function(index){
+        get_filter_container_height += $(this).height();
+      });
       var get_position_profile_table =  $('.filter-container').offset().top;
       var table_fixed_position = get_od_selector_height +get_filter_container_height +40;
 
