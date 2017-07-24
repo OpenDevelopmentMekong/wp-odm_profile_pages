@@ -435,51 +435,52 @@ endif; ?>
                "visible": false
              }
            ]
-           <?php if (odm_language_manager()->get_current_language() == 'km') { ?>
-           , "oLanguage": {
-               "sLengthMenu": 'បង្ហាញចំនួន <select>'+
-                   '<option value="10">10</option>'+
-                   '<option value="25">20</option>'+
-                   '<option value="50">50</option>'+
-                   '<option value="-1">ទាំងអស់</option>'+
-                 '</select> ក្នុងមួយទំព័រ',
-               "sZeroRecords": "ព័ត៌មានពុំអាចរកបាន",
-               "sInfo": "បង្ហាញពីទី _START_ ដល់ _END_ នៃទិន្នន័យចំនួន _TOTAL_",
-               "sInfoEmpty": "បង្ហាញពីទី 0 ដល់ 0 នៃទិន្នន័យចំនួន 0",
-               "sInfoFiltered": "(ទាញចេញពីទិន្នន័យសរុបចំនួន _MAX_)",
-               "sSearch":"ស្វែងរក",
-               "oPaginate": {
-                 "sFirst": "ទំព័រដំបូង",
-                 "sLast": "ចុងក្រោយ",
-                 "sPrevious": "មុន",
-                 "sNext": "បន្ទាប់"
-               }
+           <?php
+					 if (odm_language_manager()->get_current_language() == 'km'): ?>
+           ,"oLanguage": {
+              "sLengthMenu": 'បង្ហាញចំនួន <select>'+
+                  '<option value="10">10</option>'+
+                  '<option value="25">20</option>'+
+                  '<option value="50">50</option>'+
+                  '<option value="-1">ទាំងអស់</option>'+
+                '</select> ក្នុងមួយទំព័រ',
+              "sZeroRecords": "ព័ត៌មានពុំអាចរកបាន",
+              "sInfo": "បង្ហាញពីទី _START_ ដល់ _END_ នៃទិន្នន័យចំនួន _TOTAL_",
+              "sInfoEmpty": "បង្ហាញពីទី 0 ដល់ 0 នៃទិន្នន័យចំនួន 0",
+              "sInfoFiltered": "(ទាញចេញពីទិន្នន័យសរុបចំនួន _MAX_)",
+              "sSearch":"ស្វែងរក",
+              "oPaginate": {
+                "sFirst": "ទំព័រដំបូង",
+                "sLast": "ចុងក្រោយ",
+                "sPrevious": "មុន",
+                "sNext": "បន្ទាប់"
+              }
            }
           <?php
-          } ?>
+					endif; ?>
           <?php
-            if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) { ?>
+            if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)): ?>
              , "aaSortingFixed": [[<?php echo $group_data_by_column_index; ?>, 'asc' ]] //sort data in Data Classifications first before grouping
           <?php
-          } ?>
-             , "drawCallback": function ( settings ) {  //Group colums
-                     var api = this.api();
-                     var rows = api.rows( {page:'current'} ).nodes();
-                     var last=null;
-                    <?php
-                    if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) { ?>
-                       api.column(<?php echo $group_data_by_column_index; ?>, {page:'current'} ).data().each( function ( group, i ) {
-                           if ( last !== group ) {
-                               $(rows).eq( i ).before(
-                                   '<tr class="group" id="<?php echo odm_country_manager()->get_current_country()?>-bgcolor"><td colspan="<?php echo  count($DATASET_ATTRIBUTE)?>">'+group+'</td></tr>'
-                               );
-                               last = group;
-                           }
-                       } );
-                    <?php
-                    } ?>
-                   align_width_td_and_th();
-               }
+						endif; ?>
+           , "drawCallback": function ( settings ) {  //Group colums
+                   var api = this.api();
+                   var rows = api.rows( {page:'current'} ).nodes();
+                   var last=null;
+                  <?php
+                  if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) { ?>
+                     api.column(<?php echo $group_data_by_column_index; ?>, {page:'current'} ).data().each( function ( group, i ) {
+                         if ( last !== group ) {
+                             $(rows).eq( i ).before(
+                                 '<tr class="group" id="<?php echo odm_country_manager()->get_current_country()?>-bgcolor"><td colspan="<?php echo  count($DATASET_ATTRIBUTE)?>">'+group+'</td></tr>'
+                             );
+                             last = group;
+                         }
+                     } );
+                  <?php
+                  } ?>
+                 align_width_td_and_th();
+             }
         });
 
          <?php
