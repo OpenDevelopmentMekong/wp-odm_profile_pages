@@ -10,6 +10,7 @@ only screen and (max-width: 800px),
   #profiles_wrapper, .dataTables_scrollHead, .dataTables_scrollBody {
     width: 97vw !important;
   }
+
 }
 
 @media

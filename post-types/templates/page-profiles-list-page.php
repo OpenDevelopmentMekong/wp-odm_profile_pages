@@ -5,18 +5,18 @@
   $full_width_position = get_post_meta(get_the_ID(), '_full_width_content_position', true);
 
   if($full_width_content && $full_width_position): ?>
-  <div class="row">
-    <div class="sixteen columns">
-      <?php echo "<div class='full-width-content above-map'>".$full_width_content."</div>"; ?>
-    </div>
-  </div>
+	  <div class="row">
+	    <div class="sixteen columns">
+	      <?php echo "<div class='full-width-content above-map'>".$full_width_content."</div>"; ?>
+	    </div>
+	  </div>
   <?php endif; ?>
-  <div class="row">
+  <div class="row hideOnMobile">
     <div class="sixteen columns">
       <?php
-      if(function_exists('display_embedded_map')){
+      if(function_exists('display_embedded_map')):
         display_embedded_map(get_the_ID());
-      }
+      endif;
       ?>
     </div>
   </div>
@@ -30,143 +30,213 @@
     			</div>
     		</div>
     	</section>
-  <?php endif; ?>
+  <?php
+		endif; ?>
 
-<?php if($profiles){ ?>
-    <div class="row">
-      <div class="sixteen columns">
-        <?php
-          // Display Total list
-          $show_total_value = "";
-          $array_map_profile = array();
-          $id = '';
+<?php
+if($profiles): ?>
+	<div class="row">
+	  <div class="sixteen columns">
+    <?php
+      // Display Total list
+      $show_total_value = "";
+      $array_map_profile = array();
+      $id = '';
 
-          if (array_key_exists("map_id", $profiles[0])){
-            $array_map_profile = array_map(function($value){return array_key_exists('map_id', $value) ? $value['map_id'] : "";}, $profiles);
-            $id = "map_id";
-          }else {
-            $array_map_profile = array_map(function($value){return array_key_exists('_id', $value) ? $value['_id'] : "";}, $profiles);
-            $id = "_id";
-          }
+      if (array_key_exists("map_id", $profiles[0])):
+        $array_map_profile = array_map(function($value){return array_key_exists('map_id', $value) ? $value['map_id'] : "";}, $profiles);
+        $id = "map_id";
+      else:
+        $array_map_profile = array_map(function($value){return array_key_exists('_id', $value) ? $value['_id'] : "";}, $profiles);
+        $id = "_id";
+      endif;
 
-          if($array_map_profile){
-            $count_project =  array_count_values($array_map_profile);
-          }
-          ?>
-          <!-- List total of dataset by map_id as default-->
-  				<?php if (count($count_project) > 1) {
-                  $show_total_value .= "<li><strong>";
-                  if(odm_language_manager()->get_current_language() == "km"):
-                    $show_total_value .= __("Total", "wp-odm_profile_pages").get_the_title(). __("Listed", "wp-odm_profile_pages"). __(":", "wp-odm_profile_pages");
-                    $show_total_value .= $count_project==""? convert_to_kh_number("0"):convert_to_kh_number(count($count_project));
-                  else:
-                    $show_total_value .=  __("Total", "wp-odm_profile_pages")." ".get_the_title(). __(" listed", "wp-odm_profile_pages"). __(": ", "wp-odm_profile_pages");
-                    $show_total_value .= $count_project==""? "0":count($count_project);
-                  endif;
-                  $show_total_value .= "</strong></li>";
-                }
-                $explode_total_number_by_attribute_name = explode("\r\n", $total_number_by_attribute_name);
-                if($total_number_by_attribute_name!=""){
-                  foreach ($explode_total_number_by_attribute_name as $key => $total_attribute_name) {
-                    if($total_attribute_name != $id ){
-                    //check if total number require to list by Specific value
-                    $total_attributename = trim($total_attribute_name);
-                    if (strpos($total_attribute_name, '[') !== FALSE){ //if march
-                    $split_field_name_and_value = explode("[", $total_attributename);
-                    $total_attributename = trim($split_field_name_and_value[0]); //eg. data_class
-                    $total_by_specifit_value = str_replace("]", "", $split_field_name_and_value[1]);
-                    $specifit_value = explode(',', $total_by_specifit_value);// explode to get: Government data complete
-                    } //end strpos
-                    $GLOBALS['total_attribute_name'] = $total_attributename;
-                    $map_value = array_map(function($value){ return $value[$GLOBALS['total_attribute_name']];}, $profiles);
-                    $count_number_by_attr =  array_count_values($map_value);
-                    ?>
+      if($array_map_profile):
+        $count_project =  array_count_values($array_map_profile);
+      endif;
+      ?>
+      <!-- List total of dataset by map_id as default-->
+			<?php
+				if (count($count_project) > 1):
+          $show_total_value .= "<li><strong>";
+          if(odm_language_manager()->get_current_language() == "km"):
+            $show_total_value .= __("Total", "wp-odm_profile_pages").get_the_title(). __("Listed", "wp-odm_profile_pages"). __(":", "wp-odm_profile_pages");
+            $show_total_value .= $count_project==""? convert_to_kh_number("0"):convert_to_kh_number(count($count_project));
+          else:
+            $show_total_value .=  __("Total", "wp-odm_profile_pages")." ".get_the_title(). __(" listed", "wp-odm_profile_pages"). __(": ", "wp-odm_profile_pages");
+            $show_total_value .= $count_project==""? "0":count($count_project);
+          endif;
+          $show_total_value .= "</strong></li>";
+        endif;
+        $explode_total_number_by_attribute_name = explode("\r\n", $total_number_by_attribute_name);
+        if($total_number_by_attribute_name!=""):
+          foreach ($explode_total_number_by_attribute_name as $key => $total_attribute_name):
+            if($total_attribute_name != $id ):
+              //check if total number require to list by Specific value
+              $total_attributename = trim($total_attribute_name);
+              if (strpos($total_attribute_name, '[') !== FALSE):
+                $split_field_name_and_value = explode("[", $total_attributename);
+                $total_attributename = trim($split_field_name_and_value[0]); //eg. data_class
+                $total_by_specifit_value = str_replace("]", "", $split_field_name_and_value[1]);
+                $specifit_value = explode(',', $total_by_specifit_value);// explode to get: Government data complete
+            	endif;
+              $GLOBALS['total_attribute_name'] = $total_attributename;
+              $map_value = array_map(function($value){ return $value[$GLOBALS['total_attribute_name']];}, $profiles);
+              $count_number_by_attr =  array_count_values($map_value); ?>
 
-                    <?php //count number by value: eg. Government data complete
-                    if(isset($specifit_value) && count($specifit_value) > 0){
-                      foreach ($specifit_value as $field_value) {
-                        $field_value = trim(str_replace('"', "",$field_value));
-                        $show_total_value .= '<li>'.__($field_value, "wp-odm_profile_pages"). __(": ", "wp-odm_profile_pages");
-                        if(isset($count_number_by_attr[$field_value])){
-                          $show_total_value .= '<strong>'. $count_number_by_attr[$field_value]==""? convert_to_kh_number("0"):convert_to_kh_number($count_number_by_attr[$field_value]).'</strong></li>';
-                        }
-                      }//end foreach
-                    }else { //count number by field name/attribute name: eg. map_id/developer
-                      if($total_attribute_name != $id ){
-                        $show_total_value .= "<li>";
-                        if(odm_language_manager()->get_current_language() == "km"):
-                          $show_total_value .= __("Total", "wp-odm_profile_pages").$DATASET_ATTRIBUTE[$total_attributename].__("Listed", "wp-odm_profile_pages").__(":", "wp-odm_profile_pages");
-                          $show_total_value .= '<strong>'.$total_attributename==""? convert_to_kh_number("0"):convert_to_kh_number(count($count_number_by_attr)).'</strong>';
-                        else:
-                          $show_total_value .=  __("Total", "wp-odm_profile_pages")." ".$DATASET_ATTRIBUTE[$total_attributename]." ". __(" listed", "wp-odm_profile_pages").__(": ", "wp-odm_profile_pages");
-                          $show_total_value .= '<strong>'.$total_attributename==""? "0": count($count_number_by_attr).'</strong>';
-                        endif;
-                        $show_total_value .= "</li>";
-                      }
-                    }//end if $specifit_value
-                  }//if not map_id
-                }//foreach $explode_total_number_by_attribute_name
-                }//if exist
-                if($show_total_value){
-                  echo '<div class="total_listed">';
-                    echo "<ul>";
-                      echo $show_total_value;
-                    echo "</ul>";
-                  echo "</div>";
-                }
-
-        ?>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class ="sixteen columns">
-        <div class="filter-container">
-          <div class="panel">
-            <div class="four columns">
-              <p><?php _e('Textual search', 'wp-odm_profile_pages');?></p>
-              <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
-            </div>
-            <?php
-            if (isset($related_profile_pages) && $related_profile_pages != '') {
-              $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
-              <div class="seven columns">
-                <?php
-                  if ($filtered_by_column_index): ?>
-                  <div id="filter_by_classification">
-                    <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
-                  </div>
-                <?php endif; ?>
-              </div>
-              <div class="five columns">
-                <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
-                <ul>
-                <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
-                    $split_title_and_url = explode('|', $profile_pages_url);?>
-                    <li>
-                      <a href="<?php echo $split_title_and_url[1]; ?>" target="_blank"><?php echo $split_title_and_url[0]; ?></a>
-                    </li>
-                <?php endforeach; ?>
-                </ul>
-              </div>
-          <?php
-          } else { ?>
-            <div class="twelve columns">
               <?php
-                if ($filtered_by_column_index): ?>
-                <div id="filter_by_classification">
-                  <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
-                </div>
-              <?php endif; ?>
-            </div>
-          <?php
-          }
-          ?>
-          </div>
-          <div class="fixed_datatable_tool_bar"></div>
-        </div>
+              if(isset($specifit_value) && count($specifit_value) > 0):
+                foreach ($specifit_value as $field_value):
+                  $field_value = trim(str_replace('"', "",$field_value));
+                  $show_total_value .= '<li>'.__($field_value, "wp-odm_profile_pages"). __(": ", "wp-odm_profile_pages");
+                  if(isset($count_number_by_attr[$field_value])):
+                    $show_total_value .= '<strong>'. $count_number_by_attr[$field_value]==""? convert_to_kh_number("0"):convert_to_kh_number($count_number_by_attr[$field_value]).'</strong></li>';
+                  endif;
+                endforeach;
+              else:
+                if($total_attribute_name != $id ):
+                  $show_total_value .= "<li>";
+                  if(odm_language_manager()->get_current_language() == "km"):
+                    $show_total_value .= __("Total", "wp-odm_profile_pages").$DATASET_ATTRIBUTE[$total_attributename].__("Listed", "wp-odm_profile_pages").__(":", "wp-odm_profile_pages");
+                    $show_total_value .= '<strong>'.$total_attributename==""? convert_to_kh_number("0"):convert_to_kh_number(count($count_number_by_attr)).'</strong>';
+                  else:
+                    $show_total_value .=  __("Total", "wp-odm_profile_pages")." ".$DATASET_ATTRIBUTE[$total_attributename]." ". __(" listed", "wp-odm_profile_pages").__(": ", "wp-odm_profile_pages");
+                    $show_total_value .= '<strong>'.$total_attributename==""? "0": count($count_number_by_attr).'</strong>';
+                  endif;
+                  $show_total_value .= "</li>";
+                endif;
+              endif;
+          	endif;
+					endforeach;
+        endif;
+        if($show_total_value):
+          echo '<div class="total_listed">';
+            echo "<ul>";
+              echo $show_total_value;
+            echo "</ul>";
+          echo "</div>";
+        endif; ?>
       </div>
     </div>
+
+		<?php
+
+			if (!odm_screen_manager()->is_desktop()): ?>
+
+				<div class="row filter-container">
+						<div class="sixteen columns mobile-filter-container">              
+              <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
+              <a href="#" class="button filter open-mobile-dialog float-right">
+								<i class="fa fa-filter fa-lg"></i>
+							</a>
+						</div>
+            <div class="fixed_datatable_tool_bar"></div>						
+				</div>
+
+				<div class="row mobile-dialog hideOnDesktop">
+					<div class ="eight columns align-left">
+						<?php _e("Filters","wp-odm_profile_pages"); ?>
+					</div>
+					<div class ="eight columns">
+						<div class="close-mobile-dialog align-right">
+							<i class="fa fa-times-circle"></i>
+						</div>
+					</div>
+		      <div class ="sixteen columns">
+		        <div class="panel">
+		          <?php
+		          if (isset($related_profile_pages) && $related_profile_pages != ''):
+		            $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
+		            <div class="eight columns">
+		              <?php
+		                if ($filtered_by_column_index): ?>
+		                <div id="filter_by_classification">
+		                  <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+		                </div>
+		              <?php endif; ?>
+		            </div>
+		            <div class="eight columns">
+		              <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
+		              <ul>
+		              <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
+		                  $split_title_and_url = explode('|', $profile_pages_url);?>
+		                  <li>
+		                    <a href="<?php echo $split_title_and_url[1]; ?>" target="_blank"><?php echo $split_title_and_url[0]; ?></a>
+		                  </li>
+		              <?php endforeach; ?>
+		              </ul>
+		            </div>
+		        <?php
+						else: ?>
+		          <div class="sixteen columns">
+		            <?php
+		              if ($filtered_by_column_index): ?>
+		              <div id="filter_by_classification">
+		                <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+		              </div>
+		            <?php endif; ?>
+		          </div>
+		        <?php
+						endif;
+		        ?>
+		        </div>
+		      </div>
+		    </div>
+
+			<?php
+				else: ?>
+
+	    <div class="row hideOnMobileAndTablet">
+	      <div class ="sixteen columns">
+	        <div class="filter-container">
+	          <div class="panel">
+	            <div class="four columns">
+	              <p><?php _e('Textual search', 'wp-odm_profile_pages');?></p>
+	              <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
+	            </div>
+	            <?php
+	            if (isset($related_profile_pages) && $related_profile_pages != ''):
+	              $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
+	              <div class="seven columns">
+	                <?php
+	                  if ($filtered_by_column_index): ?>
+	                  <div id="filter_by_classification">
+	                    <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+	                  </div>
+	                <?php endif; ?>
+	              </div>
+	              <div class="five columns">
+	                <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
+	                <ul>
+	                <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
+	                    $split_title_and_url = explode('|', $profile_pages_url);?>
+	                    <li>
+	                      <a href="<?php echo $split_title_and_url[1]; ?>" target="_blank"><?php echo $split_title_and_url[0]; ?></a>
+	                    </li>
+	                <?php endforeach; ?>
+	                </ul>
+	              </div>
+	          <?php
+						else: ?>
+	            <div class="twelve columns">
+	              <?php
+	                if ($filtered_by_column_index): ?>
+	                <div id="filter_by_classification">
+	                  <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+	                </div>
+	              <?php endif; ?>
+	            </div>
+	          <?php
+						endif;
+	          ?>
+	          </div>
+	          <div class="fixed_datatable_tool_bar"></div>
+	        </div>
+	      </div>
+	    </div>
+
+		<?php
+		endif; ?>
 
     <!-- Table -->
   <div class="row no-margin-buttom">
@@ -293,7 +363,8 @@
     </table>
   </div>
 </div>
-<?php } ?>
+<?php
+endif; ?>
 
 <div class="row">
   <div class="sixteen columns">
@@ -323,11 +394,17 @@
       }
     };
 
-    <?php if ($filter_map_id == '' && $metadata_dataset == '') { ?>
-      	var get_od_selector_height = $('#od-selector').height();
-        var get_filter_container_height = $('.filter-container').height();
-        var get_position_profile_table =  $('.filter-container').offset().top;
-        var table_fixed_position = get_od_selector_height +get_filter_container_height +40;
+    <?php
+			if ($filter_map_id == '' && $metadata_dataset == '') { ?>
+    	var get_od_selector_height = $('#od-selector').height();
+      var get_filter_container_height = 0;
+      $('.filter-container').each(function(index){
+        if ($(this).css("display") !== 'none'){
+          get_filter_container_height += $(this).height();
+        }        
+      });
+      var get_position_profile_table =  $('.filter-container').offset().top;
+      var table_fixed_position = get_od_selector_height +get_filter_container_height +40;
 
         $(window).scroll(function() {
       			if ($(document).scrollTop() >= get_position_profile_table) {
@@ -339,8 +416,7 @@
               $('.filter-container').addClass("fixed-filter-container");
       				$('.dataTables_scrollBody').css('margin-top', 10+'em');
               $('.fixed_datatable_tool_bar').css('display','inline-block');
-      		   }
-      		   else {
+      		   }else {
       				$('.dataTables_scrollHead').css('position','static');
        				$('.fixed-filter-container').css('position','static');
               $('.fixed_datatable_tool_bar').hide();
@@ -349,10 +425,15 @@
            });
          oTable = $("#profiles").dataTable({
            scrollX: true,
-           responsive: false,
-           "sDom": 'T<"H"lf>t<"F"ip>',
+					 <?php
+					  	if (!odm_screen_manager()->is_desktop()): ?>
+           responsive: true,
+					 <?php
+				 			endif; ?>
+           sDom: 'T<"H"lf>t<"F"ip>',
            processing: true,
            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+					 iDisplayLength: 10,
            displayLength: -1
            , columnDefs: [
              {
@@ -360,66 +441,67 @@
                "visible": false
              }
            ]
-           <?php if (odm_language_manager()->get_current_language() == 'km') { ?>
-           , "oLanguage": {
-               "sLengthMenu": 'បង្ហាញចំនួន <select>'+
-                   '<option value="10">10</option>'+
-                   '<option value="25">20</option>'+
-                   '<option value="50">50</option>'+
-                   '<option value="-1">ទាំងអស់</option>'+
-                 '</select> ក្នុងមួយទំព័រ',
-               "sZeroRecords": "ព័ត៌មានពុំអាចរកបាន",
-               "sInfo": "បង្ហាញពីទី _START_ ដល់ _END_ នៃទិន្នន័យចំនួន _TOTAL_",
-               "sInfoEmpty": "បង្ហាញពីទី 0 ដល់ 0 នៃទិន្នន័យចំនួន 0",
-               "sInfoFiltered": "(ទាញចេញពីទិន្នន័យសរុបចំនួន _MAX_)",
-               "sSearch":"ស្វែងរក",
-               "oPaginate": {
-                 "sFirst": "ទំព័រដំបូង",
-                 "sLast": "ចុងក្រោយ",
-                 "sPrevious": "មុន",
-                 "sNext": "បន្ទាប់"
-               }
+           <?php
+					 if (odm_language_manager()->get_current_language() == 'km'): ?>
+           ,"oLanguage": {
+              "sLengthMenu": 'បង្ហាញចំនួន <select>'+
+                  '<option value="10">10</option>'+
+                  '<option value="25">20</option>'+
+                  '<option value="50">50</option>'+
+                  '<option value="-1">ទាំងអស់</option>'+
+                '</select> ក្នុងមួយទំព័រ',
+              "sZeroRecords": "ព័ត៌មានពុំអាចរកបាន",
+              "sInfo": "បង្ហាញពីទី _START_ ដល់ _END_ នៃទិន្នន័យចំនួន _TOTAL_",
+              "sInfoEmpty": "បង្ហាញពីទី 0 ដល់ 0 នៃទិន្នន័យចំនួន 0",
+              "sInfoFiltered": "(ទាញចេញពីទិន្នន័យសរុបចំនួន _MAX_)",
+              "sSearch":"ស្វែងរក",
+              "oPaginate": {
+                "sFirst": "ទំព័រដំបូង",
+                "sLast": "ចុងក្រោយ",
+                "sPrevious": "មុន",
+                "sNext": "បន្ទាប់"
+              }
            }
           <?php
-          } ?>
+					endif; ?>
           <?php
-            if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) { ?>
+            if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)): ?>
              , "aaSortingFixed": [[<?php echo $group_data_by_column_index; ?>, 'asc' ]] //sort data in Data Classifications first before grouping
           <?php
-          } ?>
-             , "drawCallback": function ( settings ) {  //Group colums
-                     var api = this.api();
-                     var rows = api.rows( {page:'current'} ).nodes();
-                     var last=null;
-                    <?php
-                    if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) { ?>
-                       api.column(<?php echo $group_data_by_column_index; ?>, {page:'current'} ).data().each( function ( group, i ) {
-                           if ( last !== group ) {
-                               $(rows).eq( i ).before(
-                                   '<tr class="group" id="<?php echo odm_country_manager()->get_current_country()?>-bgcolor"><td colspan="<?php echo  count($DATASET_ATTRIBUTE)?>">'+group+'</td></tr>'
-                               );
-                               last = group;
-                           }
-                       } );
-                    <?php
-                    } ?>
-                   align_width_td_and_th();
-               }
+						endif; ?>
+           , "drawCallback": function ( settings ) {  //Group colums
+                   var api = this.api();
+                   var rows = api.rows( {page:'current'} ).nodes();
+                   var last=null;
+                  <?php
+                  if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) { ?>
+                     api.column(<?php echo $group_data_by_column_index; ?>, {page:'current'} ).data().each( function ( group, i ) {
+                         if ( last !== group ) {
+                             $(rows).eq( i ).before(
+                                 '<tr class="group" id="<?php echo odm_country_manager()->get_current_country()?>-bgcolor"><td colspan="<?php echo  count($DATASET_ATTRIBUTE)?>">'+group+'</td></tr>'
+                             );
+                             last = group;
+                         }
+                     } );
+                  <?php
+                  } ?>
+                 align_width_td_and_th();
+             }
         });
 
          <?php
-         if ($filtered_by_column_index) {
-                  $num_filtered_column_index = explode(',', $filtered_by_column_index);
-                  $number_selector = 1;
-                  foreach ($num_filtered_column_index as $column_index) {
-                      $column_index = trim($column_index);
-                      if ($number_selector <= 3) { ?>
-                        create_filter_by_column_index(<?php echo $column_index;?>);
-                  <?php
-                      }
-                        ++$number_selector;
-                    }
-         }
+         if ($filtered_by_column_index) :
+          $num_filtered_column_index = explode(',', $filtered_by_column_index);
+          $number_selector = 1;
+          foreach ($num_filtered_column_index as $column_index):
+              $column_index = trim($column_index);
+              if ($number_selector <= 3): ?>
+                create_filter_by_column_index(<?php echo $column_index;?>);
+	          <?php
+							endif;
+                ++$number_selector;
+          endforeach;
+         endif;
          ?>
          //Set width of table header and body equally
         function align_width_td_and_th(){
@@ -493,13 +575,13 @@
           if (odm_language_manager()->get_current_language() == 'km') { ?>
              var div_filter = $('<div class="filter_by filter_by_column_index_'+columnIndex+'"></div>');
              div_filter.appendTo( $('#filter_by_classification'));
-             var select = $('<select><option value="">'+column_header+'<?php _e('all', 'wp-odm_profile_pages');
+             var select = $('<select class="filter_box"><option value="">'+column_header+'<?php _e('all', 'wp-odm_profile_pages');
              ?></option></select>');
           <?php
           } else { ?>
              var div_filter = $('<div class="filter_by filter_by_column_index_'+columnIndex+'"></div>');
              div_filter.appendTo( $('#filter_by_classification'));
-             var select = $('<select><option value=""><?php _e('All ', 'wp-odm_profile_pages'); ?>'+column_header+'</option></select>');
+             var select = $('<select class="filter_box"><option value=""><?php _e('All ', 'wp-odm_profile_pages'); ?>'+column_header+'</option></select>');
           <?php
           } ?>
           select.appendTo( $('.filter_by_column_index_'+columnIndex) )
