@@ -311,7 +311,7 @@ table.dataTable thead .sorting_desc_disabled {
 }
 
 .mobile-filter-container{
-
+  background-color: #fff;
 }
 
 .filter-container #search_all, .mobile-filter-container #search_all{
@@ -367,10 +367,6 @@ table.dataTable thead .sorting_desc_disabled {
 #filter_by_classification .filter_by:last-child{
   margin-right: 0
 }
-.select2-container {
-    font-size: 14px;
-    z-index: 99;
-}
 
 #filter_by_classification .label {
   display: inline;
@@ -393,31 +389,6 @@ table.dataTable thead .sorting_desc_disabled {
 
 .seven #filter_by_classification select {
   width: 220px;
-}
-
-.fixed_top_bar{
-  display: none;
-  height: 50px;
-  position: fixed;
-  top: 0;
-  background: #fff;
-  z-index: 99;
-  margin-left: 20px;
-}
-
-.fixed_top_bar div{
-  display: inline;
-}
-
-.fixed_top_bar .dataTables_filter{
-  margin-top: 12px;
-  margin-right: 10px;
-  display: inline-block;;
-  float: right;
-}
-
-.fixed_top_bar .dataTables_filter input{
-    margin-left: 5px;
 }
 
 .show_list_format {
