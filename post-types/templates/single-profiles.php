@@ -42,9 +42,7 @@ $sub_navigation = get_post_meta($post->ID, '_page_with_sub_navigation', true);
 	    <header class="row">
 	      <div class="ten columns">
 	        <h1><?php the_title(); ?></h1>
-					<div class="hideOnMobileAndTablet">
-	        	<?php echo_post_meta(get_post()); ?>
-					</div>
+        	<?php echo_post_meta(get_post()); ?>
 	      </div>
 	      <?php
 	      if(!empty($dataset)): ?>
