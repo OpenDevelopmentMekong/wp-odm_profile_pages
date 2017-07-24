@@ -10,6 +10,9 @@ only screen and (max-width: 800px),
   #profiles_wrapper, .dataTables_scrollHead, .dataTables_scrollBody {
     width: 97vw !important;
   }
+	.section-title{
+		border-bottom: 1px solid #999 !important;
+	}
 }
 
 @media

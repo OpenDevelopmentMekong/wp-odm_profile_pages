@@ -119,54 +119,118 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class ="sixteen columns">
-        <div class="filter-container">
-          <div class="panel">
-            <div class="four columns">
-              <p><?php _e('Textual search', 'wp-odm_profile_pages');?></p>
-              <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
-            </div>
-            <?php
-            if (isset($related_profile_pages) && $related_profile_pages != '') {
-              $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
-              <div class="seven columns">
-                <?php
-                  if ($filtered_by_column_index): ?>
-                  <div id="filter_by_classification">
-                    <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
-                  </div>
-                <?php endif; ?>
-              </div>
-              <div class="five columns">
-                <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
-                <ul>
-                <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
-                    $split_title_and_url = explode('|', $profile_pages_url);?>
-                    <li>
-                      <a href="<?php echo $split_title_and_url[1]; ?>" target="_blank"><?php echo $split_title_and_url[0]; ?></a>
-                    </li>
-                <?php endforeach; ?>
-                </ul>
-              </div>
-          <?php
-          } else { ?>
-            <div class="twelve columns">
-              <?php
-                if ($filtered_by_column_index): ?>
-                <div id="filter_by_classification">
-                  <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
-                </div>
-              <?php endif; ?>
-            </div>
-          <?php
-          }
-          ?>
-          </div>
-          <div class="fixed_datatable_tool_bar"></div>
-        </div>
-      </div>
-    </div>
+		<?php
+
+			if (!odm_screen_manager()->is_desktop()): ?>
+
+				<div class="row hideOnDesktop">
+					<div class ="sixteen columns">
+						<input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
+						<i class="fa fa-filter open-mobile-dialog"></i>
+					</div>
+				</div>
+
+				<div class="row hideOnDesktop mobile-dialog">
+					<div class ="sixteen columns">
+						<div class="close-mobile-dialog">
+							<i class="fa fa-times-circle"></i>
+						</div>
+					</div>
+		      <div class ="sixteen columns">
+		        <div class="panel">
+		          <?php
+		          if (isset($related_profile_pages) && $related_profile_pages != ''):
+		            $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
+		            <div class="eight columns">
+		              <?php
+		                if ($filtered_by_column_index): ?>
+		                <div id="filter_by_classification">
+		                  <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+		                </div>
+		              <?php endif; ?>
+		            </div>
+		            <div class="eight columns">
+		              <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
+		              <ul>
+		              <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
+		                  $split_title_and_url = explode('|', $profile_pages_url);?>
+		                  <li>
+		                    <a href="<?php echo $split_title_and_url[1]; ?>" target="_blank"><?php echo $split_title_and_url[0]; ?></a>
+		                  </li>
+		              <?php endforeach; ?>
+		              </ul>
+		            </div>
+		        <?php
+						else: ?>
+		          <div class="sixteen columns">
+		            <?php
+		              if ($filtered_by_column_index): ?>
+		              <div id="filter_by_classification">
+		                <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+		              </div>
+		            <?php endif; ?>
+		          </div>
+		        <?php
+						endif;
+		        ?>
+		        </div>
+		      </div>
+		    </div>
+
+			<?php
+				else: ?>
+
+	    <div class="row hideOnMobileAndTablet">
+	      <div class ="sixteen columns">
+	        <div class="filter-container">
+	          <div class="panel">
+	            <div class="four columns">
+	              <p><?php _e('Textual search', 'wp-odm_profile_pages');?></p>
+	              <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
+	            </div>
+	            <?php
+	            if (isset($related_profile_pages) && $related_profile_pages != ''):
+	              $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
+	              <div class="seven columns">
+	                <?php
+	                  if ($filtered_by_column_index): ?>
+	                  <div id="filter_by_classification">
+	                    <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+	                  </div>
+	                <?php endif; ?>
+	              </div>
+	              <div class="five columns">
+	                <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
+	                <ul>
+	                <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
+	                    $split_title_and_url = explode('|', $profile_pages_url);?>
+	                    <li>
+	                      <a href="<?php echo $split_title_and_url[1]; ?>" target="_blank"><?php echo $split_title_and_url[0]; ?></a>
+	                    </li>
+	                <?php endforeach; ?>
+	                </ul>
+	              </div>
+	          <?php
+						else: ?>
+	            <div class="twelve columns">
+	              <?php
+	                if ($filtered_by_column_index): ?>
+	                <div id="filter_by_classification">
+	                  <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+	                </div>
+	              <?php endif; ?>
+	            </div>
+	          <?php
+						endif;
+	          ?>
+	          </div>
+	          <div class="fixed_datatable_tool_bar"></div>
+	        </div>
+	      </div>
+	    </div>
+
+		<?php
+		endif; ?>
 
     <!-- Table -->
   <div class="row no-margin-buttom">
@@ -353,6 +417,7 @@
            "sDom": 'T<"H"lf>t<"F"ip>',
            processing: true,
            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+					 iDisplayLength: 10,
            displayLength: -1
            , columnDefs: [
              {
