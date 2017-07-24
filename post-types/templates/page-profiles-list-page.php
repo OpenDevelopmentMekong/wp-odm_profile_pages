@@ -428,7 +428,11 @@ endif; ?>
            scrollX: true,
 					 <?php
 					  	if (!odm_screen_manager()->is_desktop()): ?>
-           responsive: true,
+           responsive: {
+                details: {
+                    type: 'column'
+                }
+            },
 					 <?php
 				 			endif; ?>
            sDom: 'T<"H"lf>t<"F"ip>',
