@@ -121,7 +121,7 @@ if($profiles): ?>
 
 		<?php
 
-			if (odm_screen_manager()->is_desktop()): ?>
+			if (!odm_screen_manager()->is_desktop()): ?>
 
 				<div class="row filter-container">
 						<div class="sixteen columns mobile-filter-container">              
