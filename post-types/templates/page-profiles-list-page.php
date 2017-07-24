@@ -5,13 +5,13 @@
   $full_width_position = get_post_meta(get_the_ID(), '_full_width_content_position', true);
 
   if($full_width_content && $full_width_position): ?>
-  <div class="row">
-    <div class="sixteen columns">
-      <?php echo "<div class='full-width-content above-map'>".$full_width_content."</div>"; ?>
-    </div>
-  </div>
+	  <div class="row">
+	    <div class="sixteen columns">
+	      <?php echo "<div class='full-width-content above-map'>".$full_width_content."</div>"; ?>
+	    </div>
+	  </div>
   <?php endif; ?>
-  <div class="row">
+  <div class="row hideOnMobile">
     <div class="sixteen columns">
       <?php
       if(function_exists('display_embedded_map')):
@@ -123,7 +123,7 @@ if($profiles): ?>
 
 			if (!odm_screen_manager()->is_desktop()): ?>
 
-				<div class="row hideOnDesktop mobile-filter-container">
+				<div class="row mobile-filter-container filter-container hideOnDesktop">
 						<div class="fifteen columns">
 							<input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
 						</div>
@@ -134,9 +134,12 @@ if($profiles): ?>
 						</div>
 				</div>
 
-				<div class="row hideOnDesktop mobile-dialog">
-					<div class ="sixteen columns">
-						<div class="close-mobile-dialog">
+				<div class="row hideOnDesktop">
+					<div class ="eight columns align-left">
+						<?php _e("Filters","wp-odm_profile_pages"); ?>
+					</div>
+					<div class ="eight columns">
+						<div class="close-mobile-dialog align-right">
 							<i class="fa fa-times-circle"></i>
 						</div>
 					</div>
@@ -409,8 +412,7 @@ endif; ?>
               $('.filter-container').addClass("fixed-filter-container");
       				$('.dataTables_scrollBody').css('margin-top', 10+'em');
               $('.fixed_datatable_tool_bar').css('display','inline-block');
-      		   }
-      		   else {
+      		   }else {
       				$('.dataTables_scrollHead').css('position','static');
        				$('.fixed-filter-container').css('position','static');
               $('.fixed_datatable_tool_bar').hide();
@@ -484,18 +486,18 @@ endif; ?>
         });
 
          <?php
-         if ($filtered_by_column_index) {
-                  $num_filtered_column_index = explode(',', $filtered_by_column_index);
-                  $number_selector = 1;
-                  foreach ($num_filtered_column_index as $column_index) {
-                      $column_index = trim($column_index);
-                      if ($number_selector <= 3) { ?>
-                        create_filter_by_column_index(<?php echo $column_index;?>);
-                  <?php
-                      }
-                        ++$number_selector;
-                    }
-         }
+         if ($filtered_by_column_index) :
+          $num_filtered_column_index = explode(',', $filtered_by_column_index);
+          $number_selector = 1;
+          foreach ($num_filtered_column_index as $column_index):
+              $column_index = trim($column_index);
+              if ($number_selector <= 3): ?>
+                create_filter_by_column_index(<?php echo $column_index;?>);
+	          <?php
+							endif;
+                ++$number_selector;
+          endforeach;
+         endif;
          ?>
          //Set width of table header and body equally
         function align_width_td_and_th(){
