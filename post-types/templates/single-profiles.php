@@ -95,7 +95,7 @@ $sub_navigation = get_post_meta($post->ID, '_page_with_sub_navigation', true);
 
 jQuery(document).ready(function($) {
 
- $('select').select2();
+ $('.filter_box').select2();
 
  <?php
 	 if($sub_navigation){

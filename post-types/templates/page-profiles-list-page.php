@@ -569,13 +569,13 @@ endif; ?>
           if (odm_language_manager()->get_current_language() == 'km') { ?>
              var div_filter = $('<div class="filter_by filter_by_column_index_'+columnIndex+'"></div>');
              div_filter.appendTo( $('#filter_by_classification'));
-             var select = $('<select><option value="">'+column_header+'<?php _e('all', 'wp-odm_profile_pages');
+             var select = $('<select class="filter_box"><option value="">'+column_header+'<?php _e('all', 'wp-odm_profile_pages');
              ?></option></select>');
           <?php
           } else { ?>
              var div_filter = $('<div class="filter_by filter_by_column_index_'+columnIndex+'"></div>');
              div_filter.appendTo( $('#filter_by_classification'));
-             var select = $('<select><option value=""><?php _e('All ', 'wp-odm_profile_pages'); ?>'+column_header+'</option></select>');
+             var select = $('<select class="filter_box"><option value=""><?php _e('All ', 'wp-odm_profile_pages'); ?>'+column_header+'</option></select>');
           <?php
           } ?>
           select.appendTo( $('.filter_by_column_index_'+columnIndex) )
