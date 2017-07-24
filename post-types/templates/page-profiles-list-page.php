@@ -430,7 +430,7 @@ endif; ?>
 					  	if (!odm_screen_manager()->is_desktop()): ?>
            responsive: {
                 details: {
-                    type: 'column'
+                  type: 'inline'
                 }
             },
 					 <?php
