@@ -378,11 +378,6 @@ table.dataTable thead .sorting_desc_disabled {
   padding: 2px 2px;
 }
 
-.loading_icon{
-  background: #fff url('/wp-content/themes/wp-odm_theme/img/loading.gif')  no-repeat right 5px center !important;
-  background-size: 16px 16px !important;
-}
-
 .twelve #filter_by_classification select {
   width: 200px;
 }
