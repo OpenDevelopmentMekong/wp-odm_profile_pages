@@ -134,7 +134,7 @@ if($profiles): ?>
 						</div>
 				</div>
 
-				<div class="row hideOnDesktop">
+				<div class="row mobile-dialog hideOnDesktop">
 					<div class ="eight columns align-left">
 						<?php _e("Filters","wp-odm_profile_pages"); ?>
 					</div>
