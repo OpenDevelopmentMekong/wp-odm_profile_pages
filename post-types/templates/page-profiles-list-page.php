@@ -387,11 +387,12 @@
       }
     };
 
-    <?php if ($filter_map_id == '' && $metadata_dataset == '') { ?>
-      	var get_od_selector_height = $('#od-selector').height();
-        var get_filter_container_height = $('.filter-container').height();
-        var get_position_profile_table =  $('.filter-container').offset().top;
-        var table_fixed_position = get_od_selector_height +get_filter_container_height +40;
+    <?php
+			if ($filter_map_id == '' && $metadata_dataset == '') { ?>
+    	var get_od_selector_height = $('#od-selector').height();
+      var get_filter_container_height = $('.filter-container').height();
+      var get_position_profile_table =  $('.filter-container').offset().top;
+      var table_fixed_position = get_od_selector_height +get_filter_container_height +40;
 
         $(window).scroll(function() {
       			if ($(document).scrollTop() >= get_position_profile_table) {
@@ -413,8 +414,12 @@
            });
          oTable = $("#profiles").dataTable({
            scrollX: true,
+					 <?php
+					  	if (!odm_screen_manager()->is_desktop()): ?>
            responsive: true,
-           "sDom": 'T<"H"lf>t<"F"ip>',
+					 <?php
+				 			endif; ?>
+           sDom: 'T<"H"lf>t<"F"ip>',
            processing: true,
            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
 					 iDisplayLength: 10,
