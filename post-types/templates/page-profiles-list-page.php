@@ -123,7 +123,7 @@ if($profiles): ?>
 
 			if (!odm_screen_manager()->is_desktop()): ?>
 
-				<div class="row filter-container">
+				<div class="row filter-container hideOnDesktop">
 						<div class="sixteen columns mobile-filter-container">              
               <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
               <a href="#" class="button filter open-mobile-dialog float-right">
