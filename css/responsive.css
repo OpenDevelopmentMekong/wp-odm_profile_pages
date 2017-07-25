@@ -22,7 +22,9 @@ only screen and (max-width: 640px){
 @media
 only screen and (max-width: 480px),
 (min-device-width: 320px) and (max-device-width: 480px)  {
-
+	.full-width-content .vertical-list-mobile {
+		text-align: left !important;
+	}
 	.full-width-content .vertical-list-mobile li{
 		display: inline-block !important;
 	}
