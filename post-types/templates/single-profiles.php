@@ -41,8 +41,7 @@ $sub_navigation = get_post_meta($post->ID, '_page_with_sub_navigation', true);
 	<section class=	"container section-title main-title">
     <header class="row">
       <div class="ten columns">
-        <h1><?php the_title(); ?></h1>
-      	<?php echo_post_meta(get_post()); ?>
+        <?php odm_title($post,array('date','categories','tags')); ?> 
       </div>
       <?php
       if(!empty($dataset)): ?>
