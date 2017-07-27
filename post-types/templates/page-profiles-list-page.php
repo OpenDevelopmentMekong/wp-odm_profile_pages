@@ -11,7 +11,7 @@
 	    </div>
 	  </div>
   <?php endif; ?>
-  <div class="row hideOnMobile">
+  <div class="row">
     <div class="sixteen columns">
       <?php
       if(function_exists('display_embedded_map')):
@@ -124,23 +124,23 @@ if($profiles): ?>
 			if (!odm_screen_manager()->is_desktop()): ?>
 
 				<div class="row filter-container hideOnDesktop">
-						<div class="sixteen columns mobile-filter-container">              
+						<div class="sixteen columns mobile-filter-container">
               <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
-              <a href="#" class="button filter open-mobile-dialog float-right">
+              <a href="#" class="button filter open-mobile-dialog float-right" id="mobile-filter">
 								<i class="fa fa-filter fa-lg"></i>
 							</a>
 						</div>
-            <div class="fixed_datatable_tool_bar"></div>						
+            <div class="fixed_datatable_tool_bar"></div>
 				</div>
 
-				<div class="row mobile-dialog hideOnDesktop">
+				<div class="row mobile-filter mobile-dialog hideOnDesktop">
+          <div class ="eight columns">
+            <div class="close-mobile-dialog align-right">
+              <i class="fa fa-times-circle"></i>
+            </div>
+          </div>
 					<div class ="eight columns align-left">
 						<?php _e("Filters","wp-odm_profile_pages"); ?>
-					</div>
-					<div class ="eight columns">
-						<div class="close-mobile-dialog align-right">
-							<i class="fa fa-times-circle"></i>
-						</div>
 					</div>
 		      <div class ="sixteen columns">
 		        <div class="panel">
@@ -401,7 +401,7 @@ endif; ?>
       $('.filter-container').each(function(index){
         if ($(this).css("display") !== 'none'){
           get_filter_container_height += $(this).height();
-        }        
+        }
       });
       var get_position_profile_table =  $('.filter-container').offset().top;
       var table_fixed_position = get_od_selector_height +get_filter_container_height +40;
