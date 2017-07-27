@@ -1,6 +1,7 @@
 #profiles{
   min-width: 98%;
 }
+
 #profiles td {
   line-height: 16px;
 }
@@ -61,9 +62,11 @@ table.dataTable thead th .th-value {
 .dataTables_length {
   margin-top: 8px;
 }
+
 .dataTables_length .select2-container{
   width: auto !important;
 }
+
 .dataTables_info {
   margin-top: 2px;
 }
@@ -134,7 +137,6 @@ table.dataTable thead .sorting_desc_disabled {
   display: none;
 }
 
-
 .top {
   display: block;
   height: auto;
@@ -153,32 +155,40 @@ table.dataTable thead .sorting_desc_disabled {
 .page-template-page-profiles .single-post .row {
   margin-top: 0;
 }
+
 .single-profiles .post-meta {
   margin-top: 0 !important;
 }
+
 .single-profiles #post-content img{
   max-width: 100% !important;
 }
+
 .single-profiles .twelve #post-content img.size-full {
     padding: 10px;
     max-width: 855px !important;
 }
+
 .single-profiles #post-content .wp-caption img {
   padding: 0;
   margin-top: 0;
   border: 0;
 }
+
 .single-profiles .twelve #post-content .wp-caption {
     width: 865px !important;
 }
+
 .single-profiles .twelve #post-content .wp-caption img.size-full {
     max-width: 855px !important;
     padding: 0;
 }
+
 .metadata_button {
   padding: 3px 10px !important;
   border-radius: 6px;
 }
+
 #profiles_map {
   height: 400px;
 }
@@ -230,6 +240,7 @@ table.dataTable thead .sorting_desc_disabled {
 .profile-metadata {
   padding-top: 15px;
 }
+
 #profiles td .td-value ul {
   display: inline-block;
   margin-bottom: 0;
@@ -267,9 +278,11 @@ table.dataTable thead .sorting_desc_disabled {
   padding: 5px 10px !important;
   margin-bottom: 0 !important;
 }
+
 .total_listed ul{
   margin: 0 !important
 }
+
 .total_listed li{
   display: inline-block;
   padding: 0;
@@ -286,23 +299,33 @@ table.dataTable thead .sorting_desc_disabled {
   width: 100%;
   display: inline-block;
 }
+
 .filter-container .panel{
     width: 100%;
     padding: 10px 0 !important;
     float: left;
 }
+
 .filter-container p, .filter-container ul, .filter-container li {
   margin-bottom: 5px;
 }
-.filter-container #search_all{
-  width: 90%;
-  margin: 0
+
+.mobile-filter-container{
+  background-color: #fff;
+  display: inline-flex !important;
 }
+
+.filter-container #search_all, .mobile-filter-container #search_all{
+  width: 100%;
+  margin: 0 10px 0 0;
+}
+
 .fixed-filter-container {
   position: fixed;
   top: 37px;
   z-index: 99;
 }
+
 .fixed_datatable_tool_bar {
   display: none;
   float: right;
@@ -335,57 +358,35 @@ table.dataTable thead .sorting_desc_disabled {
   width: 100%;
   display: inline-block;
 }
+
 #filter_by_classification .filter_by{
   display: inline-block;
   margin-right: 1em;
   margin-bottom: 7px;
 }
+
 #filter_by_classification .filter_by:last-child{
   margin-right: 0
 }
-.select2-container {
-    font-size: 14px;
-    z-index: 99;
-}
+
 #filter_by_classification .label {
   display: inline;
 }
+
 #filter_by_classification select {
   display: inline;
   margin: 0;
   padding: 2px 2px;
 }
-.loading_icon{
-  background: #fff url('/wp-content/themes/wp-odm_theme/img/loading.gif')  no-repeat right 5px center !important;
-  background-size: 16px 16px !important;
-}
+
 .twelve #filter_by_classification select {
   width: 200px;
 }
+
 .seven #filter_by_classification select {
   width: 220px;
 }
-.fixed_top_bar{
-  display: none;
-  height: 50px;
-  position: fixed;
-  top: 0;
-  background: #fff;
-  z-index: 99;
-  margin-left: 20px;
-}
-.fixed_top_bar div{
-  display: inline;
-}
-.fixed_top_bar .dataTables_filter{
-  margin-top: 12px;
-  margin-right: 10px;
-  display: inline-block;;
-  float: right;
-}
-.fixed_top_bar .dataTables_filter input{
-    margin-left: 5px;
-}
+
 .show_list_format {
   display: none;
   padding: 2px 15px;
@@ -412,7 +413,6 @@ table.dataTable thead .sorting_desc_disabled {
   box-sizing: border-box;
   display: inline-block;
   min-width: 1.5em;
-  //padding: 0.5em 1em;
   margin-left: 2px;
   text-align: center;
   text-decoration: none !important;
@@ -505,6 +505,7 @@ table.dataTable thead .sorting_desc_disabled {
   width: 100%;
   margin-right: 10px;
 }
+
 .circular {
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
@@ -514,6 +515,7 @@ table.dataTable thead .sorting_desc_disabled {
   display: table-cell;
   vertical-align: middle;
 }
+
 .circular  img , .single #post-content .circular img {
   border: none;
   text-align: center;
@@ -521,9 +523,11 @@ table.dataTable thead .sorting_desc_disabled {
   margin: auto;
   float: none;
 }
+
 .dark-gray {
   background: #333;
 }
+
 .smallest-size{
   width: 50px;
   height: 50px;
@@ -535,26 +539,33 @@ div.table-wrapper {
   overflow-x: auto;
   margin-bottom:20px;
 }
+
 div.table-wrapper table.spreadsheet{
   margin-bottom: 0;
 }
+
 table.spreadsheet {
   width: 100%;
   border-bottom: 0;
   hyphens: none;
 }
+
 table.spreadsheet tbody tr:nth-child(2n+1){
   background-color: #fff;
 }
+
 table.spreadsheet tbody tr:nth-child(2n+2){
   background-color: #e8e8e8;
 }
+
 table.spreadsheet tr{
   border-right: 1px solid #efefef;
 }
+
 table.spreadsheet th{
   padding: 10px;
 }
+
 table.spreadsheet td{
   border: 0;
   padding: 10px;
@@ -564,8 +575,9 @@ table.spreadsheet td{
 }
 
 table.no-bgcolor {
-  hyphens: none;​
+  hyphens: none;
 }
+
 table.no-bgcolor tr td {
   hyphens: none;
   background-color: #fff;
@@ -575,10 +587,12 @@ table.no-bgcolor tr td {
 table.no-bgcolor tr th {
   border-left: 1px solid #ddd;
 }
+
 table.no-bgcolor tr td{
   border-left: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
+
 table.no-bgcolor tr{
   border-right: 1px solid #ccc;
 }
@@ -587,6 +601,7 @@ table.no-bgcolor tr{
 #od-menu.od-submenu {
   position: relative;
 }
+
 .od-submenu-bg {
   position: relative;
   opacity: 0.6;
@@ -594,12 +609,14 @@ table.no-bgcolor tr{
   height: 40px;
   width: 100%;
 }
+
 .od-submenu .container {
   position: absolute;
   left: 0;
   right: 0;
   z-index: 2;
 }
+
 #od-menu.od-submenu ul {
   text-align: right;
   margin: 0;
@@ -618,6 +635,7 @@ table.no-bgcolor tr{
   margin: 0;
   padding: 0 8px;
 }
+
 #od-menu.od-submenu li:hover {
   background: #f1f1f1;
 }
@@ -630,6 +648,7 @@ table.no-bgcolor tr{
   margin: 0 0 0 6px;
   vertical-align: top;
 }
+
 #od-menu.od-submenu li ul.sub-menu{
   display: none;
   background: #f1f1f1;
@@ -642,18 +661,23 @@ table.no-bgcolor tr{
 #od-menu.od-submenu li ul.sub-menu li{
   min-width: 150px;
 }
+
 #od-menu.od-submenu li:hover ul{
   display: block;
 }
+
 #od-menu.od-submenu li > ul > li:hover{
   background: #ddd;
 }
+
 .od-submenu h1{
   margin: 3px 0 0;
 }
+
 .full-width-content ul{
     padding: 5px 0;
 }
+
 .full-width-content.above-map{
   margin-bottom: 1em;
 }

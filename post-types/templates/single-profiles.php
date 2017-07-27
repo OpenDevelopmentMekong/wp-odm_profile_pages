@@ -37,28 +37,34 @@ $template = get_post_meta($post->ID, '_attributes_template_layout', true);
 $sub_navigation = get_post_meta($post->ID, '_page_with_sub_navigation', true);
 ?>
 <?php if(!$sub_navigation):?>
+
 	<section class=	"container section-title main-title">
-	    <header class="row">
-	      <div class="ten columns">
-	        <h1><?php the_title(); ?></h1>
-	        <?php echo_post_meta(get_post()); ?>
-	      </div>
-	      <?php
-	      if(!empty($dataset)) { ?>
-	        <div class="six columns align-right">
-	          <?php echo_download_button_link_to_datapage($ckan_dataset_id) ?>
-	        </div>
-	      <?php
-	      }else { ?>
-	        <div class="four columns">
-	          <div class="widget share-widget">
-	            <?php odm_get_template('social-share',array(),true); ?>
-	          </div>
-	        </div>
-	      <?php
-	      }
-	      ?>
-	    </header>
+    <header class="row">
+      <div class="ten columns">
+				<?php
+				if(!empty($dataset) && odm_screen_manager()->is_mobile()): ?>
+					<div class="align-right">
+						<?php echo_download_button_link_to_datapage($ckan_dataset_id) ?>
+					</div>
+				<?php endif;?>
+        <?php odm_title($post,array('date','categories','tags')); ?> 
+      </div>
+      <?php
+      if(!empty($dataset) && !odm_screen_manager()->is_mobile()): ?>
+        <div class="six columns align-right">
+          <?php echo_download_button_link_to_datapage($ckan_dataset_id) ?>
+        </div>
+      <?php
+			elseif (odm_screen_manager()->is_desktop()): ?>
+        <div class="four columns">
+          <div class="widget share-widget">
+            <?php odm_get_template('social-share',array(),true); ?>
+          </div>
+        </div>
+      <?php
+    	endif;
+      ?>
+    </header>
 	</section>
 <?php endif; ?>
 
@@ -92,7 +98,7 @@ $sub_navigation = get_post_meta($post->ID, '_page_with_sub_navigation', true);
 
 jQuery(document).ready(function($) {
 
- $('select').select2();
+ $('.filter_box').select2();
 
  <?php
 	 if($sub_navigation){
