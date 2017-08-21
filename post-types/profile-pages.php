@@ -68,7 +68,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
               'hierarchical'       => true,
               'menu_position'      => 5,
               'taxonomies'         => array('category', 'language'),//, 'post_tag'
-              'supports' => array('title', 'editor', 'page-attributes', 'revisions', 'author', 'thumbnail', 'custom-fields')
+              'supports' => array('title', 'editor', 'page-attributes', 'revisions', 'author', 'excerpt', 'thumbnail', 'custom-fields')
             );
 
             register_post_type('profiles', $args);
@@ -146,6 +146,9 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
           $csv_resource_url_localization = get_post_meta($post->ID, '_csv_resource_url_localization', true);
           $tracking_csv_resource_url = get_post_meta($post->ID, '_tracking_csv_resource_url', true);
           $tracking_csv_resource_url_localization = get_post_meta($post->ID, '_tracking_csv_resource_url_localization', true);
+
+          $filtered_by_column_index = get_post_meta($post->ID, '_filtered_by_column_index', true);
+          $filtered_by_column_index_localization = get_post_meta($post->ID, '_filtered_by_column_index_localization', true);
           ?>
     		<div id="multiple-site">
     			<input type="radio" id="csv_en" class="en" name="language_site_1" value="en" checked />
@@ -287,9 +290,9 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
     	      <table class="form-table  profiles_page_settings_box">
     	        <tbody>
     	         <tr>
-    	          <th><label for="total_number_by_attribute_name"><?php _e('Show Total Numbers of Columns, separated by line breaks (English)', 'wp-odm_profile_pages'); ?></label></th>
+    	          <th><label><?php _e('Show Total Numbers of Columns, separated by line breaks (English)', 'wp-odm_profile_pages'); ?></label></th>
     	          <td>
-    						<textarea id="total_number_by_attribute_name" name="_total_number_by_attribute_name" style="width:100%;height: 80px;"placeholder="column_1"><?php echo $total_number_by_attribute_name; ?></textarea>
+    						<textarea name="_total_number_by_attribute_name" style="width:100%;height: 80px;"placeholder="column_1"><?php echo $total_number_by_attribute_name; ?></textarea>
     	        	<p class="description"><?php _e('List the attribute names to show their total number on page (separated by line breaks). Eg. For ELC: <br/>map_id<br/>developer<br/>data_class["Government data complete", "Government data partial"]', 'wp-odm_profile_pages'); ?></p>
     	          </td>
     	         </tr>
@@ -308,14 +311,14 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
     	          </td>
     	         </tr>
     					 <tr>
-    					  <th><label for="related_profile_pages"><?php _e('Related Profile Pages (English)', 'wp-odm_profile_pages'); ?></label></th>
+    					  <th><label><?php _e('Related Profile Pages (English)', 'wp-odm_profile_pages'); ?></label></th>
     					  <td>
-    								<textarea id="related_profile_pages" name="_related_profile_pages" style="width:100%;height: 50px;"placeholder="Label of Link|URL"><?php echo $related_profile_pages; ?></textarea>
+    								<textarea name="_related_profile_pages" style="width:100%;height: 50px;"placeholder="Label of Link|URL"><?php echo $related_profile_pages; ?></textarea>
     					      <p class="description"><?php _e('Please add the links of profile pages that related (separated by new breaking line). Format: Title of Link|URL. <br/>eg. Economic Land Concessions|https://cambodia.opendevelopmentmekong.net/profiles/economic-land-concessions/', 'wp-odm_profile_pages'); ?></p>
     					  </td>
     					 </tr>
                <tr>
-    					  <th><label for="link_to_detail_column"><?php _e('Column ids linking to detail page (English)', 'wp-odm_profile_pages'); ?></label></th>
+    					  <th><label><?php _e('Column ids linking to detail page (English)', 'wp-odm_profile_pages'); ?></label></th>
     					  <td>
     								<input id="link_to_detail_column" type="text" name="_link_to_detail_column" size="40" placeholder="name,company,developer,block" value="<?php echo $link_to_detail_column? $link_to_detail_column : "name"; ?>" />
     					      <p class="description"><?php _e('Please add the ids of the columns that will feature a link to the entry\'s detail page. Format: Comma-separated values. <br/>eg. name,company,developer,block', 'wp-odm_profile_pages'); ?></p>
@@ -324,7 +327,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                <tr>
     					  <th><label for="link_to_detail_page"><?php _e("Select the column id to use for Detail Link (English)", 'wp-odm_profile_pages'); ?></label></th>
     					  <td>
-                  <select id="link_to_detail_page" class="link_to_detail_page" name="_link_to_detail_page">
+                  <select class="link_to_detail_page" name="_link_to_detail_page">
                     <option value="" <?php echo !isset($link_to_detail_page)? 'selected="selected"' : ''; ?>>default</option>
                     <option value="view_detail" <?php echo (isset($link_to_detail_page) && ($link_to_detail_page == "view_detail"))? 'selected="selected"' : ''; ?> >view_detail</option>
                   </select>
@@ -339,9 +342,9 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
               <table class="form-table form-table-localization profiles_page_settings_box">
                 <tbody>
                  <tr>
-                  <th><label for="total_number_by_attribute_name_localization"><?php _e('Show Total Numbers of Columns, separated by line breaks ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
+                  <th><label><?php _e('Show Total Numbers of Columns, separated by line breaks ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
                   <td>
-            			<textarea id="total_number_by_attribute_name_localization" name="_total_number_by_attribute_name_localization" style="width:100%;height: 80px;"placeholder="column_1"><?php echo $total_number_by_attribute_name_localization; ?></textarea>
+            			<textarea name="_total_number_by_attribute_name_localization" style="width:100%;height: 80px;"placeholder="column_1"><?php echo $total_number_by_attribute_name_localization; ?></textarea>
                   <p class="description"><?php _e('List the attribut4 names to show their total number on page (separated by line breaks). Eg. For ELC: map_id<br/>developer<br/>data_class["Government data complete", "Government data partial"]', 'wp-odm_profile_pages'); ?></p>
                   </td>
                  </tr>
@@ -360,9 +363,9 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                   </td>
                  </tr>
                  <tr>
-            		  <th><label for="related_profile_pages_localization"><?php _e('Related Profile Pages ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
+            		  <th><label><?php _e('Related Profile Pages ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
             		  <td>
-            				<textarea id="related_profile_pages_localization" name="_related_profile_pages_localization" style="width:100%;height: 50px;"placeholder="Lable of Link|URL"><?php echo $related_profile_pages_localization; ?></textarea>
+            				<textarea name="_related_profile_pages_localization" style="width:100%;height: 50px;"placeholder="Lable of Link|URL"><?php echo $related_profile_pages_localization; ?></textarea>
             				<p class="description"><?php _e('Please add the links of profile pages that related (separated by new breaking line). Format: Title of Link|URL. <br/>eg. Economic Land Concessions|https://cambodia.opendevelopmentmekong.net/profiles/economic-land-concessions/', 'wp-odm_profile_pages'); ?></p>
             		  </td>
             		 </tr>
@@ -374,9 +377,9 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
           		  </td>
           		 </tr>
                <tr>
-    					  <th><label for="link_to_detail_page_localization"><?php _e('Select the column id to use for Detail Link ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
+    					  <th><label><?php _e('Select the column id to use for Detail Link ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages'); ?></label></th>
     					  <td>
-                  <select id="link_to_detail_page_localization" class="link_to_detail_page_localization" name="_link_to_detail_page_localization">
+                  <select class="link_to_detail_page_localization" name="_link_to_detail_page_localization">
                     <option value="" <?php echo !isset($link_to_detail_page)? 'selected="selected"' : ''; ?>>default</option>
                     <option value="view_detail" <?php echo (isset($link_to_detail_page) && ($link_to_detail_page == "view_detail"))? 'selected="selected"' : ''; ?> >view_detail</option>
                   </select>
@@ -413,7 +416,6 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
       {
         $full_width_middle_content = get_post_meta($post->ID, '_full_width_middle_content', true);
         $full_width_middle_content_localization = get_post_meta($post->ID, '_full_width_middle_content_localization', true);
-        $show_above_map = get_post_meta($post->ID, '_full_width_content_position', true);
         ?>
         <div id="multiple-site">
           <input type="radio" id="middle_content_en" class="en" name="language_site_3" value="en" checked />
@@ -430,17 +432,12 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
             <table class="form-table middle_content_box">
               <tbody>
                 <tr>
-                <td>
-                <div style="float:left; margin-bottom:1em">
-                  <label for="full_width_middle_content"><?php _e('Full width content (English)', 'wp-odm_profile_pages');?></label>
-                </div>
-                <div style="float:right; margin-bottom:1em">
-                  <input type="checkbox" name="_full_width_content_position" id="full_width_content_position" value="1" <?php checked(1, $show_above_map);?>>
-                  <label for="full_width_content_position"><?php _e('Show above the map', 'odm'); ?></label>
-                </div>
-                  <textarea id="full_width_content_position" name="_full_width_middle_content" style="width:100%;height: 50px;" placeholder=""><?php echo $full_width_middle_content; ?></textarea>
-                  <p class="description"><?php _e('Any content can add to under the Editor content and sidebar and  full width of website even the iframe.', 'wp-odm_profile_pages');
-                  ?></p>
+                <td><label><?php _e('Full width content (English)', 'wp-odm_profile_pages');
+                ?></label>
+                </br>
+                <textarea name="_full_width_middle_content" style="width:100%;height: 50px;" placeholder=""><?php echo $full_width_middle_content; ?></textarea>
+                <p class="description"><?php _e('Any content can add to under the Editor content and sidebar and  full width of website even the iframe.', 'wp-odm_profile_pages');
+                ?></p>
                 </td>
                </tr>
               </tbody>
@@ -451,10 +448,10 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
             <table class="form-table form-table-localization middle_content_box">
               <tbody>
                 <tr>
-                <td><label for="full_width_middle_content_localization"><?php _e('Full width content ('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages');
+                <td><label><?php _e('Full width content (('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages');
                 ?></label>
                 </br>
-                <textarea id="full_width_middle_content_localization" name="_full_width_middle_content_localization" style="width:100%;height: 50px;" placeholder=""><?php echo $full_width_middle_content_localization; ?></textarea>
+                <textarea name="_full_width_middle_content_localization" style="width:100%;height: 50px;" placeholder=""><?php echo $full_width_middle_content_localization; ?></textarea>
                 <p class="description"><?php _e('Any content can add to under the Editor content and sidebar and  full width of website even the iframe.', 'wp-odm_profile_pages');
                 ?></p>
                 </td>
@@ -526,12 +523,6 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 
                 if (isset($_POST['_full_width_middle_content_localization'])) {
                     update_post_meta($post_id, '_full_width_middle_content_localization', $_POST['_full_width_middle_content_localization']);
-                }
-
-                if(isset($_POST['_full_width_content_position'])) {
-                   update_post_meta($post_id, '_full_width_content_position', TRUE);
-                }else{
-                  update_post_meta($post_id, '_full_width_content_position', FALSE);
                 }
 
                 if (isset($_POST['_csv_resource_url'])) {
