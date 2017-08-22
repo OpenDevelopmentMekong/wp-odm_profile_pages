@@ -416,7 +416,12 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
       {
         $full_width_middle_content = get_post_meta($post->ID, '_full_width_middle_content', true);
         $full_width_middle_content_localization = get_post_meta($post->ID, '_full_width_middle_content_localization', true);
+        $position_full_content = get_post_meta($post->ID, '_full_width_content_position', true);
         ?>
+        <p style="float:right; margin:0">
+          <input type="checkbox" name="_full_width_content_position" id="full_width_content_position" value="1" <?php checked(1, $position_full_content);?>>
+          <label for="full_width_content_position"><?php _e('Show above the map', 'odm'); ?></label>
+        </p>
         <div id="multiple-site">
           <input type="radio" id="middle_content_en" class="en" name="language_site_3" value="en" checked />
           <label for="middle_content_en"><?php _e('ENGLISH', 'wp-odm_profile_pages'); ?></label> &nbsp;
@@ -432,7 +437,8 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
             <table class="form-table middle_content_box">
               <tbody>
                 <tr>
-                <td><label><?php _e('Full width content (English)', 'wp-odm_profile_pages');
+                <td>
+                <label><?php _e('Full width content (English)', 'wp-odm_profile_pages');
                 ?></label>
                 </br>
                 <textarea name="_full_width_middle_content" style="width:100%;height: 50px;" placeholder=""><?php echo $full_width_middle_content; ?></textarea>
@@ -448,7 +454,8 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
             <table class="form-table form-table-localization middle_content_box">
               <tbody>
                 <tr>
-                <td><label><?php _e('Full width content (('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages');
+                <td>
+                <label><?php _e('Full width content (('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages');
                 ?></label>
                 </br>
                 <textarea name="_full_width_middle_content_localization" style="width:100%;height: 50px;" placeholder=""><?php echo $full_width_middle_content_localization; ?></textarea>
@@ -523,6 +530,11 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 
                 if (isset($_POST['_full_width_middle_content_localization'])) {
                     update_post_meta($post_id, '_full_width_middle_content_localization', $_POST['_full_width_middle_content_localization']);
+                }
+                if(isset($_POST['_full_width_content_position'])) {
+                    update_post_meta($post_id, '_full_width_content_position', TRUE);
+                }else{
+                    update_post_meta($post_id, '_full_width_content_position', FALSE);
                 }
 
                 if (isset($_POST['_csv_resource_url'])) {
