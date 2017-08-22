@@ -681,3 +681,88 @@ table.no-bgcolor tr{
 .full-width-content.above-map{
   margin-bottom: 1em;
 }
+
+#ytplayer_list{
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+}
+#ytplayer_list div{
+  display: inline-block;
+  float: none;
+  text-align: center;
+  margin: auto 0;
+  padding: 0 5px;
+}
+#ytplayer_list a p { padding:0; margin:0; color:#fff;}
+#ytplayer_list img {
+  width: 100px !important;
+  margin: 0 0 0 !important;
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+.graph_slide_container {
+    margin-top: 1em;
+    position: relative;
+}
+.graph_slide {
+    width: 100%;
+    height: 285px;
+}
+.graph_slide .fc_graph, .graph_slide .fc_graph_per {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.graph_bg {
+    width: 100%;
+    height: 20px;
+    background: rgb(139, 136, 137);
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.entry-content img, .comment-content img, .widget img {
+    max-width: 97.5%;
+}
+
+.selected_option_ha, .selected_option_per {
+    position: relative;
+    top: -2px;
+}
+
+.graph_options, .graph_options_per {
+    cursor: pointer;
+    position: relative;
+    top: -6px;
+    margin-top: 0;
+    margin-left: 3em;
+    margin-right: 1.8em;
+}
+
+.graph_year ul {
+    clear:both;
+    margin: 0;
+    padding: 0;
+    list-style: disc;
+}
+
+.graph_year li {
+    list-style: none;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+    margin-left: 1.2em;
+}
+.single #post-content .graph_options,
+.single #post-content .graph_options_per{
+  border: none;
+}
+.single #post-content .selected_option_ha,
+.single #post-content .selected_option_per{
+  border: none;
+  padding: 0;
+}
