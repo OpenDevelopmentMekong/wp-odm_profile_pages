@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpckan\n"
-"POT-Creation-Date: 2017-01-25 12:47+0100\n"
-"PO-Revision-Date: 2017-01-25 12:47+0100\n"
+"POT-Creation-Date: 2017-07-27 23:53+0200\n"
+"PO-Revision-Date: 2017-07-27 23:53+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -93,73 +93,77 @@ msgstr ""
 msgid "Full Width Middle Content"
 msgstr ""
 
-#: post-types/profile-pages.php:121
+#: post-types/profile-pages.php:116
+msgid "Sub-navigation"
+msgstr ""
+
+#: post-types/profile-pages.php:130
 msgid "Choose template layout"
 msgstr ""
 
-#: post-types/profile-pages.php:145 post-types/profile-pages.php:269
-#: post-types/profile-pages.php:390
+#: post-types/profile-pages.php:152 post-types/profile-pages.php:278
+#: post-types/profile-pages.php:420
 msgid "ENGLISH"
 msgstr ""
 
-#: post-types/profile-pages.php:157
+#: post-types/profile-pages.php:164
 msgid "CSV Resource URL (English)"
 msgstr ""
 
-#: post-types/profile-pages.php:162 post-types/profile-pages.php:189
+#: post-types/profile-pages.php:169 post-types/profile-pages.php:196
 msgid ""
 "CSV Resource of dataset on CKAN. Eg. https://data.opendevelopmentmekong.net/"
 "dataset/economic-land-concessions/resource/3b817bce-9823-493b-8429-"
 "e5233ba3bd87?type=dataset"
 msgstr ""
 
-#: post-types/profile-pages.php:167
+#: post-types/profile-pages.php:174
 msgid "CSV Tracking URL (English)"
 msgstr ""
 
-#: post-types/profile-pages.php:172 post-types/profile-pages.php:196
+#: post-types/profile-pages.php:179 post-types/profile-pages.php:203
 msgid ""
 "CSV Resource of tracking dataset on CKAN. Eg. https://data."
 "opendevelopmentmekong.net/dataset/economic-land-concessions/"
 "resource/8cc0c651-8131-404e-bbce-7fe6af728f89?type=dataset"
 msgstr ""
 
-#: post-types/profile-pages.php:186
+#: post-types/profile-pages.php:193
 msgid "CSV Resource URL ("
 msgstr ""
 
-#: post-types/profile-pages.php:193
+#: post-types/profile-pages.php:200
 msgid "CSV Tracking URL ("
 msgstr ""
 
-#: post-types/profile-pages.php:235 post-types/profile-pages.php:241
+#: post-types/profile-pages.php:242 post-types/profile-pages.php:248
 msgid ""
 "The attributes of Resource Dataset that would like to display, separated by "
 "line breaks ("
 msgstr ""
 
-#: post-types/profile-pages.php:238 post-types/profile-pages.php:244
+#: post-types/profile-pages.php:245 post-types/profile-pages.php:251
 msgid ""
 "The attributes of Tracking Resource that would like to display, separated by "
 "line breaks ("
 msgstr ""
 
-#: post-types/profile-pages.php:281
+#: post-types/profile-pages.php:290
 msgid "Show Total Numbers of Columns, separated by line breaks (English)"
 msgstr ""
 
-#: post-types/profile-pages.php:284
+#: post-types/profile-pages.php:293
 msgid ""
 "List the attribute names to show their total number on page (separated by "
 "line breaks). Eg. For ELC: <br/>map_id<br/>developer<br/"
 ">data_class[\"Government data complete\", \"Government data partial\"]"
 msgstr ""
 
-#: post-types/profile-pages.php:288
+#: post-types/profile-pages.php:297
 msgid "Create Select Filter by Column Index (English)"
 msgstr ""
 
-#: post-types/profile-pages.php:291 post-types/profile-pages.php:333
+#: post-types/profile-pages.php:300 post-types/profile-pages.php:352
 msgid ""
 "Filter selectors will create automatically by adding the column index and "
 "separated by comma. Maximum Filter selectors can create is three. Eg. Create "
@@ -167,21 +171,21 @@ msgid ""
 "which have index 2 and 5"
 msgstr ""
 
-#: post-types/profile-pages.php:295
+#: post-types/profile-pages.php:304
 msgid "Group Data in Column (English)"
 msgstr ""
 
-#: post-types/profile-pages.php:298 post-types/profile-pages.php:340
+#: post-types/profile-pages.php:307 post-types/profile-pages.php:359
 msgid ""
 "Eg. To group data classification of ELC, based on the attributes sample "
 "provided, the index of data classification is: 5"
 msgstr ""
 
-#: post-types/profile-pages.php:302
+#: post-types/profile-pages.php:311
 msgid "Related Profile Pages (English)"
 msgstr ""
 
-#: post-types/profile-pages.php:305 post-types/profile-pages.php:347
+#: post-types/profile-pages.php:314 post-types/profile-pages.php:366
 msgid ""
 "Please add the links of profile pages that related (separated by new "
 "breaking line). Format: Title of Link|URL. <br/>eg. Economic Land "
@@ -189,120 +193,149 @@ msgid ""
 "land-concessions/"
 msgstr ""
 
-#: post-types/profile-pages.php:309
+#: post-types/profile-pages.php:318
 msgid "Column ids linking to detail page (English)"
 msgstr ""
 
-#: post-types/profile-pages.php:312 post-types/profile-pages.php:354
+#: post-types/profile-pages.php:321 post-types/profile-pages.php:373
 msgid ""
 "Please add the ids of the columns that will feature a link to the entry's "
 "detail page. Format: Comma-separated values. <br/>eg. name,company,developer,"
 "block"
 msgstr ""
 
-#: post-types/profile-pages.php:323
+#: post-types/profile-pages.php:325
+msgid "Select the column id to use for Detail Link (English)"
+msgstr ""
+
+#: post-types/profile-pages.php:331 post-types/profile-pages.php:383
+msgid ""
+"Please select the ids of the columns that will use as link to detail page."
+msgstr ""
+
+#: post-types/profile-pages.php:342
 msgid "Show Total Numbers of Columns, separated by line breaks ("
 msgstr ""
 
-#: post-types/profile-pages.php:326
+#: post-types/profile-pages.php:345
 msgid ""
 "List the attribut4 names to show their total number on page (separated by "
 "line breaks). Eg. For ELC: map_id<br/>developer<br/>data_class[\"Government "
 "data complete\", \"Government data partial\"]"
 msgstr ""
 
-#: post-types/profile-pages.php:330
+#: post-types/profile-pages.php:349
 msgid "Create Select Filter by Column Index ("
 msgstr ""
 
-#: post-types/profile-pages.php:337
+#: post-types/profile-pages.php:356
 msgid "Group Data in Column ("
 msgstr ""
 
-#: post-types/profile-pages.php:344
+#: post-types/profile-pages.php:363
 msgid "Related Profile Pages ("
 msgstr ""
 
-#: post-types/profile-pages.php:351
+#: post-types/profile-pages.php:370
 msgid "Column ids linking to detail page ("
 msgstr ""
 
-#: post-types/profile-pages.php:403
+#: post-types/profile-pages.php:377
+msgid "Select the column id to use for Detail Link ("
+msgstr ""
+
+#: post-types/profile-pages.php:435
 msgid "Full width content (English)"
 msgstr ""
 
-#: post-types/profile-pages.php:407 post-types/profile-pages.php:423
+#: post-types/profile-pages.php:439
+msgid "Show above the map"
+msgstr ""
+
+#: post-types/profile-pages.php:442 post-types/profile-pages.php:458
 msgid ""
 "Any content can add to under the Editor content and sidebar and  full width "
 "of website even the iframe."
 msgstr ""
 
-#: post-types/profile-pages.php:419
-msgid "Full width content (("
+#: post-types/profile-pages.php:454
+msgid "Full width content ("
 msgstr ""
 
-#: post-types/templates/page-profiles-list-page.php:52
-#: post-types/templates/page-profiles-list-page.php:55
-#: post-types/templates/page-profiles-list-page.php:88
-#: post-types/templates/page-profiles-list-page.php:91
+#: post-types/profile-pages.php:494
+msgid "Add sub navigation"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:63
+#: post-types/templates/page-profiles-list-page.php:66
+#: post-types/templates/page-profiles-list-page.php:100
+#: post-types/templates/page-profiles-list-page.php:103
 msgid "Total"
 msgstr ""
 
-#: post-types/templates/page-profiles-list-page.php:52
-#: post-types/templates/page-profiles-list-page.php:88
+#: post-types/templates/page-profiles-list-page.php:63
+#: post-types/templates/page-profiles-list-page.php:100
 msgid "Listed"
 msgstr ""
 
-#: post-types/templates/page-profiles-list-page.php:52
-#: post-types/templates/page-profiles-list-page.php:88
+#: post-types/templates/page-profiles-list-page.php:63
+#: post-types/templates/page-profiles-list-page.php:100
 msgid ":"
 msgstr ""
 
-#: post-types/templates/page-profiles-list-page.php:55
-#: post-types/templates/page-profiles-list-page.php:91
+#: post-types/templates/page-profiles-list-page.php:66
+#: post-types/templates/page-profiles-list-page.php:103
 msgid " listed"
 msgstr ""
 
-#: post-types/templates/page-profiles-list-page.php:55
-#: post-types/templates/page-profiles-list-page.php:81
+#: post-types/templates/page-profiles-list-page.php:66
 #: post-types/templates/page-profiles-list-page.php:91
+#: post-types/templates/page-profiles-list-page.php:103
 msgid ": "
 msgstr ""
 
-#: post-types/templates/page-profiles-list-page.php:117
-msgid "Textual search"
-msgstr ""
-
-#: post-types/templates/page-profiles-list-page.php:118
+#: post-types/templates/page-profiles-list-page.php:128
+#: post-types/templates/page-profiles-list-page.php:195
 msgid "Search data in profile page"
 msgstr ""
 
-#: post-types/templates/page-profiles-list-page.php:127
-#: post-types/templates/page-profiles-list-page.php:148
+#: post-types/templates/page-profiles-list-page.php:143
+msgid "Filters"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:154
+#: post-types/templates/page-profiles-list-page.php:175
+#: post-types/templates/page-profiles-list-page.php:204
+#: post-types/templates/page-profiles-list-page.php:225
 msgid "Filter by"
 msgstr ""
 
-#: post-types/templates/page-profiles-list-page.php:132
+#: post-types/templates/page-profiles-list-page.php:159
+#: post-types/templates/page-profiles-list-page.php:209
 msgid "Related profiles"
 msgstr ""
 
-#: post-types/templates/page-profiles-list-page.php:167
+#: post-types/templates/page-profiles-list-page.php:194
+msgid "Textual search"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:247
 msgid "Map ID"
 msgstr ""
 
-#: post-types/templates/page-profiles-list-page.php:227
-#: post-types/templates/page-profiles-list-page.php:238
-#: post-types/templates/page-profiles-list-page.php:261
-#: post-types/templates/page-profiles-list-page.php:269
+#: post-types/templates/page-profiles-list-page.php:309
+#: post-types/templates/page-profiles-list-page.php:320
+#: post-types/templates/page-profiles-list-page.php:343
+#: post-types/templates/page-profiles-list-page.php:351
 #: post-types/templates/page-profiles-single-page.php:51 utils/utils.php:25
 msgid "Unknown"
 msgstr ""
 
-#: post-types/templates/page-profiles-list-page.php:484
+#: post-types/templates/page-profiles-list-page.php:578
 msgid "all"
 msgstr ""
 
-#: post-types/templates/page-profiles-list-page.php:490
+#: post-types/templates/page-profiles-list-page.php:584
 msgid "All "
 msgstr ""
 
@@ -385,6 +418,6 @@ msgstr ""
 msgid "Metadata"
 msgstr ""
 
-#: utils/utils.php:274
+#: utils/utils.php:278
 msgid "Download and Metadata"
 msgstr ""

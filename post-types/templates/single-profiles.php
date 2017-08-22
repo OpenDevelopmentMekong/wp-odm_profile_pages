@@ -40,14 +40,14 @@ $sub_navigation = get_post_meta($post->ID, '_page_with_sub_navigation', true);
 
 	<section class=	"container section-title main-title">
     <header class="row">
-      <div class="ten columns">
+      <div class="twelve columns">
 				<?php
 				if(!empty($dataset) && odm_screen_manager()->is_mobile()): ?>
 					<div class="align-right">
 						<?php echo_download_button_link_to_datapage($ckan_dataset_id) ?>
 					</div>
 				<?php endif;?>
-        <?php odm_title($post,array('date','categories','tags')); ?> 
+        <?php odm_title($post,array('date','categories','tags')); ?>
       </div>
       <?php
       if(!empty($dataset) && !odm_screen_manager()->is_mobile()): ?>

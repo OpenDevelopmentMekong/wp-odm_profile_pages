@@ -45,7 +45,7 @@
     	</section>
   <?php endif; ?>
 
-	<section id="profile-area-bottom" class="page-section">
+	<section id="profile-area-bottom" class="page-section footer-sidebar">
     <div class="container">
       <div class="row">
        <div class="eight columns">
