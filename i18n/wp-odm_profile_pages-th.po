@@ -1,0 +1,425 @@
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: ODM WP Profile pages\n"
+"POT-Creation-Date: 2017-07-27 23:53+0200\n"
+"PO-Revision-Date: 2017-07-27 21:59+0000\n"
+"Last-Translator: Alex Corbi <a.corbi@gmail.com>\n"
+"Language-Team: Thai (http://www.transifex.com/open-development-mekong/wp-odm_profile_pages/language/th/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: th\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: _;_e;__;_n:1,2;_x:1,2c;_ex:1,2c\n"
+"X-Poedit-SearchPath-0: i18n\n"
+"X-Poedit-SearchPath-1: .\n"
+"X-Poedit-SearchPathExcluded-0: components\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: i18n/additional-localization.php:2
+msgid "Amendment to concession"
+msgstr ""
+
+#: i18n/additional-localization.php:3
+msgid "Amendment to developer"
+msgstr ""
+
+#: post-types/profile-pages.php:41 post-types/profile-pages.php:43
+#: post-types/profile-pages.php:44
+msgid "Profiles"
+msgstr ""
+
+#: post-types/profile-pages.php:42
+msgid "Profile"
+msgstr ""
+
+#: post-types/profile-pages.php:45
+msgid "Add new"
+msgstr ""
+
+#: post-types/profile-pages.php:46
+msgid "Add new profile"
+msgstr ""
+
+#: post-types/profile-pages.php:47
+msgid "New profile"
+msgstr ""
+
+#: post-types/profile-pages.php:48
+msgid "Edit profile"
+msgstr ""
+
+#: post-types/profile-pages.php:49
+msgid "View profile"
+msgstr ""
+
+#: post-types/profile-pages.php:50
+msgid "All profile"
+msgstr ""
+
+#: post-types/profile-pages.php:51
+msgid "Search profiles"
+msgstr ""
+
+#: post-types/profile-pages.php:52
+msgid "Parent profiles:"
+msgstr ""
+
+#: post-types/profile-pages.php:53
+msgid "No profile found."
+msgstr ""
+
+#: post-types/profile-pages.php:54
+msgid "No profile found in trash."
+msgstr ""
+
+#: post-types/profile-pages.php:82
+msgid "Template layout"
+msgstr ""
+
+#: post-types/profile-pages.php:90
+msgid "CKAN​ Dataset Resource"
+msgstr ""
+
+#: post-types/profile-pages.php:98
+msgid "Setting of Profiles Page"
+msgstr ""
+
+#: post-types/profile-pages.php:107
+msgid "Full Width Middle Content"
+msgstr ""
+
+#: post-types/profile-pages.php:116
+msgid "Sub-navigation"
+msgstr ""
+
+#: post-types/profile-pages.php:130
+msgid "Choose template layout"
+msgstr ""
+
+#: post-types/profile-pages.php:152 post-types/profile-pages.php:278
+#: post-types/profile-pages.php:420
+msgid "ENGLISH"
+msgstr ""
+
+#: post-types/profile-pages.php:164
+msgid "CSV Resource URL (English)"
+msgstr ""
+
+#: post-types/profile-pages.php:169 post-types/profile-pages.php:196
+msgid ""
+"CSV Resource of dataset on CKAN. Eg. "
+"https://data.opendevelopmentmekong.net/dataset/economic-land-"
+"concessions/resource/3b817bce-9823-493b-8429-e5233ba3bd87?type=dataset"
+msgstr ""
+
+#: post-types/profile-pages.php:174
+msgid "CSV Tracking URL (English)"
+msgstr ""
+
+#: post-types/profile-pages.php:179 post-types/profile-pages.php:203
+msgid ""
+"CSV Resource of tracking dataset on CKAN. Eg. "
+"https://data.opendevelopmentmekong.net/dataset/economic-land-"
+"concessions/resource/8cc0c651-8131-404e-bbce-7fe6af728f89?type=dataset"
+msgstr ""
+
+#: post-types/profile-pages.php:193
+msgid "CSV Resource URL ("
+msgstr ""
+
+#: post-types/profile-pages.php:200
+msgid "CSV Tracking URL ("
+msgstr ""
+
+#: post-types/profile-pages.php:242 post-types/profile-pages.php:248
+msgid ""
+"The attributes of Resource Dataset that would like to display, separated by "
+"line breaks ("
+msgstr ""
+
+#: post-types/profile-pages.php:245 post-types/profile-pages.php:251
+msgid ""
+"The attributes of Tracking Resource that would like to display, separated by"
+" line breaks ("
+msgstr ""
+
+#: post-types/profile-pages.php:290
+msgid "Show Total Numbers of Columns, separated by line breaks (English)"
+msgstr ""
+
+#: post-types/profile-pages.php:293
+msgid ""
+"List the attribute names to show their total number on page (separated by "
+"line breaks). Eg. For ELC: "
+"<br/>map_id<br/>developer<br/>data_class[\"Government data complete\", "
+"\"Government data partial\"]"
+msgstr ""
+
+#: post-types/profile-pages.php:297
+msgid "Create Select Filter by Column Index (English)"
+msgstr ""
+
+#: post-types/profile-pages.php:300 post-types/profile-pages.php:352
+msgid ""
+"Filter selectors will create automatically by adding the column index and "
+"separated by comma. Maximum Filter selectors can create is three. Eg. Create"
+" filter selectors of Data Adjustment and Intended crop or project of ELC "
+"which have index 2 and 5"
+msgstr ""
+
+#: post-types/profile-pages.php:304
+msgid "Group Data in Column (English)"
+msgstr ""
+
+#: post-types/profile-pages.php:307 post-types/profile-pages.php:359
+msgid ""
+"Eg. To group data classification of ELC, based on the attributes sample "
+"provided, the index of data classification is: 5"
+msgstr ""
+
+#: post-types/profile-pages.php:311
+msgid "Related Profile Pages (English)"
+msgstr ""
+
+#: post-types/profile-pages.php:314 post-types/profile-pages.php:366
+msgid ""
+"Please add the links of profile pages that related (separated by new "
+"breaking line). Format: Title of Link|URL. <br/>eg. Economic Land "
+"Concessions|https://cambodia.opendevelopmentmekong.net/profiles/economic-"
+"land-concessions/"
+msgstr ""
+
+#: post-types/profile-pages.php:318
+msgid "Column ids linking to detail page (English)"
+msgstr ""
+
+#: post-types/profile-pages.php:321 post-types/profile-pages.php:373
+msgid ""
+"Please add the ids of the columns that will feature a link to the entry's "
+"detail page. Format: Comma-separated values. <br/>eg. "
+"name,company,developer,block"
+msgstr ""
+
+#: post-types/profile-pages.php:325
+msgid "Select the column id to use for Detail Link (English)"
+msgstr ""
+
+#: post-types/profile-pages.php:331 post-types/profile-pages.php:383
+msgid ""
+"Please select the ids of the columns that will use as link to detail page."
+msgstr ""
+
+#: post-types/profile-pages.php:342
+msgid "Show Total Numbers of Columns, separated by line breaks ("
+msgstr ""
+
+#: post-types/profile-pages.php:345
+msgid ""
+"List the attribut4 names to show their total number on page (separated by "
+"line breaks). Eg. For ELC: map_id<br/>developer<br/>data_class[\"Government "
+"data complete\", \"Government data partial\"]"
+msgstr ""
+
+#: post-types/profile-pages.php:349
+msgid "Create Select Filter by Column Index ("
+msgstr ""
+
+#: post-types/profile-pages.php:356
+msgid "Group Data in Column ("
+msgstr ""
+
+#: post-types/profile-pages.php:363
+msgid "Related Profile Pages ("
+msgstr ""
+
+#: post-types/profile-pages.php:370
+msgid "Column ids linking to detail page ("
+msgstr ""
+
+#: post-types/profile-pages.php:377
+msgid "Select the column id to use for Detail Link ("
+msgstr ""
+
+#: post-types/profile-pages.php:435
+msgid "Full width content (English)"
+msgstr ""
+
+#: post-types/profile-pages.php:439
+msgid "Show above the map"
+msgstr ""
+
+#: post-types/profile-pages.php:442 post-types/profile-pages.php:458
+msgid ""
+"Any content can add to under the Editor content and sidebar and  full width "
+"of website even the iframe."
+msgstr ""
+
+#: post-types/profile-pages.php:454
+msgid "Full width content ("
+msgstr ""
+
+#: post-types/profile-pages.php:494
+msgid "Add sub navigation"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:63
+#: post-types/templates/page-profiles-list-page.php:66
+#: post-types/templates/page-profiles-list-page.php:100
+#: post-types/templates/page-profiles-list-page.php:103
+msgid "Total"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:63
+#: post-types/templates/page-profiles-list-page.php:100
+msgid "Listed"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:63
+#: post-types/templates/page-profiles-list-page.php:100
+msgid ":"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:66
+#: post-types/templates/page-profiles-list-page.php:103
+msgid " listed"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:66
+#: post-types/templates/page-profiles-list-page.php:91
+#: post-types/templates/page-profiles-list-page.php:103
+msgid ": "
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:128
+#: post-types/templates/page-profiles-list-page.php:195
+msgid "Search data in profile page"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:143
+msgid "Filters"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:154
+#: post-types/templates/page-profiles-list-page.php:175
+#: post-types/templates/page-profiles-list-page.php:204
+#: post-types/templates/page-profiles-list-page.php:225
+msgid "Filter by"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:159
+#: post-types/templates/page-profiles-list-page.php:209
+msgid "Related profiles"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:194
+msgid "Textual search"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:247
+msgid "Map ID"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:309
+#: post-types/templates/page-profiles-list-page.php:320
+#: post-types/templates/page-profiles-list-page.php:343
+#: post-types/templates/page-profiles-list-page.php:351
+#: post-types/templates/page-profiles-single-page.php:51 utils/utils.php:25
+msgid "Unknown"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:578
+msgid "all"
+msgstr ""
+
+#: post-types/templates/page-profiles-list-page.php:584
+msgid "All "
+msgstr ""
+
+#: post-types/templates/page-profiles-metadata-page.php:12
+msgid "Metadata: "
+msgstr ""
+
+#: post-types/templates/page-profiles-single-page.php:69
+msgid "Amendments"
+msgstr ""
+
+#: post-types/templates/page-profiles-single-page.php:124
+msgid "Reference documents"
+msgstr ""
+
+#: utils/utils.php:30
+msgid ""
+"ODC is not aware of any adjustments to the concession since it was first "
+"granted."
+msgstr ""
+
+#: utils/utils.php:35
+msgid ""
+"The concession has been subjected to additional reductions in size and has "
+"not been cancelled previously. Publicly available information on land area "
+"cut from ELCs does not include maps or spatial data of excisions. Thus, ODC "
+"cannot present land area cut in shapes. As a result, ELC projects that are "
+"visualized on the interactive map represent the original contract size."
+msgstr ""
+
+#: utils/utils.php:40
+msgid ""
+"The concession has been cancelled with or without a history of reductions in"
+" size."
+msgstr ""
+
+#: utils/utils.php:45
+msgid ""
+"The concession has been subjected to reduction(s) in size although it had "
+"been cancelled previously. Publicly available information on land area cut "
+"from ELCs does not include maps or spatial data of excisions. Thus, ODC "
+"cannot present land area cut in shapes. As a result, ELC projects that are "
+"visualized on the interactive map represent the original contract size."
+msgstr ""
+
+#: utils/utils.php:50
+msgid ""
+"Information obtained from official Government sources, with official legal "
+"documentation, in the four identification fields: <br>a. Company name; "
+"<br>b. Location; <br>c. GPS coordinates and/or analog map; and <br>  d. "
+"Purpose (crop, ore, etc.)"
+msgstr ""
+
+#: utils/utils.php:54
+msgid ""
+"Information obtained from official Government sources, with legal "
+"documentation, but missing one or more of the following identification "
+"fields: <br>a. Company name; <br>b. Location; <br>c. GPS coordinates and/or "
+"analog map; and <br>d. Purpose (crop, ore, etc.)"
+msgstr ""
+
+#: utils/utils.php:58
+msgid ""
+"Information obtained from any other source in public domain (including "
+"documentation from photographs, etc.)"
+msgstr ""
+
+#: utils/utils.php:62
+msgid ""
+"Information obtained from the concessionaire (company/entity) or from "
+"government source(s) without legal documentation."
+msgstr ""
+
+#: utils/utils.php:66
+msgid ""
+"These concessions have been cancelled by the Royal Government of Cambodia."
+msgstr ""
+
+#: utils/utils.php:268
+msgid "Metadata"
+msgstr ""
+
+#: utils/utils.php:278
+msgid "Download and Metadata"
+msgstr ""
