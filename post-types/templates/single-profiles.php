@@ -38,27 +38,44 @@ $template = get_post_meta($post->ID, '_attributes_template_layout', true);
 $sub_navigation = get_post_meta($post->ID, '_page_with_sub_navigation', true);
 ?>
 <?php if(!$sub_navigation):?>
+
 	<section class=	"container section-title main-title">
-	    <header class="row">
-	      <div class="twelve columns">
-	        <h1><?php the_title(); ?></h1>
-	        <?php echo_post_meta(get_post()); ?>
-	      </div>
+    <header class="row">
+      <div class="twelve columns">
+				<?php
+				if(!empty($dataset) && odm_screen_manager()->is_mobile()): ?>
+					<div class="align-right">
+						<?php echo_download_button_link_to_datapage($ckan_dataset_id) ?>
+					</div>
+				<?php
+				endif;?>
+        <?php odm_title($post,array('date','categories','tags')); ?>
+      </div>
+      <?php
+      if(!empty($dataset) && odm_screen_manager()->is_mobile()): ?>
         <div class="four columns align-right">
-          <div class="widget share-widget">
+          <?php echo_download_button_link_to_datapage($ckan_dataset_id) ?>
+        </div>
+      <?php
+			elseif (!empty($dataset) && odm_screen_manager()->is_desktop()): ?>
+				<div class="four columns align-right">
+					<div class="widget share-widget">
 						<div class="four columns">
 							<?php
-		  	      if(!empty($dataset)) :?>
-		            <?php echo_download_button_link_to_datapage($ckan_dataset_id) ?>
-		  	      <?php
-		          endif; ?>
+							if(!empty($dataset)) :?>
+								<?php echo_download_button_link_to_datapage($ckan_dataset_id) ?>
+							<?php
+							endif; ?>
 						</div>
 						<div class="twelve columns">
-	            <?php odm_get_template('social-share',array(),true); ?>
+							<?php odm_get_template('social-share',array(),true); ?>
 						</div>
-          </div>
-        </div>
-	    </header>
+					</div>
+				</div>
+      <?php
+    	endif;
+      ?>
+    </header>
 	</section>
 <?php endif; ?>
 
@@ -92,16 +109,18 @@ $sub_navigation = get_post_meta($post->ID, '_page_with_sub_navigation', true);
 
 jQuery(document).ready(function($) {
 
- $('select').select2();
+ $('.filter_box').select2();
 
  <?php
 	 if($sub_navigation){
 	 	$sub_menu = '<nav id="od-menu" class="od-submenu"><div class="od-submenu-bg '. odm_country_manager()->get_current_country() .'-bgcolor">
 		</div><div class="container"><div class="six columns"><h1>'.get_the_title().'</h1></div><div class="ten columns">'. wp_nav_menu(array('menu' => $sub_navigation, 'echo'=>false)) .'</div></div></nav>';
+    $sub_menu = str_replace( array("\r\n", "\n", "\r"), "", $sub_menu);
+		?>
+		$("#od-menu").after('<?php echo trim($sub_menu); ?>');
+		<?php
 	 }
-   $sub_menu = str_replace( array("\r\n", "\n", "\r"), "", $sub_menu);
 ?>
-	$("#od-menu").after('<?php echo trim($sub_menu); ?>');
 });
 
 </script>

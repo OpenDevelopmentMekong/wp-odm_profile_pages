@@ -1,5 +1,16 @@
 
   <section class="container">
+			<?php
+			$full_width_content = odm_language_manager()->get_current_language() !== 'en' ? get_post_meta(get_the_ID(), '_full_width_middle_content_localization', true) : get_post_meta(get_the_ID(), '_full_width_middle_content', true);
+			$full_width_position = get_post_meta(get_the_ID(), '_full_width_content_position', true);
+
+			if($full_width_content && $full_width_position): ?>
+			<div class="row">
+				<div class="sixteen columns">
+					<?php echo "<div class='full-width-content above-map'>".$full_width_content."</div>"; ?>
+				</div>
+			</div>
+			<?php endif; ?>
       <div class="twelve columns post-title">
 				<section class="content section-content">
 					<?php
@@ -22,22 +33,19 @@
         </aside>
       </div>
   </section>
-  <?php
-
-    $middle_content = odm_language_manager()->get_current_language() !== 'en' ? get_post_meta(get_the_ID(), '_full_width_middle_content_localization', true) : get_post_meta(get_the_ID(), '_full_width_middle_content', true);
-
-    if($middle_content):
+	<?php
+    if($full_width_content && !$full_width_position):
       ?>
     	<section class="container">
     		<div class="row">
     			<div class="sixteen columns">
-            <?php echo "<div class='iframe-visualitation'>".$middle_content."</div>"; ?>
+            <?php echo "<div class='full-width-content below-map'>".$full_width_content."</div>"; ?>
     			</div>
     		</div>
     	</section>
   <?php endif; ?>
 
-	<section id="profile-area-bottom" class="page-section">
+	<section id="profile-area-bottom" class="page-section footer-sidebar">
     <div class="container">
       <div class="row">
        <div class="eight columns">
