@@ -656,11 +656,17 @@ table.no-bgcolor tr{
   height: 35px !important;
 }
 .widget_download .button.download{
-  padding: 10px 6px !important;
+  padding: 8px 6px 0 !important;
   border-radius: 2px;
+  position: absolute;
+  right: 215px;
 }
 .widget_download a.download span{
   display: none;
+}
+
+.widget_download a.download:hover{
+  right: 215px;
 }
 .widget_download a.download:hover span{
   display: initial;
