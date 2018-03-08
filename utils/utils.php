@@ -271,7 +271,11 @@ function echo_metadata_button($dataset){
 
 function echo_download_button_link_to_datapage($dataset_id){
   ?>
-  <a target="_blank" class="button download format" href="<?php echo get_bloginfo("url"); ?>/dataset/?id=<?php echo $dataset_id;?>"><i class="fa fa-download"></i><?php _e('Download and Metadata', 'wp-odm_profile_pages')?></a>
+  <div class="nc_socialPanel widget_download">
+    <div class="nc_tweetContainer swp_fb">
+      <a target="_blank" class="button download format" href="<?php echo get_bloginfo("url"); ?>/dataset/?id=<?php echo $dataset_id;?>"><i class="fa fa-download"></i><span><?php _e('Download and metadata', 'wp-odm_profile_pages')?></a></span>
+    </div>
+  </div>
   <?php
 }
 

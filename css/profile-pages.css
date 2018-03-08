@@ -651,3 +651,21 @@ table.no-bgcolor tr{
 .od-submenu h1{
   margin: 3px 0 0;
 }
+
+.widget_download .nc_tweetContainer{
+  height: 35px !important;
+}
+.widget_download .button.download{
+  padding: 10px 6px !important;
+  border-radius: 2px;
+}
+.widget_download a.download span{
+  display: none;
+}
+.widget_download a.download:hover span{
+  display: initial;
+}
+.widget_download a.download i{
+  margin-right: 5px;
+  margin-left: 5px;
+}
