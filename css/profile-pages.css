@@ -674,6 +674,29 @@ table.no-bgcolor tr{
   margin: 3px 0 0;
 }
 
+.widget_download .nc_tweetContainer{
+  height: 35px !important;
+}
+.widget_download .button.download{
+  padding: 8px 6px 0 !important;
+  border-radius: 2px;
+  position: absolute;
+  right: 215px;
+}
+.widget_download a.download span{
+  display: none;
+}
+
+.widget_download a.download:hover{
+  right: 215px;
+}
+.widget_download a.download:hover span{
+  display: initial;
+}
+.widget_download a.download i{
+  margin-right: 5px;
+  margin-left: 5px;
+
 .full-width-content ul{
     padding: 5px 0;
 }
@@ -764,5 +787,5 @@ table.no-bgcolor tr{
 .single #post-content .selected_option_ha,
 .single #post-content .selected_option_per{
   border: none;
-  padding: 0;
+  padding: 0; 
 }

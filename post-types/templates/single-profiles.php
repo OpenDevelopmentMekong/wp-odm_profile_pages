@@ -30,6 +30,7 @@ if ( isset($ckan_dataset ) && $ckan_dataset != '') {
     $ckan_dataset_exploded_by_dataset = explode('/dataset/', $ckan_dataset );
     $ckan_dataset_exploded_by_resource = explode('/resource/', $ckan_dataset_exploded_by_dataset[1]);
     $ckan_dataset_id = $ckan_dataset_exploded_by_resource[0];
+
     $dataset = wpckan_api_package_show(wpckan_get_ckan_domain(),$ckan_dataset_id);
 }
 
@@ -46,21 +47,31 @@ $sub_navigation = get_post_meta($post->ID, '_page_with_sub_navigation', true);
 					<div class="align-right">
 						<?php echo_download_button_link_to_datapage($ckan_dataset_id) ?>
 					</div>
-				<?php endif;?>
+				<?php
+				endif;?>
         <?php odm_title($post,array('date','categories','tags')); ?>
       </div>
       <?php
-      if(!empty($dataset) && !odm_screen_manager()->is_mobile()): ?>
+      if(!empty($dataset) && odm_screen_manager()->is_mobile()): ?>
         <div class="four columns align-right">
           <?php echo_download_button_link_to_datapage($ckan_dataset_id) ?>
         </div>
       <?php
-			elseif (odm_screen_manager()->is_desktop()): ?>
-        <div class="four columns">
-          <div class="widget share-widget">
-            <?php odm_get_template('social-share',array(),true); ?>
-          </div>
-        </div>
+			elseif (!empty($dataset) && odm_screen_manager()->is_desktop()): ?>
+				<div class="four columns align-right">
+					<div class="widget share-widget">
+						<div class="four columns">
+							<?php
+							if(!empty($dataset)) :?>
+								<?php echo_download_button_link_to_datapage($ckan_dataset_id) ?>
+							<?php
+							endif; ?>
+						</div>
+						<div class="twelve columns">
+							<?php odm_get_template('social-share',array(),true); ?>
+						</div>
+					</div>
+				</div>
       <?php
     	endif;
       ?>
