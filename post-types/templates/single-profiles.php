@@ -115,6 +115,7 @@ jQuery(document).ready(function($) {
 	 if($sub_navigation){
 	 	$sub_menu = '<nav id="od-menu" class="od-submenu"><div class="od-submenu-bg '. odm_country_manager()->get_current_country() .'-bgcolor">
 		</div><div class="container"><div class="six columns"><h1>'.get_the_title().'</h1></div><div class="ten columns">'. wp_nav_menu(array('menu' => $sub_navigation, 'echo'=>false)) .'</div></div></nav>';
+
     $sub_menu = str_replace( array("\r\n", "\n", "\r"), "", $sub_menu);
 		?>
 		$("#od-menu").after('<?php echo trim($sub_menu); ?>');
