@@ -143,7 +143,7 @@ if($profiles): ?>
 						<?php _e("Filters","wp-odm_profile_pages"); ?>
 					</div>
 		      <div class ="sixteen columns">
-		        <div class="panel">
+		        <div class="panel panel_filter">
 		          <?php
 		          if (isset($related_profile_pages) && $related_profile_pages != ''):
 		            $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
@@ -157,7 +157,7 @@ if($profiles): ?>
 		            </div>
 		            <div class="eight columns">
 		              <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
-		              <ul>
+		              <ul class="related_profiles">
 		              <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
 		                  $split_title_and_url = explode('|', $profile_pages_url);?>
 		                  <li>
@@ -189,49 +189,58 @@ if($profiles): ?>
 	    <div class="row hideOnMobileAndTablet">
 	      <div class ="sixteen columns">
 	        <div class="filter-container">
-	          <div class="panel">
-	            <div class="four columns">
-	              <p><?php _e('Textual search', 'wp-odm_profile_pages');?></p>
-	              <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
-	            </div>
-	            <?php
-	            if (isset($related_profile_pages) && $related_profile_pages != ''):
-	              $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
-	              <div class="seven columns">
-	                <?php
-	                  if ($filtered_by_column_index): ?>
-	                  <div id="filter_by_classification">
-	                    <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
-	                  </div>
-	                <?php endif; ?>
-	              </div>
-	              <div class="five columns">
-	                <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
-	                <ul>
-	                <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
-	                    $split_title_and_url = explode('|', $profile_pages_url);?>
-	                    <li>
-	                      <a href="<?php echo $split_title_and_url[1]; ?>" target="_blank"><?php echo $split_title_and_url[0]; ?></a>
-	                    </li>
-	                <?php endforeach; ?>
-	                </ul>
-	              </div>
-	          <?php
-						else: ?>
-	            <div class="twelve columns">
-	              <?php
-	                if ($filtered_by_column_index): ?>
-	                <div id="filter_by_classification">
-	                  <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
-	                </div>
-	              <?php endif; ?>
-	            </div>
-	          <?php
-						endif;
-	          ?>
-	          </div>
-	          <div class="fixed_datatable_tool_bar"></div>
-	        </div>
+            <div class="panel_related_profile">
+              <?php if (odm_screen_manager()->is_desktop()): ?>
+                <div class="related_profiles_toggle_icon">
+                  <span><?php _e("Filters","wp-odm_profile_pages"); ?></span>
+                  <i class="fa fa-times-circle"></i>
+                </div>
+              <?php endif ?>
+	            <div class="panel panel_filter">
+  	            <div class="four columns">
+  	              <p><?php _e('Textual search', 'wp-odm_profile_pages');?></p>
+  	              <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
+  	            </div>
+  	            <?php
+  	            if (isset($related_profile_pages) && $related_profile_pages != ''):
+    	              $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
+    	              <div class="seven columns">
+    	                <?php
+    	                  if ($filtered_by_column_index): ?>
+    	                  <div id="filter_by_classification">
+    	                    <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+    	                  </div>
+    	                <?php endif; ?>
+    	              </div>
+    	              <div class="five columns">
+    	                <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
+    	                <ul class="related_profiles">
+    	                <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
+    	                    $split_title_and_url = explode('|', $profile_pages_url);?>
+    	                    <li>
+    	                      <a href="<?php echo $split_title_and_url[1]; ?>" target="_blank"><?php echo $split_title_and_url[0]; ?></a>
+    	                    </li>
+    	                <?php endforeach; ?>
+    	                </ul>
+    	              </div>
+
+    	          <?php
+    						else: ?>
+    	            <div class="twelve columns">
+    	              <?php
+    	                if ($filtered_by_column_index): ?>
+    	                <div id="filter_by_classification">
+    	                  <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+    	                </div>
+    	              <?php endif; ?>
+    	            </div>
+    	          <?php
+    						endif;
+    	          ?>
+  	          </div>
+  	         <div class="fixed_datatable_tool_bar"></div>
+            </div>
+          </div>
 	      </div>
 	    </div>
 
@@ -378,7 +387,6 @@ endif; ?>
   <script type="text/javascript">
   var oTable;
   var mapIdColNumber = 0;
-
   jQuery(document).ready(function($) {
     // Update the breadcrumbs list for meta page
     if ($('.profile-metadata h2').hasClass('h2_name')) {
@@ -396,33 +404,58 @@ endif; ?>
 
     <?php
 			if ($filter_map_id == '' && $metadata_dataset == '') { ?>
-    	var get_od_selector_height = $('#od-selector').height();
-      var get_filter_container_height = 0;
-      $('.filter-container').each(function(index){
-        if ($(this).css("display") !== 'none'){
-          get_filter_container_height += $(this).height();
-        }
-      });
-      var get_position_profile_table =  $('.filter-container').offset().top;
-      var table_fixed_position = get_od_selector_height +get_filter_container_height +40;
-
+      	var get_od_selector_height = $('#od-selector').height();
+        var get_filter_container_height = 0;
+        $('.filter-container').each(function(index){
+          if ($(this).css("display") !== 'none'){
+            get_filter_container_height += $(this).height();
+          }
+        });
+        var get_position_profile_table =  $('.filter-container').offset().top-15;
+        var table_fixed_position = get_od_selector_height + get_filter_container_height +37;
+        var table_body_fixed_position = table_fixed_position+5;
+        var get_first_set_dataTable_head_top = table_fixed_position;
+        var get_first_set_dataTables_scrollBody_top = table_body_fixed_position+10;
+        var updated_dataTables_scrollHeader_top = 0;
+        var updated_dataTables_scrollBody_top = 0;
         $(window).scroll(function() {
       			if ($(document).scrollTop() >= get_position_profile_table) {
-      				$('.dataTables_scrollHead').css('position','fixed').css('top', table_fixed_position+'px');
+              var dataTables_scrollHead_top = updated_dataTables_scrollHeader_top? updated_dataTables_scrollHeader_top: table_fixed_position;
+              var dataTables_scrollBody_top = updated_dataTables_scrollBody_top? updated_dataTables_scrollBody_top:table_body_fixed_position;
+      				$('.dataTables_scrollHead').css('position','fixed').css('top', dataTables_scrollHead_top+'px');
       				$('.dataTables_scrollHead').css('z-index',99);
       				$('.dataTables_scrollHead').width($('.dataTables_scrollBody').width());
        				$('.filter-container').css('position','fixed');
        				$('.filter-container').css('width',$('.dataTables_scrollBody').width());
               $('.filter-container').addClass("fixed-filter-container");
-      				$('.dataTables_scrollBody').css('margin-top', 10+'em');
+      				$('.dataTables_scrollBody').css('margin-top', dataTables_scrollBody_top+'px');
               $('.fixed_datatable_tool_bar').css('display','inline-block');
       		   }else {
       				$('.dataTables_scrollHead').css('position','static');
-       				$('.fixed-filter-container').css('position','static');
+              $('.filter-container').removeClass("fixed-filter-container");
               $('.fixed_datatable_tool_bar').hide();
       				$('.dataTables_scrollBody').css('margin-top', 0);
       		   }
-           });
+         });
+
+          //Hide filter on fixed table header
+        $(".related_profiles_toggle_icon").click(function(){
+            $(".fixed-filter-container .panel").toggleClass('hide');
+            $(".fixed-filter-container .related_profiles_toggle_icon").find('i').toggleClass('fa-filter fa-times-circle');
+            if( $(".fixed-filter-container .related_profiles_toggle_icon i").hasClass('fa-filter')){
+              updated_dataTables_scrollHeader_top = get_first_set_dataTable_head_top - $(' .panel_filter').height() -20;
+              updated_dataTables_scrollBody_top = get_first_set_dataTables_scrollBody_top - $(' .panel_filter').height();
+
+                     console.log("updated_dataTables_scrollBody_top")
+                     console.log(updated_dataTables_scrollBody_top);
+              $('.dataTables_scrollHead').css('top', updated_dataTables_scrollHeader_top+'px');
+              $('.dataTables_scrollBody').css('margin-top', updated_dataTables_scrollBody_top+'px');
+            }else{
+              $('.dataTables_scrollHead').css('top', get_first_set_dataTable_head_top+'px');
+              $('.dataTables_scrollBody').css('margin-top', table_body_fixed_position+'px');
+            }
+        });
+
          oTable = $("#profiles").dataTable({
            scrollX: true,
 					 <?php
