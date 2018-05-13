@@ -263,8 +263,8 @@ table.dataTable thead .sorting_desc_disabled {
   margin-bottom: 0;
 }
 
-#profiles td ul {
-  display: none;
+#profiles td.child li {
+  padding: 0;
 }
 
 #profiles tbody {
@@ -314,7 +314,10 @@ table.dataTable thead .sorting_desc_disabled {
   background-color: #fff;
   display: inline-flex !important;
 }
-
+#mobile-filter i.fa-filter {
+  vertical-align: text-top;
+  margin:0;
+}
 .filter-container #search_all, .mobile-filter-container #search_all{
   width: 100%;
   margin: 0 10px 0 0;
@@ -325,7 +328,32 @@ table.dataTable thead .sorting_desc_disabled {
   top: 37px;
   z-index: 99;
 }
-
+.filter-container .panel_related_profile{
+  padding: 0
+}
+.panel_related_profile span{
+  font-size: 14px;
+  vertical-align: top;
+}
+.fixed-filter-container .panel_related_profile{
+  padding: 0 auto;
+  display: block;
+  background: #eee;
+  margin-left: 10px;
+}
+.filter-container .related_profiles_toggle_icon{
+    display: none;
+    cursor: pointer;
+}
+.fixed-filter-container .related_profiles_toggle_icon{
+  float: right;
+  position: relative;
+  margin: 0 0 0 10px;
+  display: block;
+}
+.related_profiles_toggle_icon i.fa-toggle-on{
+  font-size: 25px
+}
 .fixed_datatable_tool_bar {
   display: none;
   float: right;
@@ -352,6 +380,11 @@ table.dataTable thead .sorting_desc_disabled {
 
 .fixed_datatable_tool_bar .dataTables_filter input {
   margin-left: 5px;
+}
+
+.related_profiles{
+  max-height: 70px;
+  overflow-y: auto;
 }
 
 #filter_by_classification{
@@ -787,5 +820,5 @@ table.no-bgcolor tr{
 .single #post-content .selected_option_ha,
 .single #post-content .selected_option_per{
   border: none;
-  padding: 0; 
+  padding: 0;
 }
