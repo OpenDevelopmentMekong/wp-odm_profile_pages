@@ -262,11 +262,7 @@ table.dataTable thead .sorting_desc_disabled {
   margin-right: 1.5em;
   margin-bottom: 0;
 }
-
-#profiles td ul {
-  display: none;
-}
-
+ 
 #profiles tbody {
   width: 100%;
 }
@@ -316,6 +312,7 @@ table.dataTable thead .sorting_desc_disabled {
 }
 #mobile-filter i.fa-filter {
   vertical-align: text-top;
+  margin:0;
 }
 .filter-container #search_all, .mobile-filter-container #search_all{
   width: 100%;
