@@ -269,20 +269,23 @@ function echo_metadata_button($dataset){
   <?php
 }
 
-function echo_download_button_link_to_datapage($dataset_id){
-  ?> 
-  <div class="nc_socialPanel widget_download">
-    <div class="nc_tweetContainer swp_fb">
-      <a target="_blank" class="button download format" href="<?php echo get_bloginfo("url"); ?>/dataset/?id=<?php echo $dataset_id;?>"><i class="fa fa-download"></i>
-        <span>
-        <?php
-        if (odm_screen_manager()->is_desktop()):
-          _e('Download and Metadata', 'wp-odm_profile_pages');
-        endif; ?>
-        </span>
-      </a>
+function echo_download_button_link_to_datapage($dataset_id, $only_hyperlink=false){
+  if(!$only_hyperlink):?>
+    <div class="nc_socialPanel widget_download">
+      <div class="nc_tweetContainer swp_fb">
+  <?php endif; ?>
+        <a target="_blank" class="button download format" href="<?php echo get_bloginfo("url"); ?>/dataset/?id=<?php echo $dataset_id;?>"><i class="fa fa-download"></i>
+          <span>
+          <?php
+          if (odm_screen_manager()->is_desktop()):
+            _e('Download and Metadata', 'wp-odm_profile_pages');
+          endif; ?>
+          </span>
+        </a>
+    <?php if(!$only_hyperlink):?>
+      </div>
     </div>
-  </div> 
+    <?php endif; ?>
   <?php
-} 
+}
 ?>
