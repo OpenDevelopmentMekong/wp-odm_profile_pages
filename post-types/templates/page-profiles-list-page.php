@@ -433,6 +433,7 @@ endif; ?>
       		   }else {
       				$('.dataTables_scrollHead').css('position','static');
               $('.filter-container').removeClass("fixed-filter-container");
+              $('.filter-container').css('position','static');
               $('.fixed_datatable_tool_bar').hide();
       				$('.dataTables_scrollBody').css('margin-top', 0);
       		   }
