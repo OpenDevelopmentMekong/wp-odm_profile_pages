@@ -538,7 +538,20 @@ table.dataTable thead .sorting_desc_disabled {
   width: 100%;
   margin-right: 10px;
 }
-
+.ytplayer_title {
+    display: inline;
+    float: left;
+    width: 100px;
+    margin: 2px 12px; 
+    color: #fff;
+}
+.ytplayer_title img, .ytplayer_title p{
+  display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #fff;
+  text-align: center;
+}
 .circular {
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
