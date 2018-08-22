@@ -122,8 +122,9 @@
           if (count($ref_docs)> 0): ?>
           <div class="profile-metadata">
             <h2><?php _e("Reference documents", 'wp-odm_profile_pages'); ?></h2>
-                <?php odm_list_reference_documents($ref_docs)?>
+                <?php echo odm_list_reference_documents($ref_docs)?>
           </div>
+					<br />
           <?php else: ?>
             <p><php _e('No records found','wp-odm_profile_pages') ?></p>
           <?php endif; ?>

@@ -11,11 +11,12 @@
 	    </div>
 	  </div>
   <?php endif; ?>
+
   <div class="row">
     <div class="sixteen columns">
       <?php
       if(function_exists('display_embedded_map')):
-        display_embedded_map(get_the_ID());
+        //AAAAAA display_embedded_map(get_the_ID());
       endif;
       ?>
     </div>
@@ -34,218 +35,140 @@
 		endif; ?>
 
 <?php
-if($profiles): ?>
-	<div class="row">
-	  <div class="sixteen columns">
-    <?php
-      // Display Total list
-      $show_total_value = "";
-      $array_map_profile = array();
-      $id = '';
-
-      if (array_key_exists("map_id", $profiles[0])):
-        $array_map_profile = array_map(function($value){return array_key_exists('map_id', $value) ? $value['map_id'] : "";}, $profiles);
-        $id = "map_id";
-      else:
-        $array_map_profile = array_map(function($value){return array_key_exists('_id', $value) ? $value['_id'] : "";}, $profiles);
-        $id = "_id";
-      endif;
-
-      if($array_map_profile):
-        $count_project =  array_count_values($array_map_profile);
-      endif;
-      ?>
-      <!-- List total of dataset by map_id as default-->
-			<?php
-				if (count($count_project) > 1):
-          $show_total_value .= "<li><strong>";
-          if(odm_language_manager()->get_current_language() == "km"):
-            $show_total_value .= __("Total", "wp-odm_profile_pages").get_the_title(). __("Listed", "wp-odm_profile_pages"). __(":", "wp-odm_profile_pages");
-            $show_total_value .= $count_project==""? convert_to_kh_number("0"):convert_to_kh_number(count($count_project));
-          else:
-            $show_total_value .=  __("Total", "wp-odm_profile_pages")." ".get_the_title(). __(" listed", "wp-odm_profile_pages"). __(": ", "wp-odm_profile_pages");
-            $show_total_value .= $count_project==""? "0":count($count_project);
-          endif;
-          $show_total_value .= "</strong></li>";
-        endif;
-        $explode_total_number_by_attribute_name = explode("\r\n", $total_number_by_attribute_name);
-        if($total_number_by_attribute_name!=""):
-          foreach ($explode_total_number_by_attribute_name as $key => $total_attribute_name):
-            if($total_attribute_name != $id ):
-              //check if total number require to list by Specific value
-              $total_attributename = trim($total_attribute_name);
-              if (strpos($total_attribute_name, '[') !== FALSE):
-                $split_field_name_and_value = explode("[", $total_attributename);
-                $total_attributename = trim($split_field_name_and_value[0]); //eg. data_class
-                $total_by_specifit_value = str_replace("]", "", $split_field_name_and_value[1]);
-                $specifit_value = explode(',', $total_by_specifit_value);// explode to get: Government data complete
-            	endif;
-              $GLOBALS['total_attribute_name'] = $total_attributename;
-              $map_value = array_map(function($value){ return $value[$GLOBALS['total_attribute_name']];}, $profiles);
-              $count_number_by_attr =  array_count_values($map_value); ?>
-
-              <?php
-              if(isset($specifit_value) && count($specifit_value) > 0):
-                foreach ($specifit_value as $field_value):
-                  $field_value = trim(str_replace('"', "",$field_value));
-                  $show_total_value .= '<li>'.__($field_value, "wp-odm_profile_pages"). __(": ", "wp-odm_profile_pages");
-                  if(isset($count_number_by_attr[$field_value])):
-                    $show_total_value .= '<strong>'. $count_number_by_attr[$field_value]==""? convert_to_kh_number("0"):convert_to_kh_number($count_number_by_attr[$field_value]).'</strong></li>';
-                  endif;
-                endforeach;
-              else:
-                if($total_attribute_name != $id ):
-                  $show_total_value .= "<li>";
-                  if(odm_language_manager()->get_current_language() == "km"):
-                    $show_total_value .= __("Total", "wp-odm_profile_pages").$DATASET_ATTRIBUTE[$total_attributename].__("Listed", "wp-odm_profile_pages").__(":", "wp-odm_profile_pages");
-                    $show_total_value .= '<strong>'.$total_attributename==""? convert_to_kh_number("0"):convert_to_kh_number(count($count_number_by_attr)).'</strong>';
-                  else:
-                    $show_total_value .=  __("Total", "wp-odm_profile_pages")." ".$DATASET_ATTRIBUTE[$total_attributename]." ". __(" listed", "wp-odm_profile_pages").__(": ", "wp-odm_profile_pages");
-                    $show_total_value .= '<strong>'.$total_attributename==""? "0": count($count_number_by_attr).'</strong>';
-                  endif;
-                  $show_total_value .= "</li>";
-                endif;
-              endif;
-          	endif;
-					endforeach;
-        endif;
-        if($show_total_value):
-          echo '<div class="total_listed">';
-            echo "<ul>";
-              echo $show_total_value;
-            echo "</ul>";
-          echo "</div>";
-        endif; ?>
+if($profiles):
+    if($total_number_by_attribute_name): ?>
+    	<div class="row">
+        <div class="sixteen columns">
+          <?php odm_count_total_of_value($total_number_by_attribute_name, $profiles, $DATASET_ATTRIBUTE); ?>
+        </div>
       </div>
-    </div>
+    <?php
+    endif;
 
-		<?php
+		if (!odm_screen_manager()->is_desktop()): ?>
 
-			if (!odm_screen_manager()->is_desktop()): ?>
-
-				<div class="row filter-container hideOnDesktop">
-						<div class="sixteen columns mobile-filter-container">
-              <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
-              <a href="#" class="button filter open-mobile-dialog float-right" id="mobile-filter">
-								<i class="fa fa-filter fa-lg"></i>
-							</a>
-						</div>
-            <div class="fixed_datatable_tool_bar"></div>
-				</div>
-
-				<div class="row mobile-filter mobile-dialog hideOnDesktop">
-          <div class ="eight columns">
-            <div class="close-mobile-dialog align-right">
-              <i class="fa fa-times-circle"></i>
-            </div>
-          </div>
-					<div class ="eight columns align-left">
-						<?php _e("Filters","wp-odm_profile_pages"); ?>
+			<div class="row filter-container hideOnDesktop">
+					<div class="sixteen columns mobile-filter-container">
+            <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
+            <a href="#" class="button filter open-mobile-dialog float-right" id="mobile-filter">
+							<i class="fa fa-filter fa-lg"></i>
+						</a>
 					</div>
-		      <div class ="sixteen columns">
-		        <div class="panel panel_filter">
-		          <?php
-		          if (isset($related_profile_pages) && $related_profile_pages != ''):
-		            $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
-		            <div class="eight columns">
-		              <?php
-		                if ($filtered_by_column_index): ?>
-		                <div id="filter_by_classification">
-		                  <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
-		                </div>
-		              <?php endif; ?>
-		            </div>
-		            <div class="eight columns">
-		              <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
-		              <ul class="related_profiles">
-		              <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
-		                  $split_title_and_url = explode('|', $profile_pages_url);?>
-		                  <li>
-		                    <a href="<?php echo $split_title_and_url[1]; ?>" target="_blank"><?php echo $split_title_and_url[0]; ?></a>
-		                  </li>
-		              <?php endforeach; ?>
-		              </ul>
-		            </div>
-		        <?php
-						else: ?>
-		          <div class="sixteen columns">
-		            <?php
-		              if ($filtered_by_column_index): ?>
-		              <div id="filter_by_classification">
-		                <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
-		              </div>
-		            <?php endif; ?>
-		          </div>
-		        <?php
-						endif;
-		        ?>
-		        </div>
-		      </div>
-		    </div>
+          <div class="fixed_datatable_tool_bar"></div>
+			</div>
 
-			<?php
-				else: ?>
-
-	    <div class="row hideOnMobileAndTablet">
-	      <div class ="sixteen columns">
-	        <div class="filter-container">
-            <div class="panel_related_profile">
-              <?php if (odm_screen_manager()->is_desktop()): ?>
-                <div class="related_profiles_toggle_icon">
-                  <span><?php _e("Filters","wp-odm_profile_pages"); ?></span>
-                  <i class="fa fa-times-circle"></i>
-                </div>
-              <?php endif ?>
-	            <div class="panel panel_filter">
-  	            <div class="four columns">
-  	              <p><?php _e('Textual search', 'wp-odm_profile_pages');?></p>
-  	              <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
-  	            </div>
-  	            <?php
-  	            if (isset($related_profile_pages) && $related_profile_pages != ''):
-    	              $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
-    	              <div class="seven columns">
-    	                <?php
-    	                  if ($filtered_by_column_index): ?>
-    	                  <div id="filter_by_classification">
-    	                    <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
-    	                  </div>
-    	                <?php endif; ?>
-    	              </div>
-    	              <div class="five columns">
-    	                <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
-    	                <ul class="related_profiles">
-    	                <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
-    	                    $split_title_and_url = explode('|', $profile_pages_url);?>
-    	                    <li>
-    	                      <a href="<?php echo $split_title_and_url[1]; ?>" target="_blank"><?php echo $split_title_and_url[0]; ?></a>
-    	                    </li>
-    	                <?php endforeach; ?>
-    	                </ul>
-    	              </div>
-
-    	          <?php
-    						else: ?>
-    	            <div class="twelve columns">
-    	              <?php
-    	                if ($filtered_by_column_index): ?>
-    	                <div id="filter_by_classification">
-    	                  <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
-    	                </div>
-    	              <?php endif; ?>
-    	            </div>
-    	          <?php
-    						endif;
-    	          ?>
-  	          </div>
-  	         <div class="fixed_datatable_tool_bar"></div>
-            </div>
+			<div class="row mobile-filter mobile-dialog hideOnDesktop">
+        <div class ="eight columns">
+          <div class="close-mobile-dialog align-right">
+            <i class="fa fa-times-circle"></i>
           </div>
+        </div>
+				<div class ="eight columns align-left">
+					<?php _e("Filters","wp-odm_profile_pages"); ?>
+				</div>
+	      <div class ="sixteen columns">
+	        <div class="panel panel_filter">
+	          <?php
+	          if (isset($related_profile_pages) && $related_profile_pages != ''):
+	            $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
+	            <div class="eight columns">
+	              <?php
+	                if ($filtered_by_column_index): ?>
+	                <div id="filter_by_classification">
+	                  <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+	                </div>
+	              <?php endif; ?>
+	            </div>
+	            <div class="eight columns">
+	              <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
+	              <ul class="related_profiles">
+	              <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
+	                  $split_title_and_url = explode('|', $profile_pages_url);?>
+	                  <li>
+	                    <a href="<?php echo $split_title_and_url[1]; ?>" target="_blank"><?php echo $split_title_and_url[0]; ?></a>
+	                  </li>
+	              <?php endforeach; ?>
+	              </ul>
+	            </div>
+	        <?php
+					else: ?>
+	          <div class="sixteen columns">
+	            <?php
+	              if ($filtered_by_column_index): ?>
+	              <div id="filter_by_classification">
+	                <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+	              </div>
+	            <?php endif; ?>
+	          </div>
+	        <?php
+					endif;
+	        ?>
+	        </div>
 	      </div>
 	    </div>
 
-		<?php
-		endif; ?>
+	     <?php
+		else: ?>
+    <div class="row hideOnMobileAndTablet">
+      <div class ="sixteen columns">
+        <div class="filter-container">
+          <div class="panel_related_profile">
+            <?php if (odm_screen_manager()->is_desktop()): ?>
+              <div class="related_profiles_toggle_icon">
+                <span><?php _e("Filters","wp-odm_profile_pages"); ?></span>
+                <i class="fa fa-times-circle"></i>
+              </div>
+            <?php endif ?>
+            <div class="panel panel_filter">
+	            <div class="four columns">
+	              <p><?php _e('Textual search', 'wp-odm_profile_pages');?></p>
+	              <input type="text" id="search_all" placeholder="<?php _e('Search data in profile page', 'wp-odm_profile_pages'); ?>">
+	            </div>
+	            <?php
+	            if (isset($related_profile_pages) && $related_profile_pages != ''):
+  	              $temp_related_profile_pages = explode("\r\n", $related_profile_pages);  ?>
+  	              <div class="seven columns">
+  	                <?php
+  	                  if ($filtered_by_column_index): ?>
+  	                  <div id="filter_by_classification">
+  	                    <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+  	                  </div>
+  	                <?php endif; ?>
+  	              </div>
+  	              <div class="five columns">
+  	                <p><?php _e('Related profiles', 'wp-odm_profile_pages');?></p>
+  	                <ul class="related_profiles">
+  	                <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
+  	                    $split_title_and_url = explode('|', $profile_pages_url);?>
+  	                    <li>
+  	                      <a href="<?php echo $split_title_and_url[1]; ?>" target="_blank"><?php echo $split_title_and_url[0]; ?></a>
+  	                    </li>
+  	                <?php endforeach; ?>
+  	                </ul>
+  	              </div>
+
+  	          <?php
+  						else: ?>
+  	            <div class="twelve columns">
+  	              <?php
+  	                if ($filtered_by_column_index): ?>
+  	                <div id="filter_by_classification">
+  	                  <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+  	                </div>
+  	              <?php endif; ?>
+  	            </div>
+  	          <?php
+  						endif;
+  	          ?>
+	          </div>
+	         <div class="fixed_datatable_tool_bar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+	<?php
+	endif; ?>
 
     <!-- Table -->
   <div class="row no-margin-buttom">
@@ -268,103 +191,118 @@ if($profiles): ?>
       <tbody>
         <?php
         if ($profiles):
+			    	$id = '_id';
+						$archive_refdoc = [];
+						$archive_refdoc_list = [];
             foreach ($profiles as $profile):  ?>
-            <tr>
-              <td class="td-value-id">
-                  <?php echo trim($profile[$id]);?>
-              </td>
-            <?php
-            if($DATASET_ATTRIBUTE):
-              foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
-                <?php
-                $link_to_detail_column_array = explode(',', $link_to_detail_column);
-                if(array_key_exists($key, $profile)):
-                    if(in_array($key, $link_to_detail_column_array)) :
-                        ?>
-                          <td class="entry_title">
-                            <div class="td-value">
-                              <?php if($link_to_detail_page):?>
-                                <a target="_blank" href="<?php echo $profile[$link_to_detail_page];?>"><?php echo $profile[$key];?></a>
-                              <?php else:?>
-                                <a target="_blank" href="?feature_id=<?php echo $profile[$id];?>"><?php echo $profile[$key];?></a>
-                              <?php endif; ?>
-                            </div>
-                          </td>
-                        <?php
-                    elseif (in_array($key, array('data_class', 'adjustment_classification', 'adjustment'))): ?>
-                          <td>
-                            <div class="td-value"><?php
-                              if (odm_language_manager()->get_current_language() == 'en'):
-                                  echo ucwords(trim($profile[$key]));
-                              else:
-                                  echo trim($profile[$key]);
-                              endif;?>
-                              <?php odm_data_classification_definition($profile[$key]);?>
-                            </div>
-                          </td>
-                        <?php
-                    elseif ($key == 'reference'): ?>
-                          <td>
-                            <div class="td-value"><?php
-                              $ref_docs_profile = explode(';', $profile['reference']);
-                              $ref_docs = array_unique(array_merge($ref_docs_profile, $ref_docs_tracking));
-                              odm_list_reference_documents($ref_docs, 1);?>
-                            </div>
-                          </td>
-                        <?php
-                    elseif ($key == 'issuedate'): ?>
-                        <td><div class="td-value"><?php
-                            $issuedate = str_replace('T00:00:00', '', $profile[$key]);
-                            echo $profile[$key] == '' ? __('Unknown', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($issuedate)); ?></div>
-                        </td>
-                      <?php
-                    elseif (in_array($key, array('cdc_num', 'sub-decree', 'year'))):
-                        if (odm_language_manager()->get_current_language() == 'km'):
-                            $profile_value = convert_to_kh_number($profile[$key]);
-                        else:
-                            $profile_value = $profile[$key];
-                        endif; ?>
-                        <td>
-                          <div class="td-value"><?php
-                            echo $profile_value == '' ? __('Unknown', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
-                          </div>
-                        </td>
-                    <?php
-                    else:
-                      $profile_val = str_replace('T00:00:00', '', $profile[$key]);
-                      if (odm_language_manager()->get_current_language() == 'km'):
-                          if (is_numeric($profile_val)):
-                              $profile_value = convert_to_kh_number(str_replace('.00', '', number_format($profile_val, 2, '.', ',')));
-                          else:
-                              $profile_value = str_replace('__', ' ', $profile_val);
-                          endif;
-                      else:
-                          if (is_numeric($profile_val)):
-                              $profile_value = str_replace('.00', '', number_format($profile_val, 2, '.', ','));
-                          else:
-                              $profile_value = str_replace('__', ', ', $profile_val);
-                          endif;
-                      endif;
+	            <tr>
+	              <td class="td-value-id">
+	                  <?php echo trim($profile[$id]);?>
+	              </td>
+	            <?php
+	            if($DATASET_ATTRIBUTE):
+	              foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
+	                <?php
+	                $link_to_detail_column_array = explode(',', $link_to_detail_column);
+	                if(array_key_exists($key, $profile)):
+	                    if(in_array($key, $link_to_detail_column_array)) :
+	                        ?>
+	                          <td class="entry_title">
+	                            <div class="td-value">
+	                              <?php if($link_to_detail_page):?>
+	                                <a target="_blank" href="<?php echo $profile[$link_to_detail_page];?>"><?php echo $profile[$key];?></a>
+	                              <?php else:?>
+	                                <a target="_blank" href="?feature_id=<?php echo $profile[$id];?>"><?php echo $profile[$key];?></a>
+	                              <?php endif; ?>
+	                            </div>
+	                          </td>
+	                        <?php
+	                    elseif (in_array($key, array('data_class', 'adjustment_classification', 'adjustment'))): ?>
+	                          <td>
+	                            <div class="td-value"><?php
+	                              if (odm_language_manager()->get_current_language() == 'en'):
+	                                  echo ucwords(trim($profile[$key]));
+	                              else:
+	                                  echo trim($profile[$key]);
+	                              endif;?>
+	                              <?php odm_data_classification_definition($profile[$key]);?>
+	                            </div>
+	                          </td>
+	                        <?php
+	                    elseif ($key == 'reference'): ?>
+	                          <td>
+	                            <div class="td-value"><?php
+	                              $ref_docs_profile = explode(';', $profile['reference']);
+	                              $ref_docs = array_unique(array_merge($ref_docs_profile, $ref_docs_tracking));
+																echo '<ul style="min-width:300px">';
+																foreach ($ref_docs as $key => $ref_doc):
+																	$ref_doc_arr_temp = array($ref_doc);
+																	if(in_array(trim($ref_doc), $archive_refdoc)){ //archieve existing finding ref in arr
+																		echo $archive_refdoc_list[$ref_doc];
+																	}else{
+																		$archive_refdoc[] = $ref_doc;
+																		$archive_refdoc_list[$ref_doc] = odm_list_reference_documents($ref_doc_arr_temp, 1, 0);
+		                              	echo odm_list_reference_documents($ref_doc_arr_temp, 1, 0);
+																	}
+																endforeach;
+																echo '</ul>';
+																?>
+	                            </div>
+	                          </td>
+	                        <?php
+	                    elseif ($key == 'issuedate'): ?>
+	                        <td><div class="td-value"><?php
+	                            $issuedate = str_replace('T00:00:00', '', $profile[$key]);
+	                            echo $profile[$key] == '' ? __('Unknown', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($issuedate)); ?></div>
+	                        </td>
+	                      <?php
+	                    elseif (in_array($key, array('cdc_num', 'sub-decree', 'year'))):
+	                        if (odm_language_manager()->get_current_language() == 'km'):
+	                            $profile_value = convert_to_kh_number($profile[$key]);
+	                        else:
+	                            $profile_value = $profile[$key];
+	                        endif; ?>
+	                        <td>
+	                          <div class="td-value"><?php
+	                            echo $profile_value == '' ? __('Unknown', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
+	                          </div>
+	                        </td>
+	                    <?php
+	                    else:
+	                      $profile_val = str_replace('T00:00:00', '', $profile[$key]);
+	                      if (odm_language_manager()->get_current_language() == 'km'):
+	                          if (is_numeric($profile_val)):
+	                              $profile_value = convert_to_kh_number(str_replace('.00', '', number_format($profile_val, 2, '.', ',')));
+	                          else:
+	                              $profile_value = str_replace('__', ' ', $profile_val);
+	                          endif;
+	                      else:
+	                          if (is_numeric($profile_val)):
+	                              $profile_value = str_replace('.00', '', number_format($profile_val, 2, '.', ','));
+	                          else:
+	                              $profile_value = str_replace('__', ', ', $profile_val);
+	                          endif;
+	                      endif;
 
-                      $profile_value = str_replace(';', '<br/>', trim($profile_value));?>
-                        <td>
-                          <div class="td-value"><?php
-                            echo $profile[$key] == '' ? __('Unknown', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
-                          </div>
-                        </td>
-                      <?php
-                    endif;
-                  else:?>
-                    <td>
-                      <div class="td-value">
-                        <?php _e('Unknown', 'wp-odm_profile_pages'); ?>
-                      </div>
-                    </td>
-                  <?php
-                endif;?>
-              <?php endforeach; ?>
-            </tr>
-            <?php
+	                      $profile_value = str_replace(';', '<br/>', trim($profile_value));?>
+	                        <td>
+	                          <div class="td-value"><?php
+	                            echo $profile[$key] == '' ? __('Unknown', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value));?>
+	                          </div>
+	                        </td>
+	                      <?php
+	                    endif;
+	                  else:?>
+	                    <td>
+	                      <div class="td-value">
+	                        <?php _e('Unknown', 'wp-odm_profile_pages'); ?>
+	                      </div>
+	                    </td>
+	                  <?php
+	                endif;?>
+	              <?php endforeach; ?>
+	            </tr>
+	            <?php
             endif;
           endforeach;
         endif; ?>
@@ -684,7 +622,7 @@ endif; ?>
          $map_layers = get_selected_layers_of_map_by_mapID(get_the_ID());
          if (count($map_layers) > 1) {
          ?>
-            filterEntriesMap(_.pluck(filtered, mapIdColNumber));
+            filterEntriesMap(_.pluck(filtered, s));
          <?php
          }
          ?>
