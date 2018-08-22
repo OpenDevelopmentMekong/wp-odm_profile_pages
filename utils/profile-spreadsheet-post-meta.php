@@ -30,9 +30,9 @@ if($ckan_dataset){
     if ( !empty($filter_map_id) ) {
 				$profiles = wpckan_get_datastore_resource(wpckan_get_ckan_domain(), $ckan_dataset_csv_id);
 				$filter_key = "_id";
-				if (array_key_exists("map_id", $profiles[0])):
+				/*if (array_key_exists("map_id", $profiles[0])):
 					$filter_key = "map_id";
-				endif;
+				endif;*/
 				$profile = wpckan_get_datastore_resources_filter(wpckan_get_ckan_domain(), $ckan_dataset_csv_id, $filter_key, $filter_map_id)[0];
     } else {
         $profiles = wpckan_get_datastore_resource(wpckan_get_ckan_domain(), $ckan_dataset_csv_id);
