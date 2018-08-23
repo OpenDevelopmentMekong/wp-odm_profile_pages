@@ -173,7 +173,8 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0, $include_u
           $ref_doc_metadata = wpckan_api_package_search(wpckan_get_ckan_domain(), $attrs);
           if(isset($ref_doc_metadata['results']) && (count($ref_doc_metadata['results']) > 0) ):
               $metadata = $ref_doc_metadata['results'][0];
-
+              $main_title = $metadata['title']; //english only
+              $main_notes = $metadata['notes']; //english only
               $title = isset($metadata['title_translated']) ? $metadata['title_translated'] : $metadata['title'];
               $notes = isset($metadata['notes_translated']) ? $metadata['notes_translated'] : $metadata['notes'];
               $name = $metadata['name'];
@@ -191,7 +192,8 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0, $include_u
       if(isset($metadata)):
         if (trim($metadata['odm_reference_document']) == $ref_doc_name):
              if ($only_title_url == 1) {
-               $display_reference_list .='<li><a target="_blank" href="'. wpckan_get_link_to_dataset($name).'">'. getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(), $title).'</a>';
+               $display_reference_list .='<li><a target="_blank" href="'. wpckan_get_link_to_dataset($name).'">'.
+                  getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(), $main_title).'</a>';
                   if (odm_language_manager()->get_current_language() == 'km') {
                       $display_reference_list .= ' ('.convert_date_to_kh_date(date('d/m/Y', strtotime($published_date)), '/') .')';
                   } else {
@@ -201,7 +203,7 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0, $include_u
              }else{
                $display_reference_list .='<tr>';
                  $display_reference_list .='<td class="row-key" width="35%">';
-                     $display_reference_list .='<a target="_blank" href="'.wpckan_get_link_to_dataset($name).'">'. getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(), $title) .'</a></br>';
+                     $display_reference_list .='<a target="_blank" href="'.wpckan_get_link_to_dataset($name).'">'. getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(), $main_title).'</a></br>';
                      $display_reference_list .='<div class="ref_date">';
                        if (odm_language_manager()->get_current_language() == 'km') {
                            $display_reference_list .= ' ('.convert_date_to_kh_date(date('d/m/Y', strtotime($published_date)), '/') .')';
@@ -211,7 +213,7 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0, $include_u
                      $display_reference_list .='</div>';
                      $display_reference_list .='</td>';
                      $display_reference_list .='<td>';
-                        $display_reference_list .= getMultilingualValueOrFallback($notes, odm_language_manager()->get_current_language(), $notes);
+                        $display_reference_list .= getMultilingualValueOrFallback($notes, odm_language_manager()->get_current_language(), $main_notes);
                      $display_reference_list .='</td>';
               $display_reference_list .='</tr>';
              }
