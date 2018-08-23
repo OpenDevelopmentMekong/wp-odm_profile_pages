@@ -16,7 +16,7 @@
     <div class="sixteen columns">
       <?php
       if(function_exists('display_embedded_map')):
-        //AAAAAA display_embedded_map(get_the_ID());
+        display_embedded_map(get_the_ID());
       endif;
       ?>
     </div>
