@@ -22,7 +22,7 @@
     </div>
     <div class="row">
       <div class="sixteen columns">
-        <div id="profile-map-id" class="hidden"><?php echo $filter_map_id; ?></div>
+        <div id="profile-map-id" class="hidden"><?php echo isset($profile['map_id'])? $profile['map_id'] : $filter_map_id; ?></div>
         <div class="profile-metadata">
 
           <table id="profile" class="data-table">
@@ -31,7 +31,7 @@
               foreach ($DATASET_ATTRIBUTE as $key => $value):
                 if($key !="reference"){ ?>
               <tr>
-              <td class="row-key"><?php _e( $DATASET_ATTRIBUTE[$key], 'wp-odm_profile_pages' ); ?></td>
+              	<td class="row-key"><?php _e( $DATASET_ATTRIBUTE[$key], 'wp-odm_profile_pages' ); ?></td>
                 <td><?php
                     $profile_val = str_replace("T00:00:00", "", $profile[$key]);
                     if(odm_language_manager()->get_current_language() =="km"){
@@ -112,8 +112,6 @@
               </tbody>
             </table>
           </div>
-        <?php else: ?>
-          <p><php _e('No records found','wp-odm_profile_pages') ?></p>
         <?php endif; ?>
 
         <?php
@@ -126,7 +124,7 @@
           </div>
 					<br />
           <?php else: ?>
-            <p><php _e('No records found','wp-odm_profile_pages') ?></p>
+            <p><?php _e('No records found','wp-odm_profile_pages') ?></p>
           <?php endif; ?>
         </div>
     </div>

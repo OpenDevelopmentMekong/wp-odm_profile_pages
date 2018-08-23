@@ -166,7 +166,7 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0, $include_u
       } else {
           $ref_doc_name = $ref_doc;
       }
-      //echo $ref_doc;
+      //echo $ref_doc ." AAAAAA<br/>";
       $ref_doc_metadata = array();
       if (isset($ref_doc_name) && !empty($ref_doc_name)):
           $attrs = array('filter_fields' => '{"odm_reference_document":"'.$ref_doc_name.'"}', 'limit' => 1);
