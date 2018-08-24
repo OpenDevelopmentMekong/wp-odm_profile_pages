@@ -191,10 +191,10 @@ if($profiles):
       <tbody>
         <?php
         if ($profiles):
-			    	$id = '_id';
-						$archive_refdoc = [];
-						$archive_refdoc_list = [];
-            foreach ($profiles as $profile):  ?>
+		$id = isset($profiles[0]['map_id'])? "map_id" : '_id'; 
+		$archive_refdoc = [];
+		$archive_refdoc_list = [];
+            	foreach ($profiles as $profile):  ?>
 	            <tr>
 	              <td class="td-value-id">
 	                  <?php echo trim($profile[$id]);?>
