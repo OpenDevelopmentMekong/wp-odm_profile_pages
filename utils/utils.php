@@ -178,10 +178,21 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0, $include_u
               $title = isset($metadata['title_translated']) ? $metadata['title_translated'] : $metadata['title'];
               $notes = isset($metadata['notes_translated']) ? $metadata['notes_translated'] : $metadata['notes'];
               $name = $metadata['name'];
-              if ($metadata['type'] == 'laws_record' && (isset($metadata['odm_promulgation_date'])) ):
+              if (isset($metadata['odm_promulgation_date']) ):
                 $published_date = $metadata['odm_promulgation_date'];
               elseif (isset($metadata['odm_date_uploaded']) ):
                 $published_date = $metadata['odm_date_uploaded'];
+              else: 
+                $get_date_from_filename = explode("__", str_replace(".pdf", "", $ref_doc_name)); 
+                $split_d_m_y = explode(".", $get_date_from_filename[1]);
+                if (sizeof($split_d_m_y) == 3){
+                    $date_in_filename = date("d F Y" ,strtotime( str_replace(".", "-", $get_date_from_filename[1]) ));
+                }elseif(sizeof($split_d_m_y) == 2){ 
+                    $date_in_filename = date("F", mktime(0, 0, 0, $split_d_m_y[0], 10)) . " " . $split_d_m_y[1] ;
+                }else{
+                    $date_in_filename = $split_d_m_y[0] ;
+                }
+
               endif;
 
               $archive_refdoc[] = $ref_doc_name;
@@ -195,9 +206,9 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0, $include_u
                $display_reference_list .='<li><a target="_blank" href="'. wpckan_get_link_to_dataset($name).'">'.
                   getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(), $main_title).'</a>';
                   if (odm_language_manager()->get_current_language() == 'km') {
-                      $display_reference_list .= ' ('.convert_date_to_kh_date(date('d/m/Y', strtotime($published_date)), '/') .')';
+                      $display_reference_list .= ' ('. $published_date? convert_date_to_kh_date(date('d/m/Y', strtotime($published_date)), '/') : $date_in_filename .')';
                   } else {
-                      $display_reference_list .= ' ('. date("d F Y" ,strtotime($published_date)) .')';
+                      $display_reference_list .= ' ('. $published_date? date("d F Y" ,strtotime($published_date)) : $date_in_filename.')';
                   }
                $display_reference_list .='</li>';
              }else{
