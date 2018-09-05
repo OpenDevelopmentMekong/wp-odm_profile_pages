@@ -166,7 +166,7 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0, $include_u
       } else {
           $ref_doc_name = $ref_doc;
       }
-      //echo $ref_doc ." AAAAAA<br/>";
+
       $ref_doc_metadata = array();
       if (isset($ref_doc_name) && !empty($ref_doc_name)):
           $attrs = array('filter_fields' => '{"odm_reference_document":"'.$ref_doc_name.'"}', 'limit' => 1);
@@ -178,12 +178,37 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0, $include_u
               $title = isset($metadata['title_translated']) ? $metadata['title_translated'] : $metadata['title'];
               $notes = isset($metadata['notes_translated']) ? $metadata['notes_translated'] : $metadata['notes'];
               $name = $metadata['name'];
-              if ($metadata['type'] == 'laws_record' && (isset($metadata['odm_promulgation_date'])) ):
-                $published_date = $metadata['odm_promulgation_date'];
-              elseif (isset($metadata['odm_date_uploaded']) ):
-                $published_date = $metadata['odm_date_uploaded'];
-              endif;
+              $date_in_filename = null;
+              $get_date_from_filename = explode("__", str_replace(".pdf", "", $ref_doc_name));
 
+
+              if(sizeof($get_date_from_filename) > 1):
+                    $split_d_m_y = explode(".", $get_date_from_filename[1]);
+                    if (sizeof($split_d_m_y) == 3){
+                      if($split_d_m_y[0] == "00"){
+                        $date_in_filename = date("F", mktime(0, 0, 0, $split_d_m_y[1], 10)) . " " . $split_d_m_y[2] ;
+                        if (odm_language_manager()->get_current_language() == 'km'){
+                          $date_in_filename = str_replace(".", " ", $get_date_from_filename[1]);
+                        }
+                      }else{
+                          $date_in_filename = date("d F Y", strtotime( str_replace(".", "-", $get_date_from_filename[1]) ));
+                      }
+                    }elseif(sizeof($split_d_m_y) == 2){
+                        $date_in_filename = date("F", mktime(0, 0, 0, $split_d_m_y[0], 10)) . " " . $split_d_m_y[1] ;
+                        if (odm_language_manager()->get_current_language() == 'km'){
+                          $date_in_filename = str_replace(".", " ", $get_date_from_filename[1]);
+                        }
+                    }else{
+                        $date_in_filename = $split_d_m_y[0] ;
+                    }
+              else:
+                  if (isset($metadata['odm_promulgation_date']) ):
+                    $ckan_published_date = date("d F Y", strtotime(str_replace("/", "-", $metadata['odm_promulgation_date'])));
+                  elseif (isset($metadata['odm_date_uploaded']) ):
+                    $ckan_published_date = date("d F Y", strtotime($metadata['odm_date_uploaded']));
+                  endif;
+              endif;
+              $published_date = $date_in_filename? $date_in_filename : $ckan_published_date;
               $archive_refdoc[] = $ref_doc_name;
               $archive_refdoc_info[] = array('odm_reference_document'=> $ref_doc_name, 'title'=>$title, 'link'=>$metadata['name'], 'description' => $notes, 'date' =>$published_date);
           endif;
@@ -195,9 +220,9 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0, $include_u
                $display_reference_list .='<li><a target="_blank" href="'. wpckan_get_link_to_dataset($name).'">'.
                   getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(), $main_title).'</a>';
                   if (odm_language_manager()->get_current_language() == 'km') {
-                      $display_reference_list .= ' ('.convert_date_to_kh_date(date('d/m/Y', strtotime($published_date)), '/') .')';
+                      $display_reference_list .= ' ('. $published_date? convert_date_to_kh_date(date('d/m/Y', strtotime($published_date)), '/') : $date_in_filename .')';
                   } else {
-                      $display_reference_list .= ' ('. date("d F Y" ,strtotime($published_date)) .')';
+                      $display_reference_list .= ' ('. $published_date .')';
                   }
                $display_reference_list .='</li>';
              }else{
@@ -206,9 +231,10 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0, $include_u
                      $display_reference_list .='<a target="_blank" href="'.wpckan_get_link_to_dataset($name).'">'. getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(), $main_title).'</a></br>';
                      $display_reference_list .='<div class="ref_date">';
                        if (odm_language_manager()->get_current_language() == 'km') {
-                           $display_reference_list .= ' ('.convert_date_to_kh_date(date('d/m/Y', strtotime($published_date)), '/') .')';
+                            $conveted_date = $date_in_filename? convert_date_to_kh_date($date_in_filename, " ") : convert_date_to_kh_date(date('d/m/Y', strtotime($published_date)), '/');
+                           $display_reference_list .= ' ('. $conveted_date .')';
                        } else {
-                             $display_reference_list .= ' ('. date("d F Y" ,strtotime($published_date)) .')';
+                           $display_reference_list .= ' ('. $published_date .')';
                        }
                      $display_reference_list .='</div>';
                      $display_reference_list .='</td>';
