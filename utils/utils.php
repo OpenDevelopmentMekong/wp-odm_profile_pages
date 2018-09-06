@@ -220,9 +220,10 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0, $include_u
                $display_reference_list .='<li><a target="_blank" href="'. wpckan_get_link_to_dataset($name).'">'.
                   getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(), $main_title).'</a>';
                   if (odm_language_manager()->get_current_language() == 'km') {
-                      $display_reference_list .= ' ('. $published_date? convert_date_to_kh_date(date('d/m/Y', strtotime($published_date)), '/') : $date_in_filename .')';
+                       $conveted_date = $date_in_filename? convert_date_to_kh_date($date_in_filename, " ") : convert_date_to_kh_date(date('d/m/Y', strtotime($published_date)), '/');
+                       $display_reference_list .= ' ('. $conveted_date .')';
                   } else {
-                      $display_reference_list .= ' ('. $published_date .')';
+                       $display_reference_list .= ' ('. $published_date .')';
                   }
                $display_reference_list .='</li>';
              }else{
@@ -231,7 +232,7 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0, $include_u
                      $display_reference_list .='<a target="_blank" href="'.wpckan_get_link_to_dataset($name).'">'. getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(), $main_title).'</a></br>';
                      $display_reference_list .='<div class="ref_date">';
                        if (odm_language_manager()->get_current_language() == 'km') {
-                            $conveted_date = $date_in_filename? convert_date_to_kh_date($date_in_filename, " ") : convert_date_to_kh_date(date('d/m/Y', strtotime($published_date)), '/');
+                           $conveted_date = $date_in_filename? convert_date_to_kh_date($date_in_filename, " ") : convert_date_to_kh_date(date('d/m/Y', strtotime($published_date)), '/');
                            $display_reference_list .= ' ('. $conveted_date .')';
                        } else {
                            $display_reference_list .= ' ('. $published_date .')';
