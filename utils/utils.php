@@ -90,7 +90,7 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0) {
             $ref_doc_metadata = array();
 
             if (isset($ref_doc_name) && !empty($ref_doc_name)):
-                $attrs = array('filter_fields' => '{"extras_odm_reference_document":"'.$ref_doc_name.'"}');
+                $attrs = array('filter_fields' => '{"extras_odm_reference_document":"'.trim($ref_doc_name).'"}');
                 $ref_doc_metadata = wpckan_api_package_search(wpckan_get_ckan_domain(), $attrs);
             endif;
             if (count($ref_doc_metadata['results']) > 0):
@@ -134,7 +134,7 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0) {
 
                     $ref_doc_metadata = array();
                     if (isset($ref_doc_name) && !empty($ref_doc_name)):
-                        $attrs = array('filter_fields' => '{"extras_odm_reference_document":"'.$ref_doc_name.'"}');
+                        $attrs = array('filter_fields' => '{"extras_odm_reference_document":"'.trim($ref_doc_name).'"}');
                         $ref_doc_metadata = wpckan_api_package_search(wpckan_get_ckan_domain(), $attrs);
                     endif;
                     if (count($ref_doc_metadata['results']) > 0):
