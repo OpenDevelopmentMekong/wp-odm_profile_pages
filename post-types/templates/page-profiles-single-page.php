@@ -64,7 +64,7 @@
     </div>
     <div class="row">
       <div class="sixteen columns">
-        <?php if (count($ammendements) > 0): ?>
+        <?php if (isset($ammendments) && count($ammendements) > 0): ?>
           <div class="profile-metadata">
             <h2><?php _e('Amendments', 'wp-odm_profile_pages'); ?></h2>
             <table id="tracking" class="data-table">
