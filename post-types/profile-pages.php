@@ -82,12 +82,12 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
            __('Template layout', 'wp-odm_profile_pages'),
            array($this, 'template_layout_settings_box'),
            'profiles',
-           'simple',
+           'advanced',
            'high'
           );
           add_meta_box(
            'profiles_resource',
-           __('CKAN​ Dataset Resource', 'wp-odm_profile_pages'),
+           __('CKAN Dataset Resource', 'wp-odm_profile_pages'),
            array($this, 'resource_settings_box'),
            'profiles',
            'advanced',
