@@ -385,8 +385,8 @@ endif; ?>
               updated_dataTables_scrollHeader_top = get_first_set_dataTable_head_top - $(' .panel_filter').height() -20;
               updated_dataTables_scrollBody_top = get_first_set_dataTables_scrollBody_top - $(' .panel_filter').height();
 
-                     console.log("updated_dataTables_scrollBody_top")
-                     console.log(updated_dataTables_scrollBody_top);
+                    //  console.log("updated_dataTables_scrollBody_top")
+                    //  console.log(updated_dataTables_scrollBody_top);
               $('.dataTables_scrollHead').css('top', updated_dataTables_scrollHeader_top+'px');
               $('.dataTables_scrollBody').css('margin-top', updated_dataTables_scrollBody_top+'px');
             }else{

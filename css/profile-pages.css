@@ -222,10 +222,6 @@ table.dataTable thead .sorting_desc_disabled {
   float: left;
 }
 
-#profiles_wrapper th {
-  padding: 8px !important;
-}
-
 #profiles td {
   line-height: 22px;
 }
