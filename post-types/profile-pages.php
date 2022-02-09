@@ -122,21 +122,21 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 
         }//metabox
 
-
-      public function template_layout_settings_box($post = false)
-      {
-          $template = get_post_meta($post->ID, '_attributes_template_layout', true); ?>
-          <div id="template_layout_settings_box">
-           <h4><?php _e('Choose template layout', 'wp-odm_profile_pages');?></h4>
-           <select id="attributes_template_layout" name="_attributes_template_layout">
-              <option value="default" <?php if ($template == "default"): echo "selected"; endif; ?>>Default</option>
-              <option value="with-widget" <?php if ($template == "with-widget"): echo "selected"; endif; ?>>With widgets</option>
-              <option value="with-right-sibebar" <?php if ($template == "with-right-sibebar"): echo "selected"; endif; ?>>With right sidebar</option>
-              <option value="with-sub-navigation" <?php if ($template == "with-sub-navigation"): echo "selected"; endif; ?>>With sub-navigation</option>
-            </select>
-          </div>
-      <?php
-      }
+      	public function template_layout_settings_box($post = false)
+      	{
+          	$template = get_post_meta( $post->ID, '_attributes_template_layout', true ); ?>
+          	<div id="template_layout_settings_box">
+           		<h4><?php _e('Choose template layout', 'wp-odm_profile_pages');?></h4>
+				<select id="attributes_template_layout" name="_attributes_template_layout">
+					<option value="default" <?php if ($template == "default"): echo "selected"; endif; ?>>Default</option>
+					<option value="with-widget" <?php if ($template == "with-widget"): echo "selected"; endif; ?>>With widgets</option>
+					<option value="with-right-sibebar" <?php if ($template == "with-right-sibebar"): echo "selected"; endif; ?>>With right sidebar</option>
+					<option value="with-sub-navigation" <?php if ($template == "with-sub-navigation"): echo "selected"; endif; ?>>With sub-navigation</option>
+					<option value="with-sidebar-and-table" <?php if ($template == "with-sidebar-and-table"): echo "selected"; endif; ?>>With sidebar and table</option>
+				</select>
+          	</div>
+      	<?php
+      	}
 
       public function resource_settings_box($post = false)
       {

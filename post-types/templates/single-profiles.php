@@ -75,20 +75,21 @@ $sub_navigation = get_post_meta($post->ID, '_page_with_sub_navigation', true);
 
 <section id="content" class="single-post">
   <?php if (!empty($filter_map_id)):
-          include 'page-profiles-single-page.php';
+          	include 'page-profiles-single-page.php';
         elseif (!empty($metadata_dataset)):
-          include 'page-profiles-metadata-page.php';
+          	include 'page-profiles-metadata-page.php';
         else:
-          if ($template == 'with-widget'):
-            include 'page-profiles-page-with-widget.php';
-          elseif ($template == 'with-right-sibebar'):
-            include 'page-profiles-with-right-sidebar.php';
-          elseif ($template == 'with-sub-navigation'):
-            include 'page-profiles-with-sub-navigation.php';
-          else:
-            include 'page-profiles-list-page.php';
-          endif;
-
+			if ($template == 'with-widget'):
+				include 'page-profiles-page-with-widget.php';
+			elseif ($template == 'with-right-sibebar'):
+				include 'page-profiles-with-right-sidebar.php';
+			elseif ($template == 'with-sub-navigation'):
+				include 'page-profiles-with-sub-navigation.php';
+			elseif ( $template == 'with-sidebar-and-table' ):
+				include 'page-profile-with-sidebar-and-table.php';
+			else:
+				include 'page-profiles-list-page.php';
+			endif;
         endif;
         ?>
 	</section>
