@@ -50,9 +50,9 @@ if (!odm_screen_manager()->is_desktop()): ?>
                 <?php else: ?>
                     <div class="sixteen columns">
                         <?php if ($filtered_by_column_index): ?>
-                        <div id="filter_by_classification">
-                            <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
-                        </div>
+                            <div id="filter_by_classification">
+                                <p><?php _e('Filter by', 'wp-odm_profile_pages');?></p>
+                            </div>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>
