@@ -122,21 +122,21 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 
         }//metabox
 
-
-      public function template_layout_settings_box($post = false)
-      {
-          $template = get_post_meta($post->ID, '_attributes_template_layout', true); ?>
-          <div id="template_layout_settings_box">
-           <h4><?php _e('Choose template layout', 'wp-odm_profile_pages');?></h4>
-           <select id="attributes_template_layout" name="_attributes_template_layout">
-              <option value="default" <?php if ($template == "default"): echo "selected"; endif; ?>>Default</option>
-              <option value="with-widget" <?php if ($template == "with-widget"): echo "selected"; endif; ?>>With widgets</option>
-              <option value="with-right-sibebar" <?php if ($template == "with-right-sibebar"): echo "selected"; endif; ?>>With right sidebar</option>
-              <option value="with-sub-navigation" <?php if ($template == "with-sub-navigation"): echo "selected"; endif; ?>>With sub-navigation</option>
-            </select>
-          </div>
-      <?php
-      }
+      	public function template_layout_settings_box($post = false)
+      	{
+          	$template = get_post_meta( $post->ID, '_attributes_template_layout', true ); ?>
+          	<div id="template_layout_settings_box">
+           		<h4><?php _e('Choose template layout', 'wp-odm_profile_pages');?></h4>
+				<select id="attributes_template_layout" name="_attributes_template_layout">
+					<option value="default" <?php if ($template == "default"): echo "selected"; endif; ?>>Default</option>
+					<option value="with-widget" <?php if ($template == "with-widget"): echo "selected"; endif; ?>>With widgets</option>
+					<option value="with-right-sibebar" <?php if ($template == "with-right-sibebar"): echo "selected"; endif; ?>>With right sidebar</option>
+					<option value="with-sub-navigation" <?php if ($template == "with-sub-navigation"): echo "selected"; endif; ?>>With sub-navigation</option>
+					<option value="with-sidebar-and-table" <?php if ($template == "with-sidebar-and-table"): echo "selected"; endif; ?>>With sidebar and table</option>
+				</select>
+          	</div>
+      	<?php
+      	}
 
       public function resource_settings_box($post = false)
       {
@@ -328,8 +328,9 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
     					  <th><label for="link_to_detail_page"><?php _e("Select the column id to use for Detail Link (English)", 'wp-odm_profile_pages'); ?></label></th>
     					  <td>
                   <select class="link_to_detail_page" name="_link_to_detail_page">
-                    <option value="" <?php echo !isset($link_to_detail_page)? 'selected="selected"' : ''; ?>>default</option>
-                    <option value="view_detail" <?php echo (isset($link_to_detail_page) && ($link_to_detail_page == "view_detail"))? 'selected="selected"' : ''; ?> >view_detail</option>
+                    <option value="" <?php echo !isset($link_to_detail_page)? 'selected="selected"' : ''; ?>>Default</option>
+                    <option value="view_detail" <?php echo (isset($link_to_detail_page) && ($link_to_detail_page == "view_detail"))? 'selected="selected"' : ''; ?> >View details</option>
+                    <option value="link_p" <?php echo (isset($link_to_detail_page) && ($link_to_detail_page == "link_p"))? 'selected="selected"' : ''; ?> >Link to existing profile page</option>
                   </select>
     					    <p class="description"><?php _e('Please select the ids of the columns that will use as link to detail page.', 'wp-odm_profile_pages'); ?></p>
     					  </td>

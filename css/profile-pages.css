@@ -121,9 +121,9 @@ table.dataTable thead .sorting_desc_disabled {
   width: 100%;
 }
 
-.profiles_page .toggle-info .toggle-table tr:first-child {
+/* .profiles_page .toggle-info .toggle-table tr:first-child {
 
-}
+} */
 
 .dataTables_info,
 .dataTables_length > label,
@@ -220,10 +220,6 @@ table.dataTable thead .sorting_desc_disabled {
 
 #profiles {
   float: left;
-}
-
-#profiles_wrapper th {
-  padding: 8px !important;
 }
 
 #profiles td {
@@ -357,7 +353,7 @@ table.dataTable thead .sorting_desc_disabled {
 .fixed_datatable_tool_bar {
   display: none;
   float: right;
-  display: inline-block;
+  display: block;
   margin-left: 0;
 }
 
@@ -433,7 +429,7 @@ table.dataTable thead .sorting_desc_disabled {
   z-index: 2002;
   position: absolute;
   margin-top: 2.5em;
-  -moz-column-gap: 8px;
+  column-gap: 8px;
 }
 
 .dataTables_wrapper .dataTables_paginate {
@@ -742,6 +738,7 @@ table.no-bgcolor tr{
 .widget_download a.download i{
   margin-right: 5px;
   margin-left: 5px;
+}
 
 .full-width-content ul{
     padding: 5px 0;

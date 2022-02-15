@@ -1,11 +1,27 @@
-<?php require_once(WP_PLUGIN_DIR . '/wp-odm_profile_pages/utils/profile-spreadsheet-post-meta.php'); ?>
+<?php
+require_once(WP_PLUGIN_DIR . '/wp-odm_profile_pages/utils/profile-spreadsheet-post-meta.php');
+
+$full_width_content = odm_language_manager()->get_current_language() !== 'en' ? get_post_meta(get_the_ID(), '_full_width_middle_content_localization', true) : get_post_meta(get_the_ID(), '_full_width_middle_content', true);
+$full_width_position = get_post_meta(get_the_ID(), '_full_width_content_position', true);
+?>
 
 <div class="container">
-    <?php
-    $full_width_content = odm_language_manager()->get_current_language() !== 'en' ? get_post_meta(get_the_ID(), '_full_width_middle_content_localization', true) : get_post_meta(get_the_ID(), '_full_width_middle_content', true);
-    $full_width_position = get_post_meta(get_the_ID(), '_full_width_content_position', true);
+    <!-- Main content in WYSIWYG -->
+    <div class="row">
+        <div class="twelve columns">
+            <?php echo get_the_content(); ?>
+        </div>
+        <div class="four columns">
+            <aside id="sidebar">
+                <ul class="widgets">
+                    <?php dynamic_sidebar('profile-right-sidebar'); ?>
+                </ul>
+            </aside>
+        </div>
+    </div>
 
-    if ($full_width_content && $full_width_position) : ?>
+    <?php if ($full_width_content && $full_width_position) : ?>
+        <!-- Full width middle content [above map] -->
         <div class="row">
             <div class="sixteen columns">
                 <?php echo "<div class='full-width-content above-map'>" . $full_width_content . "</div>"; ?>
@@ -13,6 +29,7 @@
         </div>
     <?php endif; ?>
 
+    <!-- Embedded Map -->
     <div class="row">
         <div class="sixteen columns">
             <?php
@@ -24,34 +41,27 @@
     </div>
 
     <?php if ($full_width_content && !$full_width_position) : ?>
-        <section class="container">
-            <div class="row">
-                <div class="sixteen columns">
-                    <?php echo "<div class='full-width-content below-map'>" . $full_width_content . "</div>"; ?>
-                </div>
+        <!-- Full width middle content [below map] -->
+        <div class="row">
+            <div class="sixteen columns">
+                <?php echo "<div class='full-width-content below-map'>" . $full_width_content . "</div>"; ?>
             </div>
-        </section>
+        </div>
     <?php endif; ?>
 
     <?php
     if ($profiles) :
         require_once( dirname(__FILE__) . '/../template-parts/total-records.php' );
 
-        // Filter
+        // Filters
         require_once(dirname(__FILE__) . '/../template-parts/filter.php');
 
         // Table
         require_once(dirname(__FILE__) . '/../template-parts/table-view.php');
-    endif; ?>
+    endif;
+    ?>
 </div>
 
-<div class="row">
-    <div class="sixteen columns">
-        <div class="disclaimer">
-            <?php echo get_the_content(); ?>
-        </div>
-    </div>
-</div>
 
 <?php if ($profiles) { ?>
     <script type="text/javascript">
@@ -65,22 +75,25 @@
                 add_li.appendTo($('#breadcrumbs'));
                 $('.item-current a').text($('.item-current a strong').text());
             }
+
             $.fn.dataTableExt.oApi.fnFilterAll = function(oSettings, sInput, iColumn, bRegex, bSmart) {
                 var settings = $.fn.dataTableSettings;
+
                 for (var i = 0; i < settings.length; i++) {
                     settings[i].oInstance.fnFilter(sInput, iColumn, bRegex, bSmart);
                 }
             };
 
-            <?php
-            if ($filter_map_id == '' && $metadata_dataset == '') { ?>
+            <?php if ($filter_map_id == '' && $metadata_dataset == '') { ?>
                 var get_od_selector_height = $('#od-selector').height();
                 var get_filter_container_height = 0;
+
                 $('.filter-container').each(function(index) {
                     if ($(this).css("display") !== 'none') {
                         get_filter_container_height += $(this).height();
                     }
                 });
+
                 var get_position_profile_table = $('.filter-container').offset().top - 15;
                 var table_fixed_position = get_od_selector_height + get_filter_container_height + 37;
                 var table_body_fixed_position = table_fixed_position + 5;
@@ -88,6 +101,7 @@
                 var get_first_set_dataTables_scrollBody_top = table_body_fixed_position + 10;
                 var updated_dataTables_scrollHeader_top = 0;
                 var updated_dataTables_scrollBody_top = 0;
+
                 $(window).scroll(function() {
                     if ($(document).scrollTop() >= get_position_profile_table) {
                         var dataTables_scrollHead_top = updated_dataTables_scrollHeader_top ? updated_dataTables_scrollHeader_top : table_fixed_position;
@@ -113,9 +127,12 @@
                 $(".related_profiles_toggle_icon").click(function() {
                     $(".fixed-filter-container .panel").toggleClass('hide');
                     $(".fixed-filter-container .related_profiles_toggle_icon").find('i').toggleClass('fa-filter fa-times-circle');
+
                     if ($(".fixed-filter-container .related_profiles_toggle_icon i").hasClass('fa-filter')) {
                         updated_dataTables_scrollHeader_top = get_first_set_dataTable_head_top - $(' .panel_filter').height() - 20;
                         updated_dataTables_scrollBody_top = get_first_set_dataTables_scrollBody_top - $(' .panel_filter').height();
+                        // console.log("updated_dataTables_scrollBody_top")
+                        // console.log(updated_dataTables_scrollBody_top);
                         $('.dataTables_scrollHead').css('top', updated_dataTables_scrollHeader_top + 'px');
                         $('.dataTables_scrollBody').css('margin-top', updated_dataTables_scrollBody_top + 'px');
                     } else {
@@ -126,11 +143,9 @@
 
                 oTable = $("#profiles").dataTable({
                     scrollX: true,
-                    <?php
-                    if (!odm_screen_manager()->is_desktop()) : ?>
+                    <?php if (!odm_screen_manager()->is_desktop()) : ?>
                         responsive: true,
-                    <?php
-                    endif; ?>
+                    <?php endif; ?>
                     sDom: 'T<"H"lf>t<"F"ip>',
                     processing: true,
                     lengthMenu: [
@@ -141,10 +156,8 @@
                     columnDefs: [{
                         "targets": [0],
                         "visible": false
-                    }]
-                    <?php
-                    if (odm_language_manager()->get_current_language() == 'km') : ?>,
-                        "oLanguage": {
+                    }],
+                    <?php if (odm_language_manager()->get_current_language() == 'km') : ?> "oLanguage": {
                             "sLengthMenu": 'បង្ហាញចំនួន <select>' +
                                 '<option value="10">10</option>' +
                                 '<option value="25">20</option>' +
@@ -162,24 +175,27 @@
                                 "sPrevious": "មុន",
                                 "sNext": "បន្ទាប់"
                             }
-                        }
-                    <?php
-                    endif; ?>
-                    <?php
-                    if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) : ?>,
+                        },
+                    <?php endif; ?>
+
+                    <?php if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) : ?>
+                        //sort data in Data Classifications first before grouping
                         "aaSortingFixed": [
-                            [<?php echo $group_data_by_column_index; ?>, 'asc']
-                        ] //sort data in Data Classifications first before grouping
-                    <?php
-                    endif; ?>,
+                            [
+                                <?php echo $group_data_by_column_index; ?>,
+                                'asc'
+                            ]
+                        ],
+                    <?php endif; ?>
+
                     "drawCallback": function(settings) { //Group colums
                         var api = this.api();
                         var rows = api.rows({
                             page: 'current'
                         }).nodes();
                         var last = null;
-                        <?php
-                        if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) { ?>
+
+                        <?php if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) { ?>
                             api.column(<?php echo $group_data_by_column_index; ?>, {
                                 page: 'current'
                             }).data().each(function(group, i) {
@@ -190,8 +206,8 @@
                                     last = group;
                                 }
                             });
-                        <?php
-                        } ?>
+                        <?php } ?>
+
                         align_width_td_and_th();
                     }
                 });
@@ -202,14 +218,16 @@
                     $number_selector = 1;
                     foreach ($num_filtered_column_index as $column_index) :
                         $column_index = trim($column_index);
+
                         if ($number_selector <= 3) : ?>
                             create_filter_by_column_index(<?php echo $column_index; ?>);
-                <?php
+                        <?php
                         endif;
                         ++$number_selector;
                     endforeach;
                 endif;
                 ?>
+
                 //Set width of table header and body equally
                 function align_width_td_and_th() {
                     var widths = [];
@@ -220,7 +238,9 @@
                     $tableBodyCell.each(
                         function() {
                             widths.push($(this).width());
-                        });
+                        }
+                    );
+
                     $tableBodyCell.each(
                         function(i, val) {
                             var $adjust_width;
@@ -270,7 +290,8 @@
                                 $headerCell.eq(i).children('.th-value').css('width', $max_width);
                                 $('#profiles tbody td:nth-child(' + td_index + ')').children('.td-value').css('width', $max_width);
                             }
-                        });
+                        }
+                    );
                 }
 
                 function create_filter_by_column_index(col_index) {
@@ -278,34 +299,32 @@
                     var column_filter_oTable = oTable.api().columns(columnIndex);
                     var column_headercolumnIndex = columnIndex - 1;
                     var column_header = $("#profiles").find("th:eq( " + column_headercolumnIndex + " )").text();
-                    <?php
-                    if (odm_language_manager()->get_current_language() == 'km') { ?>
+
+                    <?php if (odm_language_manager()->get_current_language() == 'km') { ?>
                         var div_filter = $('<div class="filter_by filter_by_column_index_' + columnIndex + '"></div>');
                         div_filter.appendTo($('#filter_by_classification'));
                         var select = $('<select class="filter_box"><option value="">' + column_header + '<?php _e('all', 'wp-odm_profile_pages');
                                                                                                             ?></option></select>');
-                    <?php
-                    } else { ?>
+                    <?php } else { ?>
                         var div_filter = $('<div class="filter_by filter_by_column_index_' + columnIndex + '"></div>');
                         div_filter.appendTo($('#filter_by_classification'));
                         var select = $('<select class="filter_box"><option value=""><?php _e('All ', 'wp-odm_profile_pages'); ?>' + column_header + '</option></select>');
-                    <?php
-                    } ?>
-                    select.appendTo($('.filter_by_column_index_' + columnIndex))
-                        .on('change', function() {
-                            var val = $.fn.dataTable.util.escapeRegex(
-                                $(this).val()
-                            );
-                            column_filter_oTable
-                                .search(val ? val : '', true, false)
-                                .draw();
-                            var filtered = oTable._('tr', {
-                                "filter": "applied"
-                            });
-                            <?php if (isset($map_visualization_url) &&  $map_visualization_url != '') { ?>
-                                filterEntriesMap(_.pluck(filtered, mapIdColNumber));
-                            <?php } ?>
+                    <?php } ?>
+
+                    select.appendTo($('.filter_by_column_index_' + columnIndex)).on('change', function() {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+                        column_filter_oTable
+                            .search(val ? val : '', true, false)
+                            .draw();
+                        var filtered = oTable._('tr', {
+                            "filter": "applied"
                         });
+                        <?php if (isset($map_visualization_url) &&  $map_visualization_url != '') { ?>
+                            filterEntriesMap(_.pluck(filtered, mapIdColNumber));
+                        <?php } ?>
+                    });
                     var i = 1;
                     column_filter_oTable.data().eq(0).unique().sort().each(function(d, j) {
                         d = d.replace(/[<]br[^>]*[>]/gi, "");
@@ -324,12 +343,12 @@
                 $('.fixed_datatable_tool_bar .dataTables_length select').on('change', function() {
                     $('.table-column-container .dataTables_length select').val($(this).val());
                 });
+
                 $('.table-column-container .dataTables_length select').on('change', function() {
                     $('.fixed_datatable_tool_bar .dataTables_length select').val($(this).val());
                 });
 
                 $('#filter_by_classification').find('select').each(function(index) {
-
                     $(this).change(function() {
                         refreshMap();
                     });
