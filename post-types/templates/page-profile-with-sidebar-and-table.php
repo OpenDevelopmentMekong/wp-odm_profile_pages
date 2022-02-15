@@ -51,12 +51,10 @@ $full_width_position = get_post_meta(get_the_ID(), '_full_width_content_position
 
     <?php
     if ($profiles) :
-        require_once( dirname(__FILE__) . '/../template-parts/total-records.php' );
+        require_once(dirname(__FILE__) . '/../template-parts/total-records.php');
 
-        // Filters
         require_once(dirname(__FILE__) . '/../template-parts/filter.php');
 
-        // Table
         require_once(dirname(__FILE__) . '/../template-parts/table-view.php');
     endif;
     ?>
@@ -180,15 +178,15 @@ $full_width_position = get_post_meta(get_the_ID(), '_full_width_content_position
 
                     <?php if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) : ?>
                         //sort data in Data Classifications first before grouping
-                        "aaSortingFixed": [
+                        ,"aaSortingFixed": [
                             [
                                 <?php echo $group_data_by_column_index; ?>,
                                 'asc'
                             ]
                         ],
                     <?php endif; ?>
-
-                    "drawCallback": function(settings) { //Group colums
+                    
+                    ,"drawCallback": function(settings) { //Group colums
                         var api = this.api();
                         var rows = api.rows({
                             page: 'current'
@@ -221,7 +219,7 @@ $full_width_position = get_post_meta(get_the_ID(), '_full_width_content_position
 
                         if ($number_selector <= 3) : ?>
                             create_filter_by_column_index(<?php echo $column_index; ?>);
-                        <?php
+                <?php
                         endif;
                         ++$number_selector;
                     endforeach;

@@ -35,12 +35,10 @@
 
     <?php
     if ($profiles) :
-        require_once( dirname(__FILE__) . '/../template-parts/total-records.php' );
+        require_once(dirname(__FILE__) . '/../template-parts/total-records.php');
 
-        // Filter
         require_once(dirname(__FILE__) . '/../template-parts/filter.php');
 
-        // Table
         require_once(dirname(__FILE__) . '/../template-parts/table-view.php');
     endif; ?>
 </div>
