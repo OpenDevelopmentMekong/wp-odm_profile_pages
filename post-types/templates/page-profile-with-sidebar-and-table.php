@@ -170,16 +170,19 @@ $full_width_position = get_post_meta(get_the_ID(), '_full_width_content_position
                                 "sNext": "បន្ទាប់"
                             }
                         },
-                    <?php
-                    endif; ?>
-                    <?php
-                    if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) : ?>,
-                        "aaSortingFixed": [
-                            [<?php echo $group_data_by_column_index; ?>, 'asc']
-                        ] //sort data in Data Classifications first before grouping
-                    <?php
-                    endif; ?>,
-                    "drawCallback": function(settings) { //Group colums
+                    <?php endif; ?>
+
+                    <?php if (isset($group_data_by_column_index) && !empty($group_data_by_column_index)) : ?>
+                        //sort data in Data Classifications first before grouping
+                        ,"aaSortingFixed": [
+                            [
+                                <?php echo $group_data_by_column_index; ?>,
+                                'asc'
+                            ]
+                        ],
+                    <?php endif; ?>
+                    
+                    ,"drawCallback": function(settings) { //Group colums
                         var api = this.api();
                         var rows = api.rows({
                             page: 'current'
