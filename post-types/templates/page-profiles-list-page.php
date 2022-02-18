@@ -329,7 +329,7 @@
                 $('#filter_by_classification').find('select').each(function(index) {
 
                     $(this).change(function() {
-                        refreshMap();
+                        // refreshMap();
                     });
                 })
 
@@ -346,7 +346,7 @@
                         $("#search_all").addClass("loading_icon");
                         typingTimer = setTimeout(function() {
                             oTable.fnFilterAll(keyword);
-                            refreshMap();
+                            // refreshMap();
                         }, 2000);
                     }
                 });
@@ -376,4 +376,4 @@
             ?>
         }); //jQuery
     </script>
-<?php }  ?>
+<?php } ?>

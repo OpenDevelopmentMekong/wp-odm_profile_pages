@@ -338,7 +338,7 @@ $full_width_position = get_post_meta(get_the_ID(), '_full_width_content_position
                 $('#filter_by_classification').find('select').each(function(index) {
 
                     $(this).change(function() {
-                        refreshMap();
+                        // refreshMap();
                     });
                 })
 
@@ -355,7 +355,7 @@ $full_width_position = get_post_meta(get_the_ID(), '_full_width_content_position
                         $("#search_all").addClass("loading_icon");
                         typingTimer = setTimeout(function() {
                             oTable.fnFilterAll(keyword);
-                            refreshMap();
+                            // refreshMap();
                         }, 2000);
                     }
                 });
