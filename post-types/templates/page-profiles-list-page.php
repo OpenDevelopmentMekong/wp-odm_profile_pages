@@ -160,7 +160,7 @@
                                 "sPrevious": "មុន",
                                 "sNext": "បន្ទាប់"
                             }
-                        },
+                        }
                     <?php
                     endif; ?>
                     <?php

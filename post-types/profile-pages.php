@@ -383,6 +383,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                   <select class="link_to_detail_page_localization" name="_link_to_detail_page_localization">
                     <option value="" <?php echo !isset($link_to_detail_page)? 'selected="selected"' : ''; ?>>default</option>
                     <option value="view_detail" <?php echo (isset($link_to_detail_page) && ($link_to_detail_page == "view_detail"))? 'selected="selected"' : ''; ?> >view_detail</option>
+                    <option value="link_p" <?php echo (isset($link_to_detail_page) && ($link_to_detail_page == "link_p"))? 'selected="selected"' : ''; ?> >Link to existing profile page</option>
                   </select>
     					    <p class="description"><?php _e('Please select the ids of the columns that will use as link to detail page.', 'wp-odm_profile_pages'); ?></p>
     					  </td>

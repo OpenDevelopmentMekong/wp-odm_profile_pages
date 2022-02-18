@@ -169,7 +169,7 @@ $full_width_position = get_post_meta(get_the_ID(), '_full_width_content_position
                                 "sPrevious": "មុន",
                                 "sNext": "បន្ទាប់"
                             }
-                        },
+                        }
                     <?php
                     endif; ?>
                     <?php
