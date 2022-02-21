@@ -4,17 +4,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ODM WP Profile pages\n"
-"POT-Creation-Date: 2018-05-14 08:39+0700\n"
-"PO-Revision-Date: 2018-05-14 08:42+0700\n"
+"POT-Creation-Date: 2022-02-21 15:43+0700\n"
+"PO-Revision-Date: 2022-02-21 22:43+0700\n"
 "Last-Translator: ChandaraKhun <chandara@opendevcam.net>\n"
-"Language-Team: Khmer (http://www.transifex.com/open-development-mekong/wp-odm_profile_pages/"
-"language/km/)\n"
+"Language-Team: Khmer (http://www.transifex.com/open-development-mekong/wp-odm_profile_pages/language/km/)\n"
 "Language: km\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _;_e;__;_n:1,2;_x:1,2c;_ex:1,2c\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -84,7 +83,9 @@ msgid "Template layout"
 msgstr "គំនូសគំរូ"
 
 #: post-types/profile-pages.php:90
-msgid "CKAN​ Dataset Resource"
+#, fuzzy
+#| msgid "CKAN​ Dataset Resource"
+msgid "CKAN Dataset Resource"
 msgstr "ធនធានសំណំុទិន្នន័យ CKAN"
 
 #: post-types/profile-pages.php:98
@@ -99,11 +100,11 @@ msgstr "ខ្លឹមសារនៅចំកណ្តាលផ្ទៃពេ
 msgid "Sub-navigation"
 msgstr ""
 
-#: post-types/profile-pages.php:130
+#: post-types/profile-pages.php:129
 msgid "Choose template layout"
 msgstr "ជ្រើសរើសគំនូសគំរូ"
 
-#: post-types/profile-pages.php:155 post-types/profile-pages.php:281 post-types/profile-pages.php:427
+#: post-types/profile-pages.php:155 post-types/profile-pages.php:281 post-types/profile-pages.php:429
 msgid "ENGLISH"
 msgstr "ភាសាអង់គ្លេស"
 
@@ -113,11 +114,11 @@ msgstr "URL របស់ធនធានជាទម្រង់ CSV (ភាស�
 
 #: post-types/profile-pages.php:172 post-types/profile-pages.php:199
 msgid ""
-"CSV Resource of dataset on CKAN. Eg. https://data.opendevelopmentmekong.net/dataset/economic-land-"
-"concessions/resource/3b817bce-9823-493b-8429-e5233ba3bd87?type=dataset"
+"CSV Resource of dataset on CKAN. Eg. https://data.opendevelopmentmekong.net/dataset/economic-land-concessions/resource/3b817bce-9823-493b-8429-e5233ba3bd87?"
+"type=dataset"
 msgstr ""
-"ធនធានទិន្នន័យជាទម្រង់ CSV នៅលើ CKAN ។ ឧទាហរណ៍  https://data.opendevelopmentmekong.net/dataset/economic-"
-"land-concessions/resource/3b817bce-9823-493b-8429-e5233ba3bd87?type=dataset"
+"ធនធានទិន្នន័យជាទម្រង់ CSV នៅលើ CKAN ។ ឧទាហរណ៍  https://data.opendevelopmentmekong.net/dataset/economic-land-concessions/resource/3b817bce-9823-493b-8429-e5233ba3bd87?"
+"type=dataset"
 
 #: post-types/profile-pages.php:177
 msgid "CSV Tracking URL (English)"
@@ -125,11 +126,11 @@ msgstr "URL ប្រែតាមទម្រង់ CSV (ភាសាអង់�
 
 #: post-types/profile-pages.php:182 post-types/profile-pages.php:206
 msgid ""
-"CSV Resource of tracking dataset on CKAN. Eg. https://data.opendevelopmentmekong.net/dataset/"
-"economic-land-concessions/resource/8cc0c651-8131-404e-bbce-7fe6af728f89?type=dataset"
+"CSV Resource of tracking dataset on CKAN. Eg. https://data.opendevelopmentmekong.net/dataset/economic-land-concessions/resource/8cc0c651-8131-404e-bbce-7fe6af728f89?"
+"type=dataset"
 msgstr ""
-"ធនធានជាទម្រង់ CSV ប្រែតាមសំណុំទិន្នន័យលើ CKAN ។ ឧទាហរណ៍ https://data.opendevelopmentmekong.net/dataset/"
-"economic-land-concessions/resource/8cc0c651-8131-404e-bbce-7fe6af728f89?type=dataset"
+"ធនធានជាទម្រង់ CSV ប្រែតាមសំណុំទិន្នន័យលើ CKAN ។ ឧទាហរណ៍ https://data.opendevelopmentmekong.net/dataset/economic-land-concessions/resource/8cc0c651-8131-404e-bbce-7fe6af728f89?"
+"type=dataset"
 
 #: post-types/profile-pages.php:196
 msgid "CSV Resource URL ("
@@ -153,200 +154,175 @@ msgstr "បង្ហាញចំនួនបន្ទាត់បញ្ឈរស
 
 #: post-types/profile-pages.php:296
 msgid ""
-"List the attribute names to show their total number on page (separated by line breaks). Eg. For "
-"ELC: <br/>map_id<br/>developer<br/>data_class[\"Government data complete\", \"Government data "
-"partial\"]"
+"List the attribute names to show their total number on page (separated by line breaks). Eg. For ELC: <br/>map_id<br/>developer<br/>data_class[\"Government data "
+"complete\", \"Government data partial\"]"
 msgstr ""
-"រាយឈ្មោះលក្ខណៈសម្បត្តិ ដើម្បីបង្ហាញចំនួនសរុបពួកវាលើទំព័រ (ខណ្ឌចែកដោយការកាត់ផ្តាច់ដោយបន្ទាត់)។ ឧទាហរណ៍ "
-"សម្រាប់សម្បទានដីសេដ្ឋកិច្ច៖ <br/>ផែនទី_id<br/>អ្នកអភិវឌ្ឍ<br/>ទិន្នន័យ_ថ្នាក់[\"ទិន្នន័យរដ្ឋាភិបាលពេញលេញ\", "
-"\"ទិន្នន័យរដ្ឋាភិបាលមិនពេញលេញ\"] "
+"រាយឈ្មោះលក្ខណៈសម្បត្តិ ដើម្បីបង្ហាញចំនួនសរុបពួកវាលើទំព័រ (ខណ្ឌចែកដោយការកាត់ផ្តាច់ដោយបន្ទាត់)។ ឧទាហរណ៍ សម្រាប់សម្បទានដីសេដ្ឋកិច្ច៖ <br/>ផែនទី_id<br/>អ្នកអភិវឌ្ឍ<br/>ទិន្នន័យ_ថ្នាក់[\"ទិន្នន័យរដ្ឋាភិបាលពេញលេញ"
+"\", \"ទិន្នន័យរដ្ឋាភិបាលមិនពេញលេញ\"] "
 
 #: post-types/profile-pages.php:300
 msgid "Create Select Filter by Column Index (English)"
 msgstr "បង្កើតប្រអប់ ជ្រើសរើសតាមវិស័យ ដោយ សន្ទស្សន៍បន្ទាត់បញ្ឈរ (ភាសាអង់គ្លេស)"
 
-#: post-types/profile-pages.php:303 post-types/profile-pages.php:355
+#: post-types/profile-pages.php:303 post-types/profile-pages.php:356
 msgid ""
-"Filter selectors will create automatically by adding the column index and separated by comma. "
-"Maximum Filter selectors can create is three. Eg. Create filter selectors of Data Adjustment and "
-"Intended crop or project of ELC which have index 2 and 5"
+"Filter selectors will create automatically by adding the column index and separated by comma. Maximum Filter selectors can create is three. Eg. Create filter "
+"selectors of Data Adjustment and Intended crop or project of ELC which have index 2 and 5"
 msgstr ""
-"ឧបករណ៍ជ្រើសវិស័យ នឹងត្រូវបានបង្កើតដោយស្វ័យប្រវត្តិ ដោយបន្ថែមសន្ទស្សន៍បន្ទាត់បញ្ឈរ និង ខណ្ឌចែកដោយសញ្ញាក្បៀស។ "
-"ឧបករណ៍ជ្រើសវិស័យជាអតិបរមា អាចបង្កើតបាន គឺមានចំនួនបី។ ឧទាហរណ៍ បង្កើត ឧបករណ៍ជ្រើសវិស័យ សម្រាប់ ការផ្លាស់ប្តូរទិន្នន័យ  និងដំណាំ "
-"ឬគម្រោងគ្រោងទុក នៃសម្បទានដីសេដ្ឋកិច្ច ដែលមានសន្ទស្សន៍ ២ និង ៥"
+"ឧបករណ៍ជ្រើសវិស័យ នឹងត្រូវបានបង្កើតដោយស្វ័យប្រវត្តិ ដោយបន្ថែមសន្ទស្សន៍បន្ទាត់បញ្ឈរ និង ខណ្ឌចែកដោយសញ្ញាក្បៀស។ ឧបករណ៍ជ្រើសវិស័យជាអតិបរមា អាចបង្កើតបាន គឺមានចំនួនបី។ ឧទាហរណ៍ បង្កើត ឧបករណ៍ជ្រើសវិស័យ សម្រាប់ "
+"ការផ្លាស់ប្តូរទិន្នន័យ  និងដំណាំ ឬគម្រោងគ្រោងទុក នៃសម្បទានដីសេដ្ឋកិច្ច ដែលមានសន្ទស្សន៍ ២ និង ៥"
 
 #: post-types/profile-pages.php:307
 msgid "Group Data in Column (English)"
 msgstr "ដាក់ទិន្នន័យជាក្រុមលើបន្ទាត់បញ្ឈរ (ភាសាអង់គ្លេស)"
 
-#: post-types/profile-pages.php:310 post-types/profile-pages.php:362
-msgid ""
-"Eg. To group data classification of ELC, based on the attributes sample provided, the index of "
-"data classification is: 5"
-msgstr ""
-"ឧទាហរណ៍ ដើម្បីដាក់ចំណាត់ថ្នាក់សម្បទានដីសេដ្ឋកិច្ចជាក្រុម ដែលយោងទៅលើគំរូលក្ខណៈសម្បត្តិផ្តល់ឲ្យ សន្ទស្សន៍ចំណាត់ថ្នាក់ទិន្នន័យគឺ៖ ៥"
+#: post-types/profile-pages.php:310 post-types/profile-pages.php:363
+msgid "Eg. To group data classification of ELC, based on the attributes sample provided, the index of data classification is: 5"
+msgstr "ឧទាហរណ៍ ដើម្បីដាក់ចំណាត់ថ្នាក់សម្បទានដីសេដ្ឋកិច្ចជាក្រុម ដែលយោងទៅលើគំរូលក្ខណៈសម្បត្តិផ្តល់ឲ្យ សន្ទស្សន៍ចំណាត់ថ្នាក់ទិន្នន័យគឺ៖ ៥"
 
 #: post-types/profile-pages.php:314
 msgid "Related Profile Pages (English)"
 msgstr "ទំព័រព័ត៌មានទិន្នន័យពាក់ព័ន្ធ (ភាសាអង់គ្លេស)"
 
-#: post-types/profile-pages.php:317 post-types/profile-pages.php:369
+#: post-types/profile-pages.php:317 post-types/profile-pages.php:370
 msgid ""
-"Please add the links of profile pages that related (separated by new breaking line). Format: Title "
-"of Link|URL. <br/>eg. Economic Land Concessions|https://cambodia.opendevelopmentmekong.net/"
-"profiles/economic-land-concessions/"
+"Please add the links of profile pages that related (separated by new breaking line). Format: Title of Link|URL. <br/>eg. Economic Land Concessions|https://cambodia."
+"opendevelopmentmekong.net/profiles/economic-land-concessions/"
 msgstr ""
-"សូមបន្ថែមតំណរបស់ទំព័រព័ត៌មានទិន្នន័យដែលទាក់ទង (ខណ្ឌចែកដោយការកាត់ផ្តាច់ដោយបន្ទាត់ថ្មី). ទម្រង់៖ ចំណងជើងរបស់តំណ|URL. <br/"
-">ឧទាហរណ៍ សម្បទានដីសេដ្ឋកិច្ច|https://cambodia.opendevelopmentmekong.net/profiles/economic-land-"
-"concessions/"
+"សូមបន្ថែមតំណរបស់ទំព័រព័ត៌មានទិន្នន័យដែលទាក់ទង (ខណ្ឌចែកដោយការកាត់ផ្តាច់ដោយបន្ទាត់ថ្មី). ទម្រង់៖ ចំណងជើងរបស់តំណ|URL. <br/>ឧទាហរណ៍ សម្បទានដីសេដ្ឋកិច្ច|https://cambodia.opendevelopmentmekong.net/"
+"profiles/economic-land-concessions/"
 
 #: post-types/profile-pages.php:321
 msgid "Column ids linking to detail page (English)"
 msgstr "Ids របស់បន្ទាត់បញ្ឈរ ដែលភ្ជាប់ទៅកាន់ទំព័រពិស្តារ (ភាសាអង់គ្លេស)"
 
-#: post-types/profile-pages.php:324 post-types/profile-pages.php:376
-msgid ""
-"Please add the ids of the columns that will feature a link to the entry's detail page. Format: "
-"Comma-separated values. <br/>eg. name,company,developer,block"
-msgstr ""
-"សូមបន្ថែម ids របស់បន្ទាត់បញ្ឈរ ដែលនឹងកំណត់លក្ខណៈ​ពិសេសឲ្យតំណទៅកាន់ច្រកចូលរបស់ទំព័រពិស្តារ។ ទម្រង់៖ តម្លៃខណ្ឌចែកដោយសញ្ញាក្បៀស។ "
-"<br/>ឧទាហរណ៍ ឈ្មោះ,ក្រុមហ៊ុន,អ្នកអភិវឌ្ឍ,ប្លុក"
+#: post-types/profile-pages.php:324 post-types/profile-pages.php:377
+msgid "Please add the ids of the columns that will feature a link to the entry's detail page. Format: Comma-separated values. <br/>eg. name,company,developer,block"
+msgstr "សូមបន្ថែម ids របស់បន្ទាត់បញ្ឈរ ដែលនឹងកំណត់លក្ខណៈ​ពិសេសឲ្យតំណទៅកាន់ច្រកចូលរបស់ទំព័រពិស្តារ។ ទម្រង់៖ តម្លៃខណ្ឌចែកដោយសញ្ញាក្បៀស។ <br/>ឧទាហរណ៍ ឈ្មោះ,ក្រុមហ៊ុន,អ្នកអភិវឌ្ឍ,ប្លុក"
 
 #: post-types/profile-pages.php:328
 msgid "Select the column id to use for Detail Link (English)"
 msgstr ""
 
-#: post-types/profile-pages.php:334 post-types/profile-pages.php:386
+#: post-types/profile-pages.php:335 post-types/profile-pages.php:388
 msgid "Please select the ids of the columns that will use as link to detail page."
 msgstr ""
 
-#: post-types/profile-pages.php:345
+#: post-types/profile-pages.php:346
 msgid "Show Total Numbers of Columns, separated by line breaks ("
 msgstr "បង្ហាញចំនួនបន្ទាត់បញ្ឈរសរុប ខណ្ឌចែកដោយការកាត់ផ្តាច់ដោយបន្ទាត់ ("
 
-#: post-types/profile-pages.php:348
+#: post-types/profile-pages.php:349
 msgid ""
-"List the attribut4 names to show their total number on page (separated by line breaks). Eg. For "
-"ELC: map_id<br/>developer<br/>data_class[\"Government data complete\", \"Government data partial\"]"
+"List the attribut4 names to show their total number on page (separated by line breaks). Eg. For ELC: map_id<br/>developer<br/>data_class[\"Government data complete\", "
+"\"Government data partial\"]"
 msgstr ""
-"រាយឈ្មោះលក្ខណៈសម្បត្តិ ដើម្បីបង្ហាញចំនួនសរុបពួកវាលើទំព័រ (ខណ្ឌចែកដោយការកាត់ផ្តាច់ដោយបន្ទាត់)។ ឧទាហរណ៍ សម្បទានដីសេដ្ឋកិច្ច៖ "
-"ផែនទី_id<br/>អ្នកអភិវឌ្ឍ<br/>ទិន្នន័យ_ថ្នាក់[\"ទិន្នន័យរដ្ឋាភិបាលពេញលេញ\", \"ទិន្នន័យរដ្ឋាភិបាលមិនពេញលេញ\"]"
+"រាយឈ្មោះលក្ខណៈសម្បត្តិ ដើម្បីបង្ហាញចំនួនសរុបពួកវាលើទំព័រ (ខណ្ឌចែកដោយការកាត់ផ្តាច់ដោយបន្ទាត់)។ ឧទាហរណ៍ សម្បទានដីសេដ្ឋកិច្ច៖ ផែនទី_id<br/>អ្នកអភិវឌ្ឍ<br/>ទិន្នន័យ_ថ្នាក់[\"ទិន្នន័យរដ្ឋាភិបាលពេញលេញ\", "
+"\"ទិន្នន័យរដ្ឋាភិបាលមិនពេញលេញ\"]"
 
-#: post-types/profile-pages.php:352
+#: post-types/profile-pages.php:353
 msgid "Create Select Filter by Column Index ("
 msgstr "បង្កើតប្រអប់ ជ្រើសរើសតាមវិស័យ ដោយ សន្ទស្សន៍បន្ទាត់បញ្ឈរ ("
 
-#: post-types/profile-pages.php:359
+#: post-types/profile-pages.php:360
 msgid "Group Data in Column ("
 msgstr "ដាក់ទិន្នន័យជាក្រុមលើបន្ទាត់បញ្ឈរ ("
 
-#: post-types/profile-pages.php:366
+#: post-types/profile-pages.php:367
 msgid "Related Profile Pages ("
 msgstr "ទំព័រព័ត៌មានទិន្នន័យពាក់ព័ន្ធ ( "
 
-#: post-types/profile-pages.php:373
+#: post-types/profile-pages.php:374
 msgid "Column ids linking to detail page ("
 msgstr "Ids របស់បន្ទាត់ជួរឈរ ភ្ជាប់ទៅទំព័រលម្អិត ("
 
-#: post-types/profile-pages.php:380
+#: post-types/profile-pages.php:381
 msgid "Select the column id to use for Detail Link ("
 msgstr ""
 
-#: post-types/profile-pages.php:423
+#: post-types/profile-pages.php:425
 msgid "Show above the map"
 msgstr ""
 
-#: post-types/profile-pages.php:441
+#: post-types/profile-pages.php:443
 msgid "Full width content (English)"
 msgstr "ខ្លឹមសារផ្ទៃពេញ (ភាសាអង់គ្លេស)"
 
-#: post-types/profile-pages.php:445 post-types/profile-pages.php:462
-msgid ""
-"Any content can add to under the Editor content and sidebar and  full width of website even the "
-"iframe."
-msgstr ""
-"ខ្លឹមសារទាំងឡាយអាចបន្ថែមនៅក្រោមខ្លឹមសារអ្នក​ពិនិត្យ​ផ្ទៀង​ផ្ទាត់ ព្រមជាមួយរបា​ខាងនៃ​គេហទំព័រ និងផ្ទៃគេហទំព័រពេញទាំងមូល រួមទាំង "
-"iframe ផងដែរ។"
+#: post-types/profile-pages.php:447 post-types/profile-pages.php:464
+msgid "Any content can add to under the Editor content and sidebar and  full width of website even the iframe."
+msgstr "ខ្លឹមសារទាំងឡាយអាចបន្ថែមនៅក្រោមខ្លឹមសារអ្នក​ពិនិត្យ​ផ្ទៀង​ផ្ទាត់ ព្រមជាមួយរបា​ខាងនៃ​គេហទំព័រ និងផ្ទៃគេហទំព័រពេញទាំងមូល រួមទាំង iframe ផងដែរ។"
 
-#: post-types/profile-pages.php:458
+#: post-types/profile-pages.php:460
 msgid "Full width content (("
 msgstr "ខ្លឹមសារផ្ទៃពេញ (("
 
-#: post-types/profile-pages.php:498
+#: post-types/profile-pages.php:500
 msgid "Add sub navigation"
 msgstr ""
 
-#: post-types/templates/page-profiles-list-page.php:63
-#: post-types/templates/page-profiles-list-page.php:66
-#: post-types/templates/page-profiles-list-page.php:100
-#: post-types/templates/page-profiles-list-page.php:103
-msgid "Total"
-msgstr "សរុប"
-
-#: post-types/templates/page-profiles-list-page.php:63
-#: post-types/templates/page-profiles-list-page.php:100
-msgid "Listed"
-msgstr "មានក្នុងបញ្ជី"
-
-#: post-types/templates/page-profiles-list-page.php:63
-#: post-types/templates/page-profiles-list-page.php:100
-msgid ":"
-msgstr "៖"
-
-#: post-types/templates/page-profiles-list-page.php:66
-#: post-types/templates/page-profiles-list-page.php:103
-msgid " listed"
-msgstr "មានក្នុងបញ្ជី"
-
-#: post-types/templates/page-profiles-list-page.php:66
-#: post-types/templates/page-profiles-list-page.php:91
-#: post-types/templates/page-profiles-list-page.php:103
-msgid ": "
-msgstr "៖"
-
-#: post-types/templates/page-profiles-list-page.php:128
-#: post-types/templates/page-profiles-list-page.php:202
+#: post-types/template-parts/filter.php:6 post-types/template-parts/filter.php:79
 msgid "Search data in profile page"
 msgstr "ស្វែងរកទិន្នន័យក្នុងទំព័រនេះ"
 
-#: post-types/templates/page-profiles-list-page.php:143
-#: post-types/templates/page-profiles-list-page.php:195
+#: post-types/template-parts/filter.php:22 post-types/template-parts/filter.php:70
 msgid "Filters"
 msgstr "ជ្រើសរើស"
 
-#: post-types/templates/page-profiles-list-page.php:154
-#: post-types/templates/page-profiles-list-page.php:175
-#: post-types/templates/page-profiles-list-page.php:211
-#: post-types/templates/page-profiles-list-page.php:233
+#: post-types/template-parts/filter.php:34 post-types/template-parts/filter.php:54 post-types/template-parts/filter.php:94 post-types/template-parts/filter.php:122
 msgid "Filter by"
 msgstr "ជ្រើសរើសតាម"
 
-#: post-types/templates/page-profiles-list-page.php:159
-#: post-types/templates/page-profiles-list-page.php:216
+#: post-types/template-parts/filter.php:40 post-types/template-parts/filter.php:103
 msgid "Related profiles"
 msgstr "ព័ត៌មានទិន្នន័យពាក់ព័ន្ធ"
 
-#: post-types/templates/page-profiles-list-page.php:201
+#: post-types/template-parts/filter.php:78
 msgid "Textual search"
 msgstr "ស្វែងរកក្នុងអត្ថបទ"
 
-#: post-types/templates/page-profiles-list-page.php:256
+#: post-types/template-parts/table-view.php:8
 msgid "Map ID"
 msgstr "លេខសម្គាស់"
 
-#: post-types/templates/page-profiles-list-page.php:318
-#: post-types/templates/page-profiles-list-page.php:329
-#: post-types/templates/page-profiles-list-page.php:352
-#: post-types/templates/page-profiles-list-page.php:360
-#: post-types/templates/page-profiles-single-page.php:51 utils/utils.php:25
+#: post-types/template-parts/table-view.php:91 post-types/template-parts/table-view.php:103 post-types/template-parts/table-view.php:141
+#: post-types/template-parts/table-view.php:149 post-types/templates/page-profiles-single-page.php:57 utils/utils.php:26
 msgid "Unknown"
 msgstr "មិនស្គាល់"
 
-#: post-types/templates/page-profiles-list-page.php:611
+#: post-types/template-parts/table-view.php:111
+msgid "EIA report"
+msgstr "របាយការណ៍ EIA"
+
+#: post-types/template-parts/table-view.php:115
+msgid "Not found"
+msgstr "មិនមានព័ត៌មានទិន្នន័យ"
+
+#: post-types/template-parts/total-records.php:27 post-types/template-parts/total-records.php:30 post-types/template-parts/total-records.php:72
+#: post-types/template-parts/total-records.php:75
+msgid "Total"
+msgstr "សរុប"
+
+#: post-types/template-parts/total-records.php:27 post-types/template-parts/total-records.php:72
+msgid "Listed"
+msgstr "មានក្នុងបញ្ជី"
+
+#: post-types/template-parts/total-records.php:27 post-types/template-parts/total-records.php:72
+msgid ":"
+msgstr "៖"
+
+#: post-types/template-parts/total-records.php:30 post-types/template-parts/total-records.php:75
+msgid " listed"
+msgstr "មានក្នុងបញ្ជី"
+
+#: post-types/template-parts/total-records.php:30 post-types/template-parts/total-records.php:61 post-types/template-parts/total-records.php:75
+msgid ": "
+msgstr "៖"
+
+#: post-types/templates/page-profile-with-sidebar-and-table.php:292 post-types/templates/page-profiles-list-page.php:283
 msgid "all"
 msgstr "ទាំងអស់"
 
-#: post-types/templates/page-profiles-list-page.php:617
+#: post-types/templates/page-profile-with-sidebar-and-table.php:298 post-types/templates/page-profiles-list-page.php:289
 msgid "All "
 msgstr "ទាំងអស់"
 
@@ -354,50 +330,50 @@ msgstr "ទាំងអស់"
 msgid "Metadata: "
 msgstr "ព័ត៌មានអំពីទិន្នន័យ៖"
 
-#: post-types/templates/page-profiles-single-page.php:69
+#: post-types/templates/page-profiles-single-page.php:81
 msgid "Amendments"
 msgstr "វិសោធនកម្ម"
 
-#: post-types/templates/page-profiles-single-page.php:124
+#: post-types/templates/page-profiles-single-page.php:140
 msgid "Reference documents"
 msgstr "ឯកសារយោង"
 
-#: utils/utils.php:30
-msgid "ODC is not aware of any adjustments to the concession since it was first granted."
-msgstr ""
-"អូឌីស៊ីពុំទាន់មានព័ត៌មានអំពីការប្រែប្រួលពាក់ព័ន្ធនឹងសម្បទានដីសេដ្ឋកិច្ចនេះទេ ចាប់តាំងពីរាជរដ្ឋាភិបាលបានផ្តល់អាជ្ញាប័ណ្ណជាលើកដំបូង។"
+#: post-types/templates/page-profiles-single-page.php:145
+#, fuzzy
+#| msgid "No profile found."
+msgid "No records found"
+msgstr "មិនមានព័ត៌មានទិន្នន័យ"
 
-#: utils/utils.php:35
+#: utils/utils.php:31
+msgid "ODC is not aware of any adjustments to the concession since it was first granted."
+msgstr "អូឌីស៊ីពុំទាន់មានព័ត៌មានអំពីការប្រែប្រួលពាក់ព័ន្ធនឹងសម្បទានដីសេដ្ឋកិច្ចនេះទេ ចាប់តាំងពីរាជរដ្ឋាភិបាលបានផ្តល់អាជ្ញាប័ណ្ណជាលើកដំបូង។"
+
+#: utils/utils.php:36
 msgid ""
-"The concession has been subjected to additional reductions in size and has not been cancelled "
-"previously. Publicly available information on land area cut from ELCs does not include maps or "
-"spatial data of excisions. Thus, ODC cannot present land area cut in shapes. As a result, ELC "
-"projects that are visualized on the interactive map represent the original contract size."
+"The concession has been subjected to additional reductions in size and has not been cancelled previously. Publicly available information on land area cut from ELCs "
+"does not include maps or spatial data of excisions. Thus, ODC cannot present land area cut in shapes. As a result, ELC projects that are visualized on the interactive "
+"map represent the original contract size."
 msgstr ""
-"ទំហំដីសម្បទាននេះ ត្រូវបានកាត់បន្ថយ ហើយពុំមានការដកហូតអាជ្ញាប័ណ្ណពីមុនមកទេ។ "
-"ឯកសារស្តីពីការកាត់បន្ថយផ្ទៃដីចេញពីសម្បទានដីសេដ្ឋកិច្ចដែលមានជាសាធារណៈ ពុំមានភ្ជាប់ផែនទីមកជាមួយឡើយ។ ដូច្នេះអូឌីស៊ី "
+"ទំហំដីសម្បទាននេះ ត្រូវបានកាត់បន្ថយ ហើយពុំមានការដកហូតអាជ្ញាប័ណ្ណពីមុនមកទេ។ ឯកសារស្តីពីការកាត់បន្ថយផ្ទៃដីចេញពីសម្បទានដីសេដ្ឋកិច្ចដែលមានជាសាធារណៈ ពុំមានភ្ជាប់ផែនទីមកជាមួយឡើយ។ ដូច្នេះអូឌីស៊ី "
 "មិនអាចបង្ហាញផ្ទៃដីដែលត្រូវបានកាត់ចេញនៅលើផែនទី។ សម្បទានដីសេដ្ឋកិច្ចនៅលើផែនទីអន្តរកម្ម បង្ហាញនូវទំហំផ្ទៃដីដើម។"
 
-#: utils/utils.php:40
+#: utils/utils.php:41
 msgid "The concession has been cancelled with or without a history of reductions in size."
 msgstr "សម្បទានដីសេដ្ឋកិច្ច ត្រូវបានលុបចោលដោយមាន ឬគ្មានប្រវត្តិនៃការកាត់បន្ថយទំហំដី។"
 
-#: utils/utils.php:45
+#: utils/utils.php:46
 msgid ""
-"The concession has been subjected to reduction(s) in size although it had been cancelled "
-"previously. Publicly available information on land area cut from ELCs does not include maps or "
-"spatial data of excisions. Thus, ODC cannot present land area cut in shapes. As a result, ELC "
-"projects that are visualized on the interactive map represent the original contract size."
+"The concession has been subjected to reduction(s) in size although it had been cancelled previously. Publicly available information on land area cut from ELCs does "
+"not include maps or spatial data of excisions. Thus, ODC cannot present land area cut in shapes. As a result, ELC projects that are visualized on the interactive map "
+"represent the original contract size."
 msgstr ""
-"ទំហំដីសម្បទាន ត្រូវបានកាត់បន្ថយ បន្ទាប់ពីមានការដកហូតអាជ្ញាប័ណ្ណពីមុន។ "
-"ឯកសារស្តីពីការកាត់បន្ថយផ្ទៃដីចេញពីសម្បទានដីសេដ្ឋកិច្ចដែលមានជាសាធារណៈ ពំុមានភ្ជាប់ផែនទីមកជាមួយឡើយ។ ដូច្នេះអូឌីស៊ី "
+"ទំហំដីសម្បទាន ត្រូវបានកាត់បន្ថយ បន្ទាប់ពីមានការដកហូតអាជ្ញាប័ណ្ណពីមុន។ ឯកសារស្តីពីការកាត់បន្ថយផ្ទៃដីចេញពីសម្បទានដីសេដ្ឋកិច្ចដែលមានជាសាធារណៈ ពំុមានភ្ជាប់ផែនទីមកជាមួយឡើយ។ ដូច្នេះអូឌីស៊ី "
 "មិនអាចបង្ហាញផ្ទៃដីដែលត្រូវបានកាត់ចេញនៅលើផែនទី។ សម្បទានដីសេដ្ឋកិច្ចនៅលើផែនទីអន្តរកម្ម បង្ហាញនូវទំហំផ្ទៃដីដើម។"
 
-#: utils/utils.php:50
+#: utils/utils.php:51
 msgid ""
-"Information obtained from official Government sources, with official legal documentation, in the "
-"four identification fields: <br>a. Company name; <br>b. Location; <br>c. GPS coordinates and/or "
-"analog map; and <br>  d. Purpose (crop, ore, etc.)"
+"Information obtained from official Government sources, with official legal documentation, in the four identification fields: <br>a. Company name; <br>b. Location; "
+"<br>c. GPS coordinates and/or analog map; and <br>  d. Purpose (crop, ore, etc.)"
 msgstr ""
 "ព័ត៌មានដែលទទួលបានពីប្រភពរដ្ឋាភិបាល​ដោយមាន​ឯកសារ​ផ្លូវច្បាប់​ជាផ្លូវការ ដែលស្ថិត​​នៅក្នុង​លក្ខណៈ​អត្តសញ្ញាណ​ចំនួន៤គឺ៖ <br />\n"
 "ក. ឈ្មោះក្រុមហ៊ុន <br />\n"
@@ -405,11 +381,10 @@ msgstr ""
 "គ. ចំនុចកូអរដោនេនៃប្រព័ន្ធកំណត់ទីតាំង​សកល (GPS) និង/ឬ ផែនទីអាណាឡូក  <br />\n"
 "ឃ. គោលបំណង (ដំណាំ, រ៉ែ ជាដើម)"
 
-#: utils/utils.php:54
+#: utils/utils.php:55
 msgid ""
-"Information obtained from official Government sources, with legal documentation, but missing one "
-"or more of the following identification fields: <br>a. Company name; <br>b. Location; <br>c. GPS "
-"coordinates and/or analog map; and <br>d. Purpose (crop, ore, etc.)"
+"Information obtained from official Government sources, with legal documentation, but missing one or more of the following identification fields: <br>a. Company name; "
+"<br>b. Location; <br>c. GPS coordinates and/or analog map; and <br>d. Purpose (crop, ore, etc.)"
 msgstr ""
 "ព័ត៌មានដែលទទួលបានពីប្រភពរដ្ឋាភិបាល​ដោយមាន​​ឯកសារ​ផ្លូវច្បាប់ ប៉ុន្តែ​បាត់ផ្នែកមួយ ឬច្រើន​នៃលក្ខណៈ​​អត្តសញ្ញាណ​ដូច​ខាង​ក្រោម៖ <br />\n"
 "ក. ឈ្មោះក្រុមហ៊ុន  <br />\n"
@@ -417,26 +392,22 @@ msgstr ""
 "គ. ចំនុចកូអរដោនេនៃប្រព័ន្ធកំណត់ទី​តាំងសកល (GPS) និង/ឬ ផែនទីអាណាឡូក  <br />\n"
 "ឃ. គោលបំណង (ដំណាំ,រ៉ែ ជាដើម)"
 
-#: utils/utils.php:58
-msgid ""
-"Information obtained from any other source in public domain (including documentation from "
-"photographs, etc.)"
+#: utils/utils.php:59
+msgid "Information obtained from any other source in public domain (including documentation from photographs, etc.)"
 msgstr "ព័ត៌មានដែលទទួលបានពី​ប្រភពណាមួយ​ផ្សេងទៀត ដែលស្ថិតនៅក្នុងដែន​សាធារណៈ (រួមទាំងឯកសារពីរូបថតជាដើម)"
 
-#: utils/utils.php:62
-msgid ""
-"Information obtained from the concessionaire (company/entity) or from government source(s) without "
-"legal documentation."
+#: utils/utils.php:63
+msgid "Information obtained from the concessionaire (company/entity) or from government source(s) without legal documentation."
 msgstr "ព័ត៌មានដែលទទួលបានពី​សម្បទានិក (ក្រុមហ៊ុន/អង្គភាព) ឬពីប្រភពរដ្ឋាភិបាល ដោយមិនមានឯកសារផ្លូវច្បាប់"
 
-#: utils/utils.php:66
+#: utils/utils.php:67
 msgid "These concessions have been cancelled by the Royal Government of Cambodia."
 msgstr "សម្បទានទាំងនេះត្រូវបាន​លុបចោលដោយ​រាជរដ្ឋាភិបាលកម្ពុជា។"
 
-#: utils/utils.php:268
+#: utils/utils.php:189
 msgid "Metadata"
 msgstr "ព័ត៌មានអំពីទិន្នន័យ"
 
-#: utils/utils.php:281
+#: utils/utils.php:203
 msgid "Download and Metadata"
 msgstr "ទាញយក និង ទិន្នន័យមេតា"
