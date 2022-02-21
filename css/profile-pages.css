@@ -383,6 +383,10 @@ table.dataTable thead .sorting_desc_disabled {
   overflow-y: auto;
 }
 
+.related_profiles > li {
+  display: block;
+}
+
 #filter_by_classification{
   width: 100%;
   display: inline-block;

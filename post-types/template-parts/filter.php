@@ -26,7 +26,7 @@ if (!odm_screen_manager()->is_desktop()) : ?>
             <div class="panel panel_filter">
                 <?php
                 if (isset($related_profile_pages) && $related_profile_pages != '') :
-                    $temp_related_profile_pages = explode("\r\n", $related_profile_pages);
+                    $temp_related_profile_pages = preg_split('/\r\n|\r|\n/', $related_profile_pages);
                 ?>
                     <div class="eight columns">
                         <?php if ($filtered_by_column_index) : ?>
@@ -81,8 +81,8 @@ if (!odm_screen_manager()->is_desktop()) : ?>
 
                         <!-- Filter and Related profile page -->
                         <?php
-                        if (isset($related_profile_page) && $related_profile_pages != '') :
-                            $temp_related_profile_pages = explode('\r\n', $related_profile_pages);
+                        if (isset($related_profile_pages) && $related_profile_pages != '') :
+                            $temp_related_profile_pages = preg_split('/\r\n|\r|\n/', $related_profile_pages);
                         ?>
                             <!-- Filter by Column  -->
                             <div class="seven columns">
@@ -102,10 +102,11 @@ if (!odm_screen_manager()->is_desktop()) : ?>
                             <div class="five columns">
                                 <p><?php _e('Related profiles', 'wp-odm_profile_pages'); ?></p>
                                 <ul class="related_profiles">
-                                    <?php foreach ($temp_related_profile_pages as $temp_related_profile_page) :
-                                        $split_title_and_url = explode('|', $profile_pages_url);
+                                    <?php
+                                    foreach ($temp_related_profile_pages as $temp_related_profile_page) :
+                                        $split_title_and_url = explode('|', $temp_related_profile_page);
                                     ?>
-                                        <il>
+                                        <il style="display: block;">
                                             <a href="<?php echo $split_title_and_url[1]; ?>" target="_blank">
                                                 <?php echo $split_title_and_url[0]; ?>
                                             </a>
