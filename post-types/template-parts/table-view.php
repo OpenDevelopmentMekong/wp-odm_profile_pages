@@ -4,7 +4,7 @@
             <thead>
                 <tr>
                     <th>
-                        <div class='th-value'>
+                        <div class="th-value">
                             <?php _e('Map ID', 'wp-odm_profile_pages'); ?>
                         </div>
                     </th>
@@ -13,7 +13,7 @@
                     if ($DATASET_ATTRIBUTE) :
                         foreach ($DATASET_ATTRIBUTE as $key => $value) : ?>
                             <th>
-                                <div class='th-value'>
+                                <div class="th-value">
                                     <?php _e($DATASET_ATTRIBUTE[$key], 'wp-odm_profile_pages'); ?>
                                 </div>
                             </th>

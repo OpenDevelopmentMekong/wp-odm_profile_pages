@@ -34,15 +34,27 @@ table.dataTable thead th .th-value {
 }
 
 .dataTables_scrollBody th {
-    display: none;
+  display: none;
 }
 
 #profiles_wrapper .dataTables_scrollHead {
   overflow-x: auto !important;
+  position: sticky !important;
+  z-index: 1020;
+}
+
+.filter_panel_toggle_icon {
+  cursor: pointer;
+  float: right;
+}
+
+.sticky {
+  position: sticky !important;
+  z-index: 1020;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {
-    padding: 0;
+  padding: 0;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {
@@ -317,6 +329,7 @@ table.dataTable thead .sorting_desc_disabled {
 .filter-container #search_all, .mobile-filter-container #search_all{
   width: 100%;
   margin: 0 10px 0 0;
+  padding: 4px;
 }
 
 .fixed-filter-container {
@@ -335,21 +348,8 @@ table.dataTable thead .sorting_desc_disabled {
   padding: 0 auto;
   display: block;
   background: #eee;
-  margin-left: 10px;
 }
-.filter-container .related_profiles_toggle_icon{
-    display: none;
-    cursor: pointer;
-}
-.fixed-filter-container .related_profiles_toggle_icon{
-  float: right;
-  position: relative;
-  margin: 0 0 0 10px;
-  display: block;
-}
-.related_profiles_toggle_icon i.fa-toggle-on{
-  font-size: 25px
-}
+
 .fixed_datatable_tool_bar {
   display: none;
   float: right;
@@ -381,6 +381,7 @@ table.dataTable thead .sorting_desc_disabled {
 .related_profiles{
   max-height: 70px;
   overflow-y: auto;
+  margin-left: 0 !important;
 }
 
 .related_profiles > li {

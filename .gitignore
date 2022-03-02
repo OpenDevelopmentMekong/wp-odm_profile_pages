@@ -7,6 +7,5 @@ font/opendev.woff
 .remote-sync.json
 **.bak
 **.bak**
-**.mo
 
 /vendor/
