@@ -61,12 +61,12 @@ if (!odm_screen_manager()->is_desktop()) : ?>
     </div>
 <?php else : ?>
     <!-- Filter section on Desktop -->
-    <div class="row hideOnMobileAndTablet">
+    <div class="row hideOnMobileAndTablet sticky">
         <div class="sixteen columns">
             <div class="filter-container">
                 <div class="panel_related_profile">
                     <?php if (odm_screen_manager()->is_desktop()) : ?>
-                        <div class="related_profiles_toggle_icon">
+                        <div class="filter_panel_toggle_icon">
                             <span><?php _e('Filters', 'wp-odm_profile_pages'); ?></span>
                             <i class="fa fa-times-circle"></i>
                         </div>
