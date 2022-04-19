@@ -29,7 +29,7 @@
 				</section>
 			<?php endif; ?>
         
-			<section id="post-content">
+			<section class="post-content">
 				<?php the_content(); ?>
 			</section>
       	</section>
@@ -38,6 +38,10 @@
     <div class="four columns">
       	<aside id="sidebar">
 			<ul class="widgets">
+				<li class="widget">
+					<?php odm_summary(); ?>
+				</li>
+
 				<?php dynamic_sidebar('profile-right-sidebar'); ?>
 			</ul>
       	</aside>
