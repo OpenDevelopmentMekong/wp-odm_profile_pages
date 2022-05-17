@@ -40,18 +40,15 @@
                                     <td>
                                         <?php
                                         $profile_val = str_replace("T00:00:00", "", $profile[$key]);
-                                        if (odm_language_manager()->get_current_language() == "km") {
-                                            if (is_numeric($profile_val)) {
+
+                                        if (is_numeric($profile_val) && !in_array($key, ['year', 'sub-decree', 'cdc_num', 'phone'])) {
+                                            if (odm_language_manager()->get_current_language() == "km") {
                                                 $profile_value = convert_to_kh_number(str_replace(".00", "", number_format($profile_val, 2, '.', ',')));
                                             } else {
-                                                $profile_value = $profile_val;
+                                                $profile_value = str_replace(".00", "", number_format($profile_val, 2, '.', ','));
                                             }
                                         } else {
-                                            if (is_numeric($profile_val)) {
-                                                $profile_value = str_replace(".00", "", number_format($profile_val, 2, '.', ','));
-                                            } else {
-                                                $profile_value = $profile_val;
-                                            }
+                                            $profile_value = $profile_val;
                                         }
 
                                         echo $profile_value == "" ? __("Unknown", 'wp-odm_profile_pages') : str_replace(";", "<br/>", $profile_value);
