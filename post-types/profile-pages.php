@@ -414,84 +414,50 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
           </script>
   	  <?php
       }
-      public function full_width_middle_content_box($post = false)
-      {
-        $full_width_middle_content = get_post_meta($post->ID, '_full_width_middle_content', true);
-        $full_width_middle_content_localization = get_post_meta($post->ID, '_full_width_middle_content_localization', true);
-        $position_full_content = get_post_meta($post->ID, '_full_width_content_position', true);
-        ?>
-        <p style="float:right; margin:0">
-          <input type="checkbox" name="_full_width_content_position" id="full_width_content_position" value="1" <?php checked(1, $position_full_content);?>>
-          <label for="full_width_content_position"><?php _e('Show above the map', 'odm'); ?></label>
-        </p>
-        <div id="multiple-site">
-          <input type="radio" id="middle_content_en" class="en" name="language_site_3" value="en" checked />
-          <label for="middle_content_en"><?php _e('ENGLISH', 'wp-odm_profile_pages'); ?></label> &nbsp;
-          <?php if (odm_language_manager()->get_the_language_by_site() != "English"): ?>
-            <input type="radio" id="middle_content_localization" class="localization" name="language_site_3" value="localization" />
-            <label for="middle_content_localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'wp-odm_profile_pages');  ?></label>
-          <?php endif; ?>
 
-        </div>
+        public function full_width_middle_content_box($post)
+        {
+            $position_full_content = get_post_meta($post->ID, '_full_width_content_position', true);
+            ?>
+            <div>
+                <p style="float:right; margin:0">
+                    <input type="checkbox" name="_full_width_content_position" id="full_width_content_position" value="1" <?php checked(1, $position_full_content);?>>
+                    <label for="full_width_content_position"><?php _e('Show above the map', 'odm'); ?></label>
+                </p>
+            </div>
 
-        <div id="middle_content_box">
-          <div class="language_settings language-en">
-            <table class="form-table middle_content_box">
-              <tbody>
-                <tr>
-                <td>
-                <label><?php _e('Full width content (English)', 'wp-odm_profile_pages');
-                ?></label>
-                </br>
-                <textarea name="_full_width_middle_content" style="width:100%;height: 50px;" placeholder=""><?php echo $full_width_middle_content; ?></textarea>
-                <p class="description"><?php _e('Any content can add to under the Editor content and sidebar and  full width of website even the iframe.', 'wp-odm_profile_pages');
-                ?></p>
-                </td>
-               </tr>
-              </tbody>
-            </table>
-          </div>
-          <?php if (odm_language_manager()->get_the_language_by_site() != "English") { ?>
-          <div class="language_settings language-localization">
-            <table class="form-table form-table-localization middle_content_box">
-              <tbody>
-                <tr>
-                <td>
-                <label><?php _e('Full width content (('.odm_language_manager()->get_the_language_by_site().')', 'wp-odm_profile_pages');
-                ?></label>
-                </br>
-                <textarea name="_full_width_middle_content_localization" style="width:100%;height: 50px;" placeholder=""><?php echo $full_width_middle_content_localization; ?></textarea>
-                <p class="description"><?php _e('Any content can add to under the Editor content and sidebar and  full width of website even the iframe.', 'wp-odm_profile_pages');
-                ?></p>
-                </td>
-               </tr>
-              </tbody>
-            </table>
-          </div>
-          <?php
-          }
-          ?>
-        </div>
-        <script type="text/javascript">
-    		 jQuery(document).ready(function($) {
-    			var $container = $('#multiple-site');
-    			var $languageSelection = $('input[type="radio"]');
-    			var $forms = $('.language_settings');
-    			var showForms = function() {
-    				  $forms.hide();
-    					var selected = $('input[type="radio"][name=language_site_3]').filter(':checked').val();
-    					$('.language-' + selected).show();
-    			}
-    			$languageSelection.on('change', function() {
-    					$('.' + this.className).prop('checked', this.checked);
-    			 	showForms();
-    			});
+            <br>
 
-    			showForms();
-         });
-        </script>
+            <?php
+            $editor_id = '_full_width_middle_content';
+            $full_width_middle_content = get_post_meta($post->ID, '_full_width_middle_content', true);
+            ?>
+
+            <div id="middle_content_box">
+                <div class="language_settings language-en">
+                    <?php
+                    $settings = [
+                        'wpautop'           => false,
+                        'media_buttons'     => true,
+                        'default_editor'    => '',
+                        'drag_drop_upload'  => false,
+                        'textarea_name'     => $editor_id,
+                        'textarea_rows'     => 8,
+                        'tabindex'          => '',
+                        'tabfocus_elements' => ':prev,:next',
+                        'editor_css'        => '',
+                        'editor_class'      => '',
+                        'teeny'             => true,
+                        'tinymce'           => true,
+                        'quicktags'         => true
+                    ];
+
+                    wp_editor($full_width_middle_content, $editor_id, $settings);
+                    ?>
+                </div>
+            </div>
         <?php
-      }
+        }
 
       public function page_with_sub_navigation_box($post = false)
       {
@@ -527,12 +493,9 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                 }
 
                 if (isset($_POST['_full_width_middle_content'])) {
-                    update_post_meta($post_id, '_full_width_middle_content', $_POST['_full_width_middle_content']);
+                    update_post_meta($post_id, '_full_width_middle_content', wp_kses_post($_POST['_full_width_middle_content']));
                 }
 
-                if (isset($_POST['_full_width_middle_content_localization'])) {
-                    update_post_meta($post_id, '_full_width_middle_content_localization', $_POST['_full_width_middle_content_localization']);
-                }
                 if(isset($_POST['_full_width_content_position'])) {
                     update_post_meta($post_id, '_full_width_content_position', TRUE);
                 }else{
@@ -627,5 +590,3 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
         }
     }
 }
-
-?>

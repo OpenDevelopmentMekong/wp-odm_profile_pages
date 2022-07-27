@@ -2,13 +2,15 @@
 
 <div class="container">
     <?php
-    $full_width_content = odm_language_manager()->get_current_language() !== 'en' ? get_post_meta(get_the_ID(), '_full_width_middle_content_localization', true) : get_post_meta(get_the_ID(), '_full_width_middle_content', true);
     $full_width_position = get_post_meta(get_the_ID(), '_full_width_content_position', true);
+    $full_width_content = get_post_meta(get_the_ID(), '_full_width_middle_content', true);
 
     if ($full_width_content && $full_width_position) : ?>
         <div class="row">
             <div class="sixteen columns">
-                <?php echo "<div class='full-width-content above-map'>" . $full_width_content . "</div>"; ?>
+                <div class='full-width-content above-map'>
+                    <?php _e($full_width_content); ?>
+                </div>
             </div>
         </div>
     <?php endif; ?>
@@ -27,7 +29,9 @@
         <section class="container">
             <div class="row">
                 <div class="sixteen columns">
-                    <?php echo "<div class='full-width-content below-map'>" . $full_width_content . "</div>"; ?>
+                    <div class='full-width-content below-map'>
+                        <?php _e($full_width_content); ?>
+                    </div>
                 </div>
             </div>
         </section>
