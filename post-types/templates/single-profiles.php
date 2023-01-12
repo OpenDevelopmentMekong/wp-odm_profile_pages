@@ -1,98 +1,96 @@
-<?php get_header(); ?>
-
-<?php if (have_posts()) : the_post(); ?>
-
 <?php
-// End of hack
-$ammendements = null;
-$profile = null;
-$profiles = null;
-$filter_map_id = null;
-$metadata_dataset = null;
-$dataset = null;
-$DATASET_ATTRIBUTE = null;
+get_header();
 
-if (isset($_GET['feature_id'])) {
-    $filter_map_id = htmlspecialchars($_GET['feature_id']);
-}
+if (have_posts()) : the_post();
+    $ammendements = null;
+    $profile = null;
+    $profiles = null;
+    $filter_map_id = null;
+    $metadata_dataset = null;
+    $dataset = null;
+    $DATASET_ATTRIBUTE = null;
 
-if (isset($_GET['metadata'])) {
-    $metadata_dataset = htmlspecialchars($_GET['metadata']);
-}
+    if (isset($_GET['feature_id'])) {
+        $filter_map_id = htmlspecialchars($_GET['feature_id']);
+    }
 
-if ( (odm_language_manager()->get_current_language() !== 'en') ) {
-    $ckan_dataset = str_replace('?type=dataset', '', get_post_meta($post->ID, '_csv_resource_url_localization', true));
-} else {
-    $ckan_dataset = str_replace('?type=dataset', '', get_post_meta($post->ID, '_csv_resource_url', true));
-}
+    if (isset($_GET['metadata'])) {
+        $metadata_dataset = htmlspecialchars($_GET['metadata']);
+    }
 
-if ( isset($ckan_dataset ) && $ckan_dataset != '') {
-    $ckan_dataset_exploded_by_dataset = explode('/dataset/', $ckan_dataset );
-    $ckan_dataset_exploded_by_resource = explode('/resource/', $ckan_dataset_exploded_by_dataset[1]);
-    $ckan_dataset_id = $ckan_dataset_exploded_by_resource[0];
+    if ((odm_language_manager()->get_current_language() !== 'en')) {
+        $ckan_dataset = str_replace('?type=dataset', '', get_post_meta($post->ID, '_csv_resource_url_localization', true));
+    } else {
+        $ckan_dataset = str_replace('?type=dataset', '', get_post_meta($post->ID, '_csv_resource_url', true));
+    }
 
-    $dataset = wpckan_api_package_show(wpckan_get_ckan_domain(),$ckan_dataset_id);
-}
+    if (isset($ckan_dataset) && $ckan_dataset != '') {
+        $ckan_dataset_exploded_by_dataset = explode('/dataset/', $ckan_dataset);
+        $ckan_dataset_exploded_by_resource = explode('/resource/', $ckan_dataset_exploded_by_dataset[1]);
+        $ckan_dataset_id = $ckan_dataset_exploded_by_resource[0];
 
-$template = get_post_meta($post->ID, '_attributes_template_layout', true);
-$sub_navigation = get_post_meta($post->ID, '_page_with_sub_navigation', true);
+        $dataset = wpckan_api_package_show(wpckan_get_ckan_domain(), $ckan_dataset_id);
+    }
+
+    $template = get_post_meta($post->ID, '_attributes_template_layout', true);
+    $sub_navigation = get_post_meta($post->ID, '_page_with_sub_navigation', true);
+
+    if (!$sub_navigation) :
 ?>
-<?php if(!$sub_navigation):?>
+        <section class="container section-title main-title">
+            <header class="row">
+                <div class="twelve columns">
+                    <?php
+                    //odm_get_template('social-share',array(),true); 
 
-	<section class=	"container section-title main-title">
-    <header class="row">
-      <div class="twelve columns">
-				<?php //odm_get_template('social-share',array(),true); ?>
-				<?php
-				if(!empty($dataset) && odm_screen_manager()->is_mobile()): ?>
-						<?php echo_download_button_link_to_datapage($ckan_dataset_id, true) ?>
-				<?php
-				endif;?>
-        <?php odm_title($post,array('date','categories','tags')); ?>
-      </div>
-      <?php
-      if (!empty($dataset) && odm_screen_manager()->is_desktop()): ?>
-				<div class="four columns align-right">
-					<div class="widget share-widget">
-						<div class="four columns">
-							<?php
-							if(!empty($dataset)) :?>
-								<?php echo_download_button_link_to_datapage($ckan_dataset_id) ?>
-							<?php
-							endif; ?>
-						</div>
-						<div class="twelve columns">
-							<?php odm_get_template('social-share',array(),true); ?>
-						</div>
-					</div>
-				</div>
-      <?php
-    	endif;
-      ?>
-    </header>
-	</section>
-<?php endif; ?>
+                    if (!empty($dataset) && odm_screen_manager()->is_mobile()) :
+                        echo_download_button_link_to_datapage($ckan_dataset_id, true);
+                    endif;
 
-<section id="content" class="single-post">
-  <?php if (!empty($filter_map_id)):
-          	include 'page-profiles-single-page.php';
-        elseif (!empty($metadata_dataset)):
-          	include 'page-profiles-metadata-page.php';
-        else:
-			if ($template == 'with-widget'):
-				include 'page-profiles-page-with-widget.php';
-			elseif ($template == 'with-right-sibebar'):
-				include 'page-profiles-with-right-sidebar.php';
-			elseif ($template == 'with-sub-navigation'):
-				include 'page-profiles-with-sub-navigation.php';
-			elseif ( $template == 'with-sidebar-and-table' ):
-				include 'page-profile-with-sidebar-and-table.php';
-			else:
-				include 'page-profiles-list-page.php';
-			endif;
+                    odm_title($post, array('date', 'categories', 'tags'));
+                    ?>
+                </div>
+                <?php if (!empty($dataset) && odm_screen_manager()->is_desktop()) : ?>
+                    <div class="four columns align-right">
+                        <div class="widget share-widget">
+                            <div class="four columns">
+                                <?php
+                                if (!empty($dataset)) :
+                                    echo_download_button_link_to_datapage($ckan_dataset_id);
+                                endif;
+                                ?>
+                            </div>
+                            <div class="twelve columns">
+                                <?php odm_get_template('social-share', array(), true); ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </header>
+        </section>
+    <?php endif; ?>
+
+    <section id="content" class="single-post">
+        <?php
+        if (!empty($filter_map_id)) :
+            include 'page-profiles-single-page.php';
+        elseif (!empty($metadata_dataset)) :
+            include 'page-profiles-metadata-page.php';
+        else :
+            if ($template == 'with-widget') :
+                include 'page-profiles-page-with-widget.php';
+            elseif ($template == 'with-right-sibebar') :
+                include 'page-profiles-with-right-sidebar.php';
+            elseif ($template == 'with-sub-navigation') :
+                include 'page-profiles-with-sub-navigation.php';
+            elseif ($template == 'with-sidebar-and-table') :
+                include 'page-profile-with-sidebar-and-table.php';
+            else :
+                include 'page-profiles-list-page.php';
+            endif;
         endif;
         ?>
-	</section>
+    </section>
 <?php endif; ?>
 
 <?php get_footer(); ?>
@@ -101,22 +99,20 @@ $sub_navigation = get_post_meta($post->ID, '_page_with_sub_navigation', true);
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
 <script type="text/javascript">
+    jQuery(document).ready(function($) {
 
-jQuery(document).ready(function($) {
+        $('.filter_box').select2();
 
- $('.filter_box').select2();
+        <?php
+        if ($sub_navigation) {
+            $sub_menu = '<nav id="od-menu" class="od-submenu"><div class="od-submenu-bg ' . odm_country_manager()->get_current_country() . '-bgcolor">
+		</div><div class="container"><div class="six columns"><h1>' . get_the_title() . '</h1></div><div class="ten columns">' . wp_nav_menu(array('menu' => $sub_navigation, 'echo' => false)) . '</div></div></nav>';
 
- <?php
-	 if($sub_navigation){
-	 	$sub_menu = '<nav id="od-menu" class="od-submenu"><div class="od-submenu-bg '. odm_country_manager()->get_current_country() .'-bgcolor">
-		</div><div class="container"><div class="six columns"><h1>'.get_the_title().'</h1></div><div class="ten columns">'. wp_nav_menu(array('menu' => $sub_navigation, 'echo'=>false)) .'</div></div></nav>';
-
-    $sub_menu = str_replace( array("\r\n", "\n", "\r"), "", $sub_menu);
-		?>
-		$("#od-menu").after('<?php echo trim($sub_menu); ?>');
-		<?php
-	 }
-?>
-});
-
+            $sub_menu = str_replace(array("\r\n", "\n", "\r"), "", $sub_menu);
+        ?>
+            $("#od-menu").after('<?php echo trim($sub_menu); ?>');
+        <?php
+        }
+        ?>
+    });
 </script>

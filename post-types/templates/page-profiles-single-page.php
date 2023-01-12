@@ -34,9 +34,11 @@
                     <tbody>
                         <?php
                         foreach ($DATASET_ATTRIBUTE as $key => $value) :
-                            if ($key != "reference") { ?>
+                            if ($key != 'reference') { ?>
                                 <tr>
-                                    <td class="row-key"><?php _e($DATASET_ATTRIBUTE[$key], 'wp-odm_profile_pages'); ?></td>
+                                    <td class="row-key">
+                                        <?php _e($DATASET_ATTRIBUTE[$key], 'wp-odm_profile_pages'); ?>
+                                    </td>
                                     <td>
                                         <?php
                                         $profile_val = str_replace("T00:00:00", "", $profile[$key]);
