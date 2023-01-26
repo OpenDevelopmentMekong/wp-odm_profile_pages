@@ -1,8 +1,8 @@
 <?php
 require_once(WP_PLUGIN_DIR . '/wp-odm_profile_pages/utils/profile-spreadsheet-post-meta.php');
 
-$full_width_content = get_post_meta(get_the_ID(), '_full_width_middle_content', true);
-$full_width_position = get_post_meta(get_the_ID(), '_full_width_content_position', true);
+$full_width_content     = get_post_meta(get_the_ID(), '_full_width_middle_content', true);
+$full_width_position    = get_post_meta(get_the_ID(), '_full_width_content_position', true);
 ?>
 
 <div class="container">
@@ -63,7 +63,5 @@ $full_width_position = get_post_meta(get_the_ID(), '_full_width_content_position
 
         require_once(dirname(__FILE__) . '/../template-parts/profile-jquery.php');
     endif;
-
-    reference_footnotes(get_the_content());
     ?>
 </div>

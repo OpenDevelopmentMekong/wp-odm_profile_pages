@@ -95,7 +95,9 @@
                                         $ref_docs_tracking = array_merge($ref_docs_tracking, $ammendement_references);
                                     }
 
-                                    $first_attr_key = array_shift(array_keys($DATASET_ATTRIBUTE_TRACKING));
+                                    $DATASET_ATTRIBUTE_TRACKING_KEYS = array_keys($DATASET_ATTRIBUTE_TRACKING);
+
+                                    $first_attr_key = array_shift($DATASET_ATTRIBUTE_TRACKING_KEYS);
                                     $ammendement_title[] = $ammendement[$first_attr_key];
                                     $concession_or_developer = $ammendement[$first_attr_key];
                                     $ammendement_information = "";

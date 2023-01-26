@@ -837,3 +837,6 @@ table.no-bgcolor tr{
   border: none;
   padding: 0;
 }
+.profile-tooltip .tooltip-info {
+  text-transform: none !important;
+}

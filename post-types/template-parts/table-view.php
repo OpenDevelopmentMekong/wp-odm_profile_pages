@@ -59,7 +59,7 @@
                                                     <?php endif; ?>
                                                 </div>
                                             </td>
-                                        <?php elseif (in_array($key, array('data_class', 'adjustment_classification', 'adjustment'))) : ?>
+                                        <?php elseif (preg_match('(data_class|adjustment_classification|adjustment|data_c)', $key)) : ?>
                                             <td>
                                                 <div class="td-value">
                                                     <?php
@@ -92,7 +92,7 @@
                                                     ?>
                                                 </div>
                                             </td>
-                                        <?php elseif (in_array($key, array('cdc_num', 'sub-decree', 'year'))) :
+                                        <?php elseif (preg_match('(cdc_num|sub-decree|year)', $key)) :
                                             if (odm_language_manager()->get_current_language() == 'km') :
                                                 $profile_value = convert_to_kh_number($profile[$key]);
                                             else :
@@ -103,7 +103,7 @@
                                                     <?php echo $profile_value == '' ? __('Unknown', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value)); ?>
                                                 </div>
                                             </td>
-                                        <?php elseif (in_array($key, array('eia_l', 'eia_link'))) : ?>
+                                        <?php elseif (strpos($key, 'eia') !== false) : ?>
                                             <td>
                                                 <div class="td-value">
                                                     <?php if ($profile[$key]) : ?>

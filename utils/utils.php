@@ -3,6 +3,7 @@
 function odm_data_classification_definition($info)
 {
     $info = trim($info);
+
     if ($info == 'កាត់បន្ថយ') {
         $info = 'Downsized';
     } elseif ($info == 'កាត់បន្ថយបន្ទាប់ពីដកហូត') {
@@ -15,17 +16,20 @@ function odm_data_classification_definition($info)
         $info = 'Government data complete';
     } elseif ($info == 'ទិន្នន័យរដ្ឋាភិបាលមិនពេញលេញ') {
         $info = 'Government data partial';
-    } elseif ($info == 'ទិន្នន័យដទៃទៀត') {
-        $info = 'Secondary source data';
     } elseif ($info == 'ទិន្នន័យបន្ទាប់បន្សំ') {
+        $info = 'Secondary source data';
+    } elseif ($info == 'ទិន្នន័យដទៃទៀត') {
         $info = 'Other data';
     }
 
     $info = strtolower(str_replace(' ', '_', $info));
-    echo '&nbsp; <div class="tooltip tooltip_definition ">';
+
+    echo '&nbsp; <div class="tooltip tooltip_definition profile-tooltip ">';
+
     if ($info != '' && $info != __('Unknown', 'wp-odm_profile_pages')) {
         echo '<i class="fa fa-question-circle info-data-classification" title=""></i>';
     }
+
     if ($info == 'no_evidence_of_adjustment') {
         echo '<div class="tooltip-info tooltip-no_evidence_of_adjustment">';
         echo '<p>' . __('ODC is not aware of any adjustments to the concession since it was first granted.', 'wp-odm_profile_pages');
@@ -58,7 +62,7 @@ function odm_data_classification_definition($info)
         echo '<div class="tooltip-info tooltip-other_data">';
         echo '<p>' . __('Information obtained from any other source in public domain (including documentation from photographs, etc.)', 'wp-odm_profile_pages') . '</p>';
         echo '</div>';
-    } elseif ($info == 'secondary_source_data') {
+    } elseif (strpos($info, 'secondary') !== false) {
         echo '<div class="tooltip-info tooltip-secondary_source_data">';
         echo '<p>' . __('Information obtained from the concessionaire (company/entity) or from government source(s) without legal documentation.', 'wp-odm_profile_pages') . '</p>';
         echo '</div>';
@@ -114,7 +118,7 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0)
                                 } ?>
                             <?php endif; ?>
                         </li>
-                    <?php
+            <?php
                     endforeach;
                 endif;
             endforeach;
@@ -151,13 +155,13 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0)
                                     </a>
                                     </br>
                                     <div class="ref_date">
-                                        <?php 
+                                        <?php
                                         if ($metadata['type'] == 'laws_record' && !(empty($metadata['odm_promulgation_date']))) :
                                             if (odm_language_manager()->get_current_language() == 'km') {
                                                 echo convert_date_to_kh_date(date('d/m/Y', strtotime($metadata['odm_promulgation_date'])), '/');
                                             } else {
                                                 echo '(' . $metadata['odm_promulgation_date'] . ')';
-                                            } 
+                                            }
                                         elseif ($metadata['type'] == 'library_records' && !(empty($metadata['odm_publication_date']))) :
                                             if (odm_language_manager()->get_current_language() == 'km') {
                                                 echo convert_date_to_kh_date(date('d/m/Y', strtotime($metadata['odm_publication_date'])), '/');
@@ -172,7 +176,7 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0)
                                     echo getMultilingualValueOrFallback($notes, odm_language_manager()->get_current_language(), $metadata['notes']); ?>
                                 </td>
                             </tr>
-                        <?php
+                <?php
                         endforeach;
                     endif;
                 endforeach;

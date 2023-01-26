@@ -79,4 +79,3 @@ if ( (odm_language_manager()->get_current_language() !== 'en') ) {
 
 $ref_docs_profile = array();
 $ref_docs_tracking = array();
-?>

@@ -146,10 +146,10 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 
         public function resource_settings_box($post)
         {
-            $csv_resource_url = get_post_meta($post->ID, '_csv_resource_url', true);
-            $csv_resource_url_localization = get_post_meta($post->ID, '_csv_resource_url_localization', true);
+            $csv_resource_url                       = get_post_meta($post->ID, '_csv_resource_url', true);
+            $csv_resource_url_localization          = get_post_meta($post->ID, '_csv_resource_url_localization', true);
 
-            $tracking_csv_resource_url = get_post_meta($post->ID, '_tracking_csv_resource_url', true);
+            $tracking_csv_resource_url              = get_post_meta($post->ID, '_tracking_csv_resource_url', true);
             $tracking_csv_resource_url_localization = get_post_meta($post->ID, '_tracking_csv_resource_url_localization', true);
         ?>
             <div id="multiple-site">
@@ -227,11 +227,11 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 
         public function attributes_settings_box($lang = 'English', $post)
         {
-            $attributes = get_post_meta($post->ID, '_attributes_csv_resource', true);
-            $attributes_localization = get_post_meta($post->ID, '_attributes_csv_resource_localization', true);
+            $attributes                         = get_post_meta($post->ID, '_attributes_csv_resource', true);
+            $attributes_localization            = get_post_meta($post->ID, '_attributes_csv_resource_localization', true);
 
-            $attributes_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking', true);
-            $attributes_tracking_localization = get_post_meta($post->ID, '_attributes_csv_resource_tracking_localization', true);
+            $attributes_tracking                = get_post_meta($post->ID, '_attributes_csv_resource_tracking', true);
+            $attributes_tracking_localization   = get_post_meta($post->ID, '_attributes_csv_resource_tracking_localization', true);
         ?>
             <?php if ($lang != 'English') {   ?>
                 <h4><?php _e('The attributes of Resource Dataset that would like to display, separated by line breaks (' . $lang . ')', 'wp-odm_profile_pages'); ?></h4>
@@ -251,22 +251,22 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 
         public function profiles_page_settings_box($post)
         {
-            $filtered_by_column_index = get_post_meta($post->ID, '_filtered_by_column_index', true);
-            $filtered_by_column_index_localization = get_post_meta($post->ID, '_filtered_by_column_index_localization', true);
+            $filtered_by_column_index                       = get_post_meta($post->ID, '_filtered_by_column_index', true);
+            $filtered_by_column_index_localization          = get_post_meta($post->ID, '_filtered_by_column_index_localization', true);
 
-            $group_data_by_column_index = get_post_meta($post->ID, '_group_data_by_column_index', true);
-            $group_data_by_column_index_localization = get_post_meta($post->ID, '_group_data_by_column_index_localization', true);
+            $group_data_by_column_index                     = get_post_meta($post->ID, '_group_data_by_column_index', true);
+            $group_data_by_column_index_localization        = get_post_meta($post->ID, '_group_data_by_column_index_localization', true);
 
-            $total_number_by_attribute_name = get_post_meta($post->ID, '_total_number_by_attribute_name', true);
-            $total_number_by_attribute_name_localization = get_post_meta($post->ID, '_total_number_by_attribute_name_localization', true);
+            $total_number_by_attribute_name                 = get_post_meta($post->ID, '_total_number_by_attribute_name', true);
+            $total_number_by_attribute_name_localization    = get_post_meta($post->ID, '_total_number_by_attribute_name_localization', true);
 
-            $related_profile_pages = get_post_meta($post->ID, '_related_profile_pages', true);
-            $related_profile_pages_localization = get_post_meta($post->ID, '_related_profile_pages_localization', true);
+            $related_profile_pages                          = get_post_meta($post->ID, '_related_profile_pages', true);
+            $related_profile_pages_localization             = get_post_meta($post->ID, '_related_profile_pages_localization', true);
 
-            $link_to_detail_column = get_post_meta($post->ID, '_link_to_detail_column', true);
-            $link_to_detail_column_localization = get_post_meta($post->ID, '_link_to_detail_column_localization', true);
-            $link_to_detail_page = get_post_meta($post->ID, '_link_to_detail_page', true);
-            $link_to_detail_page_localization = get_post_meta($post->ID, '_link_to_detail_page_localization', true);
+            $link_to_detail_column                          = get_post_meta($post->ID, '_link_to_detail_column', true);
+            $link_to_detail_column_localization             = get_post_meta($post->ID, '_link_to_detail_column_localization', true);
+            $link_to_detail_page                            = get_post_meta($post->ID, '_link_to_detail_page', true);
+            $link_to_detail_page_localization               = get_post_meta($post->ID, '_link_to_detail_page_localization', true);
             ?>
 
             <div id="multiple-site">
@@ -412,11 +412,11 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 
         public function full_width_middle_content_box($post)
         {
-            $position_full_content = get_post_meta($post->ID, '_full_width_content_position', true);
+            $position_full_content      = get_post_meta($post->ID, '_full_width_content_position', true);
 
-            $full_width_middle_content = get_post_meta($post->ID, '_full_width_middle_content', true);
+            $full_width_middle_content  = get_post_meta($post->ID, '_full_width_middle_content', true);
 
-            $editor_id = '_full_width_middle_content';
+            $editor_id                  = '_full_width_middle_content';
         ?>
             <div style="margin: 0;">
                 <input type="checkbox" name="_full_width_content_position" id="full_width_content_position" value="1" <?php checked(1, $position_full_content); ?>>
@@ -494,35 +494,35 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                 }
 
                 if (isset($_POST['_csv_resource_url'])) {
-                    update_post_meta($post_id, '_csv_resource_url', $_POST['_csv_resource_url']);
+                    update_post_meta($post_id, '_csv_resource_url', esc_url_raw($_POST['_csv_resource_url']));
                 }
 
                 if (isset($_POST['_csv_resource_url_localization'])) {
-                    update_post_meta($post_id, '_csv_resource_url_localization', $_POST['_csv_resource_url_localization']);
+                    update_post_meta($post_id, '_csv_resource_url_localization', esc_url_raw($_POST['_csv_resource_url_localization']));
                 }
 
                 if (isset($_POST['_tracking_csv_resource_url'])) {
-                    update_post_meta($post_id, '_tracking_csv_resource_url', $_POST['_tracking_csv_resource_url']);
+                    update_post_meta($post_id, '_tracking_csv_resource_url', esc_url_raw($_POST['_tracking_csv_resource_url']));
                 }
 
                 if (isset($_POST['_tracking_csv_resource_url_localization'])) {
-                    update_post_meta($post_id, '_tracking_csv_resource_url_localization', $_POST['_tracking_csv_resource_url_localization']);
+                    update_post_meta($post_id, '_tracking_csv_resource_url_localization', esc_url_raw($_POST['_tracking_csv_resource_url_localization']));
                 }
 
                 if (isset($_POST['_filtered_by_column_index'])) {
-                    update_post_meta($post_id, '_filtered_by_column_index', $_POST['_filtered_by_column_index']);
+                    update_post_meta($post_id, '_filtered_by_column_index', sanitize_text_field($_POST['_filtered_by_column_index']));
                 }
 
                 if (isset($_POST['_filtered_by_column_index_localization'])) {
-                    update_post_meta($post_id, '_filtered_by_column_index_localization', $_POST['_filtered_by_column_index_localization']);
+                    update_post_meta($post_id, '_filtered_by_column_index_localization', sanitize_text_field($_POST['_filtered_by_column_index_localization']));
                 }
 
                 if (isset($_POST['_group_data_by_column_index'])) {
-                    update_post_meta($post_id, '_group_data_by_column_index', $_POST['_group_data_by_column_index']);
+                    update_post_meta($post_id, '_group_data_by_column_index', sanitize_text_field($_POST['_group_data_by_column_index']));
                 }
 
                 if (isset($_POST['_group_data_by_column_index_localization'])) {
-                    update_post_meta($post_id, '_group_data_by_column_index_localization', $_POST['_group_data_by_column_index_localization']);
+                    update_post_meta($post_id, '_group_data_by_column_index_localization', sanitize_text_field($_POST['_group_data_by_column_index_localization']));
                 }
 
                 if (isset($_POST['_total_number_by_attribute_name'])) {
