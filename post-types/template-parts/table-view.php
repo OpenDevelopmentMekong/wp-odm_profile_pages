@@ -103,7 +103,7 @@
                                                     <?php echo $profile_value == '' ? __('Unknown', 'wp-odm_profile_pages') : str_replace(';', '<br/>', trim($profile_value)); ?>
                                                 </div>
                                             </td>
-                                        <?php elseif (strpos($key, 'eia') !== false) : ?>
+                                        <?php elseif (in_array($key, array('eia_l', 'eia_link'))) : ?>
                                             <td>
                                                 <div class="td-value">
                                                     <?php if ($profile[$key]) : ?>
