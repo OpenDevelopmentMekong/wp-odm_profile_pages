@@ -721,31 +721,44 @@ table.no-bgcolor tr{
   margin: 3px 0 0;
 }
 
-.widget_download .nc_tweetContainer{
+button.download {
+  background: #7dd220 !important;
+}
+
+.widget_download .nc_tweetContainer {
   height: 35px !important;
 }
-.widget_download .button.download{
+
+.widget_download .button {
   padding: 8px 6px 0 !important;
   border-radius: 2px;
+  border: none;
   position: absolute;
   right: 215px;
 }
-.widget_download a.download span{
+
+.widget_download button.download {
+  cursor: pointer;
+  height: 2.54em;
+  padding: 0 .8em !important;
+}
+
+.widget_download a.download span,
+.widget_download button.download span {
   display: none;
 }
 
-.widget_download a.download:hover{
-  right: 215px;
-}
-.widget_download a.download:hover span{
+.widget_download a.download:hover span,
+.widget_download button.download:hover span {
   display: initial;
 }
-.widget_download a.download i{
+
+.widget_download a.download i {
   margin-right: 5px;
   margin-left: 5px;
 }
 
-.full-width-content ul{
+.full-width-content ul {
     padding: 5px 0;
 }
 
