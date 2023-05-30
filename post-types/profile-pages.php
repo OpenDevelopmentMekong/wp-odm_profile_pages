@@ -100,6 +100,15 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
             );
 
             add_meta_box(
+                'external_url',
+                __('External Link', 'wp-odm_profile_pages'),
+                [$this, 'external_link_settings_box'],
+                'profiles',
+                'advanced',
+                'high'
+            );
+
+            add_meta_box(
                 'profiles_resource',
                 __('CKAN Dataset Resource', 'wp-odm_profile_pages'),
                 array($this, 'resource_settings_box'),
@@ -141,6 +150,18 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                     <option <?php selected($template, 'with-sidebar-and-table') ?> value="with-sidebar-and-table">With sidebar and table</option>
                 </select>
             </div>
+        <?php
+        }
+
+        function external_link_settings_box($post)
+        {
+            $external_link = get_post_meta($post->ID, '_external_link', true); ?>
+
+            <label for="external_link">
+                <?php _e('External Link for attaching with "Download and Metadata" button', 'wp-odm_profile_pages'); ?>
+            </label>
+            <input type="text" id="external_link" name="_external_link" style="width: 100%" value="<?php echo $external_link; ?>" />
+
         <?php
         }
 
@@ -491,6 +512,10 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                     update_post_meta($post_id, '_full_width_content_position', TRUE);
                 } else {
                     update_post_meta($post_id, '_full_width_content_position', FALSE);
+                }
+
+                if (isset($_POST['_external_link'])) {
+                    update_post_meta($post_id, '_external_link', sanitize_url($_POST['_external_link']));
                 }
 
                 if (isset($_POST['_csv_resource_url'])) {

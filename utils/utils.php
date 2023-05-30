@@ -194,24 +194,33 @@ function echo_metadata_button($dataset)
     <?php
 }
 
-function echo_download_button_link_to_datapage($dataset_id, $only_hyperlink = false)
+function echo_download_button_link_to_datapage($dataset_id, $only_hyperlink = false, $external_url = '')
 {
     if (!$only_hyperlink) : ?>
         <div class="nc_socialPanel widget_download swp_social_panel">
             <div class="nc_tweetContainer swp_fb">
             <?php endif; ?>
-            <a target="_blank" class="button download format" href="<?php echo get_bloginfo("url"); ?>/dataset/?id=<?php echo $dataset_id; ?>"><i class="fa fa-download"></i>
-                <span>
-                    <?php
-                    if (odm_screen_manager()->is_desktop()) :
-                        _e('Download and Metadata', 'wp-odm_profile_pages');
-                    endif; ?>
-                </span>
-            </a>
+
+            <?php if (empty($external_url)) : ?>
+                <a target="_blank" class="button download format" href="<?php echo get_bloginfo('url'); ?>/dataset/?id=<?php echo $dataset_id; ?>"><i class="fa fa-download"></i>
+                    <span>
+                        <?php
+                        if (odm_screen_manager()->is_desktop()) :
+                            _e('Download and Metadata', 'wp-odm_profile_pages');
+                        endif;
+                        ?>
+                    </span>
+                </a>
+            <?php else : ?>
+                <button type="submit" value="<?php _e('Download and Metadata', 'wp-odm_profile_pages'); ?>" name="<?php _e('Download and Metadata', 'wp-odm_profile_pages'); ?>" class="button download format" onclick="window.open('<?php echo $external_url; ?>'), window.location='<?php echo get_bloginfo('url'); ?>/dataset/?id=<?php echo $dataset_id; ?>'">
+                    <i class="fa fa-download"></i>
+                    <span><?php _e('Download and Metadata', 'wp-odm_profile_pages'); ?></span>
+                </button>
+            <?php endif; ?>
+
             <?php if (!$only_hyperlink) : ?>
             </div>
         </div>
     <?php endif; ?>
 <?php
 }
-?>
