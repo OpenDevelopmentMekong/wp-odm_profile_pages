@@ -104,7 +104,7 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0)
                     foreach ($ref_doc_metadata['results'] as $key => $metadata) :
                         $title = isset($metadata['title_translated']) ? $metadata['title_translated'] : $metadata['title']; ?>
                         <li><a target="_blank" href="<?php echo wpckan_get_link_to_dataset($metadata['name']); ?>"><?php echo getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(), $metadata['title']) ?></a>
-                            <?php if ($metadata['type'] == 'laws_record' && (isset($metadata['odm_promulgation_date']))) : ?>
+                            <?php if ($metadata['type'] == 'laws_record' && !empty($metadata['odm_promulgation_date'])) : ?>
                                 <?php if (odm_language_manager()->get_current_language() == 'km') {
                                     echo convert_date_to_kh_date(date('d/m/Y', strtotime($metadata['odm_promulgation_date'])), '/');
                                 } else {
