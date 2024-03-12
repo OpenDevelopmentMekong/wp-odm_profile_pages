@@ -479,6 +479,19 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
 <?php
         }
 
+        function wp_kses_post_allow_iframe($text){
+            $allowed_html = wp_kses_allowed_html( 'post' );
+            $allowed_html['iframe'] = array(
+                'src'             => true,
+                'height'          => true,
+                'width'           => true,
+                'frameborder'     => true,
+                'allowfullscreen' => true,
+            );
+            
+            return wp_kses($text, $allowed_html);
+        }
+
         public function save_post_data($post_id)
         {
             global $post;
@@ -505,7 +518,7 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                 }
 
                 if (isset($_POST['_full_width_middle_content'])) {
-                    update_post_meta($post_id, '_full_width_middle_content', wp_kses_post($_POST['_full_width_middle_content']));
+                    update_post_meta($post_id, '_full_width_middle_content', $this->wp_kses_post_allow_iframe($_POST['_full_width_middle_content']));
                 }
 
                 if (isset($_POST['_full_width_content_position'])) {
