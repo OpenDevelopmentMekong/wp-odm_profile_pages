@@ -9,11 +9,18 @@ $full_width_position    = get_post_meta(get_the_ID(), '_full_width_content_posit
     <!-- Main content in WYSIWYG -->
     <div class="row">
         <div class="twelve columns">
-            <?php echo get_the_content(); ?>
+            <section class="content section-content">
+                <section class="post-content">
+                    <?php the_content(); ?>
+                </section>
+            </section>
         </div>
         <div class="four columns">
             <aside id="sidebar">
                 <ul class="widgets">
+                    <li class="widget">
+                        <?php odm_summary(); ?>
+                    </li>
                     <?php dynamic_sidebar('profile-right-sidebar'); ?>
                 </ul>
             </aside>
