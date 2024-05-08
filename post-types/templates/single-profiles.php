@@ -36,14 +36,11 @@ if (have_posts()) : the_post();
     $sub_navigation = get_post_meta($post->ID, '_page_with_sub_navigation', true);
     $external_url   = get_post_meta($post->ID, '_external_link', true);
 
-    if (!$sub_navigation) :
-?>
+    if (!$sub_navigation) : ?>
         <section class="container section-title main-title">
             <header class="row">
                 <div class="twelve columns">
                     <?php
-                    //odm_get_template('social-share',array(),true); 
-
                     if (!empty($dataset) && odm_screen_manager()->is_mobile()) :
                         echo_download_button_link_to_datapage($ckan_dataset_id, true);
                     endif;
@@ -51,22 +48,25 @@ if (have_posts()) : the_post();
                     odm_title($post, array('date', 'categories', 'tags'));
                     ?>
                 </div>
-                <?php if (!empty($dataset) && odm_screen_manager()->is_desktop()) : ?>
-                    <div class="four columns align-right">
-                        <div class="widget share-widget">
-                            <div class="four columns">
-                                <?php
-                                if (!empty($dataset)) :
-                                    echo_download_button_link_to_datapage($ckan_dataset_id, false, $external_url);
-                                endif;
-                                ?>
-                            </div>
-                            <div class="twelve columns">
-                                <?php odm_get_template('social-share', array(), true); ?>
-                            </div>
+                
+                <div class="four columns align-right">
+                    <div class="widget share-widget">
+                        <div class="four columns">
+                            <?php
+                            if (!empty($dataset)) :
+                                echo_download_button_link_to_datapage($ckan_dataset_id, false, $external_url);
+                            endif;
+                            ?>
+                        </div>
+                        <div class="twelve columns">
+                            <?php
+                            if (odm_screen_manager()->is_desktop()) {
+                                odm_get_template('social-share', array(), true);
+                            }
+                            ?>
                         </div>
                     </div>
-                <?php endif; ?>
+                </div>
             </header>
         </section>
     <?php endif; ?>
