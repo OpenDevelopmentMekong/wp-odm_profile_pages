@@ -53,15 +53,21 @@ if ( (isset($ckan_dataset) && $ckan_dataset != '') || (isset($ckan_dataset_track
     if ((odm_language_manager()->get_current_language() !== 'en')) {
         $ckan_attribute = get_post_meta($post->ID, '_attributes_csv_resource_localization', true);
         $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking_localization', true);
+        $ckan_attribute_detail_page = get_post_meta($post->ID, '_attributes_csv_resource_detail_page', true);
+
     } else {
         $ckan_attribute = trim(get_post_meta($post->ID, '_attributes_csv_resource', true));
         $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking', true);
+        $ckan_attribute_detail_page = get_post_meta($post->ID, '_attributes_csv_resource_detail_page', true);
     }
 }
 
 if (isset($ckan_attribute) && $ckan_attribute != '') {
     $array_attribute = parse_mapping_pairs($ckan_attribute);
+    $array_attribute_detail_page = parse_mapping_pairs($ckan_attribute_detail_page);
+
     $DATASET_ATTRIBUTE = $array_attribute;
+    $DATASET_ATTRIBUTE_DETAIL_PAGE = $array_attribute_detail_page;
 }
 
 if (isset($ckan_attribute_tracking) && $ckan_attribute_tracking != '') {

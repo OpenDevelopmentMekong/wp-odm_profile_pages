@@ -250,20 +250,28 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
         {
             $attributes                         = get_post_meta($post->ID, '_attributes_csv_resource', true);
             $attributes_localization            = get_post_meta($post->ID, '_attributes_csv_resource_localization', true);
+            
+            $attributes_detail_page          = get_post_meta($post->ID, '_attributes_csv_resource_detail_page', true);
 
             $attributes_tracking                = get_post_meta($post->ID, '_attributes_csv_resource_tracking', true);
             $attributes_tracking_localization   = get_post_meta($post->ID, '_attributes_csv_resource_tracking_localization', true);
         ?>
             <?php if ($lang != 'English') {   ?>
                 <h4><?php _e('The attributes of Resource Dataset that would like to display, separated by line breaks (' . $lang . ')', 'wp-odm_profile_pages'); ?></h4>
-                <textarea name="_attributes_csv_resource_localization" style="width:100%; height: 200px;" placeholder="developer  =>  Developer"><?php echo $attributes_localization; ?></textarea>
-
+                <textarea name="_attributes_csv_resource_localization" style="width:100%; height: 200px;" placeholder="developer  =>  Developer"><?php echo $attributes_localization; ?></textarea> 
+                <h4><?php _e('The attributes of Resource Dataset to Disply in table that would like to display in Details View page, separated by line breaks (' . $lang . ')', 'wp-odm_profile_pages'); ?></h4>
+                <textarea name="_attributes_csv_resource_detail_page" style="width:100%; height: 200px;" placeholder="developer  =>  Developer"><?php echo $attributes_detail_page; ?></textarea>
+                
                 <h4><?php _e('The attributes of Tracking Resource that would like to display, separated by line breaks (' . $lang . ')', 'wp-odm_profile_pages'); ?></h4>
                 <textarea name="_attributes_csv_resource_tracking_localization" style="width:100%;height: 100px;" placeholder="concession_or_developer => Amendment object"> <?php echo $attributes_tracking_localization; ?></textarea>
+            
             <?php } else { ?>
                 <h4><?php _e('The attributes of Resource Dataset that would like to display, separated by line breaks (' . $lang . ')', 'wp-odm_profile_pages'); ?></h4>
                 <textarea name="_attributes_csv_resource" style="width:100%;height: 200px;" placeholder="developer  =>  Developer"><?php echo $attributes;  ?></textarea>
 
+                <h4><?php _e('The attributes of Resource Dataset that would like to display in Details View page , separated by line breaks (' . $lang . ')', 'wp-odm_profile_pages'); ?></h4>
+                <textarea name="_attributes_csv_resource_detail_page" style="width:100%; height: 200px;" placeholder="developer  =>  Developer"><?php echo $attributes_detail_page; ?></textarea>
+                
                 <h4><?php _e('The attributes of Tracking Resource that would like to display, separated by line breaks (' . $lang . ')', 'wp-odm_profile_pages'); ?></h4>
                 <textarea name="_attributes_csv_resource_tracking" style="width:100%;height: 100px;" placeholder="concession_or_developer => Amendment object"><?php echo $attributes_tracking; ?></textarea>
             <?php
@@ -578,6 +586,11 @@ if (!class_exists('Odm_Profile_Pages_Post_Type')) {
                 if (isset($_POST['_attributes_csv_resource_localization'])) {
                     update_post_meta($post_id, '_attributes_csv_resource_localization', $_POST['_attributes_csv_resource_localization']);
                 }
+ 
+                if (isset($_POST['_attributes_csv_resource_detail_page'])) {
+                    update_post_meta($post_id, '_attributes_csv_resource_detail_page', $_POST['_attributes_csv_resource_detail_page']);
+                }
+
 
                 if (isset($_POST['_attributes_csv_resource_tracking'])) {
                     update_post_meta($post_id, '_attributes_csv_resource_tracking', $_POST['_attributes_csv_resource_tracking']);

@@ -33,11 +33,11 @@
                 <table id="profile" class="data-table">
                     <tbody>
                         <?php
-                        foreach ($DATASET_ATTRIBUTE as $key => $value) :
+                        foreach ($DATASET_ATTRIBUTE_DETAIL_PAGE as $key => $value) :
                             if ($key != 'reference') { ?>
                                 <tr>
                                     <td class="row-key">
-                                        <?php _e($DATASET_ATTRIBUTE[$key], 'wp-odm_profile_pages'); ?>
+                                        <?php _e($DATASET_ATTRIBUTE_DETAIL_PAGE[$key], 'wp-odm_profile_pages'); ?>
                                     </td>
                                     <td>
                                         <?php
