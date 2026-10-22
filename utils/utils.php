@@ -100,7 +100,7 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0)
                     $ref_doc_metadata = wpckan_api_package_search(wpckan_get_ckan_domain(), $attrs);
                 endif;
 
-                if (count($ref_doc_metadata['results']) > 0) :
+                if (count($ref_doc_metadata['results']??[]) > 0) :
                     foreach ($ref_doc_metadata['results'] as $key => $metadata) :
                         $title = isset($metadata['title_translated']) ? $metadata['title_translated'] : $metadata['title']; ?>
                         <li><a target="_blank" href="<?php echo wpckan_get_link_to_dataset($metadata['name']); ?>"><?php echo getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(), $metadata['title']) ?></a>
