@@ -146,7 +146,7 @@ function odm_list_reference_documents($ref_docs, $only_title_url = 0)
                         $ref_doc_metadata = wpckan_api_package_search(wpckan_get_ckan_domain(), $attrs);
                     endif;
 
-                    if (count($ref_doc_metadata['results']) > 0) :
+                    if (count($ref_doc_metadata['results'] ?? []) > 0) :
                         foreach ($ref_doc_metadata['results'] as $key => $metadata) : ?>
                             <tr>
                                 <td class="row-key">
